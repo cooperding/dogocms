@@ -1,0 +1,551 @@
+[ 2013-03-30T00:01:18+08:00 ] 127.0.0.1 /admin
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001853s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003726s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005931s ]
+NOTIC: [8] Undefined index:  authId D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Lib\Action\BaseAction.class.php 第 20 行.
+
+[ 2013-03-30T00:01:18+08:00 ] 127.0.0.1 /admin.php/Passport
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002213s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002374s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000874s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002621s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003928s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002797s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002955s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.079094s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.079255s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001891s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001619s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001619s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002032s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007563s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001931s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002080s ]
+
+[ 2013-03-30T00:01:18+08:00 ] 127.0.0.1 /admin.php/Passport/vercode
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002446s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002614s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002113s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003618s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006190s ]
+
+[ 2013-03-30T00:01:25+08:00 ] 127.0.0.1 /admin.php/Passport/dologin
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001376s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001542s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000912s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002389s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003530s ]
+SQL: SHOW COLUMNS FROM `ding_operators` [ RunTime:0.003421s ]
+SQL: SELECT `username`,`creat_time`,`id`,`password` FROM `ding_operators` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.000733s ]
+NOTIC: [8] Undefined index:  result D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Model.class.php 第 619 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002515s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002664s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.057375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057784s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001572s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001416s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001702s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006763s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.005500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.005648s ]
+
+[ 2013-03-30T00:01:26+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000947s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003791s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002501s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002718s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.069881s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070020s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001968s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002206s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000556s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000799s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005939s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002203s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002333s ]
+
+[ 2013-03-30T00:01:34+08:00 ] 127.0.0.1 /admin.php/Pages/index?_=1364572893968
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002428s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002610s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001693s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005764s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002584s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002742s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.056776s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056931s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002102s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001532s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001571s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002507s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008473s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.004479s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004598s ]
+
+[ 2013-03-30T00:01:34+08:00 ] 127.0.0.1 /admin.php/Pages/sort?_=1364572894763
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001276s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001431s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000872s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002170s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003237s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001746s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001903s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.020463s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020607s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000606s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000768s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000532s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000792s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003034s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001017s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001142s ]
+
+[ 2013-03-30T00:01:36+08:00 ] 127.0.0.1 /admin.php/Pages/index?_=1364572896027
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001330s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001486s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000889s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003619s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000753s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001003s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.020894s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021135s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000767s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000627s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000436s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000701s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002836s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001442s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001579s ]
+
+[ 2013-03-30T00:10:04+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001712s ]
+INFO: Run CheckLang Behavior [ RunTime:0.004399s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006369s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002834s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002992s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.074520s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.074653s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001763s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001672s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002156s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001937s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007936s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001923s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002046s ]
+
+[ 2013-03-30T00:17:47+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001751s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005597s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002517s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002662s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dogocms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.065520s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.065650s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001776s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001991s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002048s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001675s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007882s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002194s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002324s ]
+
+[ 2013-03-30T00:17:51+08:00 ] 127.0.0.1 /admin.php/NavHead/index?_=1364573871226
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002562s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002731s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001712s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005559s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002902s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003177s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.056035s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056184s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002752s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001534s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001544s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001660s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007924s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002945s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003077s ]
+
+[ 2013-03-30T00:17:51+08:00 ] 127.0.0.1 /admin.php/NavHead/json
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001285s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001444s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000877s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002176s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003264s ]
+SQL: SHOW COLUMNS FROM `ding_nav_head` [ RunTime:0.004063s ]
+SQL: SELECT `id`,`parent_id`,`text` FROM `ding_nav_head`  [ RunTime:0.000712s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `ding_nav_head` LIMIT 1   [ RunTime:0.036597s ]
+
+[ 2013-03-30T00:17:51+08:00 ] 127.0.0.1 /admin.php/NavHead/json
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003116s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003306s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000948s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004120s ]
+SQL: SHOW COLUMNS FROM `ding_nav_head` [ RunTime:0.002533s ]
+SQL: SELECT `id`,`parent_id`,`text` FROM `ding_nav_head`  [ RunTime:0.000550s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `ding_nav_head` LIMIT 1   [ RunTime:0.002542s ]
+
+[ 2013-03-30T00:17:52+08:00 ] 127.0.0.1 /admin.php/NavFoot/index?_=1364573872639
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001408s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001599s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001289s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003956s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002099s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002254s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dogocms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.023968s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024102s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000623s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000602s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000422s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000744s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002703s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001046s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001164s ]
+
+[ 2013-03-30T00:17:52+08:00 ] 127.0.0.1 /admin.php/NavFoot/json
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001282s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001440s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001161s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003638s ]
+SQL: SHOW COLUMNS FROM `ding_nav_foot` [ RunTime:0.003752s ]
+SQL: SELECT `id`,`parent_id`,`text` FROM `ding_nav_foot`  [ RunTime:0.000785s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `ding_nav_foot` LIMIT 1   [ RunTime:0.000933s ]
+
+[ 2013-03-30T00:17:52+08:00 ] 127.0.0.1 /admin.php/NavFoot/json
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002457s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002628s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002637s ]
+INFO: Run CheckLang Behavior [ RunTime:0.004713s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007612s ]
+SQL: SHOW COLUMNS FROM `ding_nav_foot` [ RunTime:0.003450s ]
+SQL: SELECT `id`,`parent_id`,`text` FROM `ding_nav_foot`  [ RunTime:0.001824s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `ding_nav_foot` LIMIT 1   [ RunTime:0.000444s ]
+

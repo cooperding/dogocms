@@ -1,0 +1,23 @@
+<form action="__APP__/ContentModel/sortupdate" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>名称：</th>
+                    <td><input type="text" name="ename" value="{$data.ename}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>标识：</th>
+                    <td><input type="text" name="emark" value="{$data.emark}" data-options="required:true" class="easyui-validatebox"/><span class="red">*可输入英文字母和数字结合，不要使用特殊符号</span></td>
+                </tr>
+                <tr>
+                    <th>标识：</th>
+                    <td><html:radio name="status" radios="radios" checked="status"/></td>
+            </tr>
+            <tr>
+                <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>

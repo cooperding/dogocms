@@ -1,0 +1,33 @@
+<?php if (!defined('THINK_PATH')) exit();?><table id="datagrid_contentmodel_sortlisttab<?php echo ($id); ?>" class="contentmodel_sortlisttab<?php echo ($id); ?>">
+
+</table>
+<script>
+    $(function(){
+        var height = $('.indexcenter').height();
+        var classId = 'contentmodel_sortlisttab<?php echo ($id); ?>';
+        var hrefadd = '__APP__/ContentModel/sortlistadd?id=<?php echo ($id); ?>';
+        var hrefedit = '__APP__/ContentModel/sortlistedit';
+        var hrefcancel = '__APP__/ContentModel/sortlistdelete';
+        var urljson = '__APP__/ContentModel/fieldJsonId?id=<?php echo ($id); ?>';
+        $('.layout_'+classId).css('height',height-50);
+        openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
+        $('#datagrid_'+classId).datagrid({
+                columns:[[
+                        {field:'id',title:'ID',width:50,align:'center'},
+                        {field:'ename',title:'标题',width:200},
+                        {field:'emark',title:'标识',width:80},
+                        {field:'etype',title:'类型',width:200},
+                        {
+                        field:'action',
+                        title:'操作',
+                        width:50,
+                        formatter : function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/search.png" onclick="ding_views(\''+row.id+'\')" title="预览"/>&nbsp;\n\
+                    <img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                    ]]
+            })
+    })
+</script>

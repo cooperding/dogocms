@@ -1,0 +1,23 @@
+<form action="__APP__/LinkPage/sortupdate" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>名称：</th>
+                    <td><input type="text" name="ename" value="{$data.ename}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>标识：</th>
+                    <td><input type="text" name="egroup" value="{$data.egroup}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>标识：</th>
+                    <td><html:radio name="status" radios="radios" checked="status"/></td>
+            </tr>
+            <tr>
+                <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>

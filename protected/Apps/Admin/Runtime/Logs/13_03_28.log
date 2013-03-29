@@ -1,0 +1,182 @@
+[ 2013-03-28T19:34:12+08:00 ] 127.0.0.1 /admin
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002405s ]
+INFO: Run CheckLang Behavior [ RunTime:0.004909s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007596s ]
+NOTIC: [8] Undefined index:  authId D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Lib\Action\BaseAction.class.php 第 20 行.
+
+[ 2013-03-28T19:34:12+08:00 ] 127.0.0.1 /admin.php/Passport
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002851s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003018s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000870s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002235s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003358s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.003356s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003516s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.061702s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.061861s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001968s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002091s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001762s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002457s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008705s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002572s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002694s ]
+
+[ 2013-03-28T19:34:13+08:00 ] 127.0.0.1 /admin.php/Passport/vercode
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001591s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001757s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000921s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002302s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003447s ]
+
+[ 2013-03-28T19:34:20+08:00 ] 127.0.0.1 /admin.php/Passport/dologin
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001309s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001462s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000897s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002215s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003330s ]
+SQL: SHOW COLUMNS FROM `ding_operators` [ RunTime:0.026067s ]
+SQL: SELECT `username`,`creat_time`,`id`,`password` FROM `ding_operators` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.000797s ]
+NOTIC: [8] Undefined index:  result D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Model.class.php 第 619 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001937s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002083s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.023197s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023339s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000605s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000650s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000448s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000734s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002765s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000967s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001078s ]
+
+[ 2013-03-28T19:34:21+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000888s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002228s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003364s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002193s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002330s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' D:\AppServ\www\workspace\201303\dingcms\protected\Core\Lib\Core\Think.class.php 第 230 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+NOTIC: [8] Undefined index:  rel D:\AppServ\www\workspace\201303\dingcms\protected\Apps\Admin\Runtime\Cache\42752ecb57e1f9b4053043f881a566ff.php 第 125 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.060298s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.060444s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000875s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000742s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000494s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000771s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003238s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001024s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001147s ]
+

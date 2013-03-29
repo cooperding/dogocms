@@ -1,0 +1,32 @@
+<?php if (!defined('THINK_PATH')) exit();?><table id="datagrid_contentmodel_sort" class="contentmodel_sort">
+
+    </table>
+
+    <script>
+        $(function(){
+            var classId = 'contentmodel_sort';
+            var hrefadd = '__APP__/ContentModel/sortadd';
+            var hrefedit = '__APP__/ContentModel/sortedit';
+            var hrefcancel = '__APP__/ContentModel/sortdelete';
+            var urljson = '__APP__/ContentModel/sortJson';
+            openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
+            $('#datagrid_'+classId).datagrid({
+                columns:[[
+                        {field:'id',title:'ID',width:50,align:'center'},
+                        {field:'ename',title:'标题',width:200},
+                        {field:'emark',title:'标识',width:200},
+                        {field:'status',title:'状态',width:200},
+                        {
+                        field:'action',
+                        title:'操作',
+                        width:50,
+                        formatter : function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/search.png" onclick="ding_views(\''+row.id+'\')" title="预览"/>&nbsp;\n\
+                    <img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                    ]]
+            })
+        })
+    </script>
