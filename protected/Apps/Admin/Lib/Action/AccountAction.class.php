@@ -48,5 +48,42 @@ class AccountAction extends BaseAction
     {
         $this->display();
     }
+     /**
+     * updatepwd
+     * 更新密码
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function updatepwd()
+    {
+        $m = M('Operators');
+        $oldpwd = trim($_POST['oldpwd']);
+        $newpwd = trim($_POST['newpwd']);
+        $newpwd2 = trim($_POST['newpwd2']);
+        if(empty($oldpwd)||empty($newpwd)||empty($newpwd2)){
+            $this->dmsg('1', '密码不能为空！', false, true);
+        }
+        if($newpwd!=$newpwd2){
+            $this->dmsg('1', '新密码输入不相同，请确认输入！', false, true);
+        }
+        $uid = session('LOGIN_UID');
+        $username = session('LOGIN_NAME');
+        $condition['id'] = array('eq',$uid);
+        $rs = $m->field('creat_time,password')->where($condition)->find();
+        $password = md5(md5($username) . sha1($oldpwd . $rs['creat_time']));
+        if($password!=$rs['password']){
+            $this->dmsg('1', '原密码输入不正确，请确认输入！', false, true);
+        }
+        $_POST['password'] = md5(md5($username) . sha1($newpwd . $rs['creat_time']));
+        $rs = $m->where($condition)->save($_POST);
+        if ($rs == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '未有操作或操作失败！', false, true);
+        }
+        
+    }
 
 }
