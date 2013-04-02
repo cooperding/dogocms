@@ -23,11 +23,13 @@ class IndexAction extends BaseAction {
         $data_title = $m->where($title)->find();
         $data_keywords = $m->where($keywords)->find();
         $data_description = $m->where($description)->find();
-        $title = S('title');
+        
+        $Cache = Cache::getInstance(C('DATA_CACHE_TYPE'),array('expire'=>C('DATA_CACHE_TIME')));
+        $title = $Cache->get('title');
         if(empty($title)){
             $title['sys_name'] = array('eq','cfg_title');
             $data_title = $m->where($title)->find();
-            S('title',$data_title['sys_value']);
+            $Cache->set('title',$data_title['sys_value']);
             $title = $data_title['sys_value'];
         }
         $this->assign('title',$title);
