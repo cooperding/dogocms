@@ -329,8 +329,8 @@ class PagesAction extends BaseAction {
     {
         $m = M('Pages');
         import('ORG.Util.Page'); // 导入分页类
-        $pageNumber = intval($_POST['page']);
-        $pageRows = intval($_POST['rows']);
+        $pageNumber = intval($_REQUEST['page']);
+        $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
         $count = $m->count();

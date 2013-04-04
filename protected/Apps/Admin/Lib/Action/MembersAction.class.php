@@ -134,8 +134,8 @@ class MembersAction extends BaseAction {
         import('ORG.Util.Page'); // 导入分页类
         //$id = intval($_GET['id']);
 
-        $pageNumber = intval($_POST['page']);
-        $pageRows = intval($_POST['rows']);
+        $pageNumber = intval($_REQUEST['page']);
+        $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 

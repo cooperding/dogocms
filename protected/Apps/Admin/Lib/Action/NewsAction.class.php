@@ -257,7 +257,6 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function recycle() {
-        $t = M('Title');
         $this->display();
     }
 
@@ -339,8 +338,8 @@ class NewsAction extends BaseAction {
             $sort_id = rtrim($sort_id, ',');
             $condition['sort_id'] = array('in', $sort_id);
         }
-        $pageNumber = intval($_POST['page']);
-        $pageRows = intval($_POST['rows']);
+        $pageNumber = intval($_REQUEST['page']);
+        $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 

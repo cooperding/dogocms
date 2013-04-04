@@ -27,7 +27,13 @@ $miniConfig = array(
     'URL_PATHINFO_DEPR' => '/',
     'URL_HTML_SUFFIX' => 'shtml',
     'URL_MODEL' => 2,
-    'URL_CASE_INSENSITIVE' => true,
+    'URL_CASE_INSENSITIVE' => true,//true不再区分大小写
+    'URL_ROUTE_RULES' => array(
+        'list/:id'  => 'List/',
+        'content/:id'  => 'content/',
+        //'comment/:id'  => 'Comment/index',
+        //'comment/vercode'  => 'content/vercode',
+    )
 );
 $array = array_merge($array, $miniConfig);
 //print_r($miniConfig);

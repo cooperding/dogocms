@@ -84,7 +84,7 @@ class CommentAction extends BaseAction {
         $length = 4; //验证码的长度
         $mode = 1; //0 字母 1 数字 2 大写字母 3 小写字母 4中文 5混合
         $type = 'png'; //验证码的图片类型，默认为png
-        $width = 70; //验证码的宽度
+        $width = 50; //验证码的宽度
         $height = 25; //验证码的高度
         $verifyName = 'verifycomment'; //验证码的SESSION记录名称
         Image::buildImageVerify($length, $mode, $type, $width, $height, $verifyName);

@@ -38,10 +38,10 @@
                         <dogocms:article limit="0,2" order="id desc">
                             <li>
                                 <div class="phototext_pic f_left">
-                                    <a href="__APP__/Content/?id={$article.id}"><img alt="{$article.title}" src="{$article.titlepic}"></a>
+                                    <a href="__APP__/Content/{$article.id}"><img alt="{$article.title}" src="{$article.titlepic}"></a>
                                 </div><!--phototext_pic-->
                                 <div class="phototext_text f_right">
-                                    <h3><a href="__APP__/Content/?id={$article.id}">{$article.title}</a></h3>
+                                    <h3><a href="/Content/{$article.id}">{$article.title}</a></h3>
                                     <p>{$article.description}</p>
                                 </div><!--phototext_text-->
                                 <div class="clear"></div>
