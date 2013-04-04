@@ -16,10 +16,11 @@ class ListAction extends BaseAction {
     public function index($id)
     {
         //取得本分类下的所有列表信息，并分页，如果需要还需要读取到模型内的字段
-        if (!$id) {
+        if (!intval($id)) {
             echo '错误'; //跳转到错误页面
             exit;
         }
+        
         import('ORG.Util.Page'); // 导入分页类
         $t = M('Title');
         $ns = M('NewsSort');
