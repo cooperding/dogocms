@@ -12,7 +12,6 @@ $miniConfig = array(
     'DATA_CACHE_LEVEL' => '3', //设置子目录的层次
     'DATA_CACHE_COMPRESS' => true, //数据缓存是否压缩缓存true false
     'DATA_CACHE_CHECK' => false, //数据缓存是否校验缓存true false
-    'DATA_CACHE_PATH' => TEMP_PATH,
     //数据缓存设置
     //静态缓存设置
     /*

@@ -52,8 +52,14 @@ class NewsAction extends BaseAction {
             't' => ' 置顶[t] ',
             'j' => ' 跳转[j] '
         );
+        $radios = array(
+            'y' => ' 审核 ',
+            'n' => ' 未审核 ',
+            'e' => ' 未通过审核 '
+        );
         $this->assign('id', $id);
         $this->assign('flag', $flag);
+        $this->assign('radios', $radios);
         $this->display();
     }
 
@@ -91,10 +97,17 @@ class NewsAction extends BaseAction {
             't' => ' 置顶[t] ',
             'j' => ' 跳转[j] '
         );
+        $radios = array(
+            'y' => ' 审核 ',
+            'n' => ' 未审核 ',
+            'e' => ' 未通过审核 '
+        );
         $this->assign('data', $data);
         $this->assign('filed', $data_filed);
         $this->assign('datafiled', $data_ms);
         $this->assign('flag', $flag);
+        $this->assign('radios', $radios);
+        $this->assign('v_status', $data['status']);
         $this->display();
     }
 
@@ -136,6 +149,8 @@ class NewsAction extends BaseAction {
         //开始写入信息
         $_POST['addtime'] = time();
         $_POST['updatetime'] = time();
+        $_POST['op_id'] = session('LOGIN_UID');
+        $_POST['status'] = $_POST['status']['0'];
         if ($t->create($_POST)) {
             $rs = $t->add($_POST);
             $last_id = $t->getLastInsID();
@@ -192,6 +207,9 @@ class NewsAction extends BaseAction {
                         ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
                         ->where('ns.id=' . intval($_POST['sort_id']))->find();
         $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
+        $_POST['updatetime'] = time();
+        $_POST['op_id'] = session('LOGIN_UID');
+        $_POST['status'] = $_POST['status']['0'];
         $rs = $t->where($data)->save($_POST);
         $rsc = $c->where($cdata)->save($_POST);
         $rsm = $m->where($cdata)->save($filed);
@@ -215,7 +233,7 @@ class NewsAction extends BaseAction {
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'true');
+        $rs = $t->where($data)->setField('is_recycle', 'y');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -273,7 +291,7 @@ class NewsAction extends BaseAction {
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'false');
+        $rs = $t->where($data)->setField('is_recycle', 'n');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -343,7 +361,7 @@ class NewsAction extends BaseAction {
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 
-        $condition['is_recycle'] = isset($_GET['is_recycle']) ? 'true' : 'false';
+        $condition['is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
         $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;

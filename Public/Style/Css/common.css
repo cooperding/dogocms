@@ -82,11 +82,12 @@ body#login{ background-color:#F5F6F8;}
     font-size: 14px;
     text-align: right;
     white-space: nowrap;
-    width: 140px;
+    width: 180px;
 	font-weight:normal;
 }
 .division .shopping_setting th {
     width: 150px;
 }
+.division input[type="text"]{width: 230px;height: 25px;}
 img.btn_do{cursor: pointer;}
 .txt_mark{color: #666;}
