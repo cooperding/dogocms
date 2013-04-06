@@ -35,8 +35,8 @@ class LinkPageAction extends BaseAction {
     public function sortadd()
     {
         $radios = array(
-            'true' => '启用',
-            'false' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->display();
@@ -54,11 +54,11 @@ class LinkPageAction extends BaseAction {
         $m = M('LinkpageSort');
         $data = $m->where('id=' . intval($_GET['id']))->find();
         $radios = array(
-            'true' => '启用',
-            'false' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
-        $this->assign('status', $data['status']);
+        $this->assign('v_status', $data['status']);
         $this->assign('data', $data);
         $this->display();
     }

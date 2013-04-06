@@ -34,8 +34,8 @@ class OperatorsAction extends BaseAction {
     public function add()
     {
         $radios = array(
-            '1' => '启用',
-            '0' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->display();
@@ -53,11 +53,12 @@ class OperatorsAction extends BaseAction {
         $m = M('Operators');
         $data = $m->where('id=' . intval($_GET['id']))->find();
         $radios = array(
-            '1' => '启用',
-            '0' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('data', $data);
         $this->assign('radios', $radios);
+        $this->assign('v_status', $data['status']);
         $this->display();
     }
 

@@ -33,6 +33,11 @@ class NavHeadAction extends BaseAction {
      */
     public function add()
     {
+        $radios = array(
+            'y' => '启用',
+            'n' => '禁用'
+        );
+        $this->assign('radios', $radios);
         $this->display();
     }
 
@@ -47,6 +52,12 @@ class NavHeadAction extends BaseAction {
     {
         $m = M('NavHead');
         $data = $m->where('id=' . intval($_GET['id']))->find();
+        $radios = array(
+            'y' => '启用',
+            'n' => '禁用'
+        );
+        $this->assign('radios', $radios);
+        $this->assign('v_status', $data['status']);
         $this->assign('data', $data);
         $this->display();
     }
@@ -71,6 +82,7 @@ class NavHeadAction extends BaseAction {
             $data = $m->field('path')->where('id=' . $parent_id)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
+        $_POST['status'] = $_POST['status']['0'];
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -114,6 +126,7 @@ class NavHeadAction extends BaseAction {
             }
             $_POST['path'] = ','; //应该是这个
         }
+        $_POST['status'] = $_POST['status']['0'];
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

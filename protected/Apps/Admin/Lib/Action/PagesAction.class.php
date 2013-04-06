@@ -35,8 +35,8 @@ class PagesAction extends BaseAction {
     public function add()
     {
         $radios = array(
-            'true' => '可用',
-            'false' => '禁用'
+            'y' => '可用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->display();
@@ -55,12 +55,12 @@ class PagesAction extends BaseAction {
         $id = intval($_GET['id']);
         $data = $m->where('id=' . $id)->find();
         $radios = array(
-            'true' => '可用',
-            'false' => '禁用'
+            'y' => '可用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->assign('data', $data);
-        $this->assign('status', $data['status']);
+        $this->assign('v_status', $data['status']);
         $this->display();
     }
 
@@ -148,8 +148,8 @@ class PagesAction extends BaseAction {
     public function sortadd()
     {
         $radios = array(
-            'true' => '启用',
-            'false' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->display();
@@ -167,11 +167,11 @@ class PagesAction extends BaseAction {
         $m = M('PagesSort');
         $data = $m->where('id=' . intval($_GET['id']))->find();
         $radios = array(
-            'true' => '启用',
-            'false' => '禁用'
+            'y' => '启用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
-        $this->assign('status', $data['status']);
+        $this->assign('v_status', $data['status']);
         $this->assign('data', $data);
         $this->display();
     }
@@ -201,6 +201,7 @@ class PagesAction extends BaseAction {
             $data = $m->where('id=' . $parent_id)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
+        $_POST['status'] = $_POST['status']['0'];
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -242,6 +243,7 @@ class PagesAction extends BaseAction {
             }
             $_POST['path'] = ','; //应该是这个
         }
+        $_POST['status'] = $_POST['status']['0'];
         $en_name = trim($_POST['en_name']);
         if (empty($en_name)) {
             import("ORG.Util.Pinyin");

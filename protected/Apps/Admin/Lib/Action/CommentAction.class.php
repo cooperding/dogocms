@@ -37,12 +37,12 @@ class CommentAction extends BaseAction {
         $id = intval($_GET['id']);
         $data = $m->where('id=' . $id)->find();
         $radios = array(
-            'true' => '可用',
-            'false' => '禁用'
+            'y' => '可用',
+            'n' => '禁用'
         );
         $this->assign('radios', $radios);
         $this->assign('data', $data);
-        $this->assign('status', $data['status']);
+        $this->assign('v_status', $data['status']);
         $this->display();
     }
 
