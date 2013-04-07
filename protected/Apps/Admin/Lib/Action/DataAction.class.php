@@ -30,7 +30,7 @@ class DataAction extends BaseAction {
     }
     /**
      * backup
-     * 站点数据备份
+     * 站点数据备份--显示数据表
      * @access public
      * @return array
      * @version dogocms 1.0
@@ -38,14 +38,32 @@ class DataAction extends BaseAction {
     public function backup()
     {
         $table = $this->getTables();
-        $struct = $this->bakStruct($table);
-        $record = $this->bakRecord($table);
-        echo '<pre>';
-        print_r($record);
-        exit;
+        //$struct = $this->bakStruct($table);
+        //$record = $this->bakRecord($table);
+//        echo '<pre>';
+//        print_r($table);
+//        exit;
+        $this->assign('list',$table);
         $this->display();
     }
-
+  /**
+     * backup
+     * 站点数据备份--显示数据表
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function doBackup()
+    {
+        //print_r($_POST['tbname']);
+        $tbname = $_POST;
+        foreach($tbname as $k=>$v){
+            $tbnae .= $k;
+        }
+        //print_r($tbname);
+        $this->dmsg('1',$tbnae, false, true);
+        exit;
+    }
     /**
      * @description 获取当前数据库的所有表名。
      * @static
@@ -63,6 +81,8 @@ class DataAction extends BaseAction {
 
     /**
      * 备份数据表结构
+     * 
+     * 取得数据表结构
      */
     protected function bakStruct($array)
     {
@@ -108,6 +128,8 @@ class DataAction extends BaseAction {
 
     /**
      * 备份数据表数据
+     * 
+     * 取得数据信息
      */
     protected function bakRecord($array)
     {
