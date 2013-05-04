@@ -1,3 +1,9 @@
+/****/
+body{font-size: 12px;}
+.dogo-wp{width: 1020px;margin: 0 auto;}
+
+/**dogo-top**/
+.dogo-top{height: 28px;background: url(../images/bgquicknav.gif) 0 0 repeat-x;}
 /**login**/
 .login_header{height: 81px;background: #096}
 
