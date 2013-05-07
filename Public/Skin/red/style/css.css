@@ -1,0 +1,143 @@
+/* CSS Document */
+.dogo-top{height:28px; line-height:28px; background:url(../images/bgquicknav.gif) 0 0 repeat-x;}
+
+
+
+/*head*/
+.dogo-logo{height: 80px;border-bottom: 1px solid #dbdbdb;}
+.dogo-logo .dogo-logo-img{height: 80px;}
+/*search*/
+
+
+
+/*nav*/
+.dogo-nav{height: 40px;border-bottom: 2px solid #f60;}
+/*menu*/
+.dogo-menu{font-size: 14px;color: #dbdbdb;margin: 0;padding: 0;overflow: hidden;height: 40px;}
+.dogo-menu li{float:left;margin: 0;display: block;line-height: 40px;}
+.dogo-menu li.on{background: url(../images/navigation.jpg) no-repeat 50% 100%;}
+.dogo-menu li a{display: block;height: 40px;padding: 0 32px;font-weight: bold;color:#2d2b2b; }
+.dogo-menu li a:hover{background:url(../images/nav_a_hover.jpg) #f96706  repeat-x 0 0;color: white;}
+
+.menu{ height:35px; background:url(../images/bg.png) 0 0 repeat-x;}
+.nav{}
+.nav ul{}
+.nav li{ height:35px; line-height:35px; float:left; display:inline; }
+.nav li a{ margin:0 10px;color:#fff; font-size:14px;}
+.nav li a:hover{}
+
+/*flash*/
+.flash{ height:200px;}
+.flash img{ width:280px; height:200px;}
+
+
+/*phototext*/
+.phototext{ }
+.phototext ul{}
+.phototext li{ height:70px; border-bottom:1px dotted #bbb; margin:5px 0;}
+.phototext .phototext_pic{ width:60px; height:60px;}
+.phototext .phototext_pic img{ width:60px; height:60px;}
+.phototext .phototext_pic a:hover img{ width:56px; height:56px; border:1px solid #bbb; padding:1px;}
+.phototext .phototext_text{ width:185px;}
+.phototext .phototext_rtext{ width:170px;}
+.phototext h3{ height:25px; line-height:25px; overflow:hidden; }
+.phototext h3 a{font-weight:bold; color:#000;}
+.phototext p{ height:40px; line-height:20px;}
+
+/*text*/
+.text{}
+.text ul{}
+.text li{ height:25px; line-height:25px;}
+
+.text .title{ width:370px; height:25px; overflow:hidden;}
+.text .time{ width:45px; height:25px;}
+.text .title a{ margin-right:5px;}
+/*ftext*/
+.ftext{}
+.ftext ul{}
+.ftext li{ width:200px; height:25px; line-height:25px; float:left; display:inline; padding-right:5px; overflow:hidden;}
+.ftext{}
+.ftext{}
+
+/*headlinetop*/
+.headlinetop{ border-bottom:1px dotted #bbb;}
+.headlinetop h3{ height:35px; line-height:35px; text-align:center;overflow: hidden;}
+.headlinetop h3 a{ font-weight:bold; font-size:17px; color:#f00;}
+.headlinetop p{ height:60px; line-height:20px; overflow:hidden;}
+
+
+/*pic*/
+.pic{ }
+.pic ul{padding:5px 0;}
+.pic li{ width:117px; height:125px; float:left; display:inline; margin:0 5px 5px 0;}
+.pic .images{ width:117px; height:100px; }
+.pic .images img{ width:111px; height:94px;border:1px solid #bbb; padding:2px;}
+.pic .images a:hover img{ width:111px; height:94px;border:1px solid #f00; padding:2px;}
+.pic .title{ height:25px; line-height:25px; text-align:center;}
+
+
+/*place*/
+.place{ height:28px; line-height:28px;background: url(../images/square_bg.gif) no-repeat 12px -10px;}
+.place h3{ padding-left:25px; font-size:12px; text-align:left; }
+.place h3 a{ color:#1E50A2; margin:0 5px;}
+.place h3 a:hover{ color:#f00;}
+
+/*list*/
+.list{}
+.list .common_cont{ padding:5px 10px;}
+
+.listnews{}
+.listnews dl{ border-bottom:1px dotted #cdcdcd;}
+.listnews dt{ height:35px; line-height:35px;}
+.listnews dd{margin-bottom: 8px;}
+.listnews dt a{ font-size:14px; color:#369; font-weight:bold;}
+.listnews dd a{ color:#369;}
+.listpic{}
+
+/*listpic*/
+.listpic{ }
+.listpic ul{padding:5px 0;}
+.listpic li{ width:132px; height:145px; float:left; display:inline; margin:0 5px 5px 0;}
+.listpic .images{ width:132px; height:116px; }
+.listpic .images img{ width:126px; height:110px;border:1px solid #bbb; padding:2px;}
+.listpic .images a:hover img{ width:126px; height:110px;border:1px solid #f00; padding:2px;}
+.listpic .title{ height:25px; line-height:25px; text-align:center;}
+/*comment*/
+.comment{}
+.comment .comment_head{height:30px;line-height: 30px;}
+.comment_head .comment_tag{width:230px;font-weight: bold;padding-left:25px;}
+.comment_head .comment_ad{width:440px;}
+
+
+.comment_insert{padding:5px 10px; height:200px;}
+.comment_insert p{ clear:left; }
+.comment_insert label{ width:80px; float:left;}
+.comment_cont{ padding:5px 10px;}
+
+.showcomment_head_pic{ width:60px; margin-bottom:5px;}
+.showcomment_head_pic img{ width:52px; height:52px; border:1px solid #FDDCB7; padding:3px; background:#fff; margin:10px 0 0 15px;}
+.showcomment_head_pic a:hover img{border:1px solid #ddd;}
+.showcomment_head_cont{ width:620px; padding-bottom:5px; line-height:20px;}
+
+.showcomment_foot{ height:30px; line-height:30px; border-bottom:1px dotted #FDDCB7; border-top:1px solid #ddd;}
+
+/*viewsnews*/
+.viewsnews{}
+.viewsnews .title{ padding-top:10px;}
+.viewsnews .title h1{ height:40px; line-height:40px;font-size: 21px; text-align:center;}
+.viewsnews .info{padding: 10px 0px;text-align: center; border-bottom:1px dotted #bbb;}
+.viewsnews .content{ padding:10px 0;}
+.viewsnews .content p{margin: 1em 0;text-indent: 2em; line-height:200%; font-size:15px;}
+
+
+/*pagelist*/
+.pagelist{ padding-top:5px;}
+
+/*foot*/
+.foot{ text-align:center;}
+.foot p{ line-height:25px;}
+
+
+
+.link{}
+.link a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}

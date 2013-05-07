@@ -1,0 +1,27 @@
+/**gongong**/
+body,ul,ol,li,p,h1,h2,h3,h4,table,td,th,form,fieldset,img,dl,dt,dd,input,select,bottom{margin:0;padding:0;}
+h1,h2,h3,h4,a{font-weight:normal}
+body{font-family: arial,"宋体B8B\4F53";color:#000;}
+li{list-style:none;overflow:hidden;}
+a{text-decoration:none;}
+a:hover{text-decoration:none;}
+a img,img,a:hover img{border:0;}
+strong, b {font-weight: bolder;}
+
+img,input,li{ vertical-align:middle;}
+
+.dogo-wp{ width:960px; margin:0 auto;}
+.blank{ margin-bottom:10px;}
+
+.error{ color:#FF0000;}
+
+
+
+
+
+
+img{
+  max-width: 640px;
+  height:auto;
+  width:expression(this.width > 640 ? "640px" : this.width);
+}
