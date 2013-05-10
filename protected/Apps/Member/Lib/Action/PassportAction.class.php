@@ -27,20 +27,34 @@ class PassportAction extends Action
         if (session('M_STATUS') == 'TRUE') {
             $this->redirect('../' . APP_NAME);
         } else {
-            $this->display();
+            $this->login();
         }
     }
     /**
-     * add
+     * login
+     * 进入登录
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function login()
+    {
+        
+        $this->display(':login');
+    }
+    /**
+     * register
      * 进入注册
      * @access public
      * @return array
      * @version dogocms 1.0
      * @todo 权限验证
      */
-    public function add()
+    public function register()
     {
-        echo 'dedede';
+        
+        $this->display(':register');
     }
 
     /**

@@ -21,10 +21,13 @@ class BaseAction extends Action {
         $temp = $Setting->field('sys_value')->where($condition)->find();
         $templateSet =  cache('DOGOCMS_THEME');
         //获取系统配置与之比较
-        $templateSys = $temp['sys_value'];//假如为系统配置信息
-        if($templateSet===FALSE||$templateSet!=$templateSys){
-            //获取系统配置
-            cache('DOGOCMS_THEME','red');
+        $templateSys = trim($temp['sys_value']);//假如为系统配置信息
+        if(empty($templateSet)){
+            cache('DOGOCMS_THEME',$templateSys);
+        }else{
+            if($templateSet!=$templateSys){
+                cache('DOGOCMS_THEME',$templateSys);
+            }
         }
        // C('DEFAULT_THEME','default');
     }

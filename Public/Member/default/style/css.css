@@ -19,6 +19,7 @@
 .dogo-menu li a{display: block;height: 40px;padding: 0 32px;font-weight: bold;color:#2d2b2b; }
 .dogo-menu li a:hover{background:url(../images/nav_a_hover.jpg) #f96706  repeat-x 0 0;color: white;}
 
-
+/*dogo-sidebar*/
+.dogo-sidebar{}
 /*dogo-footer*/
-.dogo-footer{border-top: 1px solid #ccc;}k a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}
+.dogo-footer{border-top: 1px solid #ccc;}
