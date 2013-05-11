@@ -23,3 +23,6 @@
 .dogo-sidebar{}
 /*dogo-footer*/
 .dogo-footer{border-top: 1px solid #ccc;}
+
+
+.nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus{background: #f60;}

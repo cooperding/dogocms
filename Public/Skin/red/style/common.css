@@ -8,13 +8,14 @@ a:hover{text-decoration:none;}
 /*img,input,li{ vertical-align:middle;}*/
 
 .dogo-wp{ width:960px; margin:0 auto;}
-.dogo-border{border: 1px solid #ccc;}
+.dogo-border{border: 1px solid #ccc;}/*临时设置最小高度*/
 .dogo-pdtop1{padding-top: 5px;}
 .dogo-pdtop2{padding-top: 10px;}
+.dogo-pd10{padding: 10px;}
 .blank{ margin-bottom:10px;}
 
 
-
+.dogo-title-bt{border-bottom: 1px solid #FF6347;min-height: 30px;}
 
 
 
