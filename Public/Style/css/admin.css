@@ -8,7 +8,7 @@ body#login{ background-color:#F5F6F8;}
 
 
 
-.loginfrom{ width:520px;height:275px; margin:0 auto;background:url(../Images/login_bg.gif) 0 0 no-repeat;}
+.loginfrom{ width:520px;height:275px; margin:0 auto;background:url(../images/login_bg.gif) 0 0 no-repeat;}
 .loginfrom_con{ padding:55px 0 0 120px;}
 .loginfrom_con .user{ height:35px; padding:10px 0 0 27px;}
 .loginfrom_con .pass{ height:35px; padding:0px 0 0 27px;}
@@ -27,7 +27,7 @@ body#login{ background-color:#F5F6F8;}
 .loginfromfoot_left h3{ height:35px; line-height:35px;}
 .loginfromfoot_left h3 a{ font-size:12px; color:#373E54;}
 .loginfromfoot_left h3 a:hover{color:#f00;}
-.login_sub{ width:72px; height:27px; margin-top:3px; font-size:14px; font-weight:bold;display:block;border:none; color:#373E54;background:url(../Images/sub_bg.png) 0 0 no-repeat;}
+.login_sub{ width:72px; height:27px; margin-top:3px; font-size:14px; font-weight:bold;display:block;border:none; color:#373E54;background:url(../images/sub_bg.png) 0 0 no-repeat;}
 .logincopy{ height:35px; line-height:35px; font-size:12px; text-align:center;}
 
 

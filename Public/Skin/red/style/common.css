@@ -1,7 +1,7 @@
 /**gongong**/
 body,ul,ol,li,p,h1,h2,h3,h4,table,td,th,form,fieldset,img,dl,dt,dd,input,select,bottom{margin:0;padding:0;}
-body{font-family: arial,"宋体B8B\4F53";}
-
+body{font-family: arial,"宋体B8B\4F53";font-size: 13px;}
+li{list-style: none;}
 a{text-decoration:none;}
 a:hover{text-decoration:none;}
 
@@ -15,11 +15,14 @@ a:hover{text-decoration:none;}
 .blank{ margin-bottom:10px;}
 
 
-.dogo-title-bt{border-bottom: 1px solid #FF6347;min-height: 30px;}
+.dogo-title-bt{border: 1px solid #ccc;border-bottom: 1px solid #FF6347;}
+.dogo-content-bt{border: 1px solid #ccc;border-top: none;min-height: 180px;}
+.dogo-box-header{height: 33px;padding-left: 8px;}
+.dogo-box-header li{float: left;line-height: 35px;}
+.dogo-box-header li.dogo-more{width: 50px;float: right;}
 
-
-
-
+/*.breadcrumb */
+.breadcrumb {margin: 0;}
 
 img{
   max-width: 640px;

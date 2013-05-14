@@ -1,50 +1,64 @@
 <include file=":header" />
 <div class="blank"></div>
-<div class="box wp">
-    <div class="place placebd">
-        <h3>当前位置：<a href="/">首页</a>&gt;&gt;</h3>
-    </div><!--place-->
-</div><!--box-->
-<div class="blank"></div>
-<div class="block wp">
-    <div class="blockL f_right">
-<include file=":sider" />
+<div class="dogo-content">
+    <div class="container dogo-wp">
+        <div class="row">
+            
+            <div class="span8">
+                <div class="dogo-box">
+                    <ul class="breadcrumb">
+                        <li><a href="#">首页</a> <span class="divider">/</span></li>
+                        <li><a href="#">Library</a> <span class="divider">/</span></li>
+                        <li class="active">Data</li>
+                    </ul>
+                </div><!--dogo-box-->
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt">
+                        <ul class="dogo-box-header">
+                            <li>物联网资讯</li>
+                            <li class="dogo-more"></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-content-bt"></div>
+                </div><!--dogo-box-->
+                <div class="pagination">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
 
-    </div><!--blockL-->
-
-    <div class="blockLA f_left">
-        <div class="box">
-            <div class="common listbd list">
-                <div class="common_top commontopbd">
-                    <div class="ctop_l f_left">列表内容</div>
-                    <div class="ctop_m f_left"></div>
-                    <div class="ctop_r f_right"><a href="#"></a></div>
-                    <div class="clear"></div>
-                </div><!--common_top-->
-                <div class="common_cont listnews">
-                <foreach name="dogocms" item="dogocms">
-                    <dl>
-                        <dt>
-                        <a href="__APP__/Content/?id={$dogocms.id}">{$dogocms.title}</a>
-                        </dt>
-                        <dd>{$dogocms.dwend1}</dd>
-                        <dd>分类: <a href="__APP__/List/?id={$dogocms.sort_id}">{$dogocms.sortname}</a>   [{$dogocms.addtime|date="Y-m-d H:i:s",###}]</dd>
-                    </dl>
-               </foreach>
-
-                    <div class="pagelist">{$page}</div><!--pagelist-->
-                </div><!--common_cont-->
-            </div><!--common-->
-
-        </div><!--box-->
-    </div><!--blockFL-->
-    <div class="clear"></div>
-</div><!--block-->
+            </div><!--span-->
+            <div class="span4">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt">
+                        <ul class="dogo-box-header">
+                            <li><a href="">物联网资讯</a></li>
+                            <li class="dogo-more"><a href="">更多>></a></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-content-bt"></div>
+                </div><!--dogo-box-->
+            </div><!--span-->
+        </div><!--row-->
 
 
+
+
+
+
+    </div><!--container-->
+
+</div><!--dogocontent-->
 
 
 
 <include file=":footer" />
+</div><!--dogopage-->
 </body>
 </html>
