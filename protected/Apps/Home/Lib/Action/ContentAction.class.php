@@ -25,19 +25,22 @@ class ContentAction extends BaseAction {
             exit;
         }
         $t = M('Title');
+        $condition['t.id'] = array('eq',$id);
+        $condition['t.status'] = array('eq','y');
+        $condition['t.is_recycle'] = array('eq','n');
         //取得模型标识
         $emark = $t->field('ms.emark')
                     ->Table(C('DB_PREFIX') . 'title t')
                     ->join(C('DB_PREFIX') . 'news_sort ns ON ns.id=t.sort_id')
                     ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id=ns.model_id')
-                    ->where('t.id=' . $id.' and t.status=\'true\' and t.is_recycle=\'false\'')->find();
+                    ->where($condition)->find();
         //取得内容
         if($emark){
              $data = $t->field(array('t.*','m.*','c.*'))
                     ->Table(C('DB_PREFIX') . 'title t')
                     ->join(C('DB_PREFIX') . C('DB_ADD_PREFIX') . $emark['emark'] . ' m ON m.title_id=t.id')
                     ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
-                    ->where('t.id=' . $id.' and t.status=\'true\' and t.is_recycle=\'false\'')
+                    ->where($condition)
                     ->find();
             //浏览量赋值+1
             $t->where('id=' . $id)->setInc('views',1);

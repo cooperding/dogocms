@@ -16,6 +16,7 @@ class BaseAction extends Action {
     //初始化
     function _initialize()
     {
+        /*
         $Setting = M('Setting');
         $condition['sys_name'] = array('eq','cfg_template'); 
         $temp = $Setting->field('sys_value')->where($condition)->find();
@@ -29,6 +30,7 @@ class BaseAction extends Action {
                 cache('DOGOCMS_THEME',$templateSys);
             }
         }
+        */
        // C('DEFAULT_THEME','default');
     }
     /*

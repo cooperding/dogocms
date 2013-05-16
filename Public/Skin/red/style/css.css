@@ -30,5 +30,28 @@
 .dogo-links{height: 22px;font-size: 12px;overflow:hidden;}
 .dogo-links a{font-size: 12px;line-height: 25px;margin: 0 5px;color: #999;}
 
+/*dogo-listviews*/
+.dogo-listviews{height: auto;}
+.dogo-listviews li{height: 110px;border-bottom: 1px dashed #D4D4D4;margin-bottom: 15px;padding-bottom: 10px;}
+.dogo-listviews li:last-child{border-bottom: 0;}
+.dogo-list-img{width: 160px;height:110px;overflow: hidden;}
+.dogo-list-img a img:hover{width: 154px;height: 104px;border: 1px solid #FF6347;padding: 1px;background: #FF6347;}
+.dogo-list-img a img{width: 154px;height: 104px;border: 1px solid #D4D4D4;padding: 1px;}
+.dogo-list-info{max-width: 420px;}
+.dogo-list-info h3{font-size: 16px;font-weight: bold;height: 25px;line-height: 20px;overflow: hidden;}
+.dogo-list-info h3 a{color: #2D2B2B;}
+.dogo-list-info h3 a:hover{color: #FF6347;text-decoration: underline;}
+.dogo-list-info p{line-height: 1.7;font-size: 12px;}
+.dogo-list-info .taginfo{line-height: 20px;}
+.dogo-list-info .taginfo i{margin: 0 3px 0px 10px;}
+.dogo-list-info .description{height: 60px;overflow: hidden;color: #999;}
+
+/*dogo-views-header*/
+.dogo-views-header{}
+.dogo-views-header h2{font-size: 30px;height: 30px;line-height: 35px;font-weight: bolder;color: #323232;}
+.dogo-views-content .info{height: 30px;line-height: 20px;}
+.dogo-views-content .info i{margin: 0 3px 0px 10px;}
+
+.dogo-views-content{line-height: 1.8;font-size: 16px;color: #323232;font-family: "Century Gothic","Microsoft yahei";}
 /*dogo-footer*/
 .dogo-footer{border-top: 1px solid #ccc;}k a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}

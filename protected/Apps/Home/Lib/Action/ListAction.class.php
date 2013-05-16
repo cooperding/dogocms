@@ -34,14 +34,15 @@ class ListAction extends BaseAction {
         }
         $sort_id = rtrim($sort_id, ', ');
         $title['sort_id'] = array('in', $sort_id);
-        $title['status'] = array('eq', 'true');
-        $title['is_recycle'] = array('eq', 'false');
+        $title['status'] = array('eq', 'y');
+        $title['is_recycle'] = array('eq', 'n');
         //$data = $t->where($title)->select();
         $count = $t->where($title)->count();
         $Page = new Page($count, 5); // 实例化分页类 传入总记录数和每页显示的记录数
         $show = $Page->show(); // 分页显示输出
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
         $list = $t->where($title)->order('id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        //echo $t->getLastSql();
         foreach ($list as $k => $v) {
             $list_sort = $ns->field(array('ns.text','ns.en_name','ms.ename','ms.emark','ms.id' => 'mid'))
                             ->Table(C('DB_PREFIX') . 'news_sort  ns')
@@ -54,7 +55,13 @@ class ListAction extends BaseAction {
             if ($mdata) {
                 $list[$k] = array_merge($list[$k], $mdata);
             }
+            if(empty($v['titlepic'])){//改天测试是否存在
+                $list[$k]['titlepic'] = '';//设置默认图片路径
+            }
         }
+        //echo '<pre>';
+       // print_r($list);
+        //exit;
         $this->assign('dogocms', $list); // 赋值数据集
         $this->assign('page', $show); // 赋值分页输出
         $this->assign('title', $one_data['text']);

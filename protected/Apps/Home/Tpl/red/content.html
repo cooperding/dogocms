@@ -3,17 +3,7 @@
 <div class="dogo-content">
     <div class="container dogo-wp">
         <div class="row">
-            <div class="span4">
-                <div class="dogo-box">
-                    <div class="dogo-box-title dogo-title-bt">
-                        <ul class="dogo-box-header">
-                            <li><a href="">物联网资讯</a></li>
-                            <li class="dogo-more"><a href="">更多>></a></li>
-                        </ul>
-                    </div>
-                    <div class="dogo-box-content dogo-content-bt"></div>
-                </div><!--dogo-box-->
-            </div>
+            
             <div class="span8">
                 <div class="dogo-box">
                     <ul class="breadcrumb">
@@ -22,29 +12,36 @@
                         <li class="active">Data</li>
                     </ul>
                 </div>
-                <div class="dogo-box">
-                    <div class="dogo-box-title dogo-title-bt">
-                        <ul class="dogo-box-header">
-                            <li><a href="">物联网资讯</a></li>
+                <div class="dogo-box ">
+                    <div class="dogo-box-title dogo-title-bt dogo-pd15">
+                        <ul class="dogo-views-header">
+                            <li><h2>物联网资讯</h2></li>
                             <li class="dogo-more"></li>
                         </ul>
                     </div>
-                    <div class="dogo-box-content dogo-content-bt"></div>
+                    <div class="dogo-box-content dogo-content-bt dogo-pd15">
+                        <div class="info">
+                            <i class="icon-time"></i>{$dogocms.addtime|date="Y-m-d H:i:s",###}
+                            <i class="icon-comment"></i>
+                            <i class="icon-user"></i>{$dogocms.author}
+                            <i class="icon-book"></i>{$dogocms.source}
+                            <i class="icon-eye-open"></i>{$dogocms.views}
+                        </div>
+                        <div class="dogo-views-content">
+                            {$dogocms.content|stripslashes}
+                        </div><!--content-->
+                        
+                        
+                        
+                    </div>
                 </div><!--dogo-box-->
-                <div class="pagination">
-                    <ul>
-                        <li><a href="#">Prev</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
-                </div>
+                
 
-            </div>
+            </div><!--span-->
 
+            <div class="span4">
+                <include file=":sider" />
+            </div><!--span-->
         </div><!--row-->
 
 

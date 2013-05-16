@@ -12,8 +12,12 @@ a:hover{text-decoration:none;}
 .dogo-pdtop1{padding-top: 5px;}
 .dogo-pdtop2{padding-top: 10px;}
 .dogo-pd10{padding: 10px;}
+.dogo-pd15{padding: 15px;}
+.dogo-mr15{margin-right: 15px;}
 .blank{ margin-bottom:10px;}
 
+.dogo-ft{float: left;display: inline;}
+.dogo-rt{float: right;display: inline;}
 
 .dogo-title-bt{border: 1px solid #ccc;border-bottom: 1px solid #FF6347;}
 .dogo-content-bt{border: 1px solid #ccc;border-top: none;min-height: 180px;}
@@ -24,8 +28,8 @@ a:hover{text-decoration:none;}
 /*.breadcrumb */
 .breadcrumb {margin: 0;}
 
-img{
-  max-width: 640px;
+.dogo-views-content img{
+  max-width: 580px;
   height:auto;
-  width:expression(this.width > 640 ? "640px" : this.width);
+  width:expression(this.width > 580 ? "580px" : this.width);
 }

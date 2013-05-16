@@ -2,9 +2,10 @@
 
 defined('THINK_PATH') or exit();
 $array = require_once(dirname(THINK_PATH) . '/Config/config.php');
+$temp = require_once('template.php');
 $miniConfig = array(
     'ACCESS' => TRUE,
-    'DEFAULT_THEME' => 'default', //默认模板主题名
+    //'DEFAULT_THEME' => 'default', //默认模板主题名
     //动态缓存配置
     'DATA_CACHE_TYPE' => 'file', //数据缓存类型 File、APC、Db、Memcache、Shmop、Sqlite、Redis、Eaccelerator和Xcache
     'DATA_CACHE_TIME' => '86400', //3600*24 0为永久
@@ -35,6 +36,7 @@ $miniConfig = array(
     )
 );
 $array = array_merge($array, $miniConfig);
+$array = array_merge($array, $temp);
 //print_r($miniConfig);
 
 return $array;

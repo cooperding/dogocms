@@ -3,7 +3,7 @@
 <div class="dogo-content">
     <div class="container dogo-wp">
         <div class="row">
-            
+
             <div class="span8">
                 <div class="dogo-box">
                     <ul class="breadcrumb">
@@ -19,7 +19,27 @@
                             <li class="dogo-more"></li>
                         </ul>
                     </div>
-                    <div class="dogo-box-content dogo-content-bt"></div>
+                    <div class="dogo-box-content dogo-content-bt">
+                        <ul class="dogo-listviews dogo-pd10">
+                            <foreach name="dogocms" item="dogocms">
+                                <li>
+                                    <div class="dogo-ft dogo-list-img dogo-mr15">
+                                        <a href="__APP__/Content/{$dogocms.id}"><img src="{$dogocms.titlepic}"/></a>
+                                    </div>
+                                    <div class="dogo-ft dogo-list-info">
+                                        <h3><a href="__APP__/Content/{$dogocms.id}">{$dogocms.title}</a></h3>
+                                        <p class="taginfo">
+                                            <i class="icon-th-list"></i><a href="">{$dogocms.sortname}</a>
+                                            <i class="icon-comment"></i>
+                                            <i class="icon-eye-open"></i>{$dogocms.views}
+                                            <i class="icon-time"></i>{$dogocms.addtime|date="Y-m-d H:i:s",###}</p>
+                                        <p class="description">{$dogocms.description}</p>
+                                    </div>
+                                </li>
+                            </foreach>
+
+                        </ul>
+                    </div>
                 </div><!--dogo-box-->
                 <div class="pagination">
                     <ul>
@@ -35,15 +55,7 @@
 
             </div><!--span-->
             <div class="span4">
-                <div class="dogo-box">
-                    <div class="dogo-box-title dogo-title-bt">
-                        <ul class="dogo-box-header">
-                            <li><a href="">物联网资讯</a></li>
-                            <li class="dogo-more"><a href="">更多>></a></li>
-                        </ul>
-                    </div>
-                    <div class="dogo-box-content dogo-content-bt"></div>
-                </div><!--dogo-box-->
+                <include file=":sider" />
             </div><!--span-->
         </div><!--row-->
 
