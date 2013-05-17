@@ -20,11 +20,14 @@ a:hover{text-decoration:none;}
 .dogo-rt{float: right;display: inline;}
 
 .dogo-title-bt{border: 1px solid #ccc;border-bottom: 1px solid #FF6347;}
-.dogo-content-bt{border: 1px solid #ccc;border-top: none;min-height: 180px;}
-.dogo-box-header{height: 33px;padding-left: 8px;}
-.dogo-box-header li{float: left;line-height: 35px;}
-.dogo-box-header li.dogo-more{width: 50px;float: right;}
+.dogo-box-content{height: auto;}
+.dogo-content-bt{border: 1px solid #ccc;border-top: none;}
+.dogo-box-header{padding-left: 8px;height: 35px;}
+.dogo-box-header li.dogo-title-h{float: left;line-height: 35px;min-width: 80px;}
+.dogo-box-header li.dogo-more{width: 50px;line-height: 35px;float: right;}
 
+.block2{width: 120px;float: left;height: 150px;}
+.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}
 /*.breadcrumb */
 .breadcrumb {margin: 0;}
 

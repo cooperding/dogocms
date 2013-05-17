@@ -55,3 +55,7 @@
 .dogo-views-content{line-height: 1.8;font-size: 16px;color: #323232;font-family: "Century Gothic","Microsoft yahei";}
 /*dogo-footer*/
 .dogo-footer{border-top: 1px solid #ccc;}k a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}
+
+
+
+.dogo-box-content .thumbnails li{width: 130px;height: auto;float: left;}
