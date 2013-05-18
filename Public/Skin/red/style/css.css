@@ -20,8 +20,9 @@
 .dogo-menu li a:hover{background:url(../images/nav_a_hover.jpg) #f96706  repeat-x 0 0;color: white;}
 
 /*dogo-flash*/
-.dogo-flash{height: 180px;}
-
+.dogo-flash{height: 260px;}
+.dogo-flash .bd li{height: 260px;background: #096;}
+.dogo-flash .bd li img{width: 298px;height: 260px;}
 /*dogo-video*/
 .dogo-video .nav-tabs{border-bottom:1px solid #FF6347; }
 .dogo-video .nav-tabs>.active>a,.dogo-video .nav-tabs>.active>a:hover,.dogo-video .nav-tabs>.active>a:focus{border:1px solid #FF6347;border-bottom-color: transparent;}
@@ -52,10 +53,29 @@
 .dogo-views-content .info{height: 30px;line-height: 20px;}
 .dogo-views-content .info i{margin: 0 3px 0px 10px;}
 
-.dogo-views-content{line-height: 1.8;font-size: 16px;color: #323232;font-family: "Century Gothic","Microsoft yahei";}
+.dogo-views-content{line-height: 1.8;font-size: 15px;color: #323232;font-family: "Century Gothic","Microsoft yahei";text-indent: 30px;}
 /*dogo-footer*/
 .dogo-footer{border-top: 1px solid #ccc;}k a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}
 
 
+/*thumbnails*/
 
-.dogo-box-content .thumbnails li{width: 130px;height: auto;float: left;}
+.dogo-box-content .thumbnails{padding-left: 25px;padding-top: 5px;}
+.dogo-box-content .thumbnails li{width: 134px;height: auto;float: left;margin: 5px;}
+.dogo-box-content .thumbnails img{max-width: 124px;max-height: 115px;}
+.dogo-box-content .thumbnails h3{height: 30px;line-height: 30px;overflow: hidden;}
+
+.dogo-video .nav{margin-bottom: 0px;}
+.dogo-video-content{padding-bottom: 5px;}
+.dogo-video-content .thumbnails{padding-left: 25px;padding-top: 5px;}
+.dogo-video-content .thumbnails li{width: 145px;height: auto;float: left;margin: 5px;}
+.dogo-video-content .thumbnails img{max-width: 124px;max-height: 115px;}
+.dogo-video-content .thumbnails h3{height: 30px;line-height: 30px;overflow: hidden;}
+
+
+
+
+
+
+
+
