@@ -60,7 +60,7 @@
 
 /*thumbnails*/
 
-.dogo-box-content .thumbnails{padding-left: 25px;padding-top: 5px;}
+.dogo-box-content .thumbnails{padding-left: 25px;padding-top: 5px;padding-bottom: 5px;}
 .dogo-box-content .thumbnails li{width: 134px;height: auto;float: left;margin: 5px;}
 .dogo-box-content .thumbnails img{max-width: 124px;max-height: 115px;}
 .dogo-box-content .thumbnails h3{height: 30px;line-height: 30px;overflow: hidden;}
