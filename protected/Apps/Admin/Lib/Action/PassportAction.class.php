@@ -40,14 +40,14 @@ class PassportAction extends Action
      */
     public function dologin()
     {
-        $ver_code = trim($_POST['vd_code']);
+        $ver_code = $this->_post('vd_code'); 
         $verify = session('verify');
         if (empty($ver_code) || md5($ver_code) != $verify) {
             $this->error('验证码为空或者输入错误！');
             exit;
         }
-        $condition['username'] = trim($_POST['user_name']);
-        $password = trim($_POST['user_password']);
+        $condition['username'] = $this->_post('user_name');
+        $password =$this->_post('user_password'); 
         if (!empty($condition['username']) && !empty($password)) {//依据用户名查询
             $login = M('Operators');
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
