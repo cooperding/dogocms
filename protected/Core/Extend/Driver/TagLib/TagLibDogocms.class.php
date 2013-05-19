@@ -167,9 +167,9 @@ class TagLibDogocms extends TagLib {
             $join .= 'join(\' ' . C('DB_PREFIX') . $model_name.' ms on ms.title_id=t.id \')->';
         }
         if($tag['where']){
-            $tag['where'] .= ' and (t.status=\'true\') and (t.is_recycle=\'false\') ';
+            $tag['where'] .= ' and (t.status=\'y\') and (t.is_recycle=\'n\') ';
         }else{
-            $tag['where'] = ' (t.status=\'true\') and (t.is_recycle=\'false\') ';
+            $tag['where'] = ' (t.status=\'y\') and (t.is_recycle=\'n\') ';
         }
         $result = !empty($id) ? $id : 'article'; //定义数据查询的结果存放变量
         $key = !empty($tag['key']) ? $tag['key'] : 'i';
@@ -235,7 +235,7 @@ class TagLibDogocms extends TagLib {
         $typeid = $tag['typeid'];
         $limit = $tag['limit'];
         $order = $tag['order'];//字符串加引号
-        $tag['where'] = ' (`status`=\'true\') ';//限制显示条件
+        $tag['where'] = ' (`status`=\'y\') ';//限制显示条件
         if($typeid){
             $tag['where'] = ' and (`sort_id` in(' . $typeid . ')) ';
         }
@@ -259,17 +259,16 @@ class TagLibDogocms extends TagLib {
     //  flash幻灯标签 typeid,limit,order
     public function _flash($attr, $content)
     {
-        $tag = $this->parseXmlAttr($attr, 'nav');
+        $tag = $this->parseXmlAttr($attr, 'flash');
         $typeid = $tag['typeid'];
         $limit = $tag['limit'];
         $order = $tag['order'];//字符串加引号
         if(empty($limit)){
             $tag['limit'] = '0,4';
         }
-        $tag['where'] = ' (`status`=\'true\') ';
-        if($typeid){
-            $tag['where'] = ' and (`sort_id` in(' . $typeid . ')) ';
-        }
+        $tag['where'] = ' (`status`=\'y\') ';
+        $tag['where'] = ' (`sort_id` =' . $typeid . ') ';
+        
         $sql = "M('Flash')->";
         $sql .= ($order) ? "order(\"{$order}\")->" : '';
         $sql .= ($tag['limit']) ? "limit({$tag['limit']})->" : '';

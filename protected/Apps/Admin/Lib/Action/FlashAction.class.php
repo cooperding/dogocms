@@ -33,11 +33,11 @@ class FlashAction extends BaseAction {
      */
     public function add()
     {
-        $radios = array(
+        $status = array(
             'y' => '可用',
             'n' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
         $this->display();
     }
 
@@ -52,14 +52,15 @@ class FlashAction extends BaseAction {
     {
         $m = M('Flash');
         $id = intval($_GET['id']);
-        $data = $m->where('id=' . $id)->find();
-        $radios = array(
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
+        $status = array(
             'y' => '可用',
             'n' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
         $this->assign('data', $data);
-        $this->assign('status', $data['status']);
+        $this->assign('v_status', $data['status']);
         $this->display();
     }
 
