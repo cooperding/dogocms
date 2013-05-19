@@ -4,7 +4,7 @@
  * PassportAction.class.php
  * 会员登录页面
  * 会员核心文件，用于后台登录操作验证
- * @author 正侠客 <lookcms@gmail.com>
+ * @author will <dogocms@yahoo.com>
  * @copyright 2012- http://www.dingcms.com http://www.dogocms.com All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @version dogocms 1.0 2012-11-5 11:20
@@ -67,19 +67,20 @@ class PassportAction extends Action
     public function dologin()
     {
         session('M_UID', '');//声明变量
-        $ver_code = trim($_POST['vd_code']);
+        $ver_code = $this->_post('vd_code');
         $verify = session('memverify');
         if (empty($ver_code) || md5($ver_code) != $verify) {
             $this->error('验证码为空或者输入错误！');
             exit;
         }
-        $condition['username'] = trim($_POST['user_name']);
-        $password = trim($_POST['user_password']);
+        $condition['username'] = $this->_post('user_name');
+        $password = $this->_post('user_password');
         if (!empty($condition['username']) && !empty($password)) {//依据用户名查询
             $login = M('Members');
-            $condition['is_recycle'] = array('eq','false');
-            $condition['status'] = array('eq','true');
+            $condition['is_recycle'] = array('eq','n');
+            $condition['status'] = array('eq','y');
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
+            
             if ($rs) {//对查询出的结果进行判断
                 $password = md5(md5($condition['username']) . sha1($password . $rs['creat_time']));
                 if ($password == $rs['password']) {//判断密码是否匹配

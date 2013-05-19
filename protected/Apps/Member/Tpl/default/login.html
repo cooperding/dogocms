@@ -7,24 +7,26 @@
         <section>
             <div class="row">
                 <div class="span8 dogo-border dogo-pdtop2">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="__APP__/Passport/dologin" method="post">
                         <div class="control-group">
                             <label class="control-label" for="inputEmail">用户名/邮箱：</label>
                             <div class="controls">
-                                <input type="text" id="inputEmail" placeholder="用户名/邮箱">
+                                <input type="text" name="user_name" id="inputEmail" placeholder="用户名/邮箱">
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="inputPassword">密码：</label>
                             <div class="controls">
-                                <input type="password" id="inputPassword" placeholder="密码">
+                                <input type="password" name="user_password" id="inputPassword" placeholder="密码">
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="inputPassword">验证码：</label>
+                            <label class="control-label" for="inputVcode">验证码：</label>
                             <div class="controls">
-                                <input type="password" id="inputPassword" placeholder="验证码">
+                                <input type="text" name="vd_code" id="inputVcode" placeholder="验证码" style="width: 130px;">
+                                <img src="__APP__/Passport/vercode" onclick="this.src='__APP__/Passport/vercode/?tm='+Math.random()" style="cursor: pointer;" title="看不清？点击更换另一个验证码。">
                             </div>
+                            
                         </div>
                         <div class="control-group">
                             <div class="controls">

@@ -37,6 +37,15 @@ border-radius: 4px 4px 0 0;}
 .dogo-box-header li.dogo-title-h{float: left;line-height: 35px;min-width: 80px;}
 .dogo-box-header li.dogo-more{width: 50px;line-height: 35px;float: right;}
 
+
+/*thumbnails*/
+
+.dogo-box-content .thumbnails{padding-left: 25px;padding-top: 5px;padding-bottom: 5px;}
+.dogo-box-content .thumbnails li{width: 134px;height: auto;float: left;margin: 5px;}
+.dogo-box-content .thumbnails img{max-width: 124px;max-height: 115px;}
+.dogo-box-content .thumbnails h3{height: 30px;line-height: 30px;overflow: hidden;}
+
+
 .dogo-box-text{padding: 5px 10px;}
 .dogo-box-text li{height: 25px;line-height: 25px; overflow: hidden;background: url(../images/icon_org.jpg) left center no-repeat;padding-left: 10px;}
 
@@ -58,7 +67,8 @@ border-radius: 4px 4px 0 0;}
 .dogo-box-textno p{height: 60px;line-height: 22px;overflow: hidden;padding-bottom: 5px;text-indent: 25px;overflow: hidden;}
 
 .block2{width: 120px;float: left;height: 150px;}
-.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}
+.clearfix{*zoom:1}
+.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}
 /*.breadcrumb */
 .breadcrumb {margin: 0;}
 
