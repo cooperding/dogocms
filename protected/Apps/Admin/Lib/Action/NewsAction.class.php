@@ -50,6 +50,7 @@ class NewsAction extends BaseAction {
             'r' => ' 推荐[r] ',
             's' => ' 特荐[s] ',
             't' => ' 置顶[t] ',
+            'p' => ' 图片[p] ',
             'j' => ' 跳转[j] '
         );
         $radios = array(
@@ -95,6 +96,7 @@ class NewsAction extends BaseAction {
             'r' => ' 推荐[r] ',
             's' => ' 特荐[s] ',
             't' => ' 置顶[t] ',
+            'p' => ' 图片[p] ',
             'j' => ' 跳转[j] '
         );
         $radios = array(
@@ -368,6 +370,14 @@ class NewsAction extends BaseAction {
         $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+            if($v['status']=='y'){
+                $data[$k]['status'] = '已审核';
+            }elseif($v['status']=='n'){
+                $data[$k]['status'] = '未审核';
+            }elseif($v['status']=='e'){
+                $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
+            }
+             
         }
         $array = array();
         $array['total'] = $count;

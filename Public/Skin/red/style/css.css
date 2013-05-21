@@ -21,7 +21,7 @@
 
 /*dogo-flash*/
 .dogo-flash{height: 260px;}
-.dogo-flash .bd li{height: 260px;background: #096;}
+.dogo-flash .bd li{height: 260px;}
 .dogo-flash .bd li img{width: 298px;height: 260px;}
 /*dogo-video*/
 .dogo-video .nav-tabs{border-bottom:1px solid #FF6347; }
@@ -64,7 +64,7 @@
 .dogo-video-content .thumbnails{padding-left: 25px;padding-top: 5px;}
 .dogo-video-content .thumbnails li{width: 145px;height: auto;float: left;margin: 5px;}
 .dogo-video-content .thumbnails img{max-width: 124px;max-height: 115px;}
-.dogo-video-content .thumbnails h3{height: 30px;line-height: 30px;overflow: hidden;}
+.dogo-video-content .thumbnails h3{height: 30px;line-height: 35px;overflow: hidden;font-size: 13px;overflow: hidden;text-align: center;font-weight: 500;}
 
 
 /*dogo-ad-页面广告*/

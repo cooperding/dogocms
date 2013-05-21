@@ -1,32 +1,20 @@
 <div class="dogo-box">
     <div class="dogo-box-title dogo-title-bt dogo-box-header">
         <ul>
-            <li class="dogo-title-h"><a href="">物联网资讯</a></li>
-            <li class="dogo-more"><a href="">更多>></a></li>
+            <li class="dogo-title-h"><a href="javascript:void(0)">图文推荐</a></li>
+            <li class="dogo-more"></li>
         </ul>
     </div>
     <div class="dogo-box-content dogo-border-notop">
         <ul class="thumbnails">
-            <li class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                    <h3>Thumbnail label</h3></a>
-            </li>
-            <li class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                    <h3>Thumbnail label</h3></a>
-            </li>
-            <li class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                    <h3>Thumbnail label</h3></a>
-            </li>
-            <li class="span2">
-                <a href="#" class="thumbnail">
-                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                    <h3>Thumbnail label</h3></a>
-            </li>
+            <dogocms:article limit="0,4" order="id desc" flag="p">
+                <li class="span2">
+                    <a href="__APP__/Content/?id={$article.id}" class="thumbnail" title="{$article.title}">
+                        <img src="{$article.titlepic}" alt="{$article.title}">
+                        <h3>{$article.title}</h3></a>
+                </li>
+            </dogocms:article>
+
         </ul>
     </div>
 </div><!--dogo-box-->
@@ -41,22 +29,10 @@
     </div>
     <div class="dogo-box-content dogo-border-notop dogo-box-text">
         <ul>
-
-            <li><a href="/index.php/news_views?id=33">jQuery的加法运算</a></li>
-
-            <li><a href="/index.php/news_views?id=31">jquery之empty()与remove()区别</a></li>
-
-            <li><a href="/index.php/news_views?id=27">jQuery操作input</a></li>
-
-            <li><a href="/index.php/news_views?id=26">jQuery判断输入的数是否是正整数？</a></li>
-
-            <li><a href="/index.php/news_views?id=25">JS判断是否为正整数，浮点数的函数</a></li>
-
-            <li><a href="/index.php/news_views?id=22">jquery ajax data 无法传值的原因</a></li>
-
+            <dogocms:article limit="0,6" order="id desc">
+                <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+            </dogocms:article>
         </ul>
-
-
 
     </div>
 </div><!--dogo-box-->
@@ -70,7 +46,13 @@
             <li class="dogo-more"><a href="">更多>></a></li>
         </ul>
     </div>
-    <div class="dogo-box-content dogo-border-notop">ffffffffffffffff</div>
+    <div class="dogo-box-content dogo-border-notop dogo-box-text">
+        <ul>
+            <dogocms:article limit="0,6" order="id desc">
+                <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+            </dogocms:article>
+        </ul>
+    </div>
 </div><!--dogo-box-->
 <div class="blank"></div>
 

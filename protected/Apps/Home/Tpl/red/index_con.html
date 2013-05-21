@@ -71,8 +71,8 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">阅读排行</a></li>
-                            <li class="dogo-more"><a href="">更多>></a></li>
+                            <li class="dogo-title-h"><a href="javascript:void(0)">阅读排行</a></li>
+                            <li class="dogo-more"></li>
                         </ul>
                     </div>
                     <div class="dogo-box-content dogo-border-notop dogo-box-rank">
@@ -117,26 +117,17 @@
                     </div>
                     <div class="dogo-box-content dogo-border-notop">
                         <ul class="thumbnails">
-                            <li class="span2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                                    <h3>Thumbnail label</h3></a>
-                            </li>
-                            <li class="span2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                                    <h3>Thumbnail label</h3></a>
-                            </li>
-                            <li class="span2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                                    <h3>Thumbnail label</h3></a>
-                            </li>
-                            <li class="span2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
-                                    <h3>Thumbnail label</h3></a>
-                            </li>
+                            <dogocms:article limit="0,4" order="id desc" flag="p">
+                                <li class="span2">
+                                    <a href="__APP__/Content/?id={$article.id}" class="thumbnail" title="{$article.title}">
+                                        <img src="{$article.titlepic}" alt="{$article.title}">
+                                        <h3>{$article.title}</h3></a>
+                                </li>
+                            </dogocms:article>
+
+                            
+
+
                         </ul>
 
 
@@ -148,7 +139,7 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">互联网</a></li>
+                            <li class="dogo-title-h"><a href="">PHP资料</a></li>
                             <li class="dogo-more"><a href="">更多>></a></li>
                         </ul>
                     </div>
@@ -159,7 +150,6 @@
                             <dogocms:article limit="0,6" order="id desc">
                                 <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
                             </dogocms:article>
-
                         </ul>
 
 
@@ -171,7 +161,7 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">开源项目</a></li>
+                            <li class="dogo-title-h"><a href="">JQuery</a></li>
                             <li class="dogo-more"><a href="">更多>></a></li>
                         </ul>
                     </div>
@@ -213,7 +203,7 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">物联网资讯</a></li>
+                            <li class="dogo-title-h"><a href="">Linux/Ubuntu/Apache</a></li>
                             <li class="dogo-more"><a href="">更多>></a></li>
                         </ul>
                     </div>
@@ -227,7 +217,7 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">物联网资讯</a></li>
+                            <li class="dogo-title-h"><a href="">HTML5/CSS3</a></li>
                             <li class="dogo-more"><a href="">更多>></a></li>
                         </ul>
                     </div>
@@ -238,7 +228,7 @@
                 <div class="dogo-box">
                     <div class="dogo-box-title dogo-title-bt dogo-box-header">
                         <ul>
-                            <li class="dogo-title-h"><a href="">物联网资讯</a></li>
+                            <li class="dogo-title-h"><a href="">MySQL</a></li>
                             <li class="dogo-more"><a href="">更多>></a></li>
                         </ul>
                     </div>
@@ -279,7 +269,58 @@
 
         <div class="blank"></div>
 
+        <div class="row">
+            <div class="span4">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt dogo-box-header">
+                        <ul>
+                            <li class="dogo-title-h"><a href="">互联网资讯</a></li>
+                            <li class="dogo-more"><a href="">更多>></a></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-border-notop">
 
+
+                    </div>
+                </div><!--dogo-box-->
+            </div>
+            <div class="span5">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt dogo-box-header">
+                        <ul>
+                            <li class="dogo-title-h"><a href="">物联网信息</a></li>
+                            <li class="dogo-more"><a href="">更多>></a></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-border-notop"></div>
+                </div><!--dogo-box-->
+            </div>
+            <div class="span3">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt dogo-box-header">
+                        <ul>
+                            <li class="dogo-title-h"><a href="">网站建设</a></li>
+                            <li class="dogo-more"><a href="">更多>></a></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-border-notop dogo-border-notop">
+
+                    </div>
+                </div><!--dogo-box-->
+
+                <div class="blank"></div>
+
+                <div class="dogo-box">
+
+                    <div class="dogo-box-content ">
+                        <a href="#" class="thumbnail">
+                            <img src="http://dogocms.ding.com/Public/Uploads/Images/20130131/1359606096.jpg" alt="">
+                        </a>
+                    </div>
+                </div><!--dogo-box-->
+
+            </div>
+        </div><!--row-->
 
         <div class="blank"></div>
         <div class="row">
@@ -287,32 +328,10 @@
                 <div class="dogo-box">
 
                     <div class="dogo-links dogo-pd10">友情链接：
-                        <a target="_blank" href="http://www.9game.cn/">手机游戏</a>
-                        <a target="_blank" href="http://www.waptw.com/">手机软件</a>
-                        <a target="_blank" href="http://tech.163.com/">网易科技</a>
-                        <a target="_blank" href="http://www.liqucn.com/">历趣手机软件</a>
-                        <a target="_blank" href="http://www.ruan8.com/">软吧手机软件</a>
-                        <a target="_blank" href="http://www.baoruan.com/">宝软网</a>
-                        <a target="_blank" href="http://www.appchina.com/">应用汇</a>
-                        <a target="_blank" href="http://www.iresearch.cn/">艾瑞网</a>
-                        <a target="_blank" href="http://leiphone.com/">雷锋网</a>
-                        <a target="_blank" href="http://www.chinaz.com/">站长之家</a>
-                        <a target="_blank" href="http://www.admin5.com/">站长网</a>
-                        <a target="_blank" href="http://www.gamedog.cn/">游戏狗</a>
-                        <a target="_blank" href="http://www.d.cn/">当乐网</a>
-                        <a target="_blank" href="http://www.9game.cn/">手机游戏</a>
-                        <a target="_blank" href="http://www.waptw.com/">手机软件</a>
-                        <a target="_blank" href="http://tech.163.com/">网易科技</a>
-                        <a target="_blank" href="http://www.liqucn.com/">历趣手机软件</a>
-                        <a target="_blank" href="http://www.ruan8.com/">软吧手机软件</a>
-                        <a target="_blank" href="http://www.baoruan.com/">宝软网</a>
-                        <a target="_blank" href="http://www.appchina.com/">应用汇</a>
-                        <a target="_blank" href="http://www.iresearch.cn/">艾瑞网</a>
-                        <a target="_blank" href="http://leiphone.com/">雷锋网</a>
-                        <a target="_blank" href="http://www.chinaz.com/">站长之家</a>
-                        <a target="_blank" href="http://www.admin5.com/">站长网</a>
-                        <a target="_blank" href="http://www.gamedog.cn/">游戏狗</a>
-                        <a target="_blank" href="http://www.d.cn/">当乐网</a>
+                        <dogocms:links limit="0,10" order="id desc">
+                            <a href="{$links.weburl}" title="{$links.emark}" target="_blank">{$links.webname}</a>
+                        </dogocms:links>
+
                     </div>
                 </div><!--dogo-box-->
             </div>
