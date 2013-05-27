@@ -8,7 +8,8 @@
 .dogo-logo .dogo-logo-img{height: 80px;}
 /*search*/
 
-
+.dogo-box-text li{background: url(../images/icon_org.jpg) left center no-repeat;}
+.dogo-box-text2 li{background: url(../images/icon_org.jpg) left center no-repeat;}
 
 /*nav*/
 .dogo-nav{height: 40px;border-bottom: 2px solid #f60;}
@@ -22,7 +23,9 @@
 /*dogo-sidebar*/
 .dogo-sidebar{}
 /*dogo-footer*/
-.dogo-footer{border-top: 1px solid #ccc;}
+.dogo-footer{border-top: 1px solid #ccc;}k a{ height:25px; display:block; float:left; line-height:25px; margin:5px 5px; text-align:center;}
+.dogo-footer-content{padding: 20px 0 50px 0;}
+.dogo-footer-content p{text-align: center;line-height: 25px;}
 
 
 .nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus{background: #f60;}

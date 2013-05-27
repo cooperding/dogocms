@@ -47,23 +47,19 @@ border-radius: 4px 4px 0 0;}
 
 
 .dogo-box-text{padding: 5px 10px;}
-.dogo-box-text li{height: 25px;line-height: 25px; overflow: hidden;padding-left: 10px;}
+.dogo-box-text li{height: 25px;line-height: 25px; overflow: hidden;background: url(../images/icon_org.jpg) left center no-repeat;padding-left: 10px;}
 
 .dogo-box-text2{height: auto;overflow: hidden;padding: 5px 10px;}
-.dogo-box-text2 li{width: 165px;float: left;height: 25px;line-height: 25px; overflow: hidden;padding-left: 10px;}
+.dogo-box-text2 li{width: 165px;float: left;height: 25px;line-height: 25px; overflow: hidden;background: url(../images/icon_org.jpg) left center no-repeat;padding-left: 10px;}
 .dogo-box-text2 li:nth-of-type(odd){margin-right: 5px;}
-
-.dogo-box-menu{padding: 5px 0px;}
-.dogo-box-menu li{height: 25px;line-height: 25px; overflow: hidden;text-align: center;}
-
-.dogo-box-nav{text-align: center;}
 
 .dogo-box-rank{height: auto;overflow: hidden;padding: 5px 10px;}
 .dogo-box-rank li{height: 25px;line-height: 25px; overflow: hidden;}
-.dogo-box-rank li [class*="rank-no"]{width: 18px;height: 17px;display: block;float: left;margin-top: 4px;line-height: 17px;margin-right: 5px;text-align: center;font-style: initial;}
+.dogo-box-rank li .rank-no{width: 18px;height: 17px;display: block;float: left;margin-top: 4px;line-height: 17px;margin-right: 5px;text-align: center;font-style: initial;}
 .dogo-box-rank li a{}
-.dogo-box-rank li [class*="rank-noa"]{border: 1px solid #FF6347;background: #FF6347;color: #fff;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
-.dogo-box-rank li [class*="rank-nob"]{border: 1px solid #ccc;-webkit-border-radius: 3px 3px 3px 3px;-moz-border-radius: 3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;}
+.dogo-box-rank li i:nth-of-type(1){border: 1px solid #ccc;-webkit-border-radius: 3px 3px 3px 3px;-moz-border-radius: 3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;}
+.dogo-box-rank li:nth-of-type(1) .rank-no,.dogo-box-rank li:nth-of-type(2) .rank-no,.dogo-box-rank li:nth-of-type(3) .rank-no{border: 1px solid #FF6347;background: #FF6347;color: #fff;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
+
 
 
 
