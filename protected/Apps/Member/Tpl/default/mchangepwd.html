@@ -1,0 +1,68 @@
+<include file=":header" />
+<div class="blank"></div>
+<div class="dogo-content">
+    <div class="container-fluid dogo-wp">
+        <div class="row-fluid">
+            <div class="span2">
+                <include file=":menu" />
+            </div>
+            <div class="span10">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt dogo-box-header">
+                        <ul>
+                            <li class="dogo-title-h"><a href="javascript:void(0)">修改密码</a></li>
+                            <li class="dogo-more"></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-border-notop dogo-form dogo-pdtop4">
+
+                        <form class="form-horizontal" action="__APP__/Passport/dologin" method="post">
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">原始密码：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="inputPassword" placeholder="原始密码">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">新密码：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="inputPassword" placeholder="新密码">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">确认新密码：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="inputPassword" placeholder="确认新密码">
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <div class="controls">
+                                    
+                                    <button type="submit" class="btn">提交</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div><!--dogo-box-->
+
+            </div>
+
+        </div><!--row-->
+        <div class="blank"></div>
+
+
+    </div><!--container-->
+
+</div><!--dogocontent-->
+
+
+
+<include file=":footer" />
+
+</div><!--dogopage-->
+</body>
+</html>
