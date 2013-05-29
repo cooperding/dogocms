@@ -1,0 +1,114 @@
+<include file=":header" />
+<div class="blank"></div>
+<div class="dogo-content">
+    <div class="container-fluid dogo-wp">
+        <div class="row-fluid">
+            <div class="span2">
+                <include file=":menu" />
+            </div>
+            <div class="span10">
+                <div class="dogo-box">
+                    <div class="dogo-box-title dogo-title-bt dogo-box-header">
+                        <ul>
+                            <li class="dogo-title-h"><a href="javascript:void(0)">我要投稿</a></li>
+                            <li class="dogo-more"></li>
+                        </ul>
+                    </div>
+                    <div class="dogo-box-content dogo-border-notop dogo-form dogo-pdtop4">
+
+                        <form class="form-horizontal" action="__APP__/Passport/dologin" method="post">
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">文档标题：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="inputPassword" placeholder="文档标题">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="user_password">文档分类：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="user_password">作者：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="user_password">来源：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="user_password">来源网址：</label>
+                                <div class="controls">
+                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="user_password">文档内容：</label>
+                                <div class="controls">
+                                    <textarea style="width: 630px;height: 400px;"></textarea>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputVcode">验证码：</label>
+                                <div class="controls">
+                                    <input type="text" name="vd_code" id="inputVcode" placeholder="验证码" style="width: 130px;">
+                                    <img src="__APP__/Passport/vercode" onclick="this.src='__APP__/Passport/vercode/?tm='+Math.random()" style="cursor: pointer;" title="看不清？点击更换另一个验证码。">
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="control-group">
+                                <div class="controls">
+
+                                    <button type="submit" class="btn">提交</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div><!--dogo-box-->
+
+            </div>
+
+        </div><!--row-->
+        <div class="blank"></div>
+
+
+    </div><!--container-->
+
+</div><!--dogocontent-->
+
+
+
+<include file=":footer" />
+
+</div><!--dogopage-->
+</body>
+</html>

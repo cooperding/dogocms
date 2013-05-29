@@ -25,8 +25,8 @@
 
 /*dogo-member*/
 .dogo-member-index{}
-
-
+.form-horizontal .control-label{width: 100px;}
+.form-horizontal .controls {margin-left: 120px;}
 
 
 /*dogo-footer*/

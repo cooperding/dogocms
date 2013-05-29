@@ -19,10 +19,22 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      * @todo 权限验证
      */
-    public function index()
-    {
-        
+    public function index() {
+
         $this->display(':news');
+    }
+
+    /**
+     * index
+     * 进入登录页面
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function add() {
+
+        $this->display(':news_add');
     }
 
     /**
@@ -33,8 +45,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      * @todo 权限验证
      */
-    public function perinfo()
-    {
+    public function perinfo() {
         $m = M('Members');
         $uid = session('M_UID');
         $condition['id'] = $uid;
@@ -50,8 +61,7 @@ class NewsAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function changepwd()
-    {
+    public function changepwd() {
         $this->display(':mchangepwd');
     }
 
@@ -62,8 +72,7 @@ class NewsAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function updatepwd()
-    {
+    public function updatepwd() {
         $m = M('Members');
         $oldpassword = trim($_POST['oldpassword']);
         $newpassword = trim($_POST['newpassword']);
