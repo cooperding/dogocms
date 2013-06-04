@@ -52,7 +52,7 @@ class SettingAction extends BaseAction {
     public function edit() {
         $m = M('Setting');
         $id = intval($_GET['id']);
-        $condition['id'] = $id;
+        $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $radios = array(
             'text' => '文本',
@@ -75,10 +75,11 @@ class SettingAction extends BaseAction {
      */
     public function insert() {
         $m = M('Setting');
-        $condition['sys_name'] = trim($_POST['sys_name']);
+        $sys_name = trim($_POST['sys_name']);
         if (empty($_POST['sys_gid']) || empty($condition['sys_name'])) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名或者所属分组不能为空！', false, true);
         }
+        $condition['sys_name'] = array('eq',$sys_name);
         $rs = $m->where($condition)->find();
         if (!empty($rs)) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名"' . $condition['sys_name'] . '"已经存在', false, true);
@@ -103,11 +104,12 @@ class SettingAction extends BaseAction {
      */
     public function update() {
         $m = M('Setting');
-        $condition['sys_name'] = trim($_POST['sys_name']);
+        $sys_name = trim($_POST['sys_name']);
         $condition['id'] = array('neq', $_POST['id']);
         if (empty($_POST['sys_gid']) || empty($condition['sys_name'])) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名或者所属分组不能为空！', false, true);
         }
+        $condition['sys_name'] = array('eq',$sys_name);
         $rs = $m->where($condition)->find();
         if (!empty($rs)) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名"' . $condition['sys_name'] . '"已经存在', false, true);
@@ -147,7 +149,7 @@ class SettingAction extends BaseAction {
         exit;
         $m = M('Setting');
         $id = intval($_POST['id']);
-        $condition['id'] = $id;
+        $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -166,7 +168,7 @@ class SettingAction extends BaseAction {
     public function listJsonId() {
         $m = M('Setting');
         $id = intval($_GET['id']);
-        $condition['sys_gid'] = $id;
+        $condition['sys_gid'] = array('eq',$id);
         $data = $m->where($condition)->select();
         //$data = $m->select();
         $array = array();

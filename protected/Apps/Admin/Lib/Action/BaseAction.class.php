@@ -16,8 +16,9 @@ class BaseAction extends Action {
     //初始化
     function _initialize()
     {
+        
         //检测是否登录
-        if (!$_SESSION [C('USER_AUTH_KEY')]) {
+        if (session('LOGIN_STATUS') != 'TRUE') {
             //跳转到认证网关
             redirect( __APP__ . '/Passport');
             //redirect(__APP__ . '/Login');

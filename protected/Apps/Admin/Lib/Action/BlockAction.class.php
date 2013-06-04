@@ -88,7 +88,8 @@ class BlockAction extends BaseAction {
     {
         $id = $_GET['id'];
         $m = M('BlockSort');
-        $data = $m->where('id=' . intval($id))->find();
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -136,7 +137,7 @@ class BlockAction extends BaseAction {
     {
         $m = M('BlockSort');
         $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
+        $condition['ename'] = array('eq',trim($_POST['ename']));
         $condition['id'] = array('neq', $id);
         if (empty($condition['ename'])) {
             $this->dmsg('1', '请将信息输入完整！', false, true);

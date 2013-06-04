@@ -35,7 +35,8 @@ class CommentAction extends BaseAction {
     {
         $m = M('Comment');
         $id = intval($_GET['id']);
-        $data = $m->where('id=' . $id)->find();
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '可用',
             'n' => '禁用'
@@ -78,7 +79,8 @@ class CommentAction extends BaseAction {
     {
         $id = intval($_POST['id']);
         $m = M('Message');
-        $del = $m->where('id=' . $id)->delete();
+        $condition['id'] = array('eq',$id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {

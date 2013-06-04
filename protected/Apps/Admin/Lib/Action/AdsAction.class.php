@@ -59,7 +59,8 @@ class AdsAction extends BaseAction {
     {
         $id = intval($_POST['id']);
         $m = M('Ads');
-        $del = $m->where('id=' . $id)->delete();
+        $condition['id'] = array('eq',$id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -106,7 +107,8 @@ class AdsAction extends BaseAction {
     {
         $id = $_GET['id'];
         $m = M('AdsSort');
-        $data = $m->where('id=' . intval($id))->find();
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -154,7 +156,7 @@ class AdsAction extends BaseAction {
     {
         $m = M('AdsSort');
         $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
+        $condition['ename'] = array('eq',trim($_POST['ename']));
         $condition['id'] = array('neq', $id);
         if (empty($condition['ename'])) {
             $this->dmsg('1', '请将信息输入完整！', false, true);

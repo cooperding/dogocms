@@ -25,7 +25,7 @@ class PassportAction extends Action
     {
         //此处判断是否已经登录，如果登录跳转到后台首页否则跳转到登录页面
         if (session('M_STATUS') == 'TRUE') {
-            $this->redirect('../' . APP_NAME);
+            $this->redirect('..'.__APP__);
         } else {
             $this->login();
         }

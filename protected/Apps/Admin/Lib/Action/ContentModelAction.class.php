@@ -49,7 +49,8 @@ class ContentModelAction extends BaseAction {
      */
     public function sortedit() {
         $m = M('ModelSort');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -71,14 +72,16 @@ class ContentModelAction extends BaseAction {
         $d = D('ModelSort');
         $m = M('ModelSort');
         $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
-        $condition['emark'] = trim($_POST['emark']);
+        $ename = trim($_POST['ename']);
+        $emark= trim($_POST['emark']);
+        $condition['ename'] = array('eq',$ename);
+        $condition['emark'] = array('eq',$emark);
         $condition['_logic'] = 'OR';
-        if (empty($condition['ename']) || empty($condition['emark'])) {
+        if (empty($ename) || empty($emark)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $condition['ename'] . $condition['emark'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $ename . $emark . '已经存在！', false, true);
         }
         $d->addtable($condition['emark']); //创建数据表
 

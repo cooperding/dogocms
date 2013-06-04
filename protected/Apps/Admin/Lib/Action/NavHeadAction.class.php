@@ -51,12 +51,13 @@ class NavHeadAction extends BaseAction {
     public function edit()
     {
         $m = M('NavHead');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
-        $radios = array(
+        $condition['id'] = array('eq',$_GET['id']);
+        $data = $m->where($condition)->find();
+        $status = array(
             'y' => '启用',
             'n' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
         $this->assign('v_status', $data['status']);
         $this->assign('data', $data);
         $this->display();
