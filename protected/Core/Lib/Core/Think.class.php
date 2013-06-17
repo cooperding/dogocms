@@ -246,21 +246,16 @@ class Think {
      */
     static public function appException($e) {
         $error = array();
-        $trace = $e->getTrace();
         $error['message']   = $e->getMessage();
-        $error['file']      = $e->getFile();
-        $error['class']     = isset($trace[0]['class'])?$trace[0]['class']:'';
-        $error['function']  = isset($trace[0]['function'])?$trace[0]['function']:'';
-        $error['line']      = $e->getLine();
-        $error['trace']     = '';
-        $time = date('y-m-d H:i:m');
-        foreach ($trace as $t) {
-            $error['trace'] .= '[' . $time . '] ' . $t['file'] . ' (' . $t['line'] . ') ';
-            $error['trace'] .= $t['class'] . $t['type'] . $t['function'] . '(';
-            $error['trace'] .= implode(', ', $t['args']);
-            $error['trace'] .=')<br/>';
+        $trace  =   $e->getTrace();
+        if('throw_exception'==$trace[0]['function']) {
+            $error['file']  =   $trace[0]['file'];
+            $error['line']  =   $trace[0]['line'];
+        }else{
+            $error['file']      = $e->getFile();
+            $error['line']      = $e->getLine();
         }
-
+        Log::record($error['message'],Log::ERR);
         halt($error);
     }
 
@@ -302,8 +297,19 @@ class Think {
     
     // 致命错误捕获
     static public function fatalError() {
+        // 保存日志记录
+        if(C('LOG_RECORD')) Log::save();
         if ($e = error_get_last()) {
-            Think::appError($e['type'],$e['message'],$e['file'],$e['line']);
+            switch($e['type']){
+              case E_ERROR:
+              case E_PARSE:
+              case E_CORE_ERROR:
+              case E_COMPILE_ERROR:
+              case E_USER_ERROR:  
+                ob_end_clean();
+                function_exists('halt')?halt($e):exit('ERROR:'.$e['message']);
+                break;
+            }
         }
     }
 

@@ -5,7 +5,7 @@
 * @author Roddy <luolonghao@gmail.com>
 * @website http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
-* @version 4.1.5 (2013-01-26)
+* @version 4.1.7 (2013-06-08)
 *******************************************************************************/
 (function (window, undefined) {
 	if (window.KindEditor) {
@@ -17,7 +17,7 @@ if (!window.console) {
 if (!console.log) {
 	console.log = function () {};
 }
-var _VERSION = '4.1.5 (2013-01-26)',
+var _VERSION = '4.1.7 (2013-06-08)',
 	_ua = navigator.userAgent.toLowerCase(),
 	_IE = _ua.indexOf('msie') > -1 && _ua.indexOf('opera') == -1,
 	_GECKO = _ua.indexOf('gecko') > -1 && _ua.indexOf('khtml') == -1,
@@ -544,12 +544,18 @@ function _ctrl(el, key, fn) {
 		}
 	});
 }
+var _readyFinished = false;
 function _ready(fn) {
+	if (_readyFinished) {
+		fn(KindEditor);
+		return;
+	}
 	var loaded = false;
 	function readyFunc() {
 		if (!loaded) {
 			loaded = true;
 			fn(KindEditor);
+			_readyFinished = true;
 		}
 	}
 	function ieReadyFunc() {
@@ -920,10 +926,14 @@ function _mediaImg(blankPath, attrs) {
 		type = attrs.type || _mediaType(attrs.src),
 		srcTag = _mediaEmbed(attrs),
 		style = '';
-	if (width > 0) {
+	if (/\D/.test(width)) {
+		style += 'width:' + width + ';';
+	} else if (width > 0) {
 		style += 'width:' + width + 'px;';
 	}
-	if (height > 0) {
+	if (/\D/.test(height)) {
+		style += 'height:' + height + ';';
+	} else if (height > 0) {
 		style += 'height:' + height + 'px;';
 	}
 	var html = '<img class="' + _mediaClass(type) + '" src="' + blankPath + '" ';
@@ -3640,13 +3650,14 @@ _extend(KEdit, KWidget, {
 				});
 			}
 			if (_IE) {
-				K(document).mousedown(function() {
+				self._mousedownHandler = function() {
 					var newRange = cmd.range.cloneRange();
 					newRange.shrink();
 					if (newRange.isControl()) {
 						self.blur();
 					}
-				});
+				};
+				K(document).mousedown(self._mousedownHandler);
 				K(doc).keydown(function(e) {
 					if (e.which == 8) {
 						cmd.selection();
@@ -3707,6 +3718,9 @@ _extend(KEdit, KWidget, {
 		K(doc.body).unbind();
 		K(doc).unbind();
 		K(self.win).unbind();
+		if (self._mousedownHandler) {
+			K(document).unbind('mousedown', self._mousedownHandler);
+		}
 		_elementVal(self.srcElement, self.html());
 		self.srcElement.show();
 		doc.write('');
@@ -4157,6 +4171,7 @@ _extend(KUploadButton, {
 			} else {
 				str = doc.body.innerHTML;
 			}
+			str = _unescape(str);
 			iframe[0].src = 'javascript:false';
 			try {
 				data = K.json(str);
@@ -5011,36 +5026,25 @@ KEditor.prototype = {
 		statusbar.removeClass('statusbar').addClass('ke-statusbar')
 			.append('<span class="ke-inline-block ke-statusbar-center-icon"></span>')
 			.append('<span class="ke-inline-block ke-statusbar-right-icon"></span>');
-		K(window).unbind('resize');
+		if (self._fullscreenResizeHandler) {
+			K(window).unbind('resize', self._fullscreenResizeHandler);
+			self._fullscreenResizeHandler = null;
+		}
 		function initResize() {
 			if (statusbar.height() === 0) {
 				setTimeout(initResize, 100);
 				return;
 			}
-			self.resize(width, height);
+			self.resize(width, height, false);
 		}
 		initResize();
-		function newResize(width, height, updateProp) {
-			updateProp = _undef(updateProp, true);
-			if (width && width >= self.minWidth) {
-				self.resize(width, null);
-				if (updateProp) {
-					self.width = _addUnit(width);
-				}
-			}
-			if (height && height >= self.minHeight) {
-				self.resize(null, height);
-				if (updateProp) {
-					self.height = _addUnit(height);
-				}
-			}
-		}
 		if (fullscreenMode) {
-			K(window).bind('resize', function(e) {
+			self._fullscreenResizeHandler = function(e) {
 				if (self.isCreated) {
-					newResize(_docElement().clientWidth, _docElement().clientHeight, false);
+					self.resize(_docElement().clientWidth, _docElement().clientHeight, false);
 				}
-			});
+			};
+			K(window).bind('resize', self._fullscreenResizeHandler);
 			toolbar.select('fullscreen');
 			statusbar.first().css('visibility', 'hidden');
 			statusbar.last().css('visibility', 'hidden');
@@ -5056,7 +5060,7 @@ KEditor.prototype = {
 					clickEl : statusbar,
 					moveFn : function(x, y, width, height, diffX, diffY) {
 						height += diffY;
-						newResize(null, height);
+						self.resize(null, height);
 					}
 				});
 			} else {
@@ -5069,7 +5073,7 @@ KEditor.prototype = {
 					moveFn : function(x, y, width, height, diffX, diffY) {
 						width += diffX;
 						height += diffY;
-						newResize(width, height);
+						self.resize(width, height);
 					}
 				});
 			} else {
@@ -5102,17 +5106,26 @@ KEditor.prototype = {
 		self.isCreated = false;
 		return self;
 	},
-	resize : function(width, height) {
+	resize : function(width, height, updateProp) {
 		var self = this;
-		if (width !== null) {
-			if (_removeUnit(width) > self.minWidth) {
-				self.container.css('width', _addUnit(width));
+		updateProp = _undef(updateProp, true);
+		if (width) {
+			if (!/%/.test(width)) {
+				width = _removeUnit(width);
+				width = width < self.minWidth ? self.minWidth : width;
+			}
+			self.container.css('width', _addUnit(width));
+			if (updateProp) {
+				self.width = _addUnit(width);
 			}
 		}
-		if (height !== null && self.toolbar.div && self.statusbar) {
-			height = _removeUnit(height) - self.toolbar.div.height() - self.statusbar.height();
-			if (height > 0 && _removeUnit(height) > self.minHeight) {
-				self.edit.setHeight(height);
+		if (height) {
+			height = _removeUnit(height);
+			editHeight = _removeUnit(height) - self.toolbar.div.height() - self.statusbar.height();
+			editHeight = editHeight < self.minHeight ? self.minHeight : editHeight;
+			self.edit.setHeight(editHeight);
+			if (updateProp) {
+				self.height = _addUnit(height);
 			}
 		}
 		return self;
@@ -5127,6 +5140,9 @@ KEditor.prototype = {
 			return self.isCreated ? self.edit.html() : _elementVal(self.srcElement);
 		}
 		self.isCreated ? self.edit.html(val) : _elementVal(self.srcElement, val);
+		if (self.isCreated) {
+			self.cmd.selection();
+		}
 		return self;
 	},
 	fullHtml : function() {
@@ -5473,6 +5489,13 @@ _plugin('core', function(K) {
 			self.toolbar.disableAll(false);
 			self.edit.design(true);
 			self.toolbar.unselect('source');
+			if (_GECKO) {
+				setTimeout(function() {
+					self.cmd.selection();
+				}, 0);
+			} else {
+				self.cmd.selection();
+			}
 		}
 		self.designMode = self.edit.designMode;
 	});
@@ -5608,7 +5631,7 @@ _plugin('core', function(K) {
 			'</div>';
 		self.createDialog({
 			name : 'about',
-			width : 300,
+			width : 350,
 			title : self.lang('about'),
 			body : html
 		});
@@ -5791,16 +5814,30 @@ _plugin('core', function(K) {
 			html = html.replace(/<div\s+[^>]*data-ke-input-tag="([^"]*)"[^>]*>([\s\S]*?)<\/div>/ig, function(full, tag) {
 				return unescape(tag);
 			});
+			html = html.replace(/(<input)((?:\s+[^>]*)?>)/ig, function($0, $1, $2) {
+				if (!/\s+type="[^"]+"/i.test($0)) {
+					return $1 + ' type="text"' + $2;
+				}
+				return $0;
+			});
 		}
 		return html.replace(/(<(?:noscript|noscript\s[^>]*)>)([\s\S]*?)(<\/noscript>)/ig, function($0, $1, $2, $3) {
 			return $1 + _unescape($2).replace(/\s+/g, ' ') + $3;
 		})
 		.replace(/<img[^>]*class="?ke-(flash|rm|media)"?[^>]*>/ig, function(full) {
-			var imgAttrs = _getAttrList(full),
-				styles = _getCssList(imgAttrs.style || ''),
-				attrs = _mediaAttrs(imgAttrs['data-ke-tag']);
-			attrs.width = _undef(imgAttrs.width, _removeUnit(_undef(styles.width, '')));
-			attrs.height = _undef(imgAttrs.height, _removeUnit(_undef(styles.height, '')));
+			var imgAttrs = _getAttrList(full);
+			var styles = _getCssList(imgAttrs.style || '');
+			var attrs = _mediaAttrs(imgAttrs['data-ke-tag']);
+			var width = _undef(styles.width, '');
+			var height = _undef(styles.height, '');
+			if (/px/i.test(width)) {
+				width = _removeUnit(width);
+			}
+			if (/px/i.test(height)) {
+				height = _removeUnit(height);
+			}
+			attrs.width = _undef(imgAttrs.width, width);
+			attrs.height = _undef(imgAttrs.height, height);
 			return _mediaEmbed(attrs);
 		})
 		.replace(/<img[^>]*class="?ke-anchor"?[^>]*>/ig, function(full) {
@@ -5924,7 +5961,7 @@ KindEditor.lang({
 	emoticons : '插入表情',
 	link : '超级链接',
 	unlink : '取消超级链接',
-	fullscreen : '全屏显示(Esc)',
+	fullscreen : '全屏显示',
 	about : '关于',
 	print : '打印(Ctrl+P)',
 	filemanager : '文件空间',
@@ -5987,6 +6024,7 @@ KindEditor.lang({
 	uploadError : '上传错误',
 	'plainpaste.comment' : '请使用快捷键(Ctrl+V)把内容粘贴到下面的方框里。',
 	'wordpaste.comment' : '请使用快捷键(Ctrl+V)把内容粘贴到下面的方框里。',
+	'code.pleaseInput' : '请输入程序代码。',
 	'link.url' : 'URL',
 	'link.linkType' : '打开类型',
 	'link.newWindow' : '新窗口',
@@ -6326,6 +6364,11 @@ KindEditor.plugin('code', function(K) {
 							code = textarea.val(),
 							cls = type === '' ? '' :  ' lang-' + type,
 							html = '<pre class="prettyprint' + cls + '">\n' + K.escape(code) + '</pre> ';
+						if (K.trim(code) === '') {
+							alert(lang.pleaseInput);
+							textarea[0].focus();
+							return;
+						}
 						self.insertHtml(html).hideDialog().focus();
 					}
 				}
@@ -6807,6 +6850,8 @@ KindEditor.plugin('flash', function(K) {
 		},
 		'delete' : function() {
 			self.plugin.getSelectedFlash().remove();
+			// [IE] 删除图片后立即点击图片按钮出错
+			self.addBookmark();
 		}
 	};
 	self.clickToolbar(name, self.plugin.flash.edit);
@@ -6823,6 +6868,7 @@ KindEditor.plugin('flash', function(K) {
 KindEditor.plugin('image', function(K) {
 	var self = this, name = 'image',
 		allowImageUpload = K.undef(self.allowImageUpload, true),
+		allowImageRemote = K.undef(self.allowImageRemote, true),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		allowFileManager = K.undef(self.allowFileManager, false),
 		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
@@ -7104,7 +7150,7 @@ KindEditor.plugin('image', function(K) {
 				imageHeight : img ? img.height() : '',
 				imageTitle : img ? img.attr('title') : '',
 				imageAlign : img ? img.attr('align') : '',
-				showRemote : true,
+				showRemote : allowImageRemote,
 				showLocal : allowImageUpload,
 				tabIndex: img ? 0 : imageTabIndex,
 				clickFn : function(url, title, width, height, border, align) {
@@ -7122,6 +7168,8 @@ KindEditor.plugin('image', function(K) {
 				target = target.parent();
 			}
 			target.remove();
+			// [IE] 删除图片后立即点击图片按钮出错
+			self.addBookmark();
 		}
 	};
 	self.clickToolbar(name, self.plugin.image.edit);
@@ -7258,7 +7306,7 @@ KindEditor.plugin('insertfile', function(K) {
 	self.clickToolbar(name, function() {
 		self.plugin.fileDialog({
 			clickFn : function(url, title) {
-				var html = '<a href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
+				var html = '<a class="ke-insertfile" href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
 				self.insertHtml(html).hideDialog().focus();
 			}
 		});
@@ -7669,6 +7717,8 @@ KindEditor.plugin('media', function(K) {
 		},
 		'delete' : function() {
 			self.plugin.getSelectedMedia().remove();
+			// [IE] 删除图片后立即点击图片按钮出错
+			self.addBookmark();
 		}
 	};
 	self.clickToolbar(name, self.plugin.media.edit);
@@ -7910,7 +7960,9 @@ KindEditor.plugin('multiimage', function(K) {
 			},
 			beforeRemove : function() {
 				// IE9 bugfix: https://github.com/kindsoft/kindeditor/issues/72
-				//swfupload.remove();
+				if (!K.IE || K.V <= 8) {
+					swfupload.remove();
+				}
 			}
 		}),
 		div = dialog.div;
@@ -9811,7 +9863,7 @@ KindEditor.plugin('table', function(K) {
 			if (table.rows.length <= nextRowIndex) {
 				return;
 			}
-			var cellIndex = _getCellIndex(table, row, cell); // 下一行单元格的index
+			var cellIndex = cell.cellIndex; // 下一行单元格的index
 			if (nextRow.cells.length <= cellIndex) {
 				return;
 			}

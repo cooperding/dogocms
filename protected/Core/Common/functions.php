@@ -29,18 +29,10 @@ function halt($error) {
             $trace          = debug_backtrace();
             $e['message']   = $error;
             $e['file']      = $trace[0]['file'];
-            $e['class']     = isset($trace[0]['class'])?$trace[0]['class']:'';
-            $e['function']  = isset($trace[0]['function'])?$trace[0]['function']:'';
             $e['line']      = $trace[0]['line'];
-            $traceInfo      = '';
-            $time = date('y-m-d H:i:m');
-            foreach ($trace as $t) {
-                $traceInfo .= '[' . $time . '] ' . $t['file'] . ' (' . $t['line'] . ') ';
-                $traceInfo .= $t['class'] . $t['type'] . $t['function'] . '(';
-                $traceInfo .= implode(', ', $t['args']);
-                $traceInfo .=')<br/>';
-            }
-            $e['trace']     = $traceInfo;
+            ob_start();
+            debug_print_backtrace();
+            $e['trace']     = ob_get_clean();
         } else {
             $e              = $error;
         }
@@ -70,7 +62,7 @@ function halt($error) {
  */
 function throw_exception($msg, $type='ThinkException', $code=0) {
     if (class_exists($type, false))
-        throw new $type($msg, $code, true);
+        throw new $type($msg, $code);
     else
         halt($msg);        // 异常类型不存在则输出错误信息字串
 }
@@ -293,7 +285,7 @@ function U($url='',$vars='',$suffix=true,$redirect=false,$domain=false) {
 /**
  * 渲染输出Widget
  * @param string $name Widget名称
- * @param array $data 传人的参数
+ * @param array $data 传入的参数
  * @param boolean $return 是否返回内容 
  * @param string $path Widget所在路径
  * @return void
@@ -376,24 +368,27 @@ function redirect($url, $time=0, $msg='') {
  */
 function S($name,$value='',$options=null) {
     static $cache   =   '';
-    if(is_array($options)){
+    if(is_array($options) && empty($cache)){
         // 缓存操作的同时初始化
         $type       =   isset($options['type'])?$options['type']:'';
         $cache      =   Cache::getInstance($type,$options);
-        $expire     =   is_numeric($options['expire'])?$options['expire']:NULL;	//修复查询缓存无法设置过期时间
     }elseif(is_array($name)) { // 缓存初始化
         $type       =   isset($name['type'])?$name['type']:'';
         $cache      =   Cache::getInstance($type,$name);
         return $cache;
     }elseif(empty($cache)) { // 自动初始化
         $cache      =   Cache::getInstance();
-        $expire     =   is_numeric($options)?$options:NULL;	//默认快捷缓存设置过期时间
     }
     if(''=== $value){ // 获取缓存
         return $cache->get($name);
     }elseif(is_null($value)) { // 删除缓存
         return $cache->rm($name);
     }else { // 缓存数据
+        if(is_array($options)) {
+            $expire     =   isset($options['expire'])?$options['expire']:NULL;
+        }else{
+            $expire     =   is_numeric($options)?$options:NULL;
+        }
         return $cache->set($name, $value, $expire);
     }
 }
@@ -584,10 +579,11 @@ function session($name,$value='') {
             }
         }elseif(0===strpos($name,'?')){ // 检查session
             $name   =  substr($name,1);
-            if($prefix) {
-                return isset($_SESSION[$prefix][$name]);
+            if(strpos($name,'.')){ // 支持数组
+                list($name1,$name2) =   explode('.',$name);
+                return $prefix?isset($_SESSION[$prefix][$name1][$name2]):isset($_SESSION[$name1][$name2]);
             }else{
-                return isset($_SESSION[$name]);
+                return $prefix?isset($_SESSION[$prefix][$name]):isset($_SESSION[$name]);
             }
         }elseif(is_null($name)){ // 清空session
             if($prefix) {
@@ -596,9 +592,19 @@ function session($name,$value='') {
                 $_SESSION = array();
             }
         }elseif($prefix){ // 获取session
-            return isset($_SESSION[$prefix][$name])?$_SESSION[$prefix][$name]:null;
+            if(strpos($name,'.')){
+                list($name1,$name2) =   explode('.',$name);
+                return isset($_SESSION[$prefix][$name1][$name2])?$_SESSION[$prefix][$name1][$name2]:null;  
+            }else{
+                return isset($_SESSION[$prefix][$name])?$_SESSION[$prefix][$name]:null;                
+            }            
         }else{
-            return isset($_SESSION[$name])?$_SESSION[$name]:null;
+            if(strpos($name,'.')){
+                list($name1,$name2) =   explode('.',$name);
+                return isset($_SESSION[$name1][$name2])?$_SESSION[$name1][$name2]:null;  
+            }else{
+                return isset($_SESSION[$name])?$_SESSION[$name]:null;
+            }            
         }
     }elseif(is_null($value)){ // 删除session
         if($prefix){
