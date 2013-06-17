@@ -186,7 +186,7 @@ class NavFootAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            $a[$k]['_parentId'] = $v['parent_id']; //_parentId为easyui中标识父id
+            $a[$k]['_parentId'] = intval($v['parent_id']); //_parentId为easyui中标识父id
         }
         $array = array();
         $array['total'] = $navcatCount;

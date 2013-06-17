@@ -141,7 +141,7 @@ class OperatorsAction extends BaseAction {
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 
-        $condition['is_recycle'] = isset($_GET['is_recycle']) ? 'true' : 'false';
+        //$condition['is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
         $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
