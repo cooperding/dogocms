@@ -51,7 +51,7 @@ class FlashAction extends BaseAction {
     public function edit()
     {
         $m = M('Flash');
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $status = array(
@@ -74,8 +74,8 @@ class FlashAction extends BaseAction {
     public function insert()
     {
         $m = M('Flash');
-        $ename = $_POST['ename'];
-        $sort_id = $_POST['sort_id'];
+        $ename = $this->_post('ename');
+        $sort_id = $this->_post('sort_id');
         if (empty($ename)) {
             $this->dmsg('1', '网站名不能为空！', false, true);
         }
@@ -107,9 +107,10 @@ class FlashAction extends BaseAction {
     public function update()
     {
         $m = M('Flash');
-        $ename = $_POST['ename'];
-        $sort_id = $_POST['sort_id'];
-        $data['id'] = array('eq', intval($_POST['id']));
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $sort_id = $this->_post('sort_id');
+        $data['id'] = array('eq', $id);
         if (empty($ename)) {
             $this->dmsg('1', '网站名不能为空！', false, true);
         }
@@ -135,9 +136,10 @@ class FlashAction extends BaseAction {
      */
     public function delete()
     {
-        $id = intval($_POST['id']);
         $m = M('Message');
-        $del = $m->where('id=' . $id)->delete();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -183,9 +185,10 @@ class FlashAction extends BaseAction {
      */
     public function sortedit()
     {
-        $id = $_GET['id'];
         $m = M('FlashSort');
-        $data = $m->where('id=' . intval($id))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq', $id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -206,13 +209,14 @@ class FlashAction extends BaseAction {
     public function sortinsert()
     {
         $m = M('FlashSort');
-        $condition['ename'] = trim($_POST['ename']);
-        if (empty($condition['ename'])) {
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq',$ename);
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
-        if ($m->create()) {
-            $rs = $m->add($_POST);
+        if ($m->create($_POST)) {
+            $rs = $m->add();
             if ($rs) { //存在值
                 $this->dmsg('2', '操作成功！', true);
             } else {
@@ -233,14 +237,15 @@ class FlashAction extends BaseAction {
     public function sortupdate()
     {
         $m = M('FlashSort');
-        $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq',$ename);
         $condition['id'] = array('neq', $id);
-        if (empty($condition['ename'])) {
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称' . $condition['ename'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称' . $ename . '已经存在！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
         $rs = $m->save($_POST);
@@ -262,12 +267,13 @@ class FlashAction extends BaseAction {
     {
         $m = M('FlashSort');
         $l = M('Flash');
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         $condition['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition)->find()) {
             $this->dmsg('1', '列表中含有该分类的信息，不能删除！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $condition_id['id'] = array('eq', $id);
+        $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {

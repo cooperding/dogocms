@@ -52,7 +52,9 @@ class LinkPageAction extends BaseAction {
     public function sortedit()
     {
         $m = M('LinkpageSort');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq', $id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -73,18 +75,20 @@ class LinkPageAction extends BaseAction {
     public function sortinsert()
     {
         $m = M('LinkpageSort');
-        $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
-        $condition['egroup'] = trim($_POST['egroup']);
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $egroup = $this->_post('egroup');
+        $condition['ename'] = array('eq',$ename);
+        $condition['egroup'] = array('eq',$egroup);
         $condition['_logic'] = 'OR';
-        if (empty($condition['ename']) || empty($condition['egroup'])) {
+        if (empty($ename) || empty($egroup)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $condition['ename'] . $condition['egroup'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $ename . $egroup . '已经存在！', false, true);
         }
         if ($m->create($_POST)) {
-            $rs = $m->add($_POST);
+            $rs = $m->add();
             if ($rs) {
                 $this->dmsg('2', '分类添加成功！', true);
             } else {
@@ -105,19 +109,19 @@ class LinkPageAction extends BaseAction {
     public function sortupdate()
     {
         $m = M('LinkpageSort');
-        $id = intval($_POST['id']);
-        $_POST['ename'] = trim($_POST['ename']);
-        $_POST['egroup'] = trim($_POST['egroup']);
-        $where['ename'] = $_POST['ename'];
-        $where['egroup'] = $_POST['egroup'];
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $egroup = $this->_post('egroup');
+        $where['ename'] = array('eq',$ename);
+        $where['egroup'] = array('eq',$egroup);
         $where['_logic'] = 'or';
         $condition['_complex'] = $where;
         $condition['id'] = array('neq', $id);
-        if (empty($_POST['ename']) || empty($_POST['egroup'])) {
+        if (empty($ename) || empty($egroup)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $_POST['ename'] . $_POST['egroup'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $ename . $egroup. '已经存在！', false, true);
         }
         $rs = $m->save($_POST);
         if ($rs == true) {
@@ -136,13 +140,15 @@ class LinkPageAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         $m = M('LinkpageSort');
-        $list = M('LinkpageList');
-        if ($list->field('id')->where('linkpage_id=' . $id)->find()) {
+        $M_LinkpageList = M('LinkpageList');
+        $condition_link['linkpage_id'] = array('eq', $id);
+        $condition['id'] = array('eq', $id);
+        if ($M_LinkpageList->field('id')->where($condition_link)->find()) {
             $this->dmsg('1', '列表中存在该分类元素不能删除！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -174,7 +180,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlistsort()
     {//点击左侧信息打开右侧
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         //echo $id;
         $this->assign('id', $id);
         $this->display('sortlisttab');
@@ -190,7 +196,7 @@ class LinkPageAction extends BaseAction {
     public function sortlistadd()
     {
 
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('linkpage_id', $id);
         $this->display();
     }
@@ -204,9 +210,10 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlistedit()
     {
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $list = M('LinkpageList');
-        $data = $list->where('id=' . $id)->find();
+        $condition['id'] = array('eq', $id);
+        $data = $list->where($condition)->find();
         $this->assign('data', $data);
         $this->display();
     }
@@ -221,15 +228,18 @@ class LinkPageAction extends BaseAction {
     public function sortlistdelete()
     {
         $m = M('LinkpageList');
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         if (empty($id)) {
             $this->dmsg('1', '未有id值，无法删除！', false, true);
         }
-        $data = $m->field('id')->where('path like \'%,' . $id . ',%\'')->select();
+        $condition_path['path'] = array('like','%,' . $id . ',%');
+        $data = $m->field('id')->where($condition_path)->select();
+        
         if (is_array($data)) {
             $this->dmsg('1', '该分类下还有子级分类，无法删除！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $condition['id'] = array('eq',$id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -247,7 +257,7 @@ class LinkPageAction extends BaseAction {
     public function sortlistinsert()
     {
         $m = M('LinkpageList');
-        $parent_id = intval($_POST['parent_id']);
+        $parent_id = $this->_post('parent_id');
         $_POST['sort_name'] = trim($_POST['sort_name']);
         if (empty($_POST['sort_name'])) {
             $this->dmsg('1', '分类名不能为空！', false, true);
@@ -278,20 +288,25 @@ class LinkPageAction extends BaseAction {
         $m = M('LinkpageList');
         $d = D('NewsSort');
         $tbname = 'LinkpageList';
-        $linkpage_id = intval($_POST['linkpage_id']);
-        $id = intval($_POST['id']);
-        $parent_id = intval($_POST['parent_id']);
+        $linkpage_id = $this->_post('linkpage_id');
+        $id = $this->_post('id');
+        $parent_id = $this->_post('parent_id');
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            $cun = $m->field('linkpage_id')->where('`linkpage_id` = ' . $linkpage_id . ' AND `id`=' . $parent_id . ' and  `path` like \'%,' . $id . ',%\'')->find(); //判断id选择是否为其的子类
+            $condition_path['linkpage_id'] = array('eq',$linkpage_id);
+            $condition_path['id'] = array('eq',$parent_id);
+            $condition_path['path'] = array('like','%,' . $id . ',%');
+            $cun = $m->field('linkpage_id')->where($condition_path)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition_parent['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_parent)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updatePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $data = $m->field('parent_id')->where('id=' . $id)->find();
+            $condition_id['id'] = array('eq',$parent_id);
+            $data = $m->field('parent_id')->where($condition_id)->find();
             if ($data['parent_id'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
                 $d->updatePath($id, $sort_path, $tbname);
@@ -357,8 +372,9 @@ class LinkPageAction extends BaseAction {
     {
         Load('extend');
         $m = M('LinkpageList');
-        $id = intval($_GET['id']);
-        $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where('linkpage_id=' . $id)->select();
+        $id = $this->_get('id');
+        $condition['linkpage_id'] = array('eq',$id);
+        $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where($condition)->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         //$tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
         echo json_encode($tree);
@@ -375,8 +391,9 @@ class LinkPageAction extends BaseAction {
     {
         Load('extend');
         $m = M('LinkpageList');
-        $id = intval($_GET['id']);
-        $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where('linkpage_id=' . $id)->select();
+        $id = $this->_get('id');
+        $condition['linkpage_id'] = array('eq',$id);
+        $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where($condition)->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
         echo json_encode($tree);

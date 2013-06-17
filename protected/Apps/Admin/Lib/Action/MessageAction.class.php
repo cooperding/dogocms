@@ -34,8 +34,9 @@ class MessageAction extends BaseAction {
     public function edit()
     {
         $m = M('Message');
-        $id = intval($_GET['id']);
-        $data = $m->where('id=' . $id)->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '可用',
             'n' => '禁用'
@@ -56,8 +57,9 @@ class MessageAction extends BaseAction {
     public function update()
     {
         $m = M('Message');
-        $sort_id = $_POST['sort_id'];
-        $data['id'] = array('eq', intval($_POST['id']));
+        $sort_id = $this->_post('sort_id');
+        $id = $this->_post('id');
+        $data['id'] = array('eq',$id);
         if ($sort_id == 0) {
             $this->dmsg('1', '请选择所属分类！', false, true);
         }
@@ -80,9 +82,10 @@ class MessageAction extends BaseAction {
      */
     public function delete()
     {
-        $id = intval($_POST['id']);
         $m = M('Message');
-        $del = $m->where('id=' . $id)->delete();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq',$id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -128,9 +131,10 @@ class MessageAction extends BaseAction {
      */
     public function sortedit()
     {
-        $id = $_GET['id'];
         $m = M('MessageSort');
-        $data = $m->where('id=' . intval($id))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -151,8 +155,9 @@ class MessageAction extends BaseAction {
     public function sortinsert()
     {
         $m = M('MessageSort');
-        $condition['ename'] = trim($_POST['ename']);
-        if (empty($condition['ename'])) {
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq',$ename);
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
@@ -178,14 +183,15 @@ class MessageAction extends BaseAction {
     public function sortupdate()
     {
         $m = M('MessageSort');
-        $id = intval($_POST['id']);
-        $condition['ename'] = trim($_POST['ename']);
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
         $condition['id'] = array('neq', $id);
-        if (empty($condition['ename'])) {
+        $condition['ename'] = array('eq',$ename);
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称' . $condition['ename'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称' . $ename . '已经存在！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
         $rs = $m->save($_POST);
@@ -207,7 +213,7 @@ class MessageAction extends BaseAction {
     {
         $m = M('MessageSort');
         $l = M('Message');
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         $condition['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition)->find()) {
             $this->dmsg('1', '列表中含有该分类的信息，不能删除！', false, true);

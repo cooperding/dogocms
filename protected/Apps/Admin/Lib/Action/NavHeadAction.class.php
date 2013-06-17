@@ -51,7 +51,8 @@ class NavHeadAction extends BaseAction {
     public function edit()
     {
         $m = M('NavHead');
-        $condition['id'] = array('eq',$_GET['id']);
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $status = array(
             'y' => '启用',
@@ -74,13 +75,14 @@ class NavHeadAction extends BaseAction {
     {
         //添加功能还需要验证数据不能为空的字段
         $m = M('NavHead');
-        $parent_id = intval($_POST['parent_id']);
-        $text = trim($_POST['text']);
+        $parent_id = $this->_post('parent_id');
+        $text = $this->_post('text');
         if (empty($text)) {
             $this->dmsg('1', '分类名不能为空！', false, true);
         }
         if ($parent_id != 0) {
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
         $_POST['status'] = $_POST['status']['0'];
@@ -107,20 +109,23 @@ class NavHeadAction extends BaseAction {
     {
         $m = M('NavHead');
         $d = D('NewsSort');
-        $id = intval($_POST['id']);
-        $parent_id = intval($_POST['parent_id']);
+        $id = $this->_post('id');
+        $parent_id = $this->_post('parent_id');
         $tbname = 'NavHead';
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            $cun = $m->field('id')->where('id=' . $parent_id . ' and  path like \'%,' . $id . ',%\'')->find(); //判断id选择是否为其的子类
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_pid)->find();
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition_id['id'] = array('eq',$id);
+            $data = $m->field('parent_id')->where($condition_id)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updatePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $data = $m->field('parent_id')->where('id=' . $id)->find();
+            $condition_id['id'] = array('eq',$id);
+            $data = $m->field('parent_id')->where($condition_id)->find();
             if ($data['parent_id'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
                 $d->updatePath($id, $sort_path, $tbname);
@@ -146,15 +151,17 @@ class NavHeadAction extends BaseAction {
     public function delete()
     {
         $m = M('NavHead');
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         if (empty($id)) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $data = $m->field('id')->where('path like \'%,' . $id . ',%\'')->select();
+        $condition_path['path'] = array('like','%,'.$id.',%');
+        $data = $m->field('id')->where($condition_path)->select();
         if (is_array($data)) {
             $this->dmsg('1', '该分类下还有子级分类，操作失败！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $condition_id['id'] = array('eq',$id);
+        $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -177,7 +184,7 @@ class NavHeadAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            $a[$k]['_parentId'] = intval($v['parent_id']); //_parentId为easyui中标识父id
+            $a[$k]['_parentId'] = $v['parent_id']; //_parentId为easyui中标识父id
         }
         $array = array();
         $array['total'] = $navcatCount;

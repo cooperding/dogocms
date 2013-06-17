@@ -49,6 +49,7 @@ class ContentModelAction extends BaseAction {
      */
     public function sortedit() {
         $m = M('ModelSort');
+        $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $radios = array(
@@ -71,9 +72,9 @@ class ContentModelAction extends BaseAction {
     public function sortinsert() {
         $d = D('ModelSort');
         $m = M('ModelSort');
-        $id = intval($_POST['id']);
-        $ename = trim($_POST['ename']);
-        $emark= trim($_POST['emark']);
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $emark= $this->_post('emark');
         $condition['ename'] = array('eq',$ename);
         $condition['emark'] = array('eq',$emark);
         $condition['_logic'] = 'OR';
@@ -106,24 +107,25 @@ class ContentModelAction extends BaseAction {
      */
     public function sortupdate() {
         $m = M('ModelSort');
-        $id = intval($_POST['id']);
-        $_POST['ename'] = trim($_POST['ename']);
-        $_POST['emark'] = trim($_POST['emark']);
-        $where['ename'] = $_POST['ename'];
-        $where['emark'] = $_POST['emark'];
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $emark = $this->_post('emark');
+        $where['ename'] = array('eq',$ename);
+        $where['emark'] = array('eq',$emark);
         $where['_logic'] = 'or';
         $condition['_complex'] = $where;
         $condition['id'] = array('neq', $id);
 
-        if (empty($_POST['ename']) || empty($_POST['emark'])) {
+        if (empty($ename) || empty($emark)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $condition['ename'] . $condition['emark'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $ename . $emark . '已经存在！', false, true);
         }
-        $data = $m->field('emark')->where('id=' . $id)->find();
-        if ($data['emark'] != $_POST['emark']) {
-            D('ModelSort')->edittable($data['emark'], $_POST['emark']);
+        $condition_id['id'] = array('eq',$id);
+        $data = $m->field('emark')->where($condition_id)->find();
+        if ($data['emark'] != $emark) {
+            D('ModelSort')->edittable($data['emark'], $emark);
         }
         $rs = $m->save($_POST);
         if ($rs == true) {
@@ -141,16 +143,18 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortdelete() {
-        $id = intval($_POST['id']);
         $d = D('ModelSort');
         $m = M('ModelSort');
         $list = M('ModelField');
-        if ($list->field('sort_id')->where('sort_id=' . $id)->find()) {
+        $id = $this->_post('id');
+        $condition_sort['sort_id'] = array('eq',$id);
+        if ($list->field('sort_id')->where($condition_sort)->find()) {
             $this->dmsg('1', '列表中存在该分类元素不能删除！', false, true);
         }
-        $rs = $m->field('emark')->where('id=' . $id)->find();
+        $condition['id'] = array('eq',$id);
+        $rs = $m->field('emark')->where($condition)->find();
         $d->droptable($rs['emark']);
-        $del = $m->where('id=' . $id)->delete();
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -181,7 +185,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistsort() {//点击左侧信息打开右侧
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('sortlisttab');
     }
@@ -194,7 +198,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistadd() {
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display();
     }
@@ -207,9 +211,10 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistedit() {
-        $id = intval($_GET['id']);
         $list = M('ModelField');
-        $data = $list->where('id=' . $id)->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $list->where($condition)->find();
         $this->assign('data', $data);
         $this->display();
     }
@@ -223,20 +228,22 @@ class ContentModelAction extends BaseAction {
      */
     public function sortlistinsert() {
         $m = M('ModelField');
-        $_POST['sort_id'] = intval($_POST['sort_id']);
+        $ms = M('ModelSort');
+        $sort_id = $this->_post('sort_id');
         if (empty($_POST['ename']) || empty($_POST['emark'])) {
             $this->dmsg('1', '名称和标识不能为空！', false, true);
         }
-        $_POST['ename'] = trim($_POST['ename']);
-        $_POST['emark'] = 'd'.trim($_POST['emark']);//增加字段标识开头
-        $condition['emark'] = $_POST['emark'];
-        $condition['sort_id'] = array('eq', $_POST['sort_id']);
+        $ename = $this->_post('ename');
+        $emark = $this->_post('emark');
+        $condition['emark'] = array('eq','d'.$emark);
+        $condition['sort_id'] = array('eq', $sort_id);
 
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $_POST['emark'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $emark . '已经存在！', false, true);
         }
-        $ms = M('ModelSort');
-        $data = $ms->field('emark')->where('id=' . $_POST['sort_id'])->find();
+        
+        $condition_sort['id'] = array('eq',$sort_id);
+        $data = $ms->field('emark')->where($condition_sort)->find();
         $tablename = $data['emark'];
         $d = D('ModelSort');
 
@@ -263,29 +270,32 @@ class ContentModelAction extends BaseAction {
      */
     public function sortlistupdate() {
         $m = M('ModelField');
-        $_POST['sort_id'] = intval($_POST['sort_id']);
-        if (empty($_POST['ename']) || empty($_POST['emark'])) {
+        $id = $this->_post('id');
+        $sort_id = $this->_post('sort_id');
+        $ename = $this->_post('ename');
+        $emark = $this->_post('emark');
+        if (empty($ename) || empty($emark)) {
             $this->dmsg('1', '名称和标识不能为空！', false, true);
         }
-        $_POST['ename'] = trim($_POST['ename']);
-        $_POST['emark'] = 'd'.trim($_POST['emark']);//增加字段标识开头
-        $condition['id'] = array('neq', $_POST['id']);
-        $condition['emark'] = $_POST['emark'];
-        $condition['sort_id'] = array('eq', $_POST['sort_id']);
+        $condition['id'] = array('neq', $id);
+        $condition['emark'] = array('eq','d'.$emark);
+        $condition['sort_id'] = array('eq', $sort_id);
 
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称或者标识' . $_POST['emark'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称或者标识' . $emark . '已经存在！', false, true);
         }
         $ms = M('ModelSort');
-        $data = $ms->field('emark')->where('id=' . $_POST['sort_id'])->find();
+        $condition_sort['id'] = array('eq',$sort_id);
+        $data = $ms->field('emark')->where($condition_sort)->find();
         $tablename = $data['emark']; //表名
-        $field = $m->field('emark')->where('id=' . $_POST['id'])->find();
+        $condition_id['id'] = array('eq',$id);
+        $field = $m->field('emark')->where($condition_id)->find();
         $oldfield = $field['emark']; //旧字段名
         $d = D('ModelSort');
 
-        $newfield = $_POST['emark']; //新字段名
-        $type = $_POST['etype'];
-        $length = trim($_POST['maxlength']);
+        $newfield = $emark; //新字段名
+        $type = $this->_post('etype');
+        $length = $this->_post('maxlength');
         $d->editfield($tablename, $newfield, $oldfield, $type, $length);
         $rs = $m->save($_POST);
         if ($rs == true) {
@@ -306,15 +316,20 @@ class ContentModelAction extends BaseAction {
         $id = intval($_POST['id']);
         $m = M('ModelField');
         $d = D('ModelSort');
-        $data = $m->join(C('DB_PREFIX') . 'model_sort ms on ms.id=' . C('DB_PREFIX') . 'model_field.sort_id')->where(C('DB_PREFIX') . 'model_field.id=' . $id)
-                        ->field(array('ms.emark'=>'tbname', C('DB_PREFIX') . 'model_field.emark' => 'tbfield'))->find();
+        $id = $this->_post('id');
+        $condition['mf.id'] = array('eq',$id);
+        $data = $m->Table(C('DB_PREFIX') . 'model_field mf')
+                ->join(C('DB_PREFIX') . 'model_sort ms on  ms.id=mf.sort_id')
+                ->where($condition)
+                ->field(array('ms.emark'=>'tbname', 'mf.emark' => 'tbfield'))->find();
         $tablename = $data['tbname'];
         $field = $data['tbfield'];
         if (empty($tablename) || empty($field)) {
             $this->dmsg('1', '操作失败！', false, true);
         }
         $d->detelefield($tablename, $field);
-        $del = $m->where('id=' . $id)->delete();
+        $condition_id = array('eq',$id);
+        $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -390,10 +405,11 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function fieldJsonId() {
-        $id = intval($_GET['id']);
         $m = M('ModelField');
-        $list = $m->field(array('id','ename','emark','etype','elink'))->where('sort_id=' . $id)->select();
-        $count = $m->where('sort_id=' . $id)->count("id");
+        $id = $this->_get('id');
+        $condition['sort_id'] = array('eq',$id);
+        $list = $m->field(array('id','ename','emark','etype','elink'))->where($condition)->select();
+        $count = $m->where($condition)->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;

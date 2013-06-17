@@ -52,7 +52,9 @@ class NodeAction extends BaseAction {
     public function edit()
     {
         $m = M('Node');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             '1' => '启用',
             '0' => '禁用'
@@ -72,15 +74,16 @@ class NodeAction extends BaseAction {
     public function insert()
     {
         $m = M('Node');
-        $name = trim($_POST['name']);
-        $title = trim($_POST['title']);
-        $parent_id = intval($_POST['pid']);
+        $name = $this->_post('name');
+        $title = $this->_post('title');
+        $parent_id = $this->_post('pid');
         $_POST['status'] = $_POST['status'][0];
         if (empty($name) || empty($title)) {
             $this->dmsg('1', '节点项目名或者提示中文名不能为空！', false, true);
         }
         if ($parent_id != 0) {
-            $data = $m->where('id=' . $parent_id)->find();
+            $condition['id'] = array('eq',$parent_id);
+            $data = $m->where($condition)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
         if ($m->create()) {
@@ -104,26 +107,30 @@ class NodeAction extends BaseAction {
     {
         $m = M('Node');
         $d = D('NewsSort');
-        $id = intval($_POST['id']);
-        $parent_id = intval($_POST['pid']);
-        $name = trim($_POST['name']);
-        $title = trim($_POST['title']);
+        $id = $this->_post('id');
+        $name = $this->_post('name');
+        $title = $this->_post('title');
+        $parent_id = $this->_post('pid');
         $_POST['status'] = $_POST['status'][0];
         if (empty($name) || empty($title)) {
             $this->dmsg('1', '节点项目名或者提示中文名不能为空！', false, true);
         }
         $tbname = 'Node';
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            $cun = $m->field('id')->where('id=' . $parent_id . ' and  path like \'%,' . $id . ',%\'')->find(); //判断id选择是否为其的子类
+            $condition_path['path'] = array('like','%,'.$id.',%');
+            $condition_path['id'] = array('eq',$parent_id);
+            $cun = $m->field('id')->where($condition_path)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_pid)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updateRolePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $data = $m->field('pid')->where('id=' . $id)->find();
+            $condition_id['id'] = array('eq',$id);
+            $data = $m->field('pid')->where($condition_id)->find();
             if ($data['pid'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
                 $d->updateRolePath($id, $sort_path, $tbname);
@@ -164,7 +171,7 @@ class NodeAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            $a[$k]['_parentId'] = intval($v['pid']); //_parentId为easyui中标识父id
+            $a[$k]['_parentId'] = $v['pid']; //_parentId为easyui中标识父id
         }
         $array = array();
         $array['total'] = $navcatCount;
@@ -200,7 +207,8 @@ class NodeAction extends BaseAction {
         Load('extend');
         $m = M('Node');
         $a = M('Access');
-        $condition['role_id'] = $_GET['id'];
+        $id = $this->_get('id');
+        $condition['role_id'] = array('eq',$id);
         $data = $a->field('node_id')->where($condition)->select();
         $tree = $m->field('id,pid,title as text')->select();
         foreach($data as $k=>$v){

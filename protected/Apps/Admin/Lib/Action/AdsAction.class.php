@@ -57,7 +57,7 @@ class AdsAction extends BaseAction {
      */
     public function delete()
     {
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         $m = M('Ads');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
@@ -105,7 +105,7 @@ class AdsAction extends BaseAction {
      */
     public function sortedit()
     {
-        $id = $_GET['id'];
+        $id = $this->_get('id');
         $m = M('AdsSort');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -129,8 +129,9 @@ class AdsAction extends BaseAction {
     public function sortinsert()
     {
         $m = M('AdsSort');
-        $condition['ename'] = trim($_POST['ename']);
-        if (empty($condition['ename'])) {
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq',$ename);
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
@@ -155,14 +156,15 @@ class AdsAction extends BaseAction {
     public function sortupdate()
     {
         $m = M('AdsSort');
-        $id = intval($_POST['id']);
-        $condition['ename'] = array('eq',trim($_POST['ename']));
+        $id = $this->_post('id');
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq',$ename);
         $condition['id'] = array('neq', $id);
-        if (empty($condition['ename'])) {
+        if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         if ($m->field('id')->where($condition)->find()) {
-            $this->dmsg('1', '您输入的名称' . $condition['ename'] . '已经存在！', false, true);
+            $this->dmsg('1', '您输入的名称' . $ename . '已经存在！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
         $rs = $m->save($_POST);
@@ -183,12 +185,13 @@ class AdsAction extends BaseAction {
     {
         $m = M('AdsSort');
         $l = M('Ads');
-        $id = intval($_POST['id']);
-        $condition['sort_id'] = array('eq', $id);
-        if ($l->field('id')->where($condition)->find()) {
+        $id = $this->_post('id');
+        $condition_sort['sort_id'] = array('eq', $id);
+        if ($l->field('id')->where($condition_sort)->find()) {
             $this->dmsg('1', '列表中含有该分类的信息，不能删除！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $condition['id'] = array('eq', $id);
+        $del = $m->where($condition)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {

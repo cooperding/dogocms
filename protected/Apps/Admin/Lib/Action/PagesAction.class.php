@@ -52,8 +52,9 @@ class PagesAction extends BaseAction {
     public function edit()
     {
         $m = M('Pages');
-        $id = intval($_GET['id']);
-        $data = $m->where('id=' . $id)->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '可用',
             'n' => '禁用'
@@ -74,8 +75,8 @@ class PagesAction extends BaseAction {
     public function insert()
     {
         $m = M('Pages');
-        $ename = $_POST['ename'];
-        $sort_id = $_POST['sort_id'];
+        $ename = $this->_post('ename');
+        $sort_id = $this->_post('sort_id');
         if (empty($ename)) {
             $this->dmsg('1', '单页名不能为空！', false, true);
         }
@@ -107,9 +108,10 @@ class PagesAction extends BaseAction {
     public function update()
     {
         $m = M('Pages');
-        $ename = $_POST['ename'];
-        $sort_id = $_POST['sort_id'];
-        $data['id'] = array('eq', intval($_POST['id']));
+        $ename = $this->_post('ename');
+        $sort_id = $this->_post('sort_id');
+        $id = $this->_post('id');
+        $data['id'] = array('eq', $id);
         if (empty($ename)) {
             $this->dmsg('1', '单页名不能为空！', false, true);
         }
@@ -165,7 +167,9 @@ class PagesAction extends BaseAction {
     public function sortedit()
     {
         $m = M('PagesSort');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -186,19 +190,20 @@ class PagesAction extends BaseAction {
     public function sortinsert()
     {
         $m = M('PagesSort');
-        $parent_id = intval($_POST['parent_id']);
-        $ename = trim($_POST['ename']);
+        $parent_id = $this->_post('parent_id');
+        $ename = $this->_post('ename');
         if (empty($ename)) {
             $this->dmsg('1', '分类名不能为空！', false, true);
         }
-        $en_name = trim($_POST['en_name']);
+        $en_name = $this->_post('en_name');
         if (empty($en_name)) {
             import("ORG.Util.Pinyin");
             $pinyin = new Pinyin();
-            $_POST['en_name'] = $pinyin->output(trim($_POST['ename']));
+            $_POST['en_name'] = $pinyin->output($en_name);
         }
         if ($parent_id != 0) {
-            $data = $m->where('id=' . $parent_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->where($condition_pid)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
         $_POST['status'] = $_POST['status']['0'];
@@ -223,20 +228,24 @@ class PagesAction extends BaseAction {
     {
         $m = M('PagesSort');
         $d = D('NewsSort');
-        $id = intval($_POST['id']);
-        $parent_id = intval($_POST['parent_id']);
+        $id = $this->_post('id');
+        $parent_id = $this->_post('parent_id');
         $tbname = 'PagesSort';
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            $cun = $m->field('id')->where('id=' . $parent_id . ' and  path like \'%,' . $id . ',%\'')->find(); //判断id选择是否为其的子类
+            $condition_path['path'] = array('like','%,'.$id.',%');
+            $condition_path['id'] = array('eq',$parent_id);
+            $cun = $m->field('id')->where($condition_path)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_pid)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updatePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $data = $m->field('parent_id')->where('id=' . $id)->find();
+            $condition_id['id'] = array('eq',$id);
+            $data = $m->field('parent_id')->where($condition_id)->find();
             if ($data['parent_id'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
                 $d->updatePath($id, $sort_path, $tbname);
@@ -244,11 +253,11 @@ class PagesAction extends BaseAction {
             $_POST['path'] = ','; //应该是这个
         }
         $_POST['status'] = $_POST['status']['0'];
-        $en_name = trim($_POST['en_name']);
+        $en_name = $this->_post('en_name');
         if (empty($en_name)) {
             import("ORG.Util.Pinyin");
             $pinyin = new Pinyin();
-            $_POST['en_name'] = $pinyin->output(trim($_POST['ename']));
+            $_POST['en_name'] = $pinyin->output($en_name);
         }
         $rs = $m->save($_POST);
         if ($rs == true) {
@@ -267,13 +276,15 @@ class PagesAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $id = intval($_POST['id']);
         $m = M('PagesSort');
         $list = M('Pages');
-        if ($list->field('id')->where('linkpage_id=' . $id)->find()) {
+        $id = $this->_post('id');
+        $condition_lid['linkpage_id'] = array('eq',$id);
+        if ($list->field('id')->where($condition_lid)->find()) {
             $this->dmsg('1', '列表中存在该分类元素不能删除！', false, true);
         }
-        $del = $m->where('id=' . $id)->delete();
+        $condition_id['id'] = array('eq',$id);
+        $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -296,7 +307,7 @@ class PagesAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            $a[$k]['_parentId'] = intval($v['parent_id']); //_parentId为easyui中标识父id
+            $a[$k]['_parentId'] = $v['parent_id']; //_parentId为easyui中标识父id
         }
         $array = array();
         $array['total'] = $navcatCount;

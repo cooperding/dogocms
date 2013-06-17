@@ -75,14 +75,15 @@ class SettingAction extends BaseAction {
      */
     public function insert() {
         $m = M('Setting');
-        $sys_name = trim($_POST['sys_name']);
-        if (empty($_POST['sys_gid']) || empty($condition['sys_name'])) {//不为空说明存在，存在就不能添加
+        $sys_name = $this->_post('sys_name');
+        $sys_gid = $this->_post('sys_gid');
+        if (empty($sys_gid) || empty($sys_name)) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名或者所属分组不能为空！', false, true);
         }
         $condition['sys_name'] = array('eq',$sys_name);
         $rs = $m->where($condition)->find();
         if (!empty($rs)) {//不为空说明存在，存在就不能添加
-            $this->dmsg('1', '变量名"' . $condition['sys_name'] . '"已经存在', false, true);
+            $this->dmsg('1', '变量名"' . $sys_name . '"已经存在', false, true);
         }
         $_POST['sys_type'] = $_POST['sys_type'][0];
         if ($m->create($_POST)) {
@@ -104,15 +105,17 @@ class SettingAction extends BaseAction {
      */
     public function update() {
         $m = M('Setting');
-        $sys_name = trim($_POST['sys_name']);
-        $condition['id'] = array('neq', $_POST['id']);
-        if (empty($_POST['sys_gid']) || empty($condition['sys_name'])) {//不为空说明存在，存在就不能添加
+        $id = $this->_post('id');
+        $sys_gid = $this->_post('sys_gid');
+        $sys_name = $this->_post('sys_name');
+        $condition['id'] = array('neq', $id);
+        if (empty($sys_gid) || empty($sys_name)) {//不为空说明存在，存在就不能添加
             $this->dmsg('1', '变量名或者所属分组不能为空！', false, true);
         }
         $condition['sys_name'] = array('eq',$sys_name);
         $rs = $m->where($condition)->find();
         if (!empty($rs)) {//不为空说明存在，存在就不能添加
-            $this->dmsg('1', '变量名"' . $condition['sys_name'] . '"已经存在', false, true);
+            $this->dmsg('1', '变量名"' . $sys_name . '"已经存在', false, true);
         }
         $_POST['sys_type'] = $_POST['sys_type'][0];
         $rs = $m->save($_POST);
@@ -132,7 +135,7 @@ class SettingAction extends BaseAction {
      */
     public function settinglist() {
         $m = M('Setting');
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('list');
     }
@@ -148,7 +151,7 @@ class SettingAction extends BaseAction {
         $this->dmsg('1', '暂不支持删除操作！', false, true);
         exit;
         $m = M('Setting');
-        $id = intval($_POST['id']);
+        $id = $this->_post('id');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
         if ($del == true) {
@@ -167,7 +170,7 @@ class SettingAction extends BaseAction {
      */
     public function listJsonId() {
         $m = M('Setting');
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $condition['sys_gid'] = array('eq',$id);
         $data = $m->where($condition)->select();
         //$data = $m->select();

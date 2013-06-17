@@ -31,7 +31,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function newslist() {
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('newslist');
     }
@@ -44,7 +44,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function add() {
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $flag = array(
             'h' => ' 头条[h] ',
             'r' => ' 推荐[r] ',
@@ -73,14 +73,17 @@ class NewsAction extends BaseAction {
      */
     public function edit() {
         $m = M('Title');
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
+        $condition_id['t.id'] = array('eq',$id);
         $data = $m->field(array('t.*','c.content','ms.id' => 'msid','ms.emark' => 'msemaerk'))->Table( C('DB_PREFIX') . 'title t')->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
                         ->join(C('DB_PREFIX') . 'news_sort ns ON ns.id=t.sort_id')->join(C('DB_PREFIX') . 'model_sort ms ON ms.id=ns.model_id')
-                        ->where('t.id=' . $id)->find();
+                        ->where($condition_id)->find();
         $am = M(ucfirst(C('DB_ADD_PREFIX')) . $data['msemaerk']);
-        $data_ms = $am->where('title_id=' . $id)->find();
+        $condition_tid['title_id'] = array('eq',$id);
+        $data_ms = $am->where($condition_tid)->find();
         $mf = M('ModelField');
-        $data_filed = $mf->where('sort_id =' . $data['msid'])->order('myorder asc,id asc')->select();
+        $condition_sid['sort_id'] = array('eq',$data['msid']);
+        $data_filed = $mf->where($condition_sid)->order('myorder asc,id asc')->select();
         foreach ($data_filed as $k => $v) {
             $exp = explode(',', $v['evalue']);
             if ($v['etype'] == 'radio') {
@@ -124,8 +127,8 @@ class NewsAction extends BaseAction {
         $t = M('Title');
         $c = M('Content');
         $ns = M('NewsSort');
-        $title = trim($_POST['title']);
-        $sort_id = $_POST['sort_id'];
+        $title = $this->_post('title');
+        $sort_id = $this->_post('sort_id');
         if (empty($title)) {
             $this->dmsg('1', '文章标题不能为空！', false, true);
         }
@@ -144,9 +147,10 @@ class NewsAction extends BaseAction {
             $filed[$k] = implode(',', $v);
         }
         //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
+        $condition_ns['ns.id'] = array('eq',$sort_id);
         $model_rs = $ns->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
                         ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
-                        ->where('ns.id=' . intval($_POST['sort_id']))->find();
+                        ->where($condition_ns)->find();
         $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
         //开始写入信息
         $_POST['addtime'] = time();
@@ -183,10 +187,11 @@ class NewsAction extends BaseAction {
         $t = M('Title');
         $c = M('Content');
         $ns = M('NewsSort');
-        $data['id'] = intval($_POST['id']);
-        $cdata['title_id'] = intval($_POST['id']);
-        $title = trim($_POST['title']);
-        $sort_id = $_POST['sort_id'];
+        $id = $this->_post('id');
+        $data['id'] = array('eq',$id);
+        $cdata['title_id'] = array('eq',$id);
+        $title = $this->_post('title');
+        $sort_id = $this->_post('sort_id');
         if (empty($title)) {
             $this->dmsg('1', '文章标题不能为空！', false, true);
         }
@@ -205,9 +210,10 @@ class NewsAction extends BaseAction {
             $filed[$k] = implode(',', $v);
         }
         //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
+        $condition_ns['ns.id'] = array('eq',$sort_id);
         $model_rs = $ns->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
                         ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
-                        ->where('ns.id=' . intval($_POST['sort_id']))->find();
+                        ->where($condition_ns)->find();
         $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
         $_POST['updatetime'] = time();
         $_POST['op_id'] = session('LOGIN_UID');
@@ -231,7 +237,8 @@ class NewsAction extends BaseAction {
      */
     public function delete() {
         $t = M('Title');
-        $data['id'] = array('in', $_POST['id']);
+        $id = $this->_post('id');
+        $data['id'] = array('in', $id);
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
@@ -252,8 +259,9 @@ class NewsAction extends BaseAction {
      */
     public function tempmodel() {
         $mf = M('ModelField');
-        $id = intval($_POST['id']);
-        $data_filed = $mf->where('sort_id =' . $id)->order('myorder asc,id asc')->select();
+        $id = $this->_post('id');
+        $condition_sort['sort_id'] = array('eq',$id);
+        $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
         foreach ($data_filed as $k => $v) {
             $exp = explode(',', $v['evalue']);
             if ($v['etype'] == 'radio') {
@@ -289,7 +297,8 @@ class NewsAction extends BaseAction {
      */
     public function recycleRevert() {
         $t = M('Title');
-        $data['id'] = array('in', $_POST['id']);
+        $id = $this->_post('id');
+        $data['id'] = array('in', $id);
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
@@ -311,10 +320,11 @@ class NewsAction extends BaseAction {
     public function deleteRec() {
         $t = M('Title');
         $c = M('Content');
-        $data['id'] = array('in', $_POST['id']);
-        $cdata['title_id'] = array('in', $_POST['id']);
+        $id = $this->_post('id');
+        $data['id'] = array('in', $id);
+        $cdata['title_id'] = array('in', $id);
         //id是唯一的值，要取得所有模型的表名，才能删除模型内的信息
-        foreach ($_POST['id'] as $k => $v) {
+        foreach ($id as $k => $v) {
             //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
             $model_rs = $t->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
                             ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
@@ -345,7 +355,7 @@ class NewsAction extends BaseAction {
         $m = M('Title');
         $s = M('NewsSort');
         import('ORG.Util.Page'); // 导入分页类
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         if ($id != 0) {//id为0时调用全部文档
             $condition_sort['id'] = $id;
             $condition_sort['path'] = array('like', '%,' . $id . ',%');

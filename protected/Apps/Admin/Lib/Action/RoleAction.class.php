@@ -51,7 +51,9 @@ class RoleAction extends BaseAction {
     public function edit()
     {
         $m = M('Role');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             '1' => '启用',
             '0' => '禁用'
@@ -70,7 +72,7 @@ class RoleAction extends BaseAction {
      */
     public function setRbac()
     {
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $this->assign('id', $id); //传递角色id
         $this->display('rbac:set_rbac');
     }
@@ -85,15 +87,16 @@ class RoleAction extends BaseAction {
     public function insert()
     {
         $m = M('Role');
-        $name = trim($_POST['name']);
+        $name = $this->_post('name');
         $_POST['status'] = $_POST['status'][0];
         //$this->dmsg('1', $_POST['status'], false, true);
         if (empty($name)) {
             $this->dmsg('1', '角色名不能为空！', false, true);
         }
-        $parent_id = intval($_POST['pid']);
+        $parent_id = $this->_post('pid');
         if ($parent_id != 0) {
-            $data = $m->where('id=' . $parent_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->where($condition_pid)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
         if ($m->create()) {
@@ -117,25 +120,29 @@ class RoleAction extends BaseAction {
     {
         $m = M('Role');
         $d = D('NewsSort');
-        $id = intval($_POST['id']);
-        $parent_id = intval($_POST['pid']);
+        $id = $this->_post('id');
+        $parent_id = $this->_post('pid');
         $_POST['status'] = $_POST['status'][0];
-        $name = trim($_POST['name']);
+        $name = $this->_post('name');
         if (empty($name)) {
             $this->dmsg('1', '节点项目名或者提示中文名不能为空！', false, true);
         }
         $tbname = 'Role';
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            $cun = $m->field('id')->where('id=' . $parent_id . ' and  path like \'%,' . $id . ',%\'')->find(); //判断id选择是否为其的子类
+            $condition_path['path'] = array('like','%,'.$id.',%');
+            $condition_path['id'] = array('eq',$parent_id);
+            $cun = $m->field('id')->where($condition_path)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $data = $m->field('path')->where('id=' . $parent_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_pid)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updateRolePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $data = $m->field('pid')->where('id=' . $id)->find();
+            $condition_id['id'] = array('eq',$id);
+            $data = $m->field('parent_id')->where($condition_id)->find();
             if ($data['pid'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
                 $d->updateRolePath($id, $sort_path, $tbname);
@@ -211,7 +218,7 @@ class RoleAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            $a[$k]['_parentId'] = intval($v['pid']); //_parentId为easyui中标识父id
+            $a[$k]['_parentId'] = $v['pid']; //_parentId为easyui中标识父id
         }
         $array = array();
         $array['total'] = $navcatCount;

@@ -51,7 +51,9 @@ class MembersAction extends BaseAction {
     public function edit()
     {
         $m = M('Members');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'

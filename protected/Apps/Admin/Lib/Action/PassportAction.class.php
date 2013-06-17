@@ -47,13 +47,14 @@ class PassportAction extends Action
             $this->error('验证码为空或者输入错误！');
             exit;
         }
-        $condition['username'] = $this->_post('user_name');
+        $user_name = $this->_post('user_name');
+        $condition['username'] = array('eq',$user_name);
         $password =$this->_post('user_password'); 
-        if (!empty($condition['username']) && !empty($password)) {//依据用户名查询
+        if (!empty($user_name) && !empty($password)) {//依据用户名查询
             $login = M('Operators');
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
             if ($rs) {//对查询出的结果进行判断
-                $password = md5(md5($condition['username']) . sha1($password . $rs['creat_time']));
+                $password = md5(md5($user_name) . sha1($password . $rs['creat_time']));
                 if ($password == $rs['password']) {//判断密码是否匹配
                     session('LOGIN_STATUS', 'TRUE');
                     session('authId', $rs['id']);

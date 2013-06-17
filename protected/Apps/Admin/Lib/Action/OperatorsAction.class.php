@@ -51,7 +51,9 @@ class OperatorsAction extends BaseAction {
     public function edit()
     {
         $m = M('Operators');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -73,7 +75,7 @@ class OperatorsAction extends BaseAction {
     {
         $m = M('Role');
         $this->dmsg('1', '该功能未开发不能操作！', false, true);
-        $name = trim($_POST['name']);
+        $name = $this->_post('name');
         $_POST['status'] = $_POST['status'][0];
         if (empty($name)) {
             $this->dmsg('1', '角色名不能为空！', false, true);

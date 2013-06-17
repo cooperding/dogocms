@@ -34,7 +34,7 @@ class CommentAction extends BaseAction {
     public function edit()
     {
         $m = M('Comment');
-        $id = intval($_GET['id']);
+        $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $radios = array(
@@ -57,7 +57,8 @@ class CommentAction extends BaseAction {
     public function update()
     {
         $m = M('Comment');
-        $data['id'] = array('eq', intval($_POST['id']));
+        $id = $this->_post('id');
+        $data['id'] = array('eq', $id);
         $_POST['replaytime'] = time();
         $_POST['status'] = $_POST['status']['0'];
         $rs = $m->where($data)->save($_POST);
@@ -77,8 +78,8 @@ class CommentAction extends BaseAction {
      */
     public function delete()
     {
-        $id = intval($_POST['id']);
         $m = M('Message');
+        $id = $this->_post('id');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
         if ($del == true) {

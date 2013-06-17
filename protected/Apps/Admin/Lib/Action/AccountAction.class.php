@@ -59,9 +59,9 @@ class AccountAction extends BaseAction
     public function updatepwd()
     {
         $m = M('Operators');
-        $oldpwd = trim($_POST['oldpwd']);
-        $newpwd = trim($_POST['newpwd']);
-        $newpwd2 = trim($_POST['newpwd2']);
+        $oldpwd = $this->_post('oldpwd');
+        $newpwd = $this->_post('newpwd');
+        $newpwd2 = $this->_post('newpwd2');
         if(empty($oldpwd)||empty($newpwd)||empty($newpwd2)){
             $this->dmsg('1', '密码不能为空！', false, true);
         }
