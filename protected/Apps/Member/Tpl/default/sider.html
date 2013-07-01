@@ -8,7 +8,8 @@
     <div class="dogo-box-content dogo-border-notop dogo-box-text">
         <ul>
             <dogocms:article limit="0,6" order="id desc">
-                <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+{:U('Admin/User/select',array('id'=>$article['id']))}
+                <li><a href="{:U('index/Blog/Content',array('id'=>$article[id]))}" title="{$article.title}" target="_blank">{$article.title}</a></li>
             </dogocms:article>
         </ul>
 

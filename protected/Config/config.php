@@ -22,7 +22,7 @@ $connection =array(
     //'DEFAULT_APPS'		=> array('api', 'admin', 'home', 'myop', 'weibo', 'wap', 'w3g'),
 
     // 是否开启URL Rewrite
-	//'URL_ROUTER_ON'		=> false,
+	'URL_ROUTER_ON'		=> false,
 
     // 是否开启调试模式 (开启AllInOne模式时该配置无效, 将自动置为false)
 	//'APP_DEBUG'			=> false,

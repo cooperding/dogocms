@@ -1,4 +1,6 @@
 <include file=":header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Kindeditor/themes/simple/simple.css"/>
 <div class="blank"></div>
 <div class="dogo-content">
     <div class="container-fluid dogo-wp">
@@ -20,56 +22,40 @@
                             <div class="control-group">
                                 <label class="control-label" for="inputPassword">文档标题：</label>
                                 <div class="controls">
-                                    <input type="password" name="user_password" id="inputPassword" placeholder="文档标题">
+                                    <input type="text" name="user_password" id="inputPassword" placeholder="文档标题">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="user_password">文档分类：</label>
                                 <div class="controls">
-                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                    <input type="password" name="user_password" id="user_password" placeholder="文档分类">
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label" for="user_password">作者：</label>
                                 <div class="controls">
-                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                    <input type="text" name="user_password" id="user_password" placeholder="作者">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="user_password">来源：</label>
                                 <div class="controls">
-                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                    <input type="text" name="user_password" id="user_password" placeholder="来源">
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="user_password">来源网址：</label>
+                                <label class="control-label" for="inputurl">来源网址：</label>
                                 <div class="controls">
-                                    <input type="password" name="user_password" id="user_password" placeholder="新密码">
+                                    <input type="url" name="user_password" id="inputurl" placeholder="来源网址">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="user_password">文档内容：</label>
                                 <div class="controls">
-                                    <textarea style="width: 630px;height: 400px;"></textarea>
-
+        <textarea id="content" name="content" style="width: 630px;max-width: 630px;height: 400px;visibility:hidden;"></textarea>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                             <div class="control-group">
                                 <label class="control-label" for="inputVcode">验证码：</label>
@@ -108,7 +94,40 @@
 
 
 <include file=":footer" />
+<script type="text/javascript" src="__PUBLIC__/Kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Kindeditor/lang/zh_CN.js"></script>
+<script>
+    $(function() {
+        KindEditor.create('#content', {
+            themeType : 'simple',
+            allowFileManager : true,
+            uploadJson:'__APP__/Upload/uploadImg',
+            fileManagerJson :'__APP__/Upload/fileManagerJson',
+            afterBlur : function() {
+                this.sync();
+            }
+        });
+        var editor = KindEditor.editor({
+            allowFileManager : true,
+            uploadJson:'__APP__/Upload/uploadImg',
+            fileManagerJson :'__APP__/Upload/fileManagerJson'
+        });
+        KindEditor('#image1').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl : KindEditor('#url1').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        KindEditor('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
 
+       
+
+    });
+</script>
 </div><!--dogopage-->
 </body>
 </html>

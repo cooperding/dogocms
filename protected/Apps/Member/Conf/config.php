@@ -11,6 +11,7 @@ $miniConfig = array(
     'LANG_SWITCH_ON' => true,
     'DEFAULT_LANG' => 'zh-cn',
     'LANG_AUTO_DETECT' => false,
+    'URL_MODEL ' =>2
 );
 
 //define(WWW_PATH,dirname(dirname(dirname(dirname(__FILE__)))) . '/');
