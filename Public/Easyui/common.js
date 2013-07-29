@@ -258,7 +258,10 @@ function openTreeGrid(classId,urljson,hrefadd,hrefedit,hrefcancel){
                 var id = selected.id;
                 var href = hrefcancel;
                 var title = '删除信息';
-                $.messager.confirm(title,href, function(){
+                $.messager.confirm(title,'确定要删除信息', function(r){
+                    if(!r){
+                        return false;
+                    }
                     $.ajax({
                         url:href,
                         type:'post',
