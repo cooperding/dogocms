@@ -28,7 +28,7 @@ function T($template='',$layer=''){
         }
         // 解析模版资源地址
         if(false === strpos($template,'://')){
-            $template   =   APP_NAME.'://'.$template;
+            $template   =   APP_NAME.'://'.str_replace(':', '/',$template);
         }        
         $info   =   parse_url($template);
         $file   =   $info['host'].(isset($info['path'])?$info['path']:'');
@@ -44,13 +44,13 @@ function T($template='',$layer=''){
         }else{ 
             $baseUrl    =   TMPL_PATH.$group;
         }
-
+        $depr   =   C('TMPL_FILE_DEPR');
         // 分析模板文件规则
         if('' == $file) {
             // 如果模板文件名为空 按照默认规则定位
-            $file = MODULE_NAME . C('TMPL_FILE_DEPR') . ACTION_NAME;
-        }elseif(false === strpos($file, '/')){
-            $file = MODULE_NAME . C('TMPL_FILE_DEPR') . $file;
+            $file = MODULE_NAME . $depr . ACTION_NAME;
+        }elseif(false === strpos($file, $depr)){
+            $file = MODULE_NAME . $depr . $file;
         }
         return $baseUrl.$file.C('TMPL_TEMPLATE_SUFFIX');
 }
@@ -112,6 +112,13 @@ function I($name,$default='',$filter=null) {
     }
     if(empty($name)) { // 获取全部变量
         $data       =   $input; 
+        $filters    =   isset($filter)?$filter:C('DEFAULT_FILTER');
+        if($filters) {
+            $filters    =   explode(',',$filters);
+            foreach($filters as $filter){
+                $data   =   array_map($filter,$data); // 参数过滤
+            }
+        }        
     }elseif(isset($input[$name])) { // 取值操作
         $data       =	$input[$name];
         $filters    =   isset($filter)?$filter:C('DEFAULT_FILTER');

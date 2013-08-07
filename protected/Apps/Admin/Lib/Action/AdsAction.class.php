@@ -14,7 +14,7 @@ class AdsAction extends BaseAction {
 
     /**
      * index
-     * 广告列表页
+     * 广告列表页 
      * @access public
      * @return array
      * @version dogocms 1.0
