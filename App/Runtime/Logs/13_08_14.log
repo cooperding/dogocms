@@ -1,0 +1,1184 @@
+[ 2013-08-14T22:48:45+08:00 ] 127.0.0.1 /dogocms/admin.php
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000890s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003200s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000706s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:admin.php
+
+[ 2013-08-14T22:50:13+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000749s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000839s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000226s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000762s ]
+NOTIC: [2] require_once(./App//Conf/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:51:18+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000436s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000527s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000223s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000187s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+NOTIC: [2] require_once(./App//dogocms/admin/Conf/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:51:39+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000727s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000818s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000234s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000192s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000486s ]
+NOTIC: [2] require_once(/dogocms/admin/Conf/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:52:07+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000887s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000973s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000215s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000450s ]
+NOTIC: [2] require_once(/dogocms/admin/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:52:22+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000385s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000445s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000228s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000188s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000477s ]
+NOTIC: [2] require_once(/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:52:39+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000349s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000444s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000224s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000176s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000453s ]
+NOTIC: [2] require_once(./App//Conf/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:53:03+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000551s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000612s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000190s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000492s ]
+NOTIC: [2] require_once(./App//dogocms/admin/Conf/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:53:24+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000391s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000475s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000212s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000198s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+NOTIC: [2] require_once(./App//dogocms/admin/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:53:38+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000618s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000743s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000261s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000217s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000544s ]
+NOTIC: [2] require_once(./App//dogocms/admin/admin/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:53:45+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000371s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000421s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000207s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000174s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000435s ]
+NOTIC: [2] require_once(./App//admin/leftermenu.php): failed to open stream: No such file or directory /Library/WebServer/Documents/dogocms/App/Lib/Action/admin/IndexAction.class.php 第 27 行.
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000331s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000380s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000208s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000434s ]
+INFO: [ view_parse ] --START--
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/themes/icon.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000509s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000578s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000321s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000379s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Style/css/admin.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000572s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000658s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000343s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000400s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/themes/default/easyui.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000503s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000575s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.007860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007938s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/themes/default/portal.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000603s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000689s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000494s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Kindeditor/themes/default/default.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000617s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000704s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002741s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Style/css/common.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000612s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000702s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000479s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Common/js/jquery-1.8.2.min.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000507s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000590s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000335s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000397s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Kindeditor/themes/simple/simple.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000531s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000618s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003690s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003774s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/jquery.easyui.min.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000537s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000629s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004132s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004219s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/jquery.portal.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000521s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.009949s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010025s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/common.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000519s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000602s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.005373s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005452s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Easyui/locale/easyui-lang-zh_CN.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000514s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000594s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.006297s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006371s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Kindeditor/lang/zh_CN.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000534s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000625s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000321s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001178s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:54:02+08:00 ] 127.0.0.1 /dogocms/__PUBLIC__/Kindeditor/kindeditor-min.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000610s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000729s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000462s ]
+NOTIC: [8] Undefined variable: group /Library/WebServer/Documents/dogocms/Core/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2013-08-14T22:55:53+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000386s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000436s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000212s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000186s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000453s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012378s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012426s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.006366s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000599s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000371s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000581s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008117s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000731s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000804s ]
+
+[ 2013-08-14T22:55:58+08:00 ] 127.0.0.1 /dogocms/NavHead/index?_=1376492158962
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000473s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000543s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000222s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000253s ]
+ERR: 无法加载模块:NavHead
+
+[ 2013-08-14T22:56:05+08:00 ] 127.0.0.1 /dogocms/NavFoot/index?_=1376492165243
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000397s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000476s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000312s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000357s ]
+ERR: 无法加载模块:NavFoot
+
+[ 2013-08-14T22:58:44+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000455s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000567s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000243s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000177s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.013622s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013677s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000342s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000166s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000108s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000286s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001005s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000488s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000587s ]
+
+[ 2013-08-14T22:58:47+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000467s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000539s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000304s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000240s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000619s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.021518s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021601s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000473s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000243s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000140s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000309s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001316s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000391s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000447s ]
+
+[ 2013-08-14T22:58:54+08:00 ] 127.0.0.1 /dogocms/NavHead/index?_=1376492334057
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000371s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000435s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000346s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000403s ]
+ERR: 无法加载模块:NavHead
+
+[ 2013-08-14T22:59:50+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000380s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000430s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000227s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000458s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012024s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012077s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000304s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000171s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000115s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000202s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000878s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000290s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000328s ]
+
+[ 2013-08-14T22:59:52+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000348s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000398s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000216s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000234s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000522s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.013246s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013301s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000382s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000230s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000103s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000214s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001046s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000463s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000513s ]
+
+[ 2013-08-14T23:01:09+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000326s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000374s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000209s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000439s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012804s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012859s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000396s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000211s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000091s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000190s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001022s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000248s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000279s ]
+
+[ 2013-08-14T23:01:12+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000339s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000393s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000220s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000183s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014032s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014086s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000356s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000156s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000112s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000195s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000909s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000437s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000480s ]
+
+[ 2013-08-14T23:02:10+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000432s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000489s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000209s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000181s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000443s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012551s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012594s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000367s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000174s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000088s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000211s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000931s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000341s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000387s ]
+
+[ 2013-08-14T23:02:13+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000461s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000538s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000237s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000190s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000497s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014738s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014802s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000460s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000198s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000133s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000311s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001222s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000505s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000580s ]
+
+[ 2013-08-14T23:04:01+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000733s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004252s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000605s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000531s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001217s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016798s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016847s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000648s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000409s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000412s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000449s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002039s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000604s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000666s ]
+
+[ 2013-08-14T23:04:04+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000360s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000413s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000206s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000429s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Use of undefined constant level - assumed 'level' /Library/WebServer/Documents/dogocms/Core/Lib/Core/Think.class.php 第 230 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+NOTIC: [8] Undefined index: rel /Library/WebServer/Documents/dogocms/App/Runtime/Cache/admin/b014f981c9a86076a0da2946534e8587.php 第 104 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016402s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016462s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000440s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000226s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000113s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000199s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001087s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000330s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000382s ]
+
+[ 2013-08-14T23:05:50+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000318s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000391s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000211s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000170s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+
+[ 2013-08-14T23:05:53+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000332s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000382s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000206s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000172s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000441s ]
+
+[ 2013-08-14T23:06:21+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000349s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000426s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000204s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000436s ]
+
+[ 2013-08-14T23:06:44+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000380s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000477s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000206s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000190s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000464s ]
+
+[ 2013-08-14T23:06:57+08:00 ] 127.0.0.1 /dogocms/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000347s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000397s ]
+NOTIC: [2] array_merge(): Argument #1 is not an array /Library/WebServer/Documents/dogocms/App/Conf/admin/config.php 第 53 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000228s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.000252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000546s ]
+
