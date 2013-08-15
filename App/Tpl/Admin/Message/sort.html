@@ -5,10 +5,10 @@
     <script>
         $(function(){
             var classId = 'message_sort';
-            var hrefadd = '__APP__/Message/sortadd';
-            var hrefedit = '__APP__/Message/sortedit';
-            var hrefcancel = '__APP__/Message/sortdelete';
-            var urljson = '__APP__/Message/sortJson';
+            var hrefadd = '__GROUP__/Message/sortadd';
+            var hrefedit = '__GROUP__/Message/sortedit';
+            var hrefcancel = '__GROUP__/Message/sortdelete';
+            var urljson = '__GROUP__/Message/sortJson';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[

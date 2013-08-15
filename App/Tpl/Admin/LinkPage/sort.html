@@ -5,10 +5,10 @@
     <script>
         $(function(){
             var classId = 'linkpagesort';
-            var hrefadd = '__APP__/LinkPage/sortadd';
-            var hrefedit = '__APP__/LinkPage/sortedit';
-            var hrefcancel = '__APP__/LinkPage/delete';
-            var urljson = '__APP__/LinkPage/sortJson';
+            var hrefadd = '__GROUP__/LinkPage/sortadd';
+            var hrefedit = '__GROUP__/LinkPage/sortedit';
+            var hrefcancel = '__GROUP__/LinkPage/delete';
+            var urljson = '__GROUP__/LinkPage/sortJson';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[

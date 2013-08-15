@@ -1,4 +1,4 @@
-<form action="__APP__/ContentModel/sortlistinsert" class="form_dogocms" method="post">
+<form action="__GROUP__/ContentModel/sortlistinsert" class="form_dogocms" method="post">
         <input type="hidden" name="sort_id" value="{$id}" />
         <div class="division">
         <table>
@@ -36,7 +36,7 @@
 <script>
     $(function(){
         $('.listadd').combobox({
-            url:'__APP__/ContentModel/radioJson',
+            url:'__GROUP__/ContentModel/radioJson',
             valueField:'name',
             textField:'text',
             multiple:false,
@@ -54,7 +54,7 @@
         function linkpage(){
             $('.liandong').css('display','block');
             $('.modellinkpage').combobox({
-                url:'__APP__/LinkPage/sortModelJson',
+                url:'__GROUP__/LinkPage/sortModelJson',
                 valueField:'id',
                 textField:'ename',
                 multiple:false

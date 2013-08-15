@@ -1,7 +1,7 @@
 
     <div class="easyui-layout layout_linkpage_sortlist" >
         <div data-options="region:'west',split:true" title="联动分类" style="width:150px;">
-            <ul class="easyui-tree tree_linkpage_sortlist" data-options="url:'__APP__/LinkPage/jsonSortTree'" style="padding: 10px 5px 10px 0;">
+            <ul class="easyui-tree tree_linkpage_sortlist" data-options="url:'__GROUP__/LinkPage/jsonSortTree'" style="padding: 10px 5px 10px 0;">
 
             </ul>
         </div>
@@ -22,7 +22,7 @@
                             var node = $('.tree_'+classId).tree('getSelected');
                             var nid = node.id;
                             //var clickclass = $('.tree_'+classId+' .tree-node-selected a');
-                            var url = '__APP__/LinkPage/sortlistsort?id='+nid;
+                            var url = '__GROUP__/LinkPage/sortlistsort?id='+nid;
                             //var classId = 'modelsortelist';
                             var subtitle = node.text;
                             if(!$('#tabs_'+classId).tabs('exists',subtitle)){

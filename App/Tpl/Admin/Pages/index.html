@@ -4,10 +4,10 @@
     <script>
         $(function(){
             var classId = 'pages';
-            var urljson = '__APP__/Pages/jsonList';
-            var hrefadd = '__APP__/Pages/add';
-            var hrefedit = '__APP__/Pages/edit';
-            var hrefcancel = '__APP__/Pages/delete';
+            var urljson = '__GROUP__/Pages/jsonList';
+            var hrefadd = '__GROUP__/Pages/add';
+            var hrefedit = '__GROUP__/Pages/edit';
+            var hrefcancel = '__GROUP__/Pages/delete';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[

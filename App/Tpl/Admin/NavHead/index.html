@@ -8,10 +8,10 @@
     }
     $(function(){
         var classId = 'navhead';
-        var urljson = '__APP__/NavHead/json';
-        var hrefadd = '__APP__/NavHead/add';
-        var hrefedit = '__APP__/NavHead/edit';
-        var hrefcancel = '__APP__/NavHead/delete';
+        var urljson = '__GROUP__/NavHead/json';
+        var hrefadd = '__GROUP__/NavHead/add';
+        var hrefedit = '__GROUP__/NavHead/edit';
+        var hrefcancel = '__GROUP__/NavHead/delete';
         openTreeGrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
         $('#treegrid_'+classId).treegrid({
             columns:[[
@@ -32,41 +32,7 @@
                 ]]
         })
 
-        //
-        //        openTreeGrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
-        //        $('#treegrid_'+classId).treegrid({
-        //            columns:[[
-        //                    {field:'id',title:'id',width:50},
-        //                    {field:'text',title:'text',width:200},
-        //                    {field:'parent_id',title:'parent_id',width:200},
-        //                    {field:'action',title:'动作',width:50,
-        //                        formatter : function(value, row, index) {
-        //                            //alert(row.id);
-        //                            //return row.index;
-        //                            //return '<img src="/Public/Easyui/themes/icons/edit_add.png" width="16" height="16" onclick="testclick(\''+row.id+'\')" />&nbsp;<img src="../../themes/icons/pencil.png" width="16" height="16" onclick="admin_news_editFun(\''+row.id+'\')" />&nbsp;<img src="../../themes/icons/cancel.png" width="16" height="16" onclick="admin_news_cancelFun(\''+row.id+'\')" />&nbsp;';
-        //                        }
-        //                    }
-        //                ]]
-        //        })
+        
 
     })
 </script>
-<!--
- $('#treegrid_'+classId).treegrid({
-            columns:[[
-                        {field:'id',title:'id',width:50},
-                        {field:'text',title:'text',width:200},
-                {
-                        field:'action2',
-                        title:'动作',
-                        width:50,
-                        formatter : function(value, row, index) {
-                                //alert(row.id);
-                                //return row.index;
-                                return '<img src="/Public/Easyui/themes/icons/edit_add.png" width="16" height="16" onclick="testclick(\''+row.id+'\')" />&nbsp;<img src="../../themes/icons/pencil.png" width="16" height="16" onclick="admin_news_editFun(\''+row.id+'\')" />&nbsp;<img src="../../themes/icons/cancel.png" width="16" height="16" onclick="admin_news_cancelFun(\''+row.id+'\')" />&nbsp;';
-                        }
-                }
-                ]]
-       })
-
--->

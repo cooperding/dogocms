@@ -4,10 +4,10 @@
     <script>
         $(function(){
             var classId = 'flash';
-            var urljson = '__APP__/Flash/jsonList';
-            var hrefadd = '__APP__/Flash/add';
-            var hrefedit = '__APP__/Flash/edit';
-            var hrefcancel = '__APP__/Flash/delete';
+            var urljson = '__GROUP__/Flash/jsonList';
+            var hrefadd = '__GROUP__/Flash/add';
+            var hrefedit = '__GROUP__/Flash/edit';
+            var hrefcancel = '__GROUP__/Flash/delete';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[

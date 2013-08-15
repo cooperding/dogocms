@@ -7,10 +7,10 @@
     $(function(){
         var height = $('.indexcenter').height();
         var classId = 'newsrecycle';
-        var hrefrevert = '__APP__/News/recycleRevert';
-        var hrefedit = '__APP__/News/edit';
-        var hrefcancel = '__APP__/News/deleteRec';
-        var urljson = '__APP__/News/listJsonId?id={$id}&is_recycle=true';
+        var hrefrevert = '__GROUP__/News/recycleRevert';
+        var hrefedit = '__GROUP__/News/edit';
+        var hrefcancel = '__GROUP__/News/deleteRec';
+        var urljson = '__GROUP__/News/listJsonId?id={$id}&is_recycle=true';
         //openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
         $('#datagrid_'+classId).datagrid({
             url:urljson,

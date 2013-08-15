@@ -1,4 +1,4 @@
-<form action="__APP__/News/insert" class="form_dogocms" method="post" enctype="multipart/form-data">
+<form action="__GROUP__/News/insert" class="form_dogocms" method="post" enctype="multipart/form-data">
 
     <div class="division">
         <table>
@@ -92,7 +92,7 @@
 <script>
     $(function() {
         $('#sort_combotree').combotree({
-            url:'__APP__/NewsSort/jsonTree',
+            url:'__GROUP__/NewsSort/jsonTree',
             required:true,
             onChange:function(){
                 var nid = $(this).combotree('getValue');
@@ -107,7 +107,7 @@
                     }
                 });
                  */
-                var href = '__APP__/News/tempmodel';
+                var href = '__GROUP__/News/tempmodel';
                 $.ajax({
                     url:href,
                     type:'post',
@@ -125,16 +125,16 @@
         KindEditor.create('#content', {
             themeType : 'simple',
             allowFileManager : true,
-            uploadJson:'__APP__/Upload/uploadImg',
-            fileManagerJson :'__APP__/Upload/fileManagerJson',
+            uploadJson:'__GROUP__/Upload/uploadImg',
+            fileManagerJson :'__GROUP__/Upload/fileManagerJson',
             afterBlur : function() {
                 this.sync();
             }
         });
         var editor = KindEditor.editor({
             allowFileManager : true,
-            uploadJson:'__APP__/Upload/uploadImg',
-            fileManagerJson :'__APP__/Upload/fileManagerJson'
+            uploadJson:'__GROUP__/Upload/uploadImg',
+            fileManagerJson :'__GROUP__/Upload/fileManagerJson'
         });
         KindEditor('#image1').click(function() {
             editor.loadPlugin('image', function() {

@@ -1,4 +1,4 @@
-<form action="__APP__/LinkPage/sortlistinsert" class="form_dogocms" method="post">
+<form action="__GROUP__/LinkPage/sortlistinsert" class="form_dogocms" method="post">
     <input type="hidden" name="linkpage_id" value="{$linkpage_id}" />
     <div class="division">
         <table>
@@ -9,7 +9,7 @@
                 </tr>
                 <tr>
                     <th>上级分组名：</th>
-                    <td><input name="parent_id" id="combotree" class="easyui-combotree combotree" data-options="url:'__APP__/LinkPage/jsonTreeListId?id={$linkpage_id}',required:true"  value="0"  style="width:200px;"></td>
+                    <td><input name="parent_id" id="combotree" class="easyui-combotree combotree" data-options="url:'__GROUP__/LinkPage/jsonTreeListId?id={$linkpage_id}',required:true"  value="0"  style="width:200px;"></td>
                 </tr>
                 <tr>
                     <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>

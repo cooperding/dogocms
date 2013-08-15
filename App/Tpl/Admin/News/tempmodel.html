@@ -14,8 +14,8 @@
                     KindEditor.create('#content_{$vo.emark}', {
                         themeType : 'simple',
                         allowFileManager : true,
-                        uploadJson:'__APP__/Upload/uploadImg',
-                        fileManagerJson :'__APP__/Upload/fileManagerJson',
+                        uploadJson:'__GROUP__/Upload/uploadImg',
+                        fileManagerJson :'__GROUP__/Upload/fileManagerJson',
                         afterBlur : function() {
                             this.sync();
                         }
@@ -34,8 +34,8 @@
                 $(function() {
                     var editor = KindEditor.editor({
                         allowFileManager : true,
-                        uploadJson:'__APP__/Upload/uploadImg',
-                        fileManagerJson :'__APP__/Upload/fileManagerJson'
+                        uploadJson:'__GROUP__/Upload/uploadImg',
+                        fileManagerJson :'__GROUP__/Upload/fileManagerJson'
                     });
                     KindEditor('#image_{$vo.emark}').click(function() {
                         editor.loadPlugin('image', function() {
@@ -57,8 +57,8 @@
                 $(function() {
                     var editorfile = KindEditor.editor({
                         allowFileManager : true,
-                        uploadJson:'__APP__/Upload/uploadImg',
-                        fileManagerJson :'__APP__/Upload/fileManagerJson'
+                        uploadJson:'__GROUP__/Upload/uploadImg',
+                        fileManagerJson :'__GROUP__/Upload/fileManagerJson'
                     });
                     KindEditor('#insertfile_{$vo.emark}').click(function() {
                         editorfile.loadPlugin('insertfile', function() {
@@ -106,7 +106,7 @@
             </volist>
             <elseif condition="$vo.etype eq 'stepselect'"/>
             <input name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}" class="easyui-combotree combotree"
-                   data-options="url:'__APP__/LinkPage/jsonTreeId?id={$vo.elink}'" style="width:200px;"/>
+                   data-options="url:'__GROUP__/LinkPage/jsonTreeId?id={$vo.elink}'" style="width:200px;"/>
         </if>
         </td>
         </tr>
