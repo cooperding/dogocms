@@ -26,7 +26,7 @@ class PassportAction extends Action
         
         //此处判断是否已经登录，如果登录跳转到后台首页否则跳转到登录页面
         if (session('LOGIN_STATUS') == 'TRUE') {
-            $this->redirect('..'.__APP__);
+            $this->redirect('..'.__GROUP__);
         } else {
             $this->display();
         }
@@ -61,7 +61,7 @@ class PassportAction extends Action
                     session('LOGIN_NAME', $rs['username']);
                     session('LOGIN_UID', $rs['id']);
                     session('LOGIN_CTIME', $rs['creat_time']);
-                    $this->success('登陆成功！', __APP__);
+                    $this->success('登陆成功！', __GROUP__);
                 } else {
                     $this->error('您的输入密码错误！');
                 }
@@ -83,7 +83,7 @@ class PassportAction extends Action
     public function logout()
     {
         session('[destroy]');
-        $this->success('您已经成功退出管理系统！', __APP__ . '/Passport');
+        $this->success('您已经成功退出管理系统！', __GROUP__ . '/Passport');
     }
 
     /**

@@ -5,13 +5,10 @@
 defined('THINK_PATH') or exit();
 $array = '../config.php';
 $miniConfig = array(
-    'LANG_SWITCH_ON' => True,
     'DEBUG_MODE' => false,
     'DEFAULT_ACTION' => 'index',
     //'TAGLIB_PRE_LOAD'           =>  'html,dogocms',
-    'LANG_SWITCH_ON' => true,
-    'DEFAULT_LANG' => 'zh-cn',
-    'LANG_AUTO_DETECT' => false,
+    'DEFAULT_LANG' => 'zh-cn', //默认语言
     //权限部分
     'USER_AUTH_ON' => false, //是否开启权限true,false
     'USER_AUTH_TYPE' => 2, // 默认认证类型 1 登录认证 2 实时认证
