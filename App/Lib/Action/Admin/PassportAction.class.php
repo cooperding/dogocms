@@ -51,7 +51,7 @@ class PassportAction extends Action
         $condition['username'] = array('eq',$user_name);
         $password =$this->_post('user_password'); 
         if (!empty($user_name) && !empty($password)) {//依据用户名查询
-            $login = M('Operators');
+            $login = new OperatorsModel();
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
             if ($rs) {//对查询出的结果进行判断
                 $password = md5(md5($user_name) . sha1($password . $rs['creat_time']));

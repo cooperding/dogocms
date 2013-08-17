@@ -70,6 +70,8 @@ return array(
     'menu_' => '',
     'site_name' => '我的网站',
     'sort_root_name' => '--选择所属分类--',
+    'modelsort_root_name' => '--选择所属内容模型--',
+    'linkpage_sort_name' => '--选择联动分类--',
     'home' => '首页',
     'add' => '添加',
     'edit' => '编辑',

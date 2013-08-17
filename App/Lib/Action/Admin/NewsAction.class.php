@@ -72,7 +72,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function edit() {
-        $m = M('Title');
+        $m = new TitleModel();
         $id = $this->_get('id');
         $condition_id['t.id'] = array('eq',$id);
         $data = $m->field(array('t.*','c.content','ms.id' => 'msid','ms.emark' => 'msemaerk'))->Table( C('DB_PREFIX') . 'title t')->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
@@ -81,7 +81,7 @@ class NewsAction extends BaseAction {
         $am = M(ucfirst(C('DB_ADD_PREFIX')) . $data['msemaerk']);
         $condition_tid['title_id'] = array('eq',$id);
         $data_ms = $am->where($condition_tid)->find();
-        $mf = M('ModelField');
+        $mf = new ModelFieldModel();
         $condition_sid['sort_id'] = array('eq',$data['msid']);
         $data_filed = $mf->where($condition_sid)->order('myorder asc,id asc')->select();
         foreach ($data_filed as $k => $v) {
@@ -124,9 +124,9 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function insert() {
-        $t = M('Title');
-        $c = M('Content');
-        $ns = M('NewsSort');
+        $t = new TitleModel();
+        $c = new ContentModel();
+        $ns = new NewsSortModel();
         $title = $this->_post('title');
         $sort_id = $this->_post('sort_id');
         if (empty($title)) {
@@ -184,9 +184,9 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function update() {
-        $t = M('Title');
-        $c = M('Content');
-        $ns = M('NewsSort');
+        $t = new TitleModel();
+        $c = new ContentModel();
+        $ns = new NewsSortModel();
         $id = $this->_post('id');
         $data['id'] = array('eq',$id);
         $cdata['title_id'] = array('eq',$id);
@@ -236,7 +236,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function delete() {
-        $t = M('Title');
+        $t = new TitleModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
         if (empty($data['id'])) {
@@ -258,7 +258,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function tempmodel() {
-        $mf = M('ModelField');
+        $mf = new ModelFieldModel();
         $id = $this->_post('id');
         $condition_sort['sort_id'] = array('eq',$id);
         $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
@@ -296,7 +296,7 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function recycleRevert() {
-        $t = M('Title');
+        $t = new TitleModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
         if (empty($data['id'])) {
@@ -318,8 +318,8 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function deleteRec() {
-        $t = M('Title');
-        $c = M('Content');
+        $t = new TitleModel();
+        $c = new ContentModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
         $cdata['title_id'] = array('in', $id);
@@ -352,8 +352,8 @@ class NewsAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function listJsonId() {
-        $m = M('Title');
-        $s = M('NewsSort');
+        $m = new TitleModel();
+        $s = new NewsSortModel();
         import('ORG.Util.Page'); // 导入分页类
         $id = $this->_get('id');
         if ($id != 0) {//id为0时调用全部文档
@@ -406,7 +406,7 @@ class NewsAction extends BaseAction {
      */
     public function jsonSortTree() {
         Load('extend');
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $tree = $m->field('id,parent_id,text')->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => '全部文档')), $tree);

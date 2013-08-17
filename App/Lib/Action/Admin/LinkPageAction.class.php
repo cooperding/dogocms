@@ -51,7 +51,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortedit()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
@@ -74,7 +74,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $egroup = $this->_post('egroup');
@@ -108,7 +108,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $egroup = $this->_post('egroup');
@@ -141,8 +141,8 @@ class LinkPageAction extends BaseAction {
     public function sortdelete()
     {
         $id = $this->_post('id');
-        $m = M('LinkpageSort');
-        $M_LinkpageList = M('LinkpageList');
+        $m = new LinkpageSortModel();
+        $M_LinkpageList = new LinkpageListModel();
         $condition_link['linkpage_id'] = array('eq', $id);
         $condition['id'] = array('eq', $id);
         if ($M_LinkpageList->field('id')->where($condition_link)->find()) {
@@ -165,7 +165,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlist()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $sort = $m->field('id,ename')->select();
         $this->assign('sort', $sort);
         $this->display();
@@ -211,7 +211,7 @@ class LinkPageAction extends BaseAction {
     public function sortlistedit()
     {
         $id = $this->_get('id');
-        $list = M('LinkpageList');
+        $list = new LinkpageListModel();
         $condition['id'] = array('eq', $id);
         $data = $list->where($condition)->find();
         $this->assign('data', $data);
@@ -227,7 +227,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlistdelete()
     {
-        $m = M('LinkpageList');
+        $m = new LinkpageListModel();
         $id = $this->_post('id');
         if (empty($id)) {
             $this->dmsg('1', '未有id值，无法删除！', false, true);
@@ -256,7 +256,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlistinsert()
     {
-        $m = M('LinkpageList');
+        $m = new LinkpageListModel();
         $parent_id = $this->_post('parent_id');
         $_POST['sort_name'] = trim($_POST['sort_name']);
         if (empty($_POST['sort_name'])) {
@@ -285,8 +285,8 @@ class LinkPageAction extends BaseAction {
      */
     public function sortlistupdate()
     {
-        $m = M('LinkpageList');
-        $d = D('NewsSort');
+        $m = new LinkpageListModel();
+        $d = new CommonSortModel();
         $tbname = 'LinkpageList';
         $linkpage_id = $this->_post('linkpage_id');
         $id = $this->_post('id');
@@ -330,7 +330,7 @@ class LinkPageAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
@@ -352,12 +352,13 @@ class LinkPageAction extends BaseAction {
      */
     public function sortModelJson()
     {
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $list = $m->field('id,ename')->select();
         $array = array();
         foreach ($list as $k => $v) {
             $array[$k] = $v;
         }
+        $array = array_merge(array(array('id' => 0, 'ename' => L('linkpage_sort_name'))), $array);
         echo json_encode($array);
     }
 
@@ -371,7 +372,7 @@ class LinkPageAction extends BaseAction {
     public function jsonTreeId()
     {
         Load('extend');
-        $m = M('LinkpageList');
+        $m = new LinkpageListModel();
         $id = $this->_get('id');
         $condition['linkpage_id'] = array('eq',$id);
         $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where($condition)->select();
@@ -390,7 +391,7 @@ class LinkPageAction extends BaseAction {
     public function jsonTreeListId()
     {
         Load('extend');
-        $m = M('LinkpageList');
+        $m = new LinkpageListModel();
         $id = $this->_get('id');
         $condition['linkpage_id'] = array('eq',$id);
         $tree = $m->field(array('id','parent_id','sort_name'=>'text'))->where($condition)->select();
@@ -409,7 +410,7 @@ class LinkPageAction extends BaseAction {
     public function jsonSortTree()
     {
         Load('extend');
-        $m = M('LinkpageSort');
+        $m = new LinkpageSortModel();
         $tree = $m->field(array('id','ename' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         echo json_encode($tree);

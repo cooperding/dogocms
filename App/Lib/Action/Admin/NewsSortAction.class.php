@@ -43,7 +43,7 @@ class NewsSortAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -61,7 +61,7 @@ class NewsSortAction extends BaseAction {
     public function insert()
     {
 //添加功能还需要验证数据不能为空的字段
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $parent_id = $this->_post('parent_id');
         $text = $this->_post('text');
         if (empty($text)) {
@@ -97,8 +97,8 @@ class NewsSortAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('NewsSort');
-        $d = D('NewsSort');//该调用不可修改
+        $m = new NewsSortModel();
+        $d = D('CommonSort');//该调用不可修改
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
         $tbname = 'NewsSort';//可修改为相应的表名
@@ -147,7 +147,7 @@ class NewsSortAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $id = $this->_post('id');
         if (empty($id)) {
             $this->dmsg('1', '未有id值，无法删除！', false, true);
@@ -157,7 +157,7 @@ class NewsSortAction extends BaseAction {
         if (is_array($data)) {
             $this->dmsg('1', '该分类下还有子级分类，无法删除！', false, true);
         }
-        $t = M('Title');
+        $t = new TitleModel();
         $condition_sort['sort_id'] = array('eq',$id);
         $t_data = $t->field('sort_id')->where($condition_sort)->find();
         if (is_array($t_data)) {
@@ -181,7 +181,7 @@ class NewsSortAction extends BaseAction {
      */
     public function json()
     {
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $list = $m->field('id,parent_id,text')->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -205,7 +205,7 @@ class NewsSortAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('NewsSort');
+        $m = new NewsSortModel();
         $tree = $m->field('id,parent_id,text')->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);

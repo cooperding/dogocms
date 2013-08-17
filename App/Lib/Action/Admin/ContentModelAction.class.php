@@ -48,7 +48,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortedit() {
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -70,8 +70,8 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortinsert() {
-        $d = D('ModelSort');
-        $m = M('ModelSort');
+        $d = new ModelTableModel();
+        $m = new ModelSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $emark= $this->_post('emark');
@@ -84,8 +84,7 @@ class ContentModelAction extends BaseAction {
         if ($m->field('id')->where($condition)->find()) {
             $this->dmsg('1', '您输入的名称或者标识' . $ename . $emark . '已经存在！', false, true);
         }
-        $d->addtable($condition['emark']); //创建数据表
-
+        $d->addtable($emark); //创建数据表
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs) {//存在值
@@ -106,7 +105,8 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortupdate() {
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
+        $d = new ModelTableModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $emark = $this->_post('emark');
@@ -125,7 +125,7 @@ class ContentModelAction extends BaseAction {
         $condition_id['id'] = array('eq',$id);
         $data = $m->field('emark')->where($condition_id)->find();
         if ($data['emark'] != $emark) {
-            D('ModelSort')->edittable($data['emark'], $emark);
+            $d->edittable($data['emark'], $emark);
         }
         $rs = $m->save($_POST);
         if ($rs == true) {
@@ -143,9 +143,9 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortdelete() {
-        $d = D('ModelSort');
-        $m = M('ModelSort');
-        $list = M('ModelField');
+        $d = new ModelTableModel();
+        $m = new ModelSortModel();
+        $list = new ModelFieldModel();
         $id = $this->_post('id');
         $condition_sort['sort_id'] = array('eq',$id);
         if ($list->field('sort_id')->where($condition_sort)->find()) {
@@ -171,7 +171,7 @@ class ContentModelAction extends BaseAction {
      * @todo 模型各项操作
      */
     public function sortlist() {
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
         $sort = $m->field('id,ename')->select();
         $this->assign('sort', $sort);
         $this->display();
@@ -211,7 +211,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistedit() {
-        $list = M('ModelField');
+        $list = new ModelFieldModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $list->where($condition)->find();
@@ -227,8 +227,8 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistinsert() {
-        $m = M('ModelField');
-        $ms = M('ModelSort');
+        $m = new ModelFieldModel();
+        $ms = new ModelSortModel();
         $sort_id = $this->_post('sort_id');
         if (empty($_POST['ename']) || empty($_POST['emark'])) {
             $this->dmsg('1', '名称和标识不能为空！', false, true);
@@ -245,8 +245,7 @@ class ContentModelAction extends BaseAction {
         $condition_sort['id'] = array('eq',$sort_id);
         $data = $ms->field('emark')->where($condition_sort)->find();
         $tablename = $data['emark'];
-        $d = D('ModelSort');
-
+        $d = new ModelTableModel();
         $field = $_POST['emark'];
         $type = $_POST['etype'];
         $length = trim($_POST['maxlength']);
@@ -269,7 +268,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortlistupdate() {
-        $m = M('ModelField');
+        $m = new ModelFieldModel();
         $id = $this->_post('id');
         $sort_id = $this->_post('sort_id');
         $ename = $this->_post('ename');
@@ -291,7 +290,7 @@ class ContentModelAction extends BaseAction {
         $condition_id['id'] = array('eq',$id);
         $field = $m->field('emark')->where($condition_id)->find();
         $oldfield = $field['emark']; //旧字段名
-        $d = D('ModelSort');
+        $d = new ModelTableModel();
 
         $newfield = $emark; //新字段名
         $type = $this->_post('etype');
@@ -314,8 +313,8 @@ class ContentModelAction extends BaseAction {
      */
     public function sortlistdelete() {
         $id = intval($_POST['id']);
-        $m = M('ModelField');
-        $d = D('ModelSort');
+        $m = new ModelFieldModel();
+        $d = new ModelTableModel();
         $id = $this->_post('id');
         $condition['mf.id'] = array('eq',$id);
         $data = $m->Table(C('DB_PREFIX') . 'model_field mf')
@@ -345,12 +344,17 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortJson() {
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
+            if($v['status']=='y'){
+                $a[$k]['status'] = '启用';
+            }else{
+                $a[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;
@@ -366,8 +370,9 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function sortSortJson() {
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
         $list = $m->field(array('id','ename'=>'text'))->order('myorder desc,id asc')->select();
+        $list = array_merge(array(array('id' => 0, 'text' => L('modelsort_root_name'))), $list);
         echo json_encode($list);
     }
 
@@ -405,7 +410,7 @@ class ContentModelAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function fieldJsonId() {
-        $m = M('ModelField');
+        $m = new ModelFieldModel();
         $id = $this->_get('id');
         $condition['sort_id'] = array('eq',$id);
         $list = $m->field(array('id','ename','emark','etype','elink'))->where($condition)->select();
@@ -429,7 +434,7 @@ class ContentModelAction extends BaseAction {
      */
     public function jsonSortTree() {
         Load('extend');
-        $m = M('ModelSort');
+        $m = new ModelSortModel();
         $tree = $m->field(array('id','ename'=>'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         //$tree = array_merge(array(array('id' => 0, 'text' => '全部文档')), $tree);

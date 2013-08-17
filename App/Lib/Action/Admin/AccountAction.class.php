@@ -58,7 +58,7 @@ class AccountAction extends BaseAction
      */
     public function updatepwd()
     {
-        $m = M('Operators');
+        $m = new OperatorsModel();
         $oldpwd = $this->_post('oldpwd');
         $newpwd = $this->_post('newpwd');
         $newpwd2 = $this->_post('newpwd2');

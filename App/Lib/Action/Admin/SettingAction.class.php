@@ -50,7 +50,7 @@ class SettingAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function edit() {
-        $m = M('Setting');
+        $m = new SettingModel();
         $id = intval($_GET['id']);
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -74,7 +74,7 @@ class SettingAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function insert() {
-        $m = M('Setting');
+        $m = new SettingModel();
         $sys_name = $this->_post('sys_name');
         $sys_gid = $this->_post('sys_gid');
         if (empty($sys_gid) || empty($sys_name)) {//不为空说明存在，存在就不能添加
@@ -104,7 +104,7 @@ class SettingAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function update() {
-        $m = M('Setting');
+        $m = new SettingModel();
         $id = $this->_post('id');
         $sys_gid = $this->_post('sys_gid');
         $sys_name = $this->_post('sys_name');
@@ -134,7 +134,7 @@ class SettingAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function settinglist() {
-        $m = M('Setting');
+        $m = new SettingModel();
         $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('list');
@@ -150,7 +150,7 @@ class SettingAction extends BaseAction {
     public function delete() {
         $this->dmsg('1', '暂不支持删除操作！', false, true);
         exit;
-        $m = M('Setting');
+        $m = new SettingModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
@@ -169,7 +169,7 @@ class SettingAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function listJsonId() {
-        $m = M('Setting');
+        $m = new SettingModel();
         $id = $this->_get('id');
         $condition['sys_gid'] = array('eq',$id);
         $data = $m->where($condition)->select();

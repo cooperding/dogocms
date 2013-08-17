@@ -14,6 +14,7 @@ $connection = array(
     'DB_CHARSET' => 'utf8', // 数据库编码
     'DB_FIELDS_CACHE' => true, // 启用字段缓存
     'URL_ROUTER_ON' => false,
+    'URL_CASE_INSENSITIVE' =>true,//url不区分大小写
     //language
     'LANG_SWITCH_ON' => true,
     'LANG_LIST' => 'en-us,zh-cn', // 允许切换的语言列表 用逗号分隔

@@ -50,7 +50,7 @@ class NavHeadAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -74,7 +74,7 @@ class NavHeadAction extends BaseAction {
     public function insert()
     {
         //添加功能还需要验证数据不能为空的字段
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $parent_id = $this->_post('parent_id');
         $text = $this->_post('text');
         if (empty($text)) {
@@ -107,7 +107,7 @@ class NavHeadAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $d = D('NewsSort');
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
@@ -150,7 +150,7 @@ class NavHeadAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $id = $this->_post('id');
         if (empty($id)) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
@@ -178,7 +178,7 @@ class NavHeadAction extends BaseAction {
      */
     public function json()
     {
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $list = $m->field('id,parent_id,text')->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -202,7 +202,7 @@ class NavHeadAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('NavHead');
+        $m = new NavHeadModel();
         $tree = $m->field('id,parent_id,text')->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
