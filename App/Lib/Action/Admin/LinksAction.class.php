@@ -50,7 +50,7 @@ class LinksAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Links');
+        $m = new LinksModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -73,7 +73,7 @@ class LinksAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Links');
+        $m = new LinksModel();
         $webname = $this->_post('webname');
         $sort_id = $this->_post('sort_id');
         if (empty($webname)) {
@@ -106,7 +106,7 @@ class LinksAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Links');
+        $m = new LinksModel();
         $id = $this->_post('id');
         $webname = $this->_post('webname');
         $sort_id = $this->_post('sort_id');
@@ -135,7 +135,7 @@ class LinksAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('Links');
+        $m = new LinksModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq', $id);
         $del = $m->where($condition)->delete();
@@ -183,7 +183,7 @@ class LinksAction extends BaseAction {
      */
     public function sortedit()
     {
-        $m = M('LinksSort');
+        $m = new LinksSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -206,7 +206,7 @@ class LinksAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('LinksSort');
+        $m = new LinksSortModel();
         $ename= $this->_post('ename');
         if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
@@ -233,7 +233,7 @@ class LinksAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('LinksSort');
+        $m = new LinksSortModel();
         $id = $this->_post('id');
         $ename= $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
@@ -262,8 +262,8 @@ class LinksAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $m = M('LinksSort');
-        $l = M('Links');
+        $m = new LinksSortModel();
+        $l = new LinksModel();
         $id = $this->_post('id');
         $condition['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition)->find()) {
@@ -287,12 +287,17 @@ class LinksAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('LinksSort');
+        $m = new LinksSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
+            if($v['status']=='y'){
+                $a[$k]['status'] = '启用';
+            }else{
+                $a[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;
@@ -310,7 +315,7 @@ class LinksAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('LinksSort');
+        $m = new LinksSortModel();
         $tree = $m->field(array('id','ename'=> 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
@@ -324,7 +329,7 @@ class LinksAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function jsonList() {
-        $m = M('Links');
+        $m = new LinksModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
@@ -336,6 +341,11 @@ class LinksAction extends BaseAction {
         $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+            if($v['status']=='y'){
+                $data[$k]['status'] = '启用';
+            }else{
+                $data[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;

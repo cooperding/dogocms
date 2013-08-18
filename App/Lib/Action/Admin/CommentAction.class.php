@@ -33,7 +33,7 @@ class CommentAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Comment');
+        $m = new CommentModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -56,7 +56,7 @@ class CommentAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Comment');
+        $m = new CommentModel();
         $id = $this->_post('id');
         $data['id'] = array('eq', $id);
         $_POST['replaytime'] = time();
@@ -78,7 +78,7 @@ class CommentAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('Message');
+        $m = new CommentModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
@@ -98,7 +98,7 @@ class CommentAction extends BaseAction {
      */
     public function jsonList()
     {
-        $m = M('Comment');
+        $m = new CommentModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);

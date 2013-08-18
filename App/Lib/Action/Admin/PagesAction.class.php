@@ -51,7 +51,7 @@ class PagesAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Pages');
+        $m = new PagesModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -74,7 +74,7 @@ class PagesAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Pages');
+        $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
         if (empty($ename)) {
@@ -107,7 +107,7 @@ class PagesAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Pages');
+        $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
         $id = $this->_post('id');
@@ -166,7 +166,7 @@ class PagesAction extends BaseAction {
      */
     public function sortedit()
     {
-        $m = M('PagesSort');
+        $m = new PagesSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -189,7 +189,7 @@ class PagesAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('PagesSort');
+        $m = new PagesSortModel();
         $parent_id = $this->_post('parent_id');
         $ename = $this->_post('ename');
         if (empty($ename)) {
@@ -226,8 +226,8 @@ class PagesAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('PagesSort');
-        $d = D('NewsSort');
+        $m = new PagesSortModel();
+        $d = new CommonSortModel();
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
         $tbname = 'PagesSort';
@@ -276,8 +276,8 @@ class PagesAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $m = M('PagesSort');
-        $list = M('Pages');
+        $m = new PagesSortModel();
+        $list = new PagesModel();
         $id = $this->_post('id');
         $condition_lid['linkpage_id'] = array('eq',$id);
         if ($list->field('id')->where($condition_lid)->find()) {
@@ -301,7 +301,7 @@ class PagesAction extends BaseAction {
      */
     public function jsonSortList()
     {
-        $m = M('PagesSort');
+        $m = new PagesSortModel();
         $list = $m->field(array('id','parent_id','ename' => 'text'))->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -325,7 +325,7 @@ class PagesAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('PagesSort');
+        $m = new PagesSortModel();
         $tree = $m->field(array('id','parent_id','ename'=> 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
@@ -340,7 +340,7 @@ class PagesAction extends BaseAction {
      */
     public function jsonList()
     {
-        $m = M('Pages');
+        $m = new PagesModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);

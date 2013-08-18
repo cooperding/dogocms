@@ -50,7 +50,7 @@ class FlashAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Flash');
+        $m = new FlashModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -73,7 +73,7 @@ class FlashAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Flash');
+        $m = new FlashModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
         if (empty($ename)) {
@@ -106,7 +106,7 @@ class FlashAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Flash');
+        $m = new FlashModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
@@ -136,7 +136,7 @@ class FlashAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('Message');
+        $m = new FlashModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq', $id);
         $del = $m->where($condition)->delete();
@@ -185,7 +185,7 @@ class FlashAction extends BaseAction {
      */
     public function sortedit()
     {
-        $m = M('FlashSort');
+        $m = new FlashSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
@@ -208,7 +208,7 @@ class FlashAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('FlashSort');
+        $m = new FlashSortModel();
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
         if (empty($ename)) {
@@ -236,7 +236,7 @@ class FlashAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('FlashSort');
+        $m = new FlashSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
@@ -265,8 +265,8 @@ class FlashAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $m = M('FlashSort');
-        $l = M('Flash');
+        $m = new FlashSortModel();
+        $l = new FlashModel();
         $id = $this->_post('id');
         $condition['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition)->find()) {
@@ -290,12 +290,17 @@ class FlashAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('FlashSort');
+        $m = new FlashSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
+            if($v['status']=='y'){
+                $a[$k]['status'] = '启用';
+            }else{
+                $a[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;
@@ -313,7 +318,7 @@ class FlashAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('FlashSort');
+        $m = new FlashSortModel();
         $tree = $m->field(array('id','ename' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
@@ -329,7 +334,7 @@ class FlashAction extends BaseAction {
      */
     public function jsonList()
     {
-        $m = M('Flash');
+        $m = new FlashModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);

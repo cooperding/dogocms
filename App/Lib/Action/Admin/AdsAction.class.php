@@ -58,7 +58,7 @@ class AdsAction extends BaseAction {
     public function delete()
     {
         $id = $this->_post('id');
-        $m = M('Ads');
+        $m = new AdsModel();
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
         if ($del == true) {
@@ -106,7 +106,7 @@ class AdsAction extends BaseAction {
     public function sortedit()
     {
         $id = $this->_get('id');
-        $m = M('AdsSort');
+        $m = new AdsSortModel();
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $radios = array(
@@ -128,7 +128,7 @@ class AdsAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('AdsSort');
+        $m = new AdsSortModel();
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
         if (empty($ename)) {
@@ -155,7 +155,7 @@ class AdsAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('AdsSort');
+        $m = new AdsSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
@@ -183,8 +183,8 @@ class AdsAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $m = M('AdsSort');
-        $l = M('Ads');
+        $m = new AdsSortModel();
+        $l = new AdsModel();
         $id = $this->_post('id');
         $condition_sort['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition_sort)->find()) {
@@ -207,7 +207,7 @@ class AdsAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('AdsSort');
+        $m = new AdsSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();

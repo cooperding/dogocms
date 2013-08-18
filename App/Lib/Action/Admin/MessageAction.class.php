@@ -33,7 +33,7 @@ class MessageAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Message');
+        $m = new MessageModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -56,7 +56,7 @@ class MessageAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Message');
+        $m = new MessageModel();
         $sort_id = $this->_post('sort_id');
         $id = $this->_post('id');
         $data['id'] = array('eq',$id);
@@ -82,7 +82,7 @@ class MessageAction extends BaseAction {
      */
     public function delete()
     {
-        $m = M('Message');
+        $m = new MessageModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq',$id);
         $del = $m->where($condition)->delete();
@@ -131,7 +131,7 @@ class MessageAction extends BaseAction {
      */
     public function sortedit()
     {
-        $m = M('MessageSort');
+        $m = new MessageSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -154,7 +154,7 @@ class MessageAction extends BaseAction {
      */
     public function sortinsert()
     {
-        $m = M('MessageSort');
+        $m = new MessageSortModel();
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
         if (empty($ename)) {
@@ -182,7 +182,7 @@ class MessageAction extends BaseAction {
      */
     public function sortupdate()
     {
-        $m = M('MessageSort');
+        $m = new MessageSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $condition['id'] = array('neq', $id);
@@ -211,8 +211,8 @@ class MessageAction extends BaseAction {
      */
     public function sortdelete()
     {
-        $m = M('MessageSort');
-        $l = M('Message');
+        $m = new MessageSortModel();
+        $l = new MessageModel();
         $id = $this->_post('id');
         $condition['sort_id'] = array('eq', $id);
         if ($l->field('id')->where($condition)->find()) {
@@ -235,7 +235,7 @@ class MessageAction extends BaseAction {
      */
     public function jsonList()
     {
-        $m = M('Message');
+        $m = new MessageModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
@@ -271,7 +271,7 @@ class MessageAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('MessageSort');
+        $m = new MessageSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
@@ -294,7 +294,7 @@ class MessageAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('MessageSort');
+        $m = new MessageSortModel();
         $tree = $m->field(array('id','ename' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
