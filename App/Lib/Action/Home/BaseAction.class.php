@@ -13,37 +13,27 @@
  */
 //if(!C("ACCESS"))exit('Access Denied!');//猜一猜有什么用
 class BaseAction extends Action {
+
     //初始化
-    function _initialize()
-    {
-        /*
-        $Setting = M('Setting');
-        $condition['sys_name'] = array('eq','cfg_template'); 
-        $temp = $Setting->field('sys_value')->where($condition)->find();
-        $templateSet =  cache('DOGOCMS_THEME');
-        //获取系统配置与之比较
-        $templateSys = trim($temp['sys_value']);//假如为系统配置信息
-        if(empty($templateSet)){
-            cache('DOGOCMS_THEME',$templateSys);
-        }else{
-            if($templateSet!=$templateSys){
-                cache('DOGOCMS_THEME',$templateSys);
-            }
-        }
-        */
-       // C('DEFAULT_THEME','default');
+    function _initialize() {
+        $skin = $this->getSkin();//获取前台主题皮肤名称
+        $this->assign('style',__PUBLIC__.'/Skin/'.$skin);
+        $this->assign('style_cmomon',__PUBLIC__.'/Common');
+        $this->assign('header','./App/Tpl/Home/'.$skin.'/header.html');
+        $this->assign('footer','./App/Tpl/Home/'.$skin.'/footer.html');
     }
+
     /*
-    //重新装载$this->display()方法
-    function display($name){
-        if(empty($name)){
-            //ACTION_NAME = $name;
-            $name = ACTION_NAME;
-        }
-        //echo __ROOT__;
-        //exit;
-        parent::display('./Themes/'.C('DEFAULT_THEME').'/'.$name.'.html');
+     * getSkin
+     * 获取站点设置的主题名称
+     * @todo 使用程序读取主题皮肤名称
+     */
+
+    public function getSkin() {
+        $skin = 'default';
+        return $skin;
     }
-*/
+
 }
+
 ?>

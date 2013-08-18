@@ -1,0 +1,490 @@
+<div class="block wp">
+    <div class="blockL f_left">
+        <div class="box">
+            <div class="flash">
+                <!-- content S -->
+                <div class="effect">
+                    <div id="slideBox" class="slideBox">
+                        <div class="hd">
+                            <ul><li>1</li><li>2</li></ul>
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                <dogocms:flash typeid="" limit="0,6" order="id desc">
+                                    <li><a href="{$flash.eurl}"><img src="{$flash.epic}" title="{$flash.emark}" /></a></li>
+                                </dogocms:flash>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- content E -->
+            </div><!--flash-->
+
+        </div><!--box-->
+
+        <div class="blank"></div>
+        <div class="box">
+
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">专栏推荐</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont phototext">
+                    <ul>
+                        <dogocms:article limit="0,2" order="id desc">
+                            <li>
+                                <div class="phototext_pic f_left">
+                                    <a href="__APP__/Content/{$article.id}"><img alt="{$article.title}" src="{$article.titlepic}"></a>
+                                </div><!--phototext_pic-->
+                                <div class="phototext_text f_right">
+                                    <h3><a href="/Content/{$article.id}">{$article.title}</a></h3>
+                                    <p>{$article.description}</p>
+                                </div><!--phototext_text-->
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,5" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+
+            </div><!--common-->
+
+
+        </div><!--box-->
+
+    </div><!--blockL-->
+
+    <div class="blockM f_left mleft">
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_cont headlinetop">
+                    <dogocms:article limit="0,1" order="id desc">
+                        <h3><a href="__APP__/Content/?id={$article.id}" title="{$article.title}">{$article.title}</a></h3>
+                        <p>{$article.description}</p>
+                    </dogocms:article>
+                </div><!--common_cont-->
+                <div class="common_cont ftext">
+                    <ul>
+                        <dogocms:article limit="0,6" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                        <div class="clear"></div>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+        <div class="blank"></div>
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,7" order="id desc">
+                            <li>
+                                <div class="title f_left">
+                                    <a href="__APP__/List/?id={$article.sort_id}">[{$article.sortname}]</a>
+                                    <a href="__APP__/Content/?id={$article.id}" title="{$article.title}">{$article.title}</a></div>
+                                <div class="time f_right">[{$article.addtime|date="m-d",###}]</div>
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+        <div class="blank"></div>
+
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">物联网资讯</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=26">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,5" typeid="26" order="id desc">
+                            <li>
+                                <div class="title f_left"><a href="__APP__/Content/?id={$article.id}" title="{$article.title}">{$article.title}</a></div>
+                                <div class="time f_right">[{$article.addtime|date="m-d",###}]</div>
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+
+    </div><!--blockM-->
+
+    <div class="blockR f_right">
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">站内快讯</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont ftext">
+                    <ul>
+                        <dogocms:article limit="0,6" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                        <div class="clear"></div>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+
+        </div><!--box-->
+        <div class="blank"></div>
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">开源项目</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=28">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont phototext">
+                    <ul>
+                        <dogocms:article limit="0,4" typeid="28" order="id desc">
+                            <li>
+                                <div class="phototext_pic f_left">
+                                    <a href="__APP__/Content/?id={$article.id}"><img alt="{$article.title}" src="{$article.titlepic}"></a>
+                                </div><!--phototext_pic-->
+                                <div class="phototext_rtext f_right">
+                                    <h3><a href="__APP__/Content/?id={$article.id}">{$article.title}</a></h3>
+                                    <p>{$article.description}</p>
+                                </div><!--phototext_text-->
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+
+
+    </div><!--blockR-->
+    <div class="clear"></div>
+</div><!--block-->
+<div class="blank"></div>
+<div class="block wp">
+    <div class="blockL f_left">
+        <div class="box">
+
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">物联网技术</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=27" target="_blank">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="27" order="t.id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+
+            </div><!--common-->
+        </div><!--box-->
+
+        <div class="blank"></div>
+        <div class="box">
+
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">图形图像</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=12" target="_blank">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="12" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+
+            </div><!--common-->
+        </div><!--box-->
+
+    </div><!--blockL-->
+
+    <div class="blockM f_left mleft">
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">互联网</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=2" target="_blank">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="2" order="id desc">
+                            <li>
+                                <div class="title f_left"><a href="__APP__/Content/?id={$article.id}" title="{$article.title}">{$article.title}</a></div>
+                                <div class="time f_right">[{$article.addtime|date="m-d",###}]</div>
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+        <div class="blank"></div>
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">PHP教程</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=15" target="_blank">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont ftext">
+                    <ul>
+                        <dogocms:article limit="0,12" typeid="15" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                        <div class="clear"></div>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+        </div><!--box-->
+
+    </div><!--blockM-->
+    <div class="blockR f_right">
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">推荐书籍</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=24" target="_blank">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont phototext">
+                    <ul>
+                        <dogocms:article limit="0,3" typeid="24" order="id desc">
+                            <li>
+                                <div class="phototext_pic f_left">
+                                    <a href="__APP__/Content/?id={$article.id}"><img alt="{$article.title}" src="{$article.titlepic}"></a>
+                                </div><!--phototext_pic-->
+                                <div class="phototext_rtext f_right">
+                                    <h3><a href="__APP__/Content/?id={$article.id}">{$article.title}</a></h3>
+                                    <p>{$article.description}</p>
+                                </div><!--phototext_text-->
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+
+        </div><!--box-->
+        <div class="blank"></div>
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">JQuery教程</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=18">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont ftext">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="18" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                        <div class="clear"></div>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+
+        </div><!--box-->
+
+
+    </div><!--blockR-->
+    <div class="clear"></div>
+</div>
+
+<div class="blank"></div>
+<div class="block wp">
+    <div class="blockL f_left">
+        <div class="box">
+
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">HTML/CSS</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=17">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="17" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+
+            </div><!--common-->
+
+
+        </div><!--box-->
+
+    </div><!--blockL-->
+    <div class="blockM f_left mleft">
+
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">MySQL教程</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=16">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont text">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="16" order="id desc">
+                            <li>
+                                <div class="title f_left"><a href=""></a><a href="__APP__/Content/?id={$article.id}">{$article.title}</a></div>
+                                <div class="time f_right">[{$article.addtime|date="m-d",###}]</div>
+                                <div class="clear"></div>
+                            </li>
+                        </dogocms:article>
+                    </ul>
+                </div><!--common_cont-->
+
+            </div><!--common-->
+        </div><!--box-->
+
+    </div><!--blockM-->
+    <div class="blockR f_right">
+
+        <div class="box">
+            <div class="common commonbd">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left">网站建设</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="__APP__/List/?id=23">更多»</a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont ftext">
+                    <ul>
+                        <dogocms:article limit="0,10" typeid="23" order="id desc">
+                            <li><a href="__APP__/Content/?id={$article.id}" title="{$article.title}" target="_blank">{$article.title}</a></li>
+                        </dogocms:article>
+                        <div class="clear"></div>
+                    </ul>
+                </div><!--common_cont-->
+            </div><!--common-->
+
+        </div><!--box-->
+
+
+    </div><!--blockR-->
+    <div class="clear"></div>
+</div>
+<div class="blank"></div>
+<div class="block wp">
+    <div class="blockL f_left">
+
+    </div><!--blockL-->
+
+    <div class="blockM f_left mleft">
+
+
+    </div><!--blockM-->
+    <div class="blockR f_right">
+
+
+
+    </div><!--blockR-->
+    <div class="clear"></div>
+</div>
+<div class="blank"></div>
+<div class="block wp">
+    <div class="box">
+        <div class="common commonbd">
+            <div class="common_top commontopbd">
+                <div class="ctop_l f_left">视频教程</div>
+                <div class="ctop_m f_left">
+                    <a href="#">PHP视频</a>|
+                    <a href="#">jQuery/AJAX视频</a>|
+                    <a href="#">办公软件教程</a>|
+                    <a href="#">平面设计</a>|
+                    <a href="#">网站制作</a>
+                </div>
+                <div class="ctop_r f_right"></div>
+                <div class="clear"></div>
+            </div><!--common_top-->
+            <div class="common_cont pic">
+                <ul>
+                    <div class="clear"></div>
+                </ul>
+            </div><!--common_cont-->
+        </div><!--common-->
+    </div><!--box-->
+
+</div>
+
+<div class="blank"></div>
+
+<div class="block wp">
+    <div class="blockL f_left">
+
+    </div><!--blockL-->
+
+    <div class="blockM f_left mleft">
+
+
+    </div><!--blockM-->
+    <div class="blockR f_right">
+
+
+
+    </div><!--blockR-->
+    <div class="clear"></div>
+</div>
+
+<div class="blank"></div>
+
+<div class="block wp">
+    <div class="box">
+        <div class="common commonbd">
+            <div class="common_top commontopbd">
+                <div class="ctop_l f_left">友情链接</div>
+                <div class="ctop_m f_left"></div>
+                <div class="ctop_r f_right"></div>
+                <div class="clear"></div>
+            </div><!--common_top-->
+            <div class="common_cont link">
+                <dogocms:links limit="0,10" order="id desc">
+                    <a href="{$links.weburl}" title="{$links.emark}" target="_blank">{$links.webname}</a>
+                </dogocms:links>
+                <div class="clear"></div>
+            </div><!--common_cont-->
+        </div><!--common-->
+    </div><!--box-->
+</div>
