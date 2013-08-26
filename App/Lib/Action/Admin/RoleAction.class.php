@@ -50,7 +50,7 @@ class RoleAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Role');
+        $m = new RoleModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -86,7 +86,7 @@ class RoleAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Role');
+        $m = new RoleModel();
         $name = $this->_post('name');
         $_POST['status'] = $_POST['status'][0];
         //$this->dmsg('1', $_POST['status'], false, true);
@@ -118,8 +118,8 @@ class RoleAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Role');
-        $d = D('NewsSort');
+        $m = new RoleModel();
+        $d = new CommonSortModel();
         $id = $this->_post('id');
         $parent_id = $this->_post('pid');
         $_POST['status'] = $_POST['status'][0];
@@ -167,8 +167,8 @@ class RoleAction extends BaseAction {
      */
     public function updateRbac()
     {
-        $m = M('Node');
-        $a = M('Access');
+        $m = new NodeModel();
+        $a = new AccessModel();
         $data['role_id'] = intval($_POST['role_id']);
         $node_id = $_POST['id'];
         if(empty($node_id)){
@@ -179,7 +179,8 @@ class RoleAction extends BaseAction {
         $a->where($data)->delete();
         $node_id = explode(',',$node_id);
         foreach($node_id as $v){
-            $rsm = $m->where('id='.$v)->field('level')->find();
+            $condition['id'] = array('eq',$v);
+            $rsm = $m->where($condition)->field('level')->find();
             $data['node_id'] = $v;
             $data['level'] = $rsm['level'];
             $rs = $a->data($data)->add();
@@ -212,7 +213,7 @@ class RoleAction extends BaseAction {
      */
     public function json()
     {
-        $m = M('Role');
+        $m = new RoleModel();
         $list = $m->field(array('id','pid','name' => 'text'))->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -236,7 +237,7 @@ class RoleAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('Role');
+        $m = new RoleModel();
         $tree = $m->field(array('id','pid','name' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'pid', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);

@@ -51,7 +51,7 @@ class NodeAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Node');
+        $m = new NodeModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
@@ -73,7 +73,7 @@ class NodeAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Node');
+        $m = new NodeModel();
         $name = $this->_post('name');
         $title = $this->_post('title');
         $parent_id = $this->_post('pid');
@@ -105,8 +105,8 @@ class NodeAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Node');
-        $d = D('NewsSort');
+        $m = new NodeModel();
+        $d = new CommonSortModel();
         $id = $this->_post('id');
         $name = $this->_post('name');
         $title = $this->_post('title');
@@ -165,7 +165,7 @@ class NodeAction extends BaseAction {
      */
     public function json()
     {
-        $m = M('Node');
+        $m = new NodeModel();
         $list = $m->field(array('id','pid','name' => 'text','title','level'))->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -189,7 +189,7 @@ class NodeAction extends BaseAction {
     public function jsonTree()
     {
         Load('extend');
-        $m = M('Node');
+        $m = new NodeModel();
         $tree = $m->field(array('id','pid','title' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'pid', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
@@ -205,8 +205,8 @@ class NodeAction extends BaseAction {
     public function jsonSetRbacTree()
     {
         Load('extend');
-        $m = M('Node');
-        $a = M('Access');
+        $m = new NodeModel();
+        $a = new AccessModel();
         $id = $this->_get('id');
         $condition['role_id'] = array('eq',$id);
         $data = $a->field('node_id')->where($condition)->select();
