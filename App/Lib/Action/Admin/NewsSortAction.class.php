@@ -103,6 +103,9 @@ class NewsSortAction extends BaseAction {
         $parent_id = $this->_post('parent_id');
         $tbname = 'NewsSort';//可修改为相应的表名
         if ($parent_id != 0) {//不为0时判断是否为子分类
+            if($id==$parent_id){
+                $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
+            }
             $condition_sort['id'] = array('eq',$parent_id);
             $condition_sort['path'] = array('like','%,'.$id.',%');
             $cun = $m->field('id')->where($condition_sort)->find(); //判断id选择是否为其的子类

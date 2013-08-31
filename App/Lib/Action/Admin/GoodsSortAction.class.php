@@ -1,20 +1,20 @@
 <?php
 
 /**
- * NavFootAction.class.php
- * 底部导航
+ * GoodsSortAction.class.php
+ * 商品分类
  * @author 正侠客 <lookcms@gmail.com>
  * @copyright 2012- http://www.dingcms.com http://www.dogocms.com All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
- * @version dogocms 1.0 2012-11-5 11:08
+ * @version dogocms 1.0 2012-11-5 11:23
  * @package  Controller
- * @todo 内容模型各项操作
+ * @todo 分类各项操作
  */
-class NavFootAction extends BaseAction {
+class GoodsSortAction extends BaseAction {
 
     /**
      * index
-     * 底部导航列表页
+     * 分类信息列表
      * @access public
      * @return array
      * @version dogocms 1.0
@@ -23,96 +23,85 @@ class NavFootAction extends BaseAction {
     {
         $this->display();
     }
-
     /**
      * add
-     * 底部导航添加操作
+     * 分类添加
      * @access public
      * @return array
      * @version dogocms 1.0
      */
     public function add()
     {
-        $radios = array(
-            'y' => '启用',
-            'n' => '禁用'
-        );
-        $this->assign('radios', $radios);
         $this->display();
     }
-
     /**
      * edit
-     * 底部导航编辑操作
+     * 分类数据编辑
      * @access public
      * @return array
      * @version dogocms 1.0
      */
     public function edit()
     {
-        $m = new NavFootModel();
+        $m = new GoodsSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
-        
-        $status = array(
-            'y' => '启用',
-            'n' => '禁用'
-        );
-        $this->assign('status', $status);
-        $this->assign('v_status', $data['status']);
         $this->assign('data', $data);
         $this->display();
     }
 
     /**
      * insert
-     * 底部导航add后插入数据库
+     * 分类插入数据
      * @access public
      * @return boolean
      * @version dogocms 1.0
      */
     public function insert()
     {
-        //添加功能还需要验证数据不能为空的字段
-        $m = new NavFootModel();
+//添加功能还需要验证数据不能为空的字段
+        $m = new GoodsSortModel();
         $parent_id = $this->_post('parent_id');
         $text = $this->_post('text');
         if (empty($text)) {
             $this->dmsg('1', '分类名不能为空！', false, true);
+        }
+        $en_name = $this->_post('en_name');
+        if (empty($en_name)) {
+            import("ORG.Util.Pinyin");
+            $pinyin = new Pinyin();
+            $_POST['en_name'] = $pinyin->output($text);
         }
         if ($parent_id != 0) {
             $condition['id'] = array('eq',$parent_id);
             $data = $m->field('path')->where($condition)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
-        $_POST['status'] = $_POST['status']['0'];
         if ($m->create($_POST)) {
-            $rs = $m->add($_POST);
+            $rs = $m->add();
             if ($rs) {
                 $this->dmsg('2', '操作成功！', true);
             } else {
-                $this->dmsg('1', '分类添加失败！', false, true);
+                $this->dmsg('1', '操作失败！', false, true);
             }
-        } else {
-            $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
-        }
+        }//if
     }
 
     /**
      * update
-     * 底部导航编辑后更新
+     * 分类更新
      * @access public
      * @return boolean
      * @version dogocms 1.0
      */
     public function update()
     {
-        $m = new NavFootModel();
-        $d = D('NewsSort');
+        $m = new GoodsSortModel();
+        $d = D('CommonSort');//该调用不可修改
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
-        $tbname = 'NavFoot';
+        $tbname = 'NewsSort';//可修改为相应的表名
         if ($parent_id != 0) {//不为0时判断是否为子分类
             if($id==$parent_id){
                 $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
@@ -137,7 +126,13 @@ class NavFootAction extends BaseAction {
             }
             $_POST['path'] = ','; //应该是这个
         }
-        $_POST['status'] = $_POST['status']['0'];
+        $en_name = $this->_post('en_name');
+        if (empty($en_name)) {
+            import("ORG.Util.Pinyin");
+            $pinyin = new Pinyin();
+            $text = $this->_post('text');
+            $_POST['en_name'] = $pinyin->output($text);
+        }
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -148,22 +143,28 @@ class NavFootAction extends BaseAction {
 
     /**
      * delete
-     * 网站导航删除
+     * 分类信息删除操作
      * @access public
      * @return boolean
      * @version dogocms 1.0
      */
     public function delete()
     {
-        $m = new NavFootModel();
+        $m = new GoodsSortModel();
         $id = $this->_post('id');
         if (empty($id)) {
-            $this->dmsg('1', '未有id值，操作失败！', false, true);
+            $this->dmsg('1', '未有id值，无法删除！', false, true);
         }
         $condition_path['path'] = array('like','%,'.$id.',%');
         $data = $m->field('id')->where($condition_path)->select();
         if (is_array($data)) {
-            $this->dmsg('1', '该分类下还有子级分类，操作失败！', false, true);
+            $this->dmsg('1', '该分类下还有子级分类，无法删除！', false, true);
+        }
+        $t = new TitleModel();
+        $condition_sort['sort_id'] = array('eq',$id);
+        $t_data = $t->field('sort_id')->where($condition_sort)->find();
+        if (is_array($t_data)) {
+            $this->dmsg('1', '该分类下还有文档信息，无法删除！', false, true);
         }
         $condition_id['id'] = array('eq',$id);
         $del = $m->where($condition_id)->delete();
@@ -176,14 +177,14 @@ class NavFootAction extends BaseAction {
 
     /**
      * json
-     * 返回json数据
-     * @access index
+     * 分类信息json数据
+     * @access public
      * @return array
      * @version dogocms 1.0
      */
     public function json()
     {
-        $m = new NavFootModel();
+        $m = new GoodsSortModel();
         $list = $m->field('id,parent_id,text')->select();
         $navcatCount = $m->count("id");
         $a = array();
@@ -199,15 +200,15 @@ class NavFootAction extends BaseAction {
 
     /**
      * jsonTree
-     * 底部导航返回树形json数据
-     * @access add edit
+     * 分类json树结构数据
+     * @access public
      * @return array
      * @version dogocms 1.0
      */
     public function jsonTree()
     {
         Load('extend');
-        $m = new NavFootModel();
+        $m = new GoodsSortModel();
         $tree = $m->field('id,parent_id,text')->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);

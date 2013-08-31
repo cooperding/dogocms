@@ -232,6 +232,9 @@ class PagesAction extends BaseAction {
         $parent_id = $this->_post('parent_id');
         $tbname = 'PagesSort';
         if ($parent_id != 0) {//不为0时判断是否为子分类
+            if($id==$parent_id){
+                $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
+            }
             $condition_path['path'] = array('like','%,'.$id.',%');
             $condition_path['id'] = array('eq',$parent_id);
             $cun = $m->field('id')->where($condition_path)->find(); //判断id选择是否为其的子类

@@ -113,6 +113,9 @@ class NavHeadAction extends BaseAction {
         $parent_id = $this->_post('parent_id');
         $tbname = 'NavHead';
         if ($parent_id != 0) {//不为0时判断是否为子分类
+            if($id==$parent_id){
+                $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
+            }
             $condition_pid['id'] = array('eq',$parent_id);
             $data = $m->field('path')->where($condition_pid)->find();
             if ($cun) {
