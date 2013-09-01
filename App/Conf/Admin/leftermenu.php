@@ -74,18 +74,18 @@ $array = array(
                 )),
             array('label' => '属性及分类', 'type' => 'attr_goods_sort', 'items' => array(
                     array('label' => '商品分类', 'type' => 'goods_sort', 'link' => __GROUP__ . '/GoodsSort/index'),
-                    array('label' => '属性分类', 'type' => 'attr_sort', 'link' => 'www.baidu.com'),
-                array('label' => '属性列表', 'type' => 'attr_list', 'link' => 'www.baidu.com')
+                    array('label' => '属性分类', 'type' => 'attribute_sort', 'link' => __GROUP__ . '/AttributeSort/index'),
+                    array('label' => '属性列表', 'type' => 'attribute_list', 'link' => __GROUP__ . '/AttributeList/index')
                 )),
             array('label' => '订单管理', 'type' => 'templet_', 'items' => array(
                     array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 )),
-        array('label' => '物流支付', 'type' => 'templet_', 'items' => array(
+            array('label' => '物流支付', 'type' => 'templet_', 'items' => array(
                     array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 )),
-        array('label' => '订单管理', 'type' => 'templet_', 'items' => array(
+            array('label' => '订单管理', 'type' => 'templet_', 'items' => array(
                     array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 )),
