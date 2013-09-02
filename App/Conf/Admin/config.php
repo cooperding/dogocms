@@ -43,7 +43,7 @@ $miniConfig = array(
           )
          */
 );
-$array = array_merge($array, $miniConfig);
+$array = array_merge((array)$array, (array)$miniConfig);
 return $array;
 
 

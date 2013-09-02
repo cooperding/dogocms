@@ -34,7 +34,7 @@ $miniConfig = array(
         //'comment/vercode'  => 'content/vercode',
     )
 );
-$array = array_merge($array, $miniConfig);
+$array = array_merge((array)$array, (array)$miniConfig);
 //print_r($miniConfig);
 
 return $array;

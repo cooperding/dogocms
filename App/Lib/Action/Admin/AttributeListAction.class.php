@@ -81,8 +81,10 @@ class AttributeListAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Attribute');
-        $data = $m->where('id=' . intval($_GET['id']))->find();
+        $m = new AttributeListModel();
+        $id = intval($_GET['id']);
+        $condition['id'] = array('eq',$id);
+        $data = $m->where($condition)->find();
         $attr_index = array(
             '0' => ' 不需要检索 ',
             '1' => ' 关键字检索 ',
@@ -123,7 +125,7 @@ class AttributeListAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Attribute');
+        $m = new AttributeListModel();
         $ename = $_POST['attr_name'];
         $sort_id = $_POST['sort_id'];
         if (empty($ename)) {
@@ -156,7 +158,7 @@ class AttributeListAction extends BaseAction {
      */
     public function update()
     {
-        $m = M('Attribute');
+        $m = new AttributeListModel();
         $ename = $_POST['attr_name'];
         $data['id'] = array('eq', intval($_POST['id']));
         $sort_id = $_POST['sort_id'];
@@ -187,7 +189,7 @@ class AttributeListAction extends BaseAction {
     public function delete()
     {
         $id = intval($_POST['id']);
-        $m = M('Attribute');
+        $m = new AttributeListModel();
         $del = $m->where('id=' . $id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -203,8 +205,7 @@ class AttributeListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function listJsonId() {
-        $m = M('Attribute');
-        $s = M('GoodsType');
+        $m = new AttributeListModel();
         import('ORG.Util.Page'); // 导入分页类
         $id = intval($_GET['id']);
         if ($id != 0) {//id为0时调用全部文档
@@ -223,19 +224,7 @@ class AttributeListAction extends BaseAction {
         $array['rows'] = $data;
         echo json_encode($array);
     }
-    /**
-     * jsonSortTree
-     * 分类树信息json数据
-     * @access public
-     * @return array
-     * @version dogocms 1.0
-     */
-    public function jsonSortTree() {
-        $m = M('GoodsType');
-        $tree = $m->field('id,cat_name as text')->select();
-        $tree = array_merge(array(array('id' => 0, 'text' => '全部文档')), $tree);
-        echo json_encode($tree);
-    }
+    
 }
 
 ?>
