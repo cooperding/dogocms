@@ -214,5 +214,20 @@ class GoodsSortAction extends BaseAction {
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
         echo json_encode($tree);
     }
+    /**
+     * jsonSortTree
+     * 分类树信息json数据
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function jsonSortTree() {
+        Load('extend');
+        $m = new GoodsSortModel();
+        $tree = $m->field('id,parent_id,text')->select();
+        $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
+        $tree = array_merge(array(array('id' => 0, 'text' => '全部文档')), $tree);
+        echo json_encode($tree);
+    }
 
 }
