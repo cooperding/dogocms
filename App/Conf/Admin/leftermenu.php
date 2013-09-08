@@ -71,7 +71,7 @@ $array = array(
                     array('label' => '商品列表', 'type' => 'goods_list', 'link' => __GROUP__ . '/GoodsList/index'),
                 array('label' => '品牌商家', 'type' => 'brand_list', 'link' => __GROUP__ . '/BrandList/index'),
                     array('label' => '商品图集', 'type' => 'goods_images', 'link' => 'www.baidu.com'),
-                    array('label' => '商品回收站', 'type' => 'goods_recycle', 'link' => 'www.baidu.com'),
+                    array('label' => '商品回收站', 'type' => 'goods_recycle', 'link' => __GROUP__ . '/GoodsList/recycle'),
                 )),
             array('label' => '属性及分类', 'type' => 'attr_goods_sort', 'items' => array(
                     array('label' => '商品分类', 'type' => 'goods_sort', 'link' => __GROUP__ . '/GoodsSort/index'),

@@ -73,47 +73,36 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function edit() {
-        $m = new TitleModel();
+        $m = new GoodsListModel();
+        $c = new GoodsContentModel();
+        $a = new GoodsAttributeModel();
         $id = $this->_get('id');
-        $condition_id['t.id'] = array('eq',$id);
-        $data = $m->field(array('t.*','c.content','ms.id' => 'msid','ms.emark' => 'msemaerk'))->Table( C('DB_PREFIX') . 'title t')->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
-                        ->join(C('DB_PREFIX') . 'news_sort ns ON ns.id=t.sort_id')->join(C('DB_PREFIX') . 'model_sort ms ON ms.id=ns.model_id')
-                        ->where($condition_id)->find();
-        $am = M(ucfirst(C('DB_ADD_PREFIX')) . $data['msemaerk']);
-        $condition_tid['title_id'] = array('eq',$id);
-        $data_ms = $am->where($condition_tid)->find();
-        $mf = new ModelFieldModel();
-        $condition_sid['sort_id'] = array('eq',$data['msid']);
-        $data_filed = $mf->where($condition_sid)->order('myorder asc,id asc')->select();
-        foreach ($data_filed as $k => $v) {
-            $exp = explode(',', $v['evalue']);
-            if ($v['etype'] == 'radio') {
-                $data_filed[$k]['opts'] = $exp;
-            } elseif ($v['etype'] == 'checkbox') {
-                $data_filed[$k]['opts'] = $exp;
-            } elseif ($v['etype'] == 'select') {
-                $data_filed[$k]['opts'] = $exp;
-            }
-        }
-        $flag = array(
-            'h' => ' 头条[h] ',
-            'r' => ' 推荐[r] ',
-            's' => ' 特荐[s] ',
-            't' => ' 置顶[t] ',
-            'p' => ' 图片[p] ',
-            'j' => ' 跳转[j] '
+        $condition_id['gl.id'] = array('eq',$id);
+        $data = $m->field('gl.*,c.content')->Table( C('DB_PREFIX') . 'goods_list gl')
+                ->join(C('DB_PREFIX') . 'goods_content c ON c.goods_id=gl.id')
+                ->where($condition_id)->find();
+        $status = array(
+            '20' => ' 审核 ',
+            '10' => ' 未审核 ',
+            '11' => ' 未通过审核 '
         );
-        $radios = array(
-            'y' => ' 审核 ',
-            'n' => ' 未审核 ',
-            'e' => ' 未通过审核 '
+        $is_sale = array(
+            '20' => ' 是 ',
+            '10' => ' 否 '
         );
+        $is_recycle = array(
+            '20' => ' 是 ',
+            '10' => ' 否 '
+        );
+        $this->assign('id', $id);
+        $this->assign('status', $status);
+        $this->assign('is_sale', $is_sale);
+        $this->assign('is_recycle', $is_recycle);
+        $this->assign('v_status', $data['v_status']);
+        $this->assign('v_is_sale', $data['v_is_sale']);
+        $this->assign('v_is_recycle', $data['v_is_recycle']);
         $this->assign('data', $data);
-        $this->assign('filed', $data_filed);
-        $this->assign('datafiled', $data_ms);
-        $this->assign('flag', $flag);
-        $this->assign('radios', $radios);
-        $this->assign('v_status', $data['status']);
+        
         $this->display();
     }
 
@@ -125,9 +114,9 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function insert() {
-        $t = new TitleModel();
-        $c = new ContentModel();
-        $ns = new NewsSortModel();
+        $m = new GoodsListModel();
+        $c = new GoodsContentModel();
+        $a = new GoodsAttributeModel();
         $title = $this->_post('title');
         $sort_id = $this->_post('sort_id');
         if (empty($title)) {
@@ -136,45 +125,39 @@ class GoodsListAction extends BaseAction {
         if ($sort_id == 0) {
             $this->dmsg('1', '请选择文档分类！', false, true);
         }
-        $_POST['flag'] = implode(',', $_POST['flag']);
-        $filed = array();
-        foreach ($_POST['filed'] as $k => $v) {
-            $filed[$k] = $v;
-        }
-        foreach ($_POST['filedtime'] as $k => $v) {
-            $filed[$k] = strtotime($v);
-        }
-        foreach ($_POST['filedcheckbox'] as $k => $v) {
-            $filed[$k] = implode(',', $v);
-        }
-        //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
-        $condition_ns['ns.id'] = array('eq',$sort_id);
-        $model_rs = $ns->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
-                        ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
-                        ->where($condition_ns)->find();
-        $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
-        //开始写入信息
         $_POST['addtime'] = time();
         $_POST['updatetime'] = time();
-        $_POST['op_id'] = session('LOGIN_UID');
+        $_POST['uid'] = session('LOGIN_UID');
         $_POST['status'] = $_POST['status']['0'];
-        if ($t->create($_POST)) {
-            $rs = $t->add($_POST);
-            $last_id = $t->getLastInsID();
+        $_POST['is_sale'] = $_POST['is_sale']['0'];
+        $_POST['is_recycle'] = $_POST['is_recycle']['0'];
+        $value = $_POST['filed'];
+        unset($_POST['filed']);
+        if ($m->create($_POST)) {
+            $rs = $m->add();
+            $last_id = $m->getLastInsID();
             if ($rs == true) {
-                $_POST['title_id'] = intval($last_id);
-                $filed['title_id'] = intval($last_id);
-                $rsc = $c->data($_POST)->add();
-                $rsm = $m->data($filed)->add();
-                if ($rs == true || $rsc == true || $rsm == true) {
+                $content['goods_id'] = $last_id;
+                $content['content'] = $_POST['content'];
+                $rsc = $c->data($content)->add();
+                
+                
+                if ($rsc == true) {
                     $this->dmsg('2', ' 操作成功！', true);
-                }
+                }else {
+                $this->dmsg('1', '操作失败！', false, true);
+            }
             } else {
                 $this->dmsg('1', '操作失败！', false, true);
             }
         } else {
             $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
         }
+        
+        
+        
+        
+        
     }
 
     /**
@@ -185,44 +168,34 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function update() {
-        $t = new TitleModel();
-        $c = new ContentModel();
-        $ns = new NewsSortModel();
-        $id = $this->_post('id');
-        $data['id'] = array('eq',$id);
-        $cdata['title_id'] = array('eq',$id);
+        $m = new GoodsListModel();
+        $c = new GoodsContentModel();
+        $a = new GoodsAttributeModel();
         $title = $this->_post('title');
         $sort_id = $this->_post('sort_id');
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $condition_other['goods_id'] = array('eq', $id);
         if (empty($title)) {
             $this->dmsg('1', '文章标题不能为空！', false, true);
         }
         if ($sort_id == 0) {
             $this->dmsg('1', '请选择文档分类！', false, true);
         }
-        $_POST['flag'] = implode(',', $_POST['flag']);
-        $filed = array();
-        foreach ($_POST['filed'] as $k => $v) {
-            $filed[$k] = $v;
-        }
-        foreach ($_POST['filedtime'] as $k => $v) {
-            $filed[$k] = strtotime($v);
-        }
-        foreach ($_POST['filedcheckbox'] as $k => $v) {
-            $filed[$k] = implode(',', $v);
-        }
-        //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
-        $condition_ns['ns.id'] = array('eq',$sort_id);
-        $model_rs = $ns->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
-                        ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
-                        ->where($condition_ns)->find();
-        $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
         $_POST['updatetime'] = time();
-        $_POST['op_id'] = session('LOGIN_UID');
+        $_POST['uid'] = session('LOGIN_UID');
         $_POST['status'] = $_POST['status']['0'];
-        $rs = $t->where($data)->save($_POST);
-        $rsc = $c->where($cdata)->save($_POST);
-        $rsm = $m->where($cdata)->save($filed);
-        if ($rs == true || $rsc == true || $rsm == true) {
+        $_POST['is_sale'] = $_POST['is_sale']['0'];
+        $_POST['is_recycle'] = $_POST['is_recycle']['0'];
+        $value = $_POST['filed'];
+        $content['content'] = $_POST['content'];
+        unset($_POST['filed']);
+        unset($_POST['content']);
+        $rs = $m->where($condition)->save($_POST);
+        $rsc = $c->where($condition_other)->save($content);
+        //$sql = $m->getLastSql();
+        //$this->dmsg('1', $sql, false, true);
+        if ($rs == true || $rsc == true) {
             $this->dmsg('2', '更新成功！', true);
         } else {
             $this->dmsg('1', '更新失败,或者未有更新！', false, true);
@@ -237,13 +210,13 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function delete() {
-        $t = new TitleModel();
+        $m = new GoodsListModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'y');
+        $rs = $m->where($data)->setField('is_recycle', '20');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -253,15 +226,24 @@ class GoodsListAction extends BaseAction {
 
     /**
      * tempmodel
-     * 写入信息
+     * 扩展属性信息
      * @access public
      * @return array
      * @version dogocms 1.0
      */
     public function tempmodel() {
-        $mf = new ModelFieldModel();
+        $m = new AttributeListModel();
         $id = $this->_post('id');
-        $condition_sort['sort_id'] = array('eq',$id);
+        $condition_sort['gs.id'] = array('eq',$id);
+        $data = $m->field('al.*')->Table(C('DB_PREFIX').'goods_sort gs')
+                ->join(C('DB_PREFIX').'attribute_list al on al.sort_id=gs.model_id')
+                ->where($condition_sort)->order('al.id asc')->select();
+        foreach($data as $k=>$v){
+            if($v['attr_input_type']=='1'){
+                $data[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
+            }
+        }
+        /*
         $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
         foreach ($data_filed as $k => $v) {
             $exp = explode(',', $v['evalue']);
@@ -273,8 +255,10 @@ class GoodsListAction extends BaseAction {
                 $data_filed[$k]['opts'] = $exp;
             }
         }
+         * 
+         */
         $this->assign('id', time());
-        $this->assign('filed', $data_filed);
+        $this->assign('data_model', $data);
         $this->display();
     }
 
@@ -297,13 +281,13 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function recycleRevert() {
-        $t = new TitleModel();
+        $m = new GoodsListModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'n');
+        $rs = $m->where($data)->setField('is_recycle', '10');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -319,26 +303,17 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function deleteRec() {
-        $t = new TitleModel();
-        $c = new ContentModel();
+        $m = new GoodsListModel();
+        $c = new GoodsContentModel();
+        $a = new GoodsAttributeModel();
         $id = $this->_post('id');
-        $data['id'] = array('in', $id);
-        $cdata['title_id'] = array('in', $id);
-        //id是唯一的值，要取得所有模型的表名，才能删除模型内的信息
-        foreach ($id as $k => $v) {
-            //通过取得的栏目id获得模型id，然后通过模型id获得模型的标识名（即表名），通过表名实例化相应的表信息
-            $model_rs = $t->field('ms.emark')->Table(C('DB_PREFIX') . 'news_sort ns')
-                            ->join(C('DB_PREFIX') . 'model_sort ms ON ms.id = ns.model_id ')
-                            ->join(C('DB_PREFIX') . 'title t ON t.sort_id = ns.id ')
-                            ->where('t.id=' . $v)->find();
-            //$sql = $t->getLastSql();
-            //$this->dmsg('1', $sql, false, true);
-            $m = M(ucfirst(C('DB_ADD_PREFIX')) . $model_rs['emark']);
-            $m->where('title_id='.$v)->delete();
-        }
-        $rst = $t->where($data)->delete();
-        $rsc = $c->where($cdata)->delete();
-        if ($rst == true) {
+        $condition['id'] = array('in', $id);
+        $condition_other['goods_id'] = array('in', $id);
+        
+        $rsl = $m->where($condition)->delete();
+        $rsc = $c->where($condition_other)->delete();
+        $rsa = $a->where($condition_other)->delete();
+        if ($rsl == true||$rsc == true||$rsa == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
             $this->dmsg('1', '操作失败！', false, true);

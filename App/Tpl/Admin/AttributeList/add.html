@@ -25,6 +25,10 @@
                 </td>
             </tr>
             <tr>
+                <th>该属性值的录入方式：</th>
+                <td><html:radio name="attr_type" radios="attr_type" checked="" /></td>
+            </tr>
+            <tr>
                 <th>属性是否可选：</th>
                 <td><html:radio name="attr_input_type" radios="attr_input_type" checked="" />
                 <br/>
@@ -33,10 +37,7 @@
                 </span>
                 </td>
             </tr>
-            <tr>
-                <th>该属性值的录入方式：</th>
-                <td><html:radio name="attr_type" radios="attr_type" checked="" /></td>
-            </tr>
+            
             <tr>
                 <th>可选值列表：</th>
                 <td><textarea name="attr_values" rows="10" cols="60" readonly="readonly">{$data.attr_values}</textarea></td>

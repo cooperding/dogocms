@@ -45,6 +45,7 @@ class TagLibDogocms extends TagLib {
         $order = $tag['order'];//字符串加引号
         $type = $tag['type'];
         $id   = $tag['id'];
+        $tag['where'] = '(`status` = \'y\')';
         $tag['name'] = ucfirst($tag['name']);
         $sql = "M('Nav{$tag['name']}')->";
         $sql .= ($order) ? "order(\"{$order}\")->" : '';
