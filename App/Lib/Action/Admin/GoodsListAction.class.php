@@ -76,11 +76,23 @@ class GoodsListAction extends BaseAction {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
+        $as = new AttributeSortModel();
         $id = $this->_get('id');
         $condition_id['gl.id'] = array('eq',$id);
         $data = $m->field('gl.*,c.content')->Table( C('DB_PREFIX') . 'goods_list gl')
                 ->join(C('DB_PREFIX') . 'goods_content c ON c.goods_id=gl.id')
                 ->where($condition_id)->find();
+        //获取分类id，然后取得属性分类ID，最后获取所有属性列表
+        $condition_sort['gs.id'] = array('eq',$data['sort_id']);
+        $data_model = $as->Table( C('DB_PREFIX') . 'goods_sort gs')
+                ->join(C('DB_PREFIX') . 'attribute_list al ON al.sort_id=gs.model_id')
+                ->field('al.*')
+                ->where($condition_sort)->select();
+        foreach($data_model as $k=>$v){
+            if($v['attr_input_type']=='1'){
+                $data_model[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
+            }
+        }
         $status = array(
             '20' => ' 审核 ',
             '10' => ' 未审核 ',
@@ -102,7 +114,7 @@ class GoodsListAction extends BaseAction {
         $this->assign('v_is_sale', $data['v_is_sale']);
         $this->assign('v_is_recycle', $data['v_is_recycle']);
         $this->assign('data', $data);
-        
+        $this->assign('data_model', $data_model);
         $this->display();
     }
 

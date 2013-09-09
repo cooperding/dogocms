@@ -1,8 +1,8 @@
 <form action="__GROUP__/GoodsList/update" class="form_dogocms" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{$data.id}" />
-    
+
     <div class="division">
-        
+
         <table>
             <tbody>
                 <tr>
@@ -80,15 +80,9 @@
                 <th>文档内容：</th>
                 <td><textarea id="content" name="content" style="width:720px;height:400px;visibility:hidden;">{$data.content|stripslashes}</textarea></td>
             </tr>
-
-
-
-
-
-
             </tbody>
         </table></div>
-    <div id="conModel" style="margin: 10px 0;"><include file="GoodsList:tempmodel" /></div>
+    <div id="conModel" style="margin: 10px 0;"><include file="GoodsList:tempmodel"/></div>
 
 </form>
 <script>

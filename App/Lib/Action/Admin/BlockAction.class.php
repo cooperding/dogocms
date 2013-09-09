@@ -67,7 +67,7 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortadd()
+    public function sortAdd()
     {
         $radios = array(
             'y' => '启用',
@@ -84,10 +84,10 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortedit()
+    public function sortEdit()
     {
-        $m = M('BlockSort');
-        $id = $_this->_get('id');
+        $m = new BlockSortModel();
+        $id = $this->_get('id');
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $radios = array(
@@ -107,9 +107,9 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortinsert()
+    public function sortInsert()
     {
-        $m = M('BlockSort');
+        $m = new BlockSortModel();
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
         if (empty($ename)) {
@@ -134,9 +134,9 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortupdate()
+    public function sortUpdate()
     {
-        $m = M('BlockSort');
+        $m = new BlockSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq',$ename);
@@ -162,9 +162,9 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortdelete()
+    public function sortDelete()
     {
-        $m = M('BlockSort');
+        $m = new BlockSortModel();
         $l = M('Block');
         $id = $this->_post('id');
         $condition_sort['sort_id'] = array('eq', $id);
@@ -188,12 +188,17 @@ class BlockAction extends BaseAction {
      */
     public function sortJson()
     {
-        $m = M('BlockSort');
+        $m = new BlockSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
+            if($v['status']=='y'){
+                $a[$k]['status'] = '启用';
+            }else{
+                $a[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;
