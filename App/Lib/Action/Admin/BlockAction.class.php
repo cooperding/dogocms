@@ -19,8 +19,7 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index()
-    {
+    public function index() {
         $this->display();
     }
 
@@ -31,8 +30,12 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add()
-    {
+    public function add() {
+        $status = array(
+            '20' => '可用',
+            '10' => '禁用'
+        );
+        $this->assign('status', $status);
         $this->display();
     }
 
@@ -43,9 +46,91 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit()
-    {
+    public function edit() {
+        $m = new BlockListModel();
+        $id = $this->_get('id');
+        $condition['id'] = array('eq', $id);
+        $data = $m->where($condition)->find();
+        $this->assign('status', $status);
+        $this->assign('v_status', $data['status']);
+        $this->assign('data', $data);
         $this->display();
+    }
+
+    /**
+     * insert
+     * 写入碎片信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function insert() {
+        $m = new BlockListModel();
+        $title = $this->_post('title');
+        if (empty($title)) {
+            $this->dmsg('1', '请将信息输入完整！', false, true);
+        }
+        $_POST['status'] = $_POST['status']['0'];
+        $_POST['addtime'] = time();
+        $_POST['updatetime'] = time();
+        if ($m->create()) {
+            $rs = $m->add($_POST);
+            if ($rs) {//存在值
+                $this->dmsg('2', '操作成功！', true);
+            } else {
+                $this->dmsg('1', '操作失败！', false, true);
+            }
+        } else {
+            $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
+        }
+    }
+
+    /**
+     * update
+     * 更新信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function update() {
+        $m = new BlockListModel();
+        $id = $this->_post('id');
+        $title = $this->_post('title');
+        $sort_id = $this->_post('sort_id');
+        $condition['id'] = array('eq', $id);
+        if (empty($title)) {
+            $this->dmsg('1', '网站名不能为空！', false, true);
+        }
+        if ($sort_id == 0) {
+            $this->dmsg('1', '请选择所属分类！', false, true);
+        }
+        $_POST['updatetime'] = time();
+        $_POST['status'] = $_POST['status']['0'];
+        $rs = $m->where($condition)->save($_POST);
+        if ($rs == true) {
+            $this->dmsg('2', ' 操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }
+    }
+
+    /**
+     * delete
+     * delete删除
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function delete() {
+        $m = new BlockListModel();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $del = $m->where($condition)->delete();
+        if ($del == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }//if
     }
 
     /**
@@ -55,8 +140,7 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sort()
-    {
+    public function sort() {
         $this->display();
     }
 
@@ -67,8 +151,7 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortAdd()
-    {
+    public function sortAdd() {
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -84,11 +167,10 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortEdit()
-    {
+    public function sortEdit() {
         $m = new BlockSortModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
@@ -107,11 +189,10 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortInsert()
-    {
+    public function sortInsert() {
         $m = new BlockSortModel();
         $ename = $this->_post('ename');
-        $condition['ename'] = array('eq',$ename);
+        $condition['ename'] = array('eq', $ename);
         if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
@@ -127,19 +208,19 @@ class BlockAction extends BaseAction {
             $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
         }
     }
-/**
+
+    /**
      * sortupdate
      * 更新碎片分类
      * @access public
      * @return array
      * @version dogocms 1.0
      */
-    public function sortUpdate()
-    {
+    public function sortUpdate() {
         $m = new BlockSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
-        $condition['ename'] = array('eq',$ename);
+        $condition['ename'] = array('eq', $ename);
         $condition['id'] = array('neq', $id);
         if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
@@ -155,6 +236,7 @@ class BlockAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }//if
     }
+
     /**
      * sortdelete
      * 删除碎片分类
@@ -162,8 +244,7 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortDelete()
-    {
+    public function sortDelete() {
         $m = new BlockSortModel();
         $l = M('Block');
         $id = $this->_post('id');
@@ -179,6 +260,7 @@ class BlockAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }//if
     }
+
     /**
      * sortJson
      * 返回sortjson模型分类数据
@@ -186,23 +268,66 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortJson()
-    {
+    public function jsonSortList() {
         $m = new BlockSortModel();
         $list = $m->select();
         $count = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            if($v['status']=='y'){
+            if ($v['status'] == 'y') {
                 $a[$k]['status'] = '启用';
-            }else{
+            } else {
                 $a[$k]['status'] = '禁用';
             }
         }
         $array = array();
         $array['total'] = $count;
         $array['rows'] = $a;
+        echo json_encode($array);
+    }
+
+    /**
+     * jsonTree
+     * 头部导航返回树形json数据
+     * @access add edit
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function jsonTree() {
+        Load('extend');
+        $m = new BlockSortModel();
+        $condition['status'] = array('eq', 'y');
+        $tree = $m->field(array('id', 'ename' => 'text'))->where($condition)->select();
+        $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
+        $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
+        echo json_encode($tree);
+    }
+
+    /**
+     * jsonList
+     * 取得列表信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function jsonList() {
+        $m = new BlockListModel();
+        import('ORG.Util.Page'); // 导入分页类
+        $pageNumber = intval($_REQUEST['page']);
+        $pageRows = intval($_REQUEST['rows']);
+        $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
+        $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
+        $count = $m->count();
+        $page = new Page($count, $pageRows);
+        $firstRow = ($pageNumber - 1) * $pageRows;
+        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        foreach ($data as $k => $v) {
+            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+        }
+        $array = array();
+        $array['total'] = $count;
+        $array['rows'] = $data;
         echo json_encode($array);
     }
 

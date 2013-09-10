@@ -8,63 +8,78 @@
                     <input type="hidden" name="attr_id_list[]" value="{$vo.id}"/>
                     <!--first start-->
             <if condition="$vo.attr_type eq '0'">
-                
-                <input type="hidden" name="attr_price_list[]" value="{$vo.id}"/>
+
+                <input type="hidden" name="attr_price_list[]" value=""/>
                 <if condition="$vo.attr_input_type eq '0'">
-                    <input type="text" name="attr_value_list[]" value="" />
-                    
+                    <input type="text" name="attr_value_list[]" value="{$vo.values}" />
+
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
-                        <?php
+                        <php>
                         $attr_values = explode(",",$vo['attr_values']);
+                        $value = $vo['values'];
                         foreach($attr_values as $k=>$v){
-                        echo '<option value="'.$v.'">'.$v.'</option>';
+                            if($v==$value){
+                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            }else{
+                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            }
                         }
-                        ?>
+                        </php>
                     </select>
-                    
+
                     <elseif condition="$vo.attr_input_type eq '2'"/>
-                    <textarea name="attr_value_list[]" rows="3" cols="30">{$datafiled[$vo['emark']]}</textarea>
+                    <textarea name="attr_value_list[]" rows="3" cols="30">{$vo.values}</textarea>
                 </if>
                 <!--second start-->
                 <elseif condition="$vo.attr_type eq '1'"/>
-                
+
 
                 <if condition="$vo.attr_input_type eq '0'">
-                    <input type="text" name="attr_value_list[]" value="{$datafiled[$vo['emark']]}" />
+                    <input type="text" name="attr_value_list[]" value="{$vo.values}" />
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
-                        <?php
+                        <php>
                         $attr_values = explode(",",$vo['attr_values']);
+                        $value = $vo['values'];
                         foreach($attr_values as $k=>$v){
-                        echo '<option value="'.$v.'">'.$v.'</option>';
+                            if($v==$value){
+                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            }else{
+                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            }
                         }
-                        ?>
+                        </php>
                     </select>
                     <elseif condition="$vo.attr_input_type eq '2'"/>
-                    
-                    <textarea name="attr_value_list[]" rows="3" cols="30">{$datafiled[$vo['emark']]}</textarea>
+
+                    <textarea name="attr_value_list[]" rows="3" cols="30">{$vo.values}</textarea>
                 </if>
-                价格：<input type="text" name="attr_price_list[]" value="{$vo.id}" style="width:50px;"/>
+                价格：<input type="text" name="attr_price_list[]" value="{$vo.price}" style="width:50px;"/>
                 <span class="do_add" data-item="{$vo.id}">[+]</span>
                 <!--third start-->
                 <elseif condition="$vo.attr_type eq '2'"/>
 
                 <if condition="$vo.attr_input_type eq '0'">
-                    <input type="text" name="attr_value_list[]" value="{$datafiled[$vo['emark']]}" />
+                    <input type="text" name="attr_value_list[]" value="{$vo.values}" />
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
-                        <?php
+                        <php>
                         $attr_values = explode(",",$vo['attr_values']);
+                        $value = $vo['values'];
                         foreach($attr_values as $k=>$v){
-                        echo '<option value="'.$v.'">'.$v.'</option>';
+                            if($v==$value){
+                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            }else{
+                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            }
                         }
-                        ?>
+                        </php>
                     </select>
                     <elseif condition="$vo.attr_input_type eq '2'"/>
-                    <textarea name="attr_value_list[]" rows="3" cols="30">{$datafiled[$vo['emark']]}</textarea>
+                    <textarea name="attr_value_list[]" rows="3" cols="30">{$vo.values}</textarea>
                 </if>
-                价格：<input type="text" name="attr_price_list[]" value="{$vo.id}" style="width:50px;"/>
+                价格：<input type="text" name="attr_price_list[]" value="{$vo.price}" style="width:50px;"/>
                 <span class="do_add" data-item="{$vo.id}">[++]</span>
             </if>
 
@@ -73,121 +88,8 @@
             </td>
             </tr>
         </foreach>
-        
-        
-        
-        
-        
-        <foreach name="filed" item="vo">
-            <tr>
-                <th>{$vo.ename}：</th><td>
-            <if condition="$vo.etype eq 'varchar'">
-                <input type="text" name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}" />
-                <elseif condition="$vo.etype eq 'textarea'"/>
-                <textarea name="filed[{$vo.emark}]" rows="3" cols="30">{$datafiled[$vo['emark']]}</textarea>
-                <elseif condition="$vo.etype eq 'htmltext'"/>
-                <script>
-                    $(function() {
-                        KindEditor.create('#content_{$vo.emark}', {
-                            themeType: 'simple',
-                            allowFileManager: true,
-                            uploadJson: '__GROUP__/Upload/uploadImg',
-                            fileManagerJson: '__GROUP__/Upload/fileManagerJson',
-                            afterBlur: function() {
-                                this.sync();
-                            }
-                        });
-                    });
-                </script>
-                <textarea id="content_{$vo.emark}" name="filed[{$vo.emark}]" style="width:720px;height:400px;visibility:hidden;">{$datafiled[$vo['emark']]|stripslashes}</textarea>
-                <elseif condition="$vo.etype eq 'int'"/>
-                <input type="text" name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}" />
-                <elseif condition="$vo.etype eq 'double'"/>
-                <input type="text" name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}" />
-                <elseif condition="$vo.etype eq 'datetime'"/>
-                <input type="text" class="easyui-datetimebox" data-options="required:true,showSeconds:false" name="filedtime[{$vo.emark}]" value="{$datafiled[$vo['emark']]|date='Y-m-d H:i:s',###}" />
-                <elseif condition="$vo.etype eq 'images'"/>
-                <script>
-                    $(function() {
-                        var editor = KindEditor.editor({
-                            allowFileManager: true,
-                            uploadJson: '__GROUP__/Upload/uploadImg',
-                            fileManagerJson: '__GROUP__/Upload/fileManagerJson'
-                        });
-                        KindEditor('#image_{$vo.emark}').click(function() {
-                            editor.loadPlugin('image', function() {
-                                editor.plugin.imageDialog({
-                                    imageUrl: KindEditor('#url_{$vo.emark}').val(),
-                                    clickFn: function(url, title, width, height, border, align) {
-                                        KindEditor('#url_{$vo.emark}').val(url);
-                                        editor.hideDialog();
-                                    }
-                                });
-                            });
-                        });
-                    });
-                </script>
-                <input type="text" id="url_{$vo.emark}" name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}"/>
-                <input type="button" id="image_{$vo.emark}" value="选择图片" />
-                <elseif condition="($vo.etype eq 'addon') OR ($vo.etype eq 'media')"/>
-                <script>
-                    $(function() {
-                        var editorfile = KindEditor.editor({
-                            allowFileManager: true,
-                            uploadJson: '__GROUP__/Upload/uploadImg',
-                            fileManagerJson: '__GROUP__/Upload/fileManagerJson'
-                        });
-                        KindEditor('#insertfile_{$vo.emark}').click(function() {
-                            editorfile.loadPlugin('insertfile', function() {
-                                editorfile.plugin.fileDialog({
-                                    fileUrl: KindEditor('#url_{$vo.emark}').val(),
-                                    clickFn: function(url, title) {
-                                        KindEditor('#url_{$vo.emark}').val(url);
-                                        editorfile.hideDialog();
-                                    }
-                                });
-                            });
-                        });
-                    });
-                </script>
-                <input type="text" id="url_{$vo.emark}" name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}"/>
-                <input type="button" id="insertfile_{$vo.emark}" value="选择文件" />
-                <elseif condition="$vo.etype eq 'select'"/>
-                <select name="filed[{$vo.emark}]">
-                    <volist name="vo.opts" id="opts" key="k">
-                        <if condition="$datafiled[$vo['emark']] eq $opts">
-                            <option value="{$opts}" selected="selected">{$opts}</option>
-                            <else/>
-                            <option value="{$opts}">{$opts}</option>
-                        </if>
-                    </volist>
-                </select>
-                <elseif condition="$vo.etype eq 'radio'"/>
-                <volist name="vo.opts" id="opts" key="k">
-                    <if condition="$datafiled[$vo['emark']] eq $opts">
-                        <input name="filed[{$vo.emark}]" type="radio" value="{$opts}" checked="checked"/>{$opts}
-                        <else/>
-                        <input name="filed[{$vo.emark}]" type="radio" value="{$opts}"/>{$opts}
-                    </if>
-                </volist>
-                <elseif condition="$vo.etype eq 'checkbox'"/>
-                <volist name="vo.opts" id="opts" key="k">
-                    <php>
-                        $arr = explode(',',$datafiled[$vo['emark']]);
-                        if(in_array($opts,$arr)){
-                        echo '<input name="filedcheckbox['.$vo['emark'].'][]" type="checkbox" value="'.$opts.'" checked="checked"/>'.$opts;
-                        }else{
-                        echo '<input name="filedcheckbox['.$vo['emark'].'][]" type="checkbox" value="'.$opts.'"/>'.$opts;
-                        }
-                    </php>
-                </volist>
-                <elseif condition="$vo.etype eq 'stepselect'"/>
-                <input name="filed[{$vo.emark}]" value="{$datafiled[$vo['emark']]}" class="easyui-combotree combotree"
-                       data-options="url:'__GROUP__/LinkPage/jsonTreeId?id={$vo.elink}'" style="width:200px;"/>
-            </if>
-            </td>
-            </tr>
-        </foreach>
+
+
         <script>
             $(function() {
                 $('.do_add').click(function() {

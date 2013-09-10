@@ -78,20 +78,26 @@ class GoodsListAction extends BaseAction {
         $a = new GoodsAttributeModel();
         $as = new AttributeSortModel();
         $id = $this->_get('id');
-        $condition_id['gl.id'] = array('eq',$id);
-        $data = $m->field('gl.*,c.content')->Table( C('DB_PREFIX') . 'goods_list gl')
-                ->join(C('DB_PREFIX') . 'goods_content c ON c.goods_id=gl.id')
-                ->where($condition_id)->find();
+        $condition_id['gl.id'] = array('eq', $id);
+        $data = $m->field('gl.*,c.content')->Table(C('DB_PREFIX') . 'goods_list gl')
+                        ->join(C('DB_PREFIX') . 'goods_content c ON c.goods_id=gl.id')
+                        ->where($condition_id)->find();
         //获取分类id，然后取得属性分类ID，最后获取所有属性列表
-        $condition_sort['gs.id'] = array('eq',$data['sort_id']);
-        $data_model = $as->Table( C('DB_PREFIX') . 'goods_sort gs')
-                ->join(C('DB_PREFIX') . 'attribute_list al ON al.sort_id=gs.model_id')
-                ->field('al.*')
-                ->where($condition_sort)->select();
-        foreach($data_model as $k=>$v){
-            if($v['attr_input_type']=='1'){
+        $condition_sort['gs.id'] = array('eq', $data['sort_id']);
+        $data_model = $as->Table(C('DB_PREFIX') . 'goods_sort gs')
+                        ->join(C('DB_PREFIX') . 'attribute_list al ON al.sort_id=gs.model_id')
+                        ->field('al.*')
+                        ->where($condition_sort)->select();
+        $condtion_goods['goods_id'] = array('eq', $id);
+        $data_field = $a->where($condtion_goods)->select();
+        foreach ($data_model as $k => $v) {
+            if ($v['attr_input_type'] == '1') {
                 $data_model[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
             }
+            $data_model[$k]['attr_sort_id'] = $data_field[$k]['attr_sort_id'];
+            $data_model[$k]['values'] = $data_field[$k]['values'];
+            $data_model[$k]['price'] = $data_field[$k]['price'];
+            $data_model[$k]['goods_id'] = $data_field[$k]['goods_id'];
         }
         $status = array(
             '20' => ' 审核 ',
@@ -129,6 +135,7 @@ class GoodsListAction extends BaseAction {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
+        $s = new GoodsSortModel();
         $title = $this->_post('title');
         $sort_id = $this->_post('sort_id');
         if (empty($title)) {
@@ -137,39 +144,44 @@ class GoodsListAction extends BaseAction {
         if ($sort_id == 0) {
             $this->dmsg('1', '请选择文档分类！', false, true);
         }
+        $condition_sort['id'] = array('eq', $sort_id);
+        $data_sort = $s->field('model_id')->where($condition_sort)->find();
         $_POST['addtime'] = time();
         $_POST['updatetime'] = time();
         $_POST['uid'] = session('LOGIN_UID');
         $_POST['status'] = $_POST['status']['0'];
         $_POST['is_sale'] = $_POST['is_sale']['0'];
         $_POST['is_recycle'] = $_POST['is_recycle']['0'];
-        $value = $_POST['filed'];
-        unset($_POST['filed']);
+        $attr_id_list = $_POST['attr_id_list'];
+        $attr_value_list = $_POST['attr_value_list'];
+        $attr_price_list = $_POST['attr_price_list'];
         if ($m->create($_POST)) {
             $rs = $m->add();
-            $last_id = $m->getLastInsID();
+            $goods_id = $m->getLastInsID();
             if ($rs == true) {
-                $content['goods_id'] = $last_id;
+                $content['goods_id'] = $goods_id;
                 $content['content'] = $_POST['content'];
                 $rsc = $c->data($content)->add();
-                
-                
+                foreach ($attr_id_list as $k => $v) {
+                    $data_attr['attribute_id'] = $v;
+                    $data_attr['values'] = $attr_value_list[$k];
+                    $data_attr['price'] = $attr_price_list[$k];
+                    $data_attr['goods_id'] = $goods_id;
+                    $data_attr['attr_sort_id'] = $data_sort['model_id'];
+                    $a->data($data_attr)->add();
+                }
+
                 if ($rsc == true) {
                     $this->dmsg('2', ' 操作成功！', true);
-                }else {
-                $this->dmsg('1', '操作失败！', false, true);
-            }
+                } else {
+                    $this->dmsg('1', '操作失败！', false, true);
+                }
             } else {
                 $this->dmsg('1', '操作失败！', false, true);
             }
         } else {
             $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
         }
-        
-        
-        
-        
-        
     }
 
     /**
@@ -183,6 +195,7 @@ class GoodsListAction extends BaseAction {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
+        $s = new GoodsSortModel();
         $title = $this->_post('title');
         $sort_id = $this->_post('sort_id');
         $id = $this->_post('id');
@@ -201,13 +214,31 @@ class GoodsListAction extends BaseAction {
         $_POST['is_recycle'] = $_POST['is_recycle']['0'];
         $value = $_POST['filed'];
         $content['content'] = $_POST['content'];
-        unset($_POST['filed']);
-        unset($_POST['content']);
+        $attr_id_list = $_POST['attr_id_list'];
+        $attr_value_list = $_POST['attr_value_list'];
+        $attr_price_list = $_POST['attr_price_list'];
+
+        if ($attr_id_list) {
+            $condition_attr['goods_id'] = array('eq', $id);
+            $del = $a->where($condition)->delete();
+
+            $condition_sort['id'] = array('eq', $sort_id);
+            $data_sort = $s->field('model_id')->where($condition_sort)->find();
+            foreach ($attr_id_list as $k => $v) {
+                $data_attr['attribute_id'] = $v;
+                $data_attr['values'] = $attr_value_list[$k];
+                $data_attr['price'] = $attr_price_list[$k];
+                $data_attr['goods_id'] = $id;
+                $data_attr['attr_sort_id'] = $data_sort['model_id'];
+                $rsa = $a->data($data_attr)->add();
+            }
+        }
+
         $rs = $m->where($condition)->save($_POST);
         $rsc = $c->where($condition_other)->save($content);
         //$sql = $m->getLastSql();
         //$this->dmsg('1', $sql, false, true);
-        if ($rs == true || $rsc == true) {
+        if ($rs == true || $rsc == true || $rsa == true || $del == true) {
             $this->dmsg('2', '更新成功！', true);
         } else {
             $this->dmsg('1', '更新失败,或者未有更新！', false, true);
@@ -246,27 +277,27 @@ class GoodsListAction extends BaseAction {
     public function tempmodel() {
         $m = new AttributeListModel();
         $id = $this->_post('id');
-        $condition_sort['gs.id'] = array('eq',$id);
-        $data = $m->field('al.*')->Table(C('DB_PREFIX').'goods_sort gs')
-                ->join(C('DB_PREFIX').'attribute_list al on al.sort_id=gs.model_id')
-                ->where($condition_sort)->order('al.id asc')->select();
-        foreach($data as $k=>$v){
-            if($v['attr_input_type']=='1'){
+        $condition_sort['gs.id'] = array('eq', $id);
+        $data = $m->field('al.*')->Table(C('DB_PREFIX') . 'goods_sort gs')
+                        ->join(C('DB_PREFIX') . 'attribute_list al on al.sort_id=gs.model_id')
+                        ->where($condition_sort)->order('al.id asc')->select();
+        foreach ($data as $k => $v) {
+            if ($v['attr_input_type'] == '1') {
                 $data[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
             }
         }
         /*
-        $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
-        foreach ($data_filed as $k => $v) {
-            $exp = explode(',', $v['evalue']);
-            if ($v['etype'] == 'radio') {
-                $data_filed[$k]['opts'] = $exp;
-            } elseif ($v['etype'] == 'checkbox') {
-                $data_filed[$k]['opts'] = $exp;
-            } elseif ($v['etype'] == 'select') {
-                $data_filed[$k]['opts'] = $exp;
-            }
-        }
+          $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
+          foreach ($data_filed as $k => $v) {
+          $exp = explode(',', $v['evalue']);
+          if ($v['etype'] == 'radio') {
+          $data_filed[$k]['opts'] = $exp;
+          } elseif ($v['etype'] == 'checkbox') {
+          $data_filed[$k]['opts'] = $exp;
+          } elseif ($v['etype'] == 'select') {
+          $data_filed[$k]['opts'] = $exp;
+          }
+          }
          * 
          */
         $this->assign('id', time());
@@ -321,11 +352,11 @@ class GoodsListAction extends BaseAction {
         $id = $this->_post('id');
         $condition['id'] = array('in', $id);
         $condition_other['goods_id'] = array('in', $id);
-        
+
         $rsl = $m->where($condition)->delete();
         $rsc = $c->where($condition_other)->delete();
         $rsa = $a->where($condition_other)->delete();
-        if ($rsl == true||$rsc == true||$rsa == true) {
+        if ($rsl == true || $rsc == true || $rsa == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
             $this->dmsg('1', '操作失败！', false, true);
@@ -368,23 +399,18 @@ class GoodsListAction extends BaseAction {
         $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='20'){
+            if ($v['status'] == '20') {
                 $data[$k]['status'] = '已审核';
-            }elseif($v['status']=='10'){
+            } elseif ($v['status'] == '10') {
                 $data[$k]['status'] = '未审核';
-            }elseif($v['status']=='11'){
+            } elseif ($v['status'] == '11') {
                 $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
             }
-             
         }
         $array = array();
         $array['total'] = $count;
         $array['rows'] = $data;
         echo json_encode($array);
     }
-
-
-
-    
 
 }
