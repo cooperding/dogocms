@@ -83,9 +83,11 @@ class GoodsListAction extends BaseAction {
                         ->where($condition_id)->find();
         //获取分类id，然后取得属性分类ID，最后获取所有属性列表
         $condition_sort['gs.id'] = array('eq', $data['sort_id']);
-        $data_model = $as->Table(C('DB_PREFIX') . 'goods_sort gs')
-                        ->join(C('DB_PREFIX') . 'attribute_list al ON al.sort_id=gs.model_id')
+        $condition_sort['ga.goods_id'] = array('eq', $id);
+        $data_model = $as->Table(C('DB_PREFIX') . 'attribute_list al')
+                //->Table(C('DB_PREFIX') . 'goods_sort gs')
                         ->join(C('DB_PREFIX') . 'goods_attribute ga ON ga.attribute_id=al.id')
+                        ->join(C('DB_PREFIX') . 'goods_sort gs ON al.sort_id=gs.model_id')
                         ->field('al.*,ga.values,ga.price,ga.goods_id')
                         ->where($condition_sort)->select();
         if ($data_model) {
