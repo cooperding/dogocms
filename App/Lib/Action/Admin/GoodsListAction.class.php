@@ -284,20 +284,6 @@ class GoodsListAction extends BaseAction {
                 $data[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
             }
         }
-        /*
-          $data_filed = $mf->where($condition_sort)->order('myorder asc,id asc')->select();
-          foreach ($data_filed as $k => $v) {
-          $exp = explode(',', $v['evalue']);
-          if ($v['etype'] == 'radio') {
-          $data_filed[$k]['opts'] = $exp;
-          } elseif ($v['etype'] == 'checkbox') {
-          $data_filed[$k]['opts'] = $exp;
-          } elseif ($v['etype'] == 'select') {
-          $data_filed[$k]['opts'] = $exp;
-          }
-          }
-         * 
-         */
         $this->assign('id', time());
         $this->assign('data_model', $data);
         $this->display();
@@ -383,18 +369,21 @@ class GoodsListAction extends BaseAction {
                 $sort_id .= $v['id'] . ',';
             }
             $sort_id = rtrim($sort_id, ',');
-            $condition['sort_id'] = array('in', $sort_id);
+            $condition['gl.sort_id'] = array('in', $sort_id);
         }
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 
-        $condition['is_recycle'] = isset($_GET['is_recycle']) ? '20' : '10';
+        $condition['gl.is_recycle'] = isset($_GET['is_recycle']) ? '20' : '10';
         $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        $data = $m->table(C('DB_PREFIX') . 'goods_sort gs')
+                ->join(C('DB_PREFIX') . 'goods_list gl on gs.id=gl.sort_id')
+                ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gs.text')
+                ->where($condition)->limit($firstRow . ',' . $pageRows)->order('gl.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
             if ($v['status'] == '20') {
