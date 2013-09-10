@@ -75,7 +75,6 @@ class GoodsListAction extends BaseAction {
     public function edit() {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
-        $a = new GoodsAttributeModel();
         $as = new AttributeSortModel();
         $id = $this->_get('id');
         $condition_id['gl.id'] = array('eq', $id);
@@ -86,18 +85,15 @@ class GoodsListAction extends BaseAction {
         $condition_sort['gs.id'] = array('eq', $data['sort_id']);
         $data_model = $as->Table(C('DB_PREFIX') . 'goods_sort gs')
                         ->join(C('DB_PREFIX') . 'attribute_list al ON al.sort_id=gs.model_id')
-                        ->field('al.*')
+                        ->join(C('DB_PREFIX') . 'goods_attribute ga ON ga.attribute_id=al.id')
+                        ->field('al.*,ga.values,ga.price,ga.goods_id')
                         ->where($condition_sort)->select();
-        $condtion_goods['goods_id'] = array('eq', $id);
-        $data_field = $a->where($condtion_goods)->select();
-        foreach ($data_model as $k => $v) {
-            if ($v['attr_input_type'] == '1') {
-                $data_model[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
+        if ($data_model) {
+            foreach ($data_model as $k => $v) {
+                if ($v['attr_input_type'] == '1') {
+                    $data_model[$k]['attr_values'] = str_replace("\r\n", ',', $v['attr_values']);
+                }
             }
-            $data_model[$k]['attr_sort_id'] = $data_field[$k]['attr_sort_id'];
-            $data_model[$k]['values'] = $data_field[$k]['values'];
-            $data_model[$k]['price'] = $data_field[$k]['price'];
-            $data_model[$k]['goods_id'] = $data_field[$k]['goods_id'];
         }
         $status = array(
             '20' => ' 审核 ',
