@@ -127,6 +127,25 @@ class PagesAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }
     }
+    /**
+     * delete
+     * 单页删除
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function delete()
+    {
+        $m = new PagesModel();
+        $id = $this->_post('id');
+        $condition_id['id'] = array('eq',$id);
+        $del = $m->where($condition_id)->delete();
+        if ($del == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }//if
+    }
 
     /**
      * sort
@@ -280,12 +299,7 @@ class PagesAction extends BaseAction {
     public function sortdelete()
     {
         $m = new PagesSortModel();
-        $list = new PagesModel();
         $id = $this->_post('id');
-        $condition_lid['linkpage_id'] = array('eq',$id);
-        if ($list->field('id')->where($condition_lid)->find()) {
-            $this->dmsg('1', '列表中存在该分类元素不能删除！', false, true);
-        }
         $condition_id['id'] = array('eq',$id);
         $del = $m->where($condition_id)->delete();
         if ($del == true) {
