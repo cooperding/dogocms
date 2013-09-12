@@ -85,7 +85,7 @@ class GoodsListAction extends BaseAction {
         $condition_sort['gs.id'] = array('eq', $data['sort_id']);
         $condition_sort['ga.goods_id'] = array('eq', $id);
         $data_model = $as->Table(C('DB_PREFIX') . 'attribute_list al')
-                //->Table(C('DB_PREFIX') . 'goods_sort gs')
+                        //->Table(C('DB_PREFIX') . 'goods_sort gs')
                         ->join(C('DB_PREFIX') . 'goods_attribute ga ON ga.attribute_id=al.id')
                         ->join(C('DB_PREFIX') . 'goods_sort gs ON al.sort_id=gs.model_id')
                         ->field('al.*,ga.values,ga.price,ga.goods_id')
@@ -266,6 +266,76 @@ class GoodsListAction extends BaseAction {
     }
 
     /**
+     * gallery
+     * 扩展图片集信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function gallery() {
+        $m = new GoodsGalleryModel();
+        $id = $this->_get('id');
+        $condition['goods_id'] = array('eq',$id);
+        $data = $m->where($condition)->select();
+        $this->assign('data', $data);
+        $this->assign('id', $id);
+        $this->display();
+    }
+
+    /**
+     * galleryUpdate
+     * 扩展图片集更新信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function galleryUpdate() {
+        $m = new GoodsGalleryModel();
+        $goods_id = $this->_post('id');
+        $gallery_id = $this->_post('gallery_id');
+        $gallery_thumb = $this->_post('gallery_thumb');
+        $gallery_title = $this->_post('gallery_title');
+        //$gallery_thumb = array_filter($gallery_thumb);
+        foreach ($gallery_thumb as $k => $v) {
+            if (!empty($v)) {
+                $data['goods_id'] = $goods_id;
+                $data['title'] = $gallery_title[$k];
+                $id = $gallery_id[$k];
+                $data['img_url'] = $v;
+                if($id){//存在时更新
+                    $condition['id'] = array('eq',$id);
+                    $rs = $m->where($condition)->save($data);
+                }else{//不存在时写入
+                    $rs = $m->data($data)->add();
+                }
+            }//if
+        }
+        if ($rs == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败,或者未有更改！', false, true);
+        }
+    }
+    /**
+     * galleryRemove
+     * 扩展图片集删除信息
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     * @todo 删除图片时同时将真是图片删除
+     */
+    public function galleryRemove() {
+        $m = new GoodsGalleryModel();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $rs = $m->where($condition)->delete();
+        if ($rs == true) {
+            echo json_encode(array('status'=>'2','msg'=>'ok'));
+        } else {
+            echo json_encode(array('status'=>'1','msg'=>'操作失败'));
+        }//if
+    }
+    /**
      * tempmodel
      * 扩展属性信息
      * @access public
@@ -381,9 +451,9 @@ class GoodsListAction extends BaseAction {
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
         $data = $m->table(C('DB_PREFIX') . 'goods_sort gs')
-                ->join(C('DB_PREFIX') . 'goods_list gl on gs.id=gl.sort_id')
-                ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gs.text')
-                ->where($condition)->limit($firstRow . ',' . $pageRows)->order('gl.id desc')->select();
+                        ->join(C('DB_PREFIX') . 'goods_list gl on gs.id=gl.sort_id')
+                        ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gs.text')
+                        ->where($condition)->limit($firstRow . ',' . $pageRows)->order('gl.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
             if ($v['status'] == '20') {

@@ -14,4 +14,4 @@ img,input,li{ vertical-align:middle;}
 .fleft{ float:left; display:inline; overflow:hidden;}
 .fright{ float:right; display:inline; overflow:hidden;}
 .red{color:#f00;}
-
+.cursor_pointer{cursor: pointer;}

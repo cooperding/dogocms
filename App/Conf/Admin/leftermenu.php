@@ -69,18 +69,13 @@ $array = array(
     array('label' => 'B2C中心', 'type' => 'b2c_name', 'items' => array(
             array('label' => '商品信息', 'type' => 'goods', 'items' => array(
                     array('label' => '商品列表', 'type' => 'goods_list', 'link' => __GROUP__ . '/GoodsList/index'),
-                array('label' => '品牌商家', 'type' => 'brand_list', 'link' => __GROUP__ . '/BrandList/index'),
-                    array('label' => '商品图集', 'type' => 'goods_images', 'link' => 'www.baidu.com'),
+                    array('label' => '品牌商家', 'type' => 'brand_list', 'link' => __GROUP__ . '/BrandList/index'),
                     array('label' => '商品回收站', 'type' => 'goods_recycle', 'link' => __GROUP__ . '/GoodsList/recycle'),
                 )),
             array('label' => '属性及分类', 'type' => 'attr_goods_sort', 'items' => array(
                     array('label' => '商品分类', 'type' => 'goods_sort', 'link' => __GROUP__ . '/GoodsSort/index'),
                     array('label' => '属性分类', 'type' => 'attribute_sort', 'link' => __GROUP__ . '/AttributeSort/index'),
                     array('label' => '属性列表', 'type' => 'attribute_list', 'link' => __GROUP__ . '/AttributeList/index')
-                )),
-            array('label' => '订单管理', 'type' => 'templet_', 'items' => array(
-                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 )),
             array('label' => '物流支付', 'type' => 'templet_', 'items' => array(
                     array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),

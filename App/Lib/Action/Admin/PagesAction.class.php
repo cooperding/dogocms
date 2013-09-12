@@ -20,8 +20,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index()
-    {
+    public function index() {
         $this->display();
     }
 
@@ -32,8 +31,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add()
-    {
+    public function add() {
         $radios = array(
             'y' => '可用',
             'n' => '禁用'
@@ -49,11 +47,10 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit()
-    {
+    public function edit() {
         $m = new PagesModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $radios = array(
             'y' => '可用',
@@ -72,8 +69,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function insert()
-    {
+    public function insert() {
         $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
@@ -105,8 +101,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function update()
-    {
+    public function update() {
         $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
@@ -127,6 +122,7 @@ class PagesAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }
     }
+
     /**
      * delete
      * 单页删除
@@ -134,11 +130,10 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function delete()
-    {
+    public function delete() {
         $m = new PagesModel();
         $id = $this->_post('id');
-        $condition_id['id'] = array('eq',$id);
+        $condition_id['id'] = array('eq', $id);
         $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -154,8 +149,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sort()
-    {
+    public function sort() {
         $this->display();
     }
 
@@ -166,8 +160,7 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortadd()
-    {
+    public function sortadd() {
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -183,11 +176,10 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortedit()
-    {
+    public function sortedit() {
         $m = new PagesSortModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
@@ -206,8 +198,7 @@ class PagesAction extends BaseAction {
      * @return boolean
      * @version dogocms 1.0
      */
-    public function sortinsert()
-    {
+    public function sortinsert() {
         $m = new PagesSortModel();
         $parent_id = $this->_post('parent_id');
         $ename = $this->_post('ename');
@@ -221,7 +212,7 @@ class PagesAction extends BaseAction {
             $_POST['en_name'] = $pinyin->output($en_name);
         }
         if ($parent_id != 0) {
-            $condition_pid['id'] = array('eq',$parent_id);
+            $condition_pid['id'] = array('eq', $parent_id);
             $data = $m->where($condition_pid)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
@@ -243,30 +234,29 @@ class PagesAction extends BaseAction {
      * @return boolean
      * @version dogocms 1.0
      */
-    public function sortupdate()
-    {
+    public function sortupdate() {
         $m = new PagesSortModel();
         $d = new CommonSortModel();
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
         $tbname = 'PagesSort';
         if ($parent_id != 0) {//不为0时判断是否为子分类
-            if($id==$parent_id){
+            if ($id == $parent_id) {
                 $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
             }
-            $condition_path['path'] = array('like','%,'.$id.',%');
-            $condition_path['id'] = array('eq',$parent_id);
+            $condition_path['path'] = array('like', '%,' . $id . ',%');
+            $condition_path['id'] = array('eq', $parent_id);
             $cun = $m->field('id')->where($condition_path)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $condition_pid['id'] = array('eq',$parent_id);
+            $condition_pid['id'] = array('eq', $parent_id);
             $data = $m->field('path')->where($condition_pid)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updatePath($id, $sort_path, $tbname);
         } else {//为0，path为,
-            $condition_id['id'] = array('eq',$id);
+            $condition_id['id'] = array('eq', $id);
             $data = $m->field('parent_id')->where($condition_id)->find();
             if ($data['parent_id'] != $parent_id) {//相同不改变
                 $sort_path = ','; //取得不为0时的path
@@ -296,11 +286,10 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortdelete()
-    {
+    public function sortdelete() {
         $m = new PagesSortModel();
         $id = $this->_post('id');
-        $condition_id['id'] = array('eq',$id);
+        $condition_id['id'] = array('eq', $id);
         $del = $m->where($condition_id)->delete();
         if ($del == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -316,10 +305,9 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonSortList()
-    {
+    public function jsonSortList() {
         $m = new PagesSortModel();
-        $list = $m->field(array('id','parent_id','ename' => 'text'))->select();
+        $list = $m->field(array('id', 'parent_id', 'ename' => 'text'))->select();
         $navcatCount = $m->count("id");
         $a = array();
         foreach ($list as $k => $v) {
@@ -339,24 +327,23 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonTree()
-    {
+    public function jsonTree() {
         Load('extend');
         $m = new PagesSortModel();
-        $tree = $m->field(array('id','parent_id','ename'=> 'text'))->select();
+        $tree = $m->field(array('id', 'parent_id', 'ename' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
         echo json_encode($tree);
     }
- /**
+
+    /**
      * jsonList
      * 取得列表信息
      * @access public
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonList()
-    {
+    public function jsonList() {
         $m = new PagesModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
@@ -375,6 +362,7 @@ class PagesAction extends BaseAction {
         $array['rows'] = $data;
         echo json_encode($array);
     }
+
 }
 ?>
 
