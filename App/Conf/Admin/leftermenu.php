@@ -69,6 +69,7 @@ $array = array(
     array('label' => 'B2C中心', 'type' => 'b2c_name', 'items' => array(
             array('label' => '商品信息', 'type' => 'goods', 'items' => array(
                     array('label' => '商品列表', 'type' => 'goods_list', 'link' => __GROUP__ . '/GoodsList/index'),
+                    array('label' => '缺货商品', 'type' => 'goods_list', 'link' => __GROUP__ . '/GoodsList/outStock'),
                     array('label' => '品牌商家', 'type' => 'brand_list', 'link' => __GROUP__ . '/BrandList/index'),
                     array('label' => '商品回收站', 'type' => 'goods_recycle', 'link' => __GROUP__ . '/GoodsList/recycle'),
                 )),
@@ -78,11 +79,12 @@ $array = array(
                     array('label' => '属性列表', 'type' => 'attribute_list', 'link' => __GROUP__ . '/AttributeList/index')
                 )),
             array('label' => '物流支付', 'type' => 'templet_', 'items' => array(
-                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
+                    array('label' => '物流管理', 'type' => 'freight', 'link' => __GROUP__ . '/Freight/index'),
+                    array('label' => '支付管理', 'type' => 'payment', 'link' => __GROUP__ . '/Payment/index')
                 )),
-            array('label' => '订单管理', 'type' => 'templet_', 'items' => array(
-                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
+            array('label' => '订单管理', 'type' => 'menu_order', 'items' => array(
+                    array('label' => '订单列表', 'type' => 'order_list', 'link' => __GROUP__ . '/OrderList/index'),
+                    array('label' => '添加订单', 'type' => 'order_add', 'link' => __GROUP__ . '/OrderList/orderAdd'),
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 )),
             array('label' => '优惠促销', 'type' => 'setting', 'items' => array(
@@ -127,10 +129,6 @@ $array = array(
             array('label' => '日志管理', 'type' => 'flash', 'items' => array(
                     array('label' => '日志记录', 'type' => 'list', 'link' => __GROUP__ . '/Logs/index'),
                     array('label' => '日志设置', 'type' => 'navhead', 'link' => __GROUP__ . '/Logsinfo/index')
-                )),
-            array('label' => '幻灯管理', 'type' => 'flash', 'items' => array(
-                    array('label' => '幻灯列表', 'type' => 'list', 'link' => __GROUP__ . '/Flash/index'),
-                    array('label' => '幻灯分类', 'type' => 'navhead', 'link' => __GROUP__ . '/Flash/sort')
                 )),
             array('label' => '广告管理', 'type' => 'flash', 'items' => array(
                     array('label' => '广告列表', 'type' => 'advertising', 'link' => __GROUP__ . '/Ads/index'),

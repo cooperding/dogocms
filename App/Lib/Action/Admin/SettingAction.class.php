@@ -173,6 +173,7 @@ class SettingAction extends BaseAction {
         $id = $this->_get('id');
         $condition['sys_gid'] = array('eq',$id);
         $data = $m->where($condition)->select();
+        $count = $m->where($condition)->count();
         //$data = $m->select();
         $array = array();
 
@@ -186,6 +187,7 @@ class SettingAction extends BaseAction {
             }
             $array['rows'][] = $v;
         }
+        $array['total'] = $count;
         echo json_encode($array);
     }
 

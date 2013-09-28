@@ -1,20 +1,22 @@
-<table id="datagrid_flash_sort" class="flash_sort">
+<table id="datagrid_payment">
 
     </table>
-
     <script>
         $(function(){
-            var classId = 'flash_sort';
-            var hrefadd = '__GROUP__/Flash/sortadd';
-            var hrefedit = '__GROUP__/Flash/sortedit';
-            var hrefcancel = '__GROUP__/Flash/sortdelete';
-            var urljson = '__GROUP__/Flash/sortJson';
+            var classId = 'payment';
+            var urljson = '__GROUP__/BrandList/jsonList';
+            var hrefadd = '__GROUP__/BrandList/add';
+            var hrefedit = '__GROUP__/BrandList/edit';
+            var hrefcancel = '__GROUP__/BrandList/delete';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[
                         {field:'id',title:'id',width:50},
-                        {field:'ename',title:'标题',width:150},
+                        {field:'name',title:'商家名称',width:150},
+                        {field:'url',title:'链接地址',width:200},
                         {field:'status',title:'状态',width:200},
+                        {field:'addtime',title:'添加时间',width:200},
+                        {field:'myorder',title:'myorder',width:80},
                         {
                         field:'action',
                         title:'操作',

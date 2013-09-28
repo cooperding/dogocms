@@ -15,7 +15,7 @@ class AdsModel extends Model {
     protected $tableName = 'ads';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'sort_id', 'webname', 'weburl', 'webpic', 'myorder', 'status', 'emark','addtime','updatetime','_pk' => 'id', '_autoinc' => true
+        'id', 'sort_id', 'name', 'url', 'pic', 'myorder', 'status', 'remark','addtime','updatetime','_pk' => 'id', '_autoinc' => true
     );
 
 }

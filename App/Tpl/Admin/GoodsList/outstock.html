@@ -1,4 +1,4 @@
-<table  id="datagrid_adstab{$id}" class="datagrid">
+<table  id="datagrid_goodsoutstock" class="datagrid">
 
 </table>
 
@@ -6,11 +6,11 @@
 <script>
     $(function(){
         var height = $('.indexcenter').height();
-        var classId = 'adstab{$id}';
-        var hrefadd = '__GROUP__/Ads/add?id={$id}';
-        var hrefedit = '__GROUP__/Ads/edit';
-        var hrefcancel = '__GROUP__/Ads/delete';
-        var urljson = '__GROUP__/Ads/listJsonId?id={$id}';
+        var classId = 'goodsoutstock';
+        //var hrefrevert = '__GROUP__/GoodsList/recycleRevert';
+        var hrefedit = '__GROUP__/GoodsList/edit';
+        var hrefcancel = '__GROUP__/GoodsList/deleteRec';
+        var urljson = '__GROUP__/GoodsList/listJsonId?id={$id}&is_outstock=0';
         //openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
         $('#datagrid_'+classId).datagrid({
             url:urljson,
@@ -19,18 +19,23 @@
             rownumbers:true,
             fitColumns:true,
             checkbox:true,
-            height:height-110,
+            height:height-50,
             columns:[[
-                    {field:'id',title:'ID',width:50,align:'center'},
-                    {field:'name',title:'标题',width:200},
-                    {field:'addtime',title:'添加时间',width:200},
-                    {field:'ename',title:'所属分类',width:80},
-                    {field:'status',title:'状态',width:50},
+                    {field: 'id', title: 'ID', width: 50, align: 'center'},
+                    {field: 'title', title: '标题', width: 200},
+                    {field: 'text', title: '所属分类', width: 80},
+                    {field: 'stock', title: '库存', width: 80},
+                    {field: 'addtime', title: '添加时间', width: 200},
+                    {field: 'views', title: '浏览量', width: 50, align: 'center'},
+                    {field: 'status', title: '状态', width: 50},
+                    //{field:'parent_id',title:'parent_id',width:200},
                     {
-                        field:'action',
-                        title:'操作',
+                        field:'action2',
+                        title:'动作',
                         width:50,
                         formatter : function(value, row, index) {
+                            //alert(row.id);
+                            //return row.index;
                             return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
 <img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
                         }
@@ -44,12 +49,34 @@
                     }
                 ]],
             toolbar:[{
-                    id:'btnadd_'+classId,
-                    text:'添加',
+                    id:'btnrevert_'+classId,
+                    text:'还原',
                     iconCls:'icon-add',
                     handler:function(){
-                        var title = '添加文档';
-                        openDialog(classId,hrefadd,title);
+                        var ids = [];
+                        var rows = $('#datagrid_'+classId).datagrid('getSelections');
+                        for(var i=0;i<rows.length;i++){
+                            ids.push(rows[i].id);
+                        }
+                        if(ids==''){
+                            $.messager.alert('信息提示', '请选择要操作的项', 'error');
+                            return false;
+                        }
+                        var href = hrefrevert;
+                        var title = '还原信息';
+                        $.messager.confirm(title,href, function(){
+                            $.ajax({
+                                url:href,
+                                type:'post',
+                                data:{
+                                    id:ids
+                                },
+                                dataType:'json',
+                                success:function(data){
+                                    formAjax(data,classId);
+                                }
+                            });
+                        });//$
                     }
                 },'-',{
                     id:'btnedit_'+classId,
@@ -117,3 +144,4 @@
         })
     })
 </script>
+</div><!--pagecontent-->

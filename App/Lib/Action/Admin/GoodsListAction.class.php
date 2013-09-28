@@ -418,6 +418,16 @@ class GoodsListAction extends BaseAction {
     }
 
     /**
+     * outStock
+     * 缺货商品
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+    public function outStock() {
+        $this->display('outstock');
+    }
+    /**
      * listJsonId
      * 取得field信息
      * @access public
@@ -445,14 +455,16 @@ class GoodsListAction extends BaseAction {
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-
+        if($_GET['is_outstock']=='0'){
+            $condition['gl.stock'] = array('eq','0');
+        }
         $condition['gl.is_recycle'] = isset($_GET['is_recycle']) ? '20' : '10';
-        $count = $m->where($condition)->count();
+        $count = $m->table(C('DB_PREFIX') . 'goods_list gl')->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
         $data = $m->table(C('DB_PREFIX') . 'goods_sort gs')
                         ->join(C('DB_PREFIX') . 'goods_list gl on gs.id=gl.sort_id')
-                        ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gs.text')
+                        ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gl.stock,gs.text')
                         ->where($condition)->limit($firstRow . ',' . $pageRows)->order('gl.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
