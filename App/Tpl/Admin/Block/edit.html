@@ -20,14 +20,23 @@
                 <td><html:radio name="status" radios="status" checked="v_status" /></td>
             </tr>
             <tr>
-                <th>图片1：</th>
+                <th>图片：</th>
                 <td>
                     <input type="text" id="url1" name="title_img" value="{$data.title_img}" />
                     <input type="button" id="image1" value="选择图片" />
                 </td>
             </tr>
+            <if condition="$data.title_img neq ''">
+               <tr>
+                <th></th>
+                <td>
+                    <img src="{$data.title_img}" style="max-width: 300px;"/>
+                </td>
+            </tr>
+            </if>
+            
             <tr>
-                <th>简介描述1：</th>
+                <th>简介描述：</th>
                 <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
             </tr>
             <tr>

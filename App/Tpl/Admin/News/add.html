@@ -88,17 +88,6 @@
             required:true,
             onChange:function(){
                 var nid = $(this).combotree('getValue');
-                //取得id之后，判断是否修改内容模型
-                //ajax方法取得相关信息
-                //var nid = node.id;
-                /*
-                $.messager.confirm('确认信息', '确认是否修改?', function(r){
-                    if (r){
-                        alert('confirmed:'+r);
-                        location.href = 'http://www.google.com';
-                    }
-                });
-                 */
                 var href = '__GROUP__/News/tempmodel';
                 $.ajax({
                     url:href,
@@ -139,38 +128,6 @@
                 });
             });
         });
-
-        /*
-        var colorpicker;
-        KindEditor('#colorpicker').bind('click', function(e) {
-            e.stopPropagation();
-            if (colorpicker) {
-                colorpicker.remove();
-                colorpicker = null;
-                return;
-            }
-            var colorpickerPos = KindEditor('#colorpicker').pos();
-            colorpicker = KindEditor.colorpicker({
-                x : colorpickerPos.x,
-                y : colorpickerPos.y + KindEditor('#colorpicker').height(),
-                z : 19811214,
-                selectedColor : 'default',
-                noColor : '无颜色',
-                click : function(color) {
-                    KindEditor('#color').val(color);
-                    colorpicker.remove();
-                    colorpicker = null;
-                }
-            });
-        });
-        KindEditor.click(function() {
-            if (colorpicker) {
-                colorpicker.remove();
-                colorpicker = null;
-            }
-        });
-
-         */
 
     });
 </script>

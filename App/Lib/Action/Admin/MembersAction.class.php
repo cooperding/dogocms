@@ -74,14 +74,12 @@ class MembersAction extends BaseAction {
     public function insert()
     {
         $m = M('Members');
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
         $name = trim($_POST['name']);
         $_POST['status'] = $_POST['status'][0];
         //$this->dmsg('1', $_POST['status'], false, true);
         if (empty($name)) {
             $this->dmsg('1', '角色名不能为空！', false, true);
         }
-
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs == true) {
@@ -132,20 +130,23 @@ class MembersAction extends BaseAction {
      */
     public function listJsonId()
     {
-        $m = M('Members');
+        $m = new MembersModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-
-        //$condition['is_recycle'] = isset($_GET['is_recycle']) ? 'true' : 'false';
         $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
         $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['creat_time'] = date('Y-m-d H:i:s', $v['creat_time']);
+            if($v['status']=='y'){
+                $data[$k]['status'] = '启用';
+            }else{
+                $data[$k]['status'] = '启用';
+            }
         }
         $array = array();
         $array['total'] = $count;

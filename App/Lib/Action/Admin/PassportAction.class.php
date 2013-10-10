@@ -54,7 +54,7 @@ class PassportAction extends Action
             $login = new OperatorsModel();
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
             if ($rs) {//对查询出的结果进行判断
-                $password = md5(md5($user_name) . sha1($password . $rs['creat_time']));
+                $password = md5(md5($user_name) . sha1($password));
                 if ($password == $rs['password']) {//判断密码是否匹配
                     session('LOGIN_STATUS', 'TRUE');
                     session('authId', $rs['id']);

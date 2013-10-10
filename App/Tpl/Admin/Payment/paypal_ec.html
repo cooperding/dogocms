@@ -1,43 +1,41 @@
-<form action="__GROUP__/Block/insert" class="form_dogocms" method="post" enctype="multipart/form-data">
+<form action="__GROUP__/BrandList/insert" class="form_dogocms" method="post" enctype="multipart/form-data">
         <div class="division">
         <table>
             <tbody>
             <tr>
-                <th>名称：</th>
-                <td><input type="text" name="title" value="{$data.title}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
-            </tr>
-            <tr>
-                <th>所属分类：</th>
-                <td><input name="sort_id" id="combotree" class="easyui-combotree combotree" data-options="url:'__GROUP__/Block/jsonTree',required:true" value="0" style="width:200px;"></td>
+                <th>商家名称：</th>
+                <td><input type="text" name="name" value="{$data.name}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
             </tr>
             <tr>
                 <th>链接地址：</th>
-                <td><input type="text" name="url" value="{$data.eurl}" /></td>
+                <td><input type="text" name="url" value="{$data.url}" /></td>
+            </tr>
+            <tr>
+                <th>商家logo：</th>
+                <td>
+                    <input type="text" id="url1" name="brand_logo" value="" />
+                    <input type="button" id="image1" value="选择图片" />
+                </td>
+            </tr>
+            <tr>
+                <th>商家简介：</th>
+                <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
             </tr>
             <tr>
                 <th>状态：</th>
                 <td><html:radio name="status" radios="status" checked="20" /></td>
             </tr>
             <tr>
-                <th>图片：</th>
-                <td>
-                    <input type="text" id="url1" name="title_img" value="" />
-                    <input type="button" id="image1" value="选择图片" />
-                </td>
-            </tr>
-            <tr>
-                <th>简介描述：</th>
-                <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
-            </tr>
-            <tr>
-                <th>{:L("orderby")}：</th>
-                <td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+                <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
             </tr>
         </tbody>
         </table></div>
     </form>
     <script>
         $(function() {
+            $('.red').click(function(){
+                $('.image_logo').css('display','block');
+            });
             var editor = KindEditor.editor({
                 allowFileManager : true,
                 uploadJson:'__GROUP__/Upload/uploadImg',
@@ -54,5 +52,7 @@
                     });
                 });
             });
+
+
         });
     </script>

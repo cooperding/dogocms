@@ -1,13 +1,13 @@
 <table id="datagrid_payment">
 
-    </table>
+</table>
     <script>
         $(function(){
             var classId = 'payment';
-            var urljson = '__GROUP__/BrandList/jsonList';
-            var hrefadd = '__GROUP__/BrandList/add';
-            var hrefedit = '__GROUP__/BrandList/edit';
-            var hrefcancel = '__GROUP__/BrandList/delete';
+            var urljson = '__GROUP__/Payment/jsonList';
+            var hrefadd = '__GROUP__/Payment/add';
+            var hrefedit = '__GROUP__/Payment/edit';
+            var hrefcancel = '__GROUP__/Payment/delete';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[

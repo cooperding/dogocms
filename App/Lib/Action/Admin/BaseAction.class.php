@@ -77,6 +77,19 @@ class BaseAction extends Action {
             exit;
         }
     }
+    /**
+     * changePassword
+     * 密码生成格式
+     * @access public
+     * @return boolean
+     * @version dogocms 1.0
+     */
+
+    public function changePassword($user_name,$password)
+    {
+        $password = md5(md5($user_name) . sha1($password));
+        return $password;
+    }
 
 }
 

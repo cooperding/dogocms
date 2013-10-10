@@ -51,6 +51,11 @@ class BlockAction extends BaseAction {
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
+        $status = array(
+            '20' => '可用',
+            '10' => '禁用'
+        );
+        $this->assign('status', $status);
         $this->assign('status', $status);
         $this->assign('v_status', $data['status']);
         $this->assign('data', $data);

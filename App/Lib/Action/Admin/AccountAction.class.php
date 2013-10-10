@@ -76,7 +76,7 @@ class AccountAction extends BaseAction
         if($password!=$rs['password']){
             $this->dmsg('1', '原密码输入不正确，请确认输入！', false, true);
         }
-        $_POST['password'] = md5(md5($username) . sha1($newpwd . $rs['creat_time']));
+        $_POST['password'] = $this->changePassword($username, $newpwd);
         $rs = $m->where($condition)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

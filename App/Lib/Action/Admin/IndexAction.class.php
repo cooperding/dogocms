@@ -24,7 +24,6 @@ class IndexAction extends BaseAction
      */
     public function index()
     {
-        
         require_once(APP_PATH . '/conf/admin/leftermenu.php'); //引入菜单
         foreach ($array as $key => $val) {
             foreach ($val['items'] as $skey => $sval) {

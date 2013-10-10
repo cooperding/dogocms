@@ -1,16 +1,5 @@
 <table  id="datagrid_operators" class="datagrid">
-    <thead>
-        <tr>
-            <th data-options="field:'id',align:'center'" rowspan="2" width="50">ID</th>
-            <th data-options="field:'username'" width="200">用户名</th>
-            <th data-options="field:'creat_time'" width="200">添加时间</th>
-            <th data-options="field:'editor'" width="200">发布人</th>
-            <th data-options="field:'status'" width="80">状态</th>
-        </tr>
-    </thead>
 </table>
-
-
 <script>
     $(function(){
         var height = $('.indexcenter').height();
@@ -29,6 +18,21 @@
             checkbox:true,
             height:height-110,
             //singleSelect:true,
+            columns:[[
+                        {field:'id',title:'id',width:50},
+                        {field:'username',title:'用户名',width:150},
+                        {field:'creat_time',title:'添加时间',width:200},
+                        {field:'status',title:'状态',width:80},
+                        {
+                        field:'action',
+                        title:'操作',
+                        width:50,
+                        formatter : function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                    ]],
             frozenColumns:[[
                     {
                         field:'ck',
@@ -109,4 +113,3 @@
         })
     })
 </script>
-</div><!--pagecontent-->

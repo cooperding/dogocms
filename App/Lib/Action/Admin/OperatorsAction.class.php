@@ -50,10 +50,12 @@ class OperatorsAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Operators');
+        $m = new OperatorsModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
-        $data = $m->where($condition)->find();
+        $condition['o.id'] = array('eq',$id);
+        $data = $m->Table( C('DB_PREFIX') . 'operators o')
+                ->join(C('DB_PREFIX') . 'role_user r ON r.user_id=o.id')
+                ->where($condition)->find();
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -73,17 +75,30 @@ class OperatorsAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Role');
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
-        $name = $this->_post('name');
+        $m = new OperatorsModel();
+        $r = new RoleModel();
+        $user_name = $this->_post('username');
+        $password = $this->_post('password');
         $_POST['status'] = $_POST['status'][0];
-        if (empty($name)) {
-            $this->dmsg('1', '角色名不能为空！', false, true);
+        if (empty($user_name)) {
+            $this->dmsg('1', '用户名不能为空！', false, true);
         }
-
+        if (empty($password)) {
+            $this->dmsg('1', '密码不能为空！', false, true);
+        }
+        $condition['username'] = array('eq',$user_name);
+        $data = $m->where($condition)->find();
+        if($data){
+            $this->dmsg('1', '用户名已经存在！', false, true);
+        }
+        $_POST['creat_time'] = time();
+        $_POST['password'] = $this->changePassword($user_name, $password);
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs == true) {
+                $id = $m->getLastInsID();
+                $role_user['user_id'] = $id;
+                $role_user['role_id'] = $this->_post('role_id');
                 $this->dmsg('2', '操作成功！', true);
             } else {
                 $this->dmsg('1', '操作失败！', false, true);
@@ -92,16 +107,36 @@ class OperatorsAction extends BaseAction {
     }
 
     /**
-     * insert
-     * 分类插入数据
+     * update
+     * 分类更新数据
      * @access public
      * @return boolean
      * @version dogocms 1.0
      */
     public function update()
     {
-
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
+        $m = new OperatorsModel();
+        $r = new RoleModel();
+        $user_name = $this->_post('username');
+        $password = $this->_post('password');
+        $_POST['status'] = $_POST['status'][0];
+        if (empty($user_name)) {
+            $this->dmsg('1', '用户名不能为空！', false, true);
+        }
+        if (empty($password)) {
+            $this->dmsg('1', '密码不能为空！', false, true);
+        }
+        $condition['username'] = array('eq',$user_name);
+        $data = $m->where($condition)->find();
+        if($data){
+            $this->dmsg('1', '用户名已经存在！', false, true);
+        }
+        $_POST['creat_time'] = time();
+        if(!empty($password)){
+            $_POST['password'] = $this->changePassword($user_name, $password);
+        }else{
+            unset($_POST['password']);
+        }
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -119,7 +154,20 @@ class OperatorsAction extends BaseAction {
      */
     public function delete()
     {
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
+        $m = new OperatorsModel();
+        $id = $this->_post('id');
+        $uid = session('LOGIN_UID');
+        if($uid==$id||$id=='1'){
+            $this->dmsg('1', '该会员不能删除！', false, true);
+        }
+        $condition['id'] = array('eq', $id);
+        $del = $m->where($condition)->delete();
+        if ($del == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }//if
+        
     }
 
     /**
@@ -131,23 +179,23 @@ class OperatorsAction extends BaseAction {
      */
     public function listJsonId()
     {
-        $m = M('Operators');
-        //$s = M('NewsSort');
+        $m = new OperatorsModel();
         import('ORG.Util.Page'); // 导入分页类
-        //$id = intval($_GET['id']);
-
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-
-        //$condition['is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
         $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
         $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['creat_time'] = date('Y-m-d H:i:s', $v['creat_time']);
+            if($v['status']=='y'){
+                $data[$k]['status'] = '启用';
+            }else{
+                $data[$k]['status'] = '启用';
+            }
         }
         $array = array();
         $array['total'] = $count;
