@@ -25,7 +25,7 @@
                     {field:'id',title:'ID',width:50,align:'center'},
                     {field:'sys_info',title:'参数名称',width:200},
                     {field:'sys_value',title:'参数值',width:200},
-                    {field:'sys_name',title:'参数变量',width:80},
+                    {field:'sys_name',title:'参数变量',width:180},
                     {
                         field:'action',
                         title:'操作',
@@ -88,24 +88,7 @@
                         }
                         var href = hrefcancel;
                         var title = '删除信息';
-                        $.messager.confirm(title,'确定要删除信息？', function(r){
-                            if(!r){
-                                return false;
-                            }
-                            $.ajax({
-                                url:href,
-                                type:'post',
-                                data:{
-                                    id:ids
-                                },
-                                dataType:'json',
-                                success:function(data){
-                                    formAjax(data,classId);
-                                }
-                            });
-                        });//$
-
-
+                        dogoDelete(ids,title,href,classId);
                     }
                 }//
             ]//toolbar

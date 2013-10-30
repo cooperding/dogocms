@@ -79,13 +79,11 @@ $array = array(
                     array('label' => '属性列表', 'type' => 'attribute_list', 'link' => __GROUP__ . '/AttributeList/index')
                 )),
             array('label' => '物流支付', 'type' => 'templet_', 'items' => array(
-                    array('label' => '物流管理', 'type' => 'freight', 'link' => __GROUP__ . '/Freight/index'),
+                    array('label' => '物流管理', 'type' => 'freight', 'link' => __GROUP__ . '/Shipping/index'),
                     array('label' => '支付管理', 'type' => 'payment', 'link' => __GROUP__ . '/Payment/index')
                 )),
             array('label' => '订单管理', 'type' => 'menu_order', 'items' => array(
-                    array('label' => '订单列表', 'type' => 'order_list', 'link' => __GROUP__ . '/OrderList/index'),
-                    array('label' => '添加订单', 'type' => 'order_add', 'link' => __GROUP__ . '/OrderList/orderAdd'),
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
+                    array('label' => '订单列表', 'type' => 'order_list', 'link' => __GROUP__ . '/OrderList/index')
                 )),
             array('label' => '优惠促销', 'type' => 'setting', 'items' => array(
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')

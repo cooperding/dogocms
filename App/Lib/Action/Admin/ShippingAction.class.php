@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FreightAction.class.php
+ * ShippingAction.class.php
  * 物流货物信息
  * @author 正侠客 <lookcms@gmail.com>
  * @copyright 2012- http://www.dingcms.com http://www.dogocms.com All rights reserved.
@@ -10,7 +10,7 @@
  * @package  Controller
  * @todo
  */
-class FreightAction extends BaseAction {
+class ShippingAction extends BaseAction {
 
     /**
      * index

@@ -84,21 +84,7 @@
                         }
                         var href = hrefcancel;
                         var title = '删除信息';
-                        $.messager.confirm(title,href, function(){
-                            $.ajax({
-                                url:href,
-                                type:'post',
-                                data:{
-                                    id:ids
-                                },
-                                dataType:'json',
-                                success:function(data){
-                                    formAjax(data,classId);
-                                }
-                            });
-                        });//$
-
-
+                        dogoDelete(ids,title,href,classId);
                     }
                 }//
             ]//toolbar

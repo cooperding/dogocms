@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{$title}-<dogocms:cfg name="cfg_sitename"/></title>
+        <meta name="keywords" content="{$keywords}" />
+        <meta name="description" content="{$description}" />
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0/css/bootstrap-theme.min.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="{$style}/style/comm.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style}/style/css.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style}/style/slide.css"/>
+        
+    </head>
+    <body>
+        
+        <div class="top wpall">
+            <div class="box wp">
+                <div class="top_l f_left">
+                    <span class="L_passport">&nbsp;您好,欢迎来到admin管理先生网<a href="/index.php/member_login">请登录</a><a href="{:U('Passport/add')}">免费注册</a><a href="/index.php/member_login/forgetpwd">忘记密码</a></span></div>
+                <div class="top_r f_right">
+
+                </div><!--top_r-->
+                <div class="clear"></div>
+            </div><!--box-->
+        </div>
+        <div class="box wpall">
+            <div class="head">
+                <div class="box wp">
+                    <div class="logo f_left">
+                        <h1><a href="http://www.adminsir.net/"><img src="__PUBLIC__/Skin/default/images/logo.jpg" alt=""></a></h1>
+                    </div><!--mall_logo-->
+                    <div class="search f_right">
+                        <div class="box">
+                            <div class="usual">
+                                <div class="search_con">
+                                    <form action="__APP__/Search" method="get" target="_blank">
+                                        <input type="text" class="sinput" name="words">
+                                        <input type="submit" value=" " class="search_sub">
+                                    </form>
+                                </div><!--search_con-->
+                            </div></div><!--box-->
+
+                    </div><!--mall_search-->
+                    <div class="clear"></div>
+                </div><!--box-->
+            </div><!--head-->
+        </div>
+        <!--box-->
+
+        <div class="box menu wpall">
+            <div class="nav wp">
+                <ul>
+                    <dogocms:nav name="head" order="id asc" type="son" limit="0,50">
+                        <li><a href="__APP__/{$nav.url}" target="_self">{$nav.text}</a></li>
+                    </dogocms:nav>
+                    <div class="clear"></div>
+                </ul>
+            </div><!--nav-->
+        </div>

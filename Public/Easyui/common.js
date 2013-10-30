@@ -175,31 +175,36 @@ function openDatagrid(classId, urljson, hrefadd, hrefedit, hrefcancel) {
                     var id = selected.id;
                     var href = hrefcancel;
                     var title = '删除信息';
-                    $.messager.confirm(title,'确定要删除信息吗?', function(r){
-                    if(!r){
-                        return false;
-                    }
-                        $.ajax({
-                            url: href,
-                            type: 'post',
-                            data: {
-                                id: id
-                            },
-                            dataType: 'json',
-                            success: function(data) {
-                                formAjax(data, classId);
-                            }
-                        });
-                    });//$
-
-
+                    dogoDelete(id,title,href,classId);
                 }
             }//
         ]//toolbar
     });
 
 }
-
+/*
+ * dogoDelete 执行删除功能
+ * classId id
+ * href 请求地址
+ */
+function dogoDelete(id,title,href,classId) {
+    $.messager.confirm(title, '确定要删除信息吗?', function(r) {
+        if (!r) {
+            return false;
+        }
+        $.ajax({
+            url: href,
+            type: 'post',
+            data: {
+                id: id
+            },
+            dataType: 'json',
+            success: function(data) {
+                formAjax(data, classId);
+            }
+        });
+    });//$
+}
 
 /*
  * openTreeGrid 执行树结构的文档
@@ -259,22 +264,7 @@ function openTreeGrid(classId, urljson, hrefadd, hrefedit, hrefcancel) {
                     var id = selected.id;
                     var href = hrefcancel;
                     var title = '删除信息';
-                    $.messager.confirm(title, '确定要删除信息吗?', function(r) {
-                        if (!r) {
-                            return false;
-                        }
-                        $.ajax({
-                            url: href,
-                            type: 'post',
-                            data: {
-                                id: id
-                            },
-                            dataType: 'json',
-                            success: function(data) {
-                                formAjax(data, classId);
-                            }
-                        });
-                    });//$
+                    dogoDelete(id,title,href,classId);
                 }
             }
         ]

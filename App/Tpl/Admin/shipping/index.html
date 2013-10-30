@@ -1,13 +1,14 @@
-<table id="datagrid_freight">
+<table id="datagrid_shipping">
 
 </table>
     <script>
         $(function(){
-            var classId = 'freight';
-            var urljson = '__GROUP__/Freight/jsonList';
-            var hrefadd = '__GROUP__/Freight/add';
-            var hrefedit = '__GROUP__/Freight/edit';
-            var hrefcancel = '__GROUP__/Freight/delete';
+            var classId = 'shipping';
+            var urljson = '__GROUP__/Shipping/jsonList';
+            var hrefadd = '__GROUP__/Shipping/add';
+            var hrefedit = '__GROUP__/Shipping/edit';
+            var hrefcancel = '__GROUP__/Shipping/delete';
+            var hrefregion = '__GROUP__/GoodsList/gallery';
             openDatagrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
             $('#datagrid_'+classId).datagrid({
                 columns:[[
@@ -22,7 +23,8 @@
                         title:'操作',
                         width:50,
                         formatter : function(value, row, index) {
-                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/tip.png" onclick="ding_gallery(\'' + hrefregion + '?id=' + row.id + '\',\'' + classId + '\')"  title="商品图片集"/>&nbsp;\n\
+                    <img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
 <img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
                         }
                     }

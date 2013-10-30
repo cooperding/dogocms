@@ -15,12 +15,13 @@
 class BaseAction extends Action {
 
     //初始化
-    function _initialize() {
-        $skin = $this->getSkin();//获取前台主题皮肤名称
-        $this->assign('style',__PUBLIC__.'/Skin/'.$skin);
-        $this->assign('style_cmomon',__PUBLIC__.'/Common');
-        $this->assign('header','./App/Tpl/Home/'.$skin.'/header.html');
-        $this->assign('footer','./App/Tpl/Home/'.$skin.'/footer.html');
+    function _initialize()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('style', __PUBLIC__ . '/Skin/' . $skin);
+        $this->assign('style_cmomon', __PUBLIC__ . '/Common');
+        $this->assign('header', './App/Tpl/Home/' . $skin . '/header.html');
+        $this->assign('footer', './App/Tpl/Home/' . $skin . '/footer.html');
     }
 
     /*
@@ -29,9 +30,32 @@ class BaseAction extends Action {
      * @todo 使用程序读取主题皮肤名称
      */
 
-    public function getSkin() {
-        $skin = 'default';
+    public function getSkin()
+    {
+        $skin = trim($this->getCfg('cfg_skin_web'));
         return $skin;
+    }
+
+    /*
+     * getCfg
+     * 获取站点配置
+     * @todo
+     */
+
+    public function getCfg($name)
+    {
+        $m = M('Setting');
+        if ($name) {
+            $condition['sys_name'] = array('eq', $name);
+            $rs = $m->where($condition)->find();
+            if($rs){
+                return $rs['sys_value'];
+            }  else {
+                return 'default';
+            }
+        } else {
+            return false;
+        }
     }
 
 }
