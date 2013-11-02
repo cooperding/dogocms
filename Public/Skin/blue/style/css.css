@@ -1,0 +1,51 @@
+/* CSS Document */
+/*header*/
+.dogo-header{width: 100%;height: 680px;display: block;overflow: hidden;background: #171a1f url(../images/bk_header.jpg) no-repeat center;padding-top: 103PX;}
+.dogo-top{text-align: center;}
+.dogo-top h1{margin-top: 103px;}
+
+.dogo-top h1 {width:90px; height:90px; display:block; background:url(../images/mat2.png); background-size:90px 90px;margin: 0 auto;text-indent:-9000px;}
+.dogo-top h2{font-family: "helvetica neue", helvetica, arial;font-size: 50px;color: #ffffff;margin: 80px 0px 0px 0px;}
+.dogo-top h2 a{color: #ffffff;}
+.dogo-top h2 span{color: #ff2a00;margin: 0 3px;}
+.dogo-top h4{font-family: "helvetica neue", helvetica, arial;font-size: 30px;line-height: 70px;color: #ffffff;font-weight: 200;}
+.dogo-top h4 span{color: #ff2a00;margin: 0 3px;}
+.dogo-top h3{color: #fff;}
+
+.dogo-section{width: 100%;height: 680px;}
+/*dogo-lemon 柠檬色*/
+.dogo-lemon{background: #f7d043;}
+
+/*dogo-orange 橙色*/
+.dogo-orange{background: #e95c33;}
+
+/*dogo-gray 灰色*/
+.dogo-gray{background: #efedeb;}
+
+/*dogo-purple 紫色*/
+.dogo-purple{background: #361164;}
+
+/*dogo-light-green 浅绿色*/
+.dogo-light-green{background: #1fa67a;}
+
+/*dogo-blue 蓝色*/
+.dogo-blue{background: #2d89ef;}
+
+/*dogo-blue 黑色*/
+.dogo-black{background: #0a0a0a;}
+
+/*dogo-blue-bk 黑色背景图片*/
+.dogo-black-bk{width: 100%;height: 814px;display: block;overflow: hidden;background: #171a1f url(../images/ab_bk.png) repeat-x 0 -63px;}
+
+.dogo-radius{border: solid 6px #f5ecec;border-radius: 200px;}
+
+
+
+.col-md-3{margin-top: 20px;}
+
+
+
+
+/*footer*/
+.dogo-footer{height: 170px;}
+.dogo-footer:after{background-image: url(images/bg_wen.png);}

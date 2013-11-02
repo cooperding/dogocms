@@ -53,9 +53,3 @@ body{}
 .common .ctop_m a{ margin:0 5px;}
 
 
-
-img{
-  max-width: 640px;
-  height:auto;
-  width:expression(this.width > 640 ? "640px" : this.width);
-}

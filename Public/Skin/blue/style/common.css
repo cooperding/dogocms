@@ -7,7 +7,7 @@ a:hover{text-decoration:none;color: #FF6347;}
 
 /*img,input,li{ vertical-align:middle;}*/
 
-.dogo-wp{ width:960px; margin:0 auto;}
+.dogo-wp{ width:990px; margin:0 auto;}
 .dogo-border{border: 1px solid #ccc;}/*临时设置最小高度*/
 .dogo-pdtop1{padding-top: 5px;}
 .dogo-pdtop2{padding-top: 10px;}
@@ -29,8 +29,6 @@ border-radius: 4px 4px 0 0;}
 .dogo-border-notop{border: 1px solid #ccc;border-top: none;-webkit-border-radius: 0 0px 4px 4px;-moz-border-radius: 0px 0px 4px 4px;border-radius: 0px 0px 4px 4px;}
 .dogo-border-nobottom{border: 1px solid #ccc;border-bottom: none;-webkit-border-radius: 4px 4px 0 0;-moz-border-radius: 4px 4px 0 0;border-radius: 4px 4px 0 0;}
 .dogo-border-all{border: 1px solid #ccc;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
-.slideBox{border: 1px solid #ccc;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
-
 
 
 .dogo-box-header{padding-left: 8px;height: 35px;}
