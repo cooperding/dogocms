@@ -20,8 +20,8 @@
                     <div class="dogo-top">
                         <h1>matias gallipoli</h1>
                         <h2><a href="#lemon">互联网<span>/</span>物联网<span>/</span>移动互联网</a></h2>
-                        <h4><span>©</span>2013 秋允技术</h4>
-                        <h3>秋允技术</h3>
+                        <h4><span>©</span>2013 QiuYunTech</h4>
+                        <h3>Qiu Yun Code</h3>
                     </div><!--dogo-top-->
 
                 </div><!--dogo-wp-->
@@ -32,34 +32,27 @@
                 <div class="dogo-wp">
                     <div class="row">
                         <span class="col-md-12">
-                            <h1 style="height: 55px;color: #fff;">秋允技术旗下优秀站点</h1>
+                            <h1 style="height: 55px;color: #fff;">QiuYunTech优秀站点</h1>
                         </span>
                     </div>
                     <div class="row">
-                        <span class="col-md-3">
-                            <div class="dogo-blue dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3">
-                            <div class="dogo-lemon dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3 ">
-                            <div class="dogo-orange dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3 ">
-                            <div class="dogo-light-green dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3">
-                            <div class="dogo-blue dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3">
-                            <div class="dogo-lemon dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3 ">
-                            <div class="dogo-orange dogo-radius" style="height: 220px;"></div>
-                        </span>
-                        <span class="col-md-3 ">
-                            <div class="dogo-light-green dogo-radius" style="height: 220px;"></div>
-                        </span>
+                        <dogocms:block typeid="4" limit="8">
+                            <span class="col-md-3">
+
+                                <div class="dogo-website">
+                                    <div class="dogo-content dogo-radius">
+                                        <img src="{$block.title_img}"/>
+                                        <div class="dogo-mask dogo-mask-1">
+                                            <a href="{$block.field1}" class="">{$block.field2}</a>
+                                        </div>
+                                        <div class="dogo-mask dogo-mask-2">
+                                            <a href="{$block.url}" target="_blank" class="btn dogo-tooltip btn-default" data-toggle="tooltip" data-placement="top" title="{$block.description}" data-original-title="{$block.description}">{$block.field3} >></a>
+                                        </div>
+                                    </div><!--dogo-content-->
+                                </div><!--dogo-website-->
+                            </span>
+                        </dogocms:block>
+                        
                     </div>
                 </div><!--dogo-wp-->
             </section><!--dogo-section-->

@@ -329,6 +329,11 @@ class BlockAction extends BaseAction {
         $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+            if($v['status']=='20'){
+                $data[$k]['status'] = '启用';
+            }  else {
+                $data[$k]['status'] = '禁用';
+            }
         }
         $array = array();
         $array['total'] = $count;

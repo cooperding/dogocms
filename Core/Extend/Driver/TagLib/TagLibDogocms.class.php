@@ -15,11 +15,10 @@ class TagLibDogocms extends TagLib {
         'pagelist' => array("attr" => "attr1,attr2", level => 3), //分页
         'ad' => array("attr" => "attr1,attr2", level => 3), //广告（包含幻灯）
         'page' => array("attr" => "attr1,attr2", level => 3), //广告（包含幻灯）
-        'block' => array("attr" => "attr1,attr2", level => 3), //碎片
+        'block' => array("attr" => "typeid,limit,order", level => 3), //碎片
         'member' => array("attr" => "attr1,attr2", level => 3), //会员信息(个人)
         'cfg' => array("attr" => "name", level => 3,'close'=>0), //系统参数
         'links' => array("attr" => "typeid,limit,order", level => 3,'close'=>1), //友情链接
-        'flash' => array("attr" => "typeid,limit,order", level => 3), //碎片
     );
     //取得配置信息
     //之后存入缓存文件
@@ -190,17 +189,6 @@ class TagLibDogocms extends TagLib {
         $parsestr .= $content; //解析在article标签中的内容
         $parsestr .= '<?php endforeach; endif;?>';
         return $parsestr;
-        /*
-         * 备份这段代码
-        //下面拼接输出语句
-        $parsestr = '<?php $_result=' . $sql . '; if ($_result): $' . $key . '=0;';
-        $parsestr .= 'foreach($_result as $key=>$' . $result . '):';
-        $parsestr .= '++$' . $key . ';$mod = ($' . $key . ' % ' . $mod . ' );?>';
-        $parsestr .= $content; //解析在article标签中的内容
-        $parsestr .= '<?php endforeach; endif;?>';
-        return $parsestr;
-         *
-         */
     }
     //文档分类
      public function _sort($attr, $content)
@@ -257,25 +245,29 @@ class TagLibDogocms extends TagLib {
         $parsestr .= '<?php endforeach; endif;?>';
         return $parsestr;
     }
-    //  flash幻灯标签 typeid,limit,order
-    public function _flash($attr, $content)
+    //  block碎片标签 typeid,limit,order
+    public function _block($attr, $content)
     {
-        $tag = $this->parseXmlAttr($attr, 'flash');
+        $tag = $this->parseXmlAttr($attr, 'block');
         $typeid = $tag['typeid'];
         $limit = $tag['limit'];
         $order = $tag['order'];//字符串加引号
         if(empty($limit)){
             $tag['limit'] = '0,4';
         }
-        $tag['where'] = ' (`status`=\'y\') ';
-        $tag['where'] = ' (`sort_id` =' . $typeid . ') ';
-        
-        $sql = "M('Flash')->";
+        if(empty($order)){
+            $order = 'myorder asc';
+        }
+        $tag['where'] = ' (`status`=\'20\') ';
+        if($typeid){
+            $tag['where'] .= ' and (`sort_id` =' . $typeid . ') ';
+        }
+        $sql = "M('BlockList')->";
         $sql .= ($order) ? "order(\"{$order}\")->" : '';
         $sql .= ($tag['limit']) ? "limit({$tag['limit']})->" : '';
         $sql .= ($tag['where']) ? "where(\"{$tag['where']}\")->" : '';   //被重新处理过了
         $sql .= "select()";
-        $result = !empty($id) ? $id : 'flash'; //定义数据查询的结果存放变量
+        $result = 'block'; //定义数据查询的结果存放变量
         $key = !empty($tag['key']) ? $tag['key'] : 'i';
         $mod = isset($tag['mod']) ? $tag['mod'] : '2';
         //下面拼接输出语句

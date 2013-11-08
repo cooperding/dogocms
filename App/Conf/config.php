@@ -21,7 +21,7 @@ $connection = array(
     'LANG_AUTO_DETECT' => false,
     'VAR_LANGUAGE' => 'l', // 默认语言切换变量
     
-    'APP_GROUP_LIST' => 'Home,Admin,Member', //项目分组设定
+    'APP_GROUP_LIST' => 'Home,Admin,Member,Api', //项目分组设定
     'DEFAULT_GROUP' => 'Home', //默认分组
     // 是否开启调试模式 (开启AllInOne模式时该配置无效, 将自动置为false)
     //'APP_DEBUG'			=> false,
