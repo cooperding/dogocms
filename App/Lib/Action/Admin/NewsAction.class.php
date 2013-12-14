@@ -366,18 +366,21 @@ class NewsAction extends BaseAction {
                 $sort_id .= $v['id'] . ',';
             }
             $sort_id = rtrim($sort_id, ',');
-            $condition['sort_id'] = array('in', $sort_id);
+            $condition['t.sort_id'] = array('in', $sort_id);
         }
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 
-        $condition['is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
-        $count = $m->where($condition)->count();
+        $condition['t.is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
+        $count = $m->table(C('DB_PREFIX').'title t')->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        $data = $m->table(C('DB_PREFIX').'title t')
+                ->join(C('DB_PREFIX').'news_sort nt on nt.id=t.sort_id')
+                ->field('t.title,t.addtime,t.status,t.id,t.views,nt.text')
+                ->where($condition)->limit($firstRow . ',' . $pageRows)->order('t.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
             if($v['status']=='y'){
