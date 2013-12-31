@@ -86,6 +86,7 @@ class SettingAction extends BaseAction {
             $this->dmsg('1', '变量名"' . $sys_name . '"已经存在', false, true);
         }
         $_POST['sys_type'] = $_POST['sys_type'][0];
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add();
             if ($rs) {
@@ -118,6 +119,7 @@ class SettingAction extends BaseAction {
             $this->dmsg('1', '变量名"' . $sys_name . '"已经存在', false, true);
         }
         $_POST['sys_type'] = $_POST['sys_type'][0];
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '修改成功！', true);

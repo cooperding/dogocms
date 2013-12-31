@@ -15,7 +15,7 @@ class PagesSortModel extends Model {
     protected $tableName = 'pages_sort';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'parent_id', 'ename', 'en_name', 'path', 'status', 'keywords', 'description','sortcontent','myorder','_pk' => 'id', '_autoinc' => true
+        'id', 'parent_id', 'ename', 'en_name', 'path', 'status', 'keywords', 'description','sortcontent','myorder', 'updatetime','_pk' => 'id', '_autoinc' => true
     );
 
 }

@@ -75,6 +75,7 @@ class AttributeSortAction extends BaseAction {
             $this->dmsg('1', '商品类型名称不能为空！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add();
             if ($rs == true) {
@@ -102,6 +103,7 @@ class AttributeSortAction extends BaseAction {
             $this->dmsg('1', '商品类型名称不能为空！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->where($data)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', ' 操作成功！', true);

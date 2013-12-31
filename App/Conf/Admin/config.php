@@ -24,10 +24,14 @@ $miniConfig = array(
     'GUEST_AUTH_ON' => false, // 是否开启游客授权访问
     'GUEST_AUTH_ID' => 0, // 游客的用户ID
     //'DB_LIKE_FIELDS'            =>  'title|remark',
-    'RBAC_ROLE_TABLE' => $array['DB_PREFIX'] . 'role',
-    'RBAC_USER_TABLE' => $array['DB_PREFIX'] . 'role_user',
-    'RBAC_ACCESS_TABLE' => $array['DB_PREFIX'] . 'access',
-    'RBAC_NODE_TABLE' => $array['DB_PREFIX'] . 'node',
+    'AUTH_CONFIG' => array(
+        'AUTH_ON' => true, //认证开关
+        'AUTH_TYPE' => 1, // 认证方式，1为时时认证；2为登录认证。
+        'AUTH_GROUP' => $array['DB_PREFIX'] . 'auth_group', //用户组数据表名
+        'AUTH_GROUP_ACCESS' => $array['DB_PREFIX'] . 'auth_group_access', //用户组明细表
+        'AUTH_RULE' => $array['DB_PREFIX'] . 'auth_rule', //权限规则表
+        'AUTH_USER' => $array['DB_PREFIX'] . 'operators'//用户信息表
+    ),
         //'SHOW_PAGE_TRACE'           =>  1,//显示调试信息
         //'LANG_LIST'=>'zh-cn,zh-tw',
         /*
@@ -43,8 +47,6 @@ $miniConfig = array(
           )
          */
 );
-$array = array_merge((array)$array, (array)$miniConfig);
+$array = array_merge((array) $array, (array) $miniConfig);
 return $array;
-
-
 ?>

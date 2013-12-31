@@ -78,6 +78,7 @@ class NewsSortAction extends BaseAction {
             $data = $m->field('path')->where($condition)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -133,6 +134,7 @@ class NewsSortAction extends BaseAction {
             $text = $this->_post('text');
             $_POST['en_name'] = $pinyin->output($text);
         }
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

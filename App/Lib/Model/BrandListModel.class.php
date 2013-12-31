@@ -15,7 +15,7 @@ class BrandListModel extends Model {
     protected $tableName = 'brand_list';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'name', 'status', 'brand_logo','myorder','addtime','url','description','_pk' => 'id', '_autoinc' => true
+        'id', 'name', 'status', 'brand_logo','myorder','addtime','url','description', 'updatetime','_pk' => 'id', '_autoinc' => true
     );
 
 }

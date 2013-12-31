@@ -65,6 +65,7 @@ class MessageAction extends BaseAction {
         }
         $_POST['replaytime'] = time();
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->where($data)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', ' 操作成功！', true);
@@ -161,6 +162,7 @@ class MessageAction extends BaseAction {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs) {//存在值
@@ -194,6 +196,7 @@ class MessageAction extends BaseAction {
             $this->dmsg('1', '您输入的名称' . $ename . '已经存在！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

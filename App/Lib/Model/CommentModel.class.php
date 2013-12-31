@@ -16,7 +16,7 @@ class CommentModel extends Model {
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
         'id', 'title_id', 'post_id', 'post_name', 'addtime', 'ip', 'replytime', 'reply_id','msgcontent',
-        'replycontent','status','_pk' => 'id', '_autoinc' => true
+        'replycontent','status', 'updatetime','_pk' => 'id', '_autoinc' => true
     );
 
 }

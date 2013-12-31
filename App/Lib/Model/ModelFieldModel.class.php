@@ -15,7 +15,7 @@ class ModelFieldModel extends Model {
     protected $tableName = 'model_field';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'ename', 'sort_id', 'emark', 'etype', 'elink', 'evalue', 'maxlength','myorder','_pk' => 'id', '_autoinc' => true
+        'id', 'ename', 'sort_id', 'emark', 'etype', 'elink', 'evalue', 'maxlength','myorder', 'updatetime','_pk' => 'id', '_autoinc' => true
     );
 
 }

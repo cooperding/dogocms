@@ -86,6 +86,7 @@ class NavHeadAction extends BaseAction {
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -136,6 +137,7 @@ class NavHeadAction extends BaseAction {
             $_POST['path'] = ','; //应该是这个
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

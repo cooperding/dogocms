@@ -61,6 +61,7 @@ class CommentAction extends BaseAction {
         $data['id'] = array('eq', $id);
         $_POST['replaytime'] = time();
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->where($data)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', ' 操作成功！', true);

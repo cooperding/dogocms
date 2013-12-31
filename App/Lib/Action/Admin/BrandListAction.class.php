@@ -76,6 +76,7 @@ class BrandListAction extends BaseAction {
         }
         $_POST['status'] = $_POST['status']['0'];
         $_POST['addtime'] = time();
+        $_POST['updatetime'] = time();
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs) {//存在值
@@ -104,6 +105,7 @@ class BrandListAction extends BaseAction {
             $this->dmsg('1', '商家名称不能为空！', false, true);
         }
         $_POST['status'] = $_POST['status']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->where($condition)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', ' 操作成功！', true);

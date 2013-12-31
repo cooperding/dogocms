@@ -15,7 +15,7 @@ class SettingModel extends Model {
     protected $tableName = 'setting';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'sys_name', 'sys_value', 'sys_info', 'sys_gid', 'sys_type', 'myorder', '_pk' => 'id', '_autoinc' => true
+        'id', 'sys_name', 'sys_value', 'sys_info', 'sys_gid', 'sys_type', 'updatetime', 'myorder', '_pk' => 'id', '_autoinc' => true
     );
 
 }

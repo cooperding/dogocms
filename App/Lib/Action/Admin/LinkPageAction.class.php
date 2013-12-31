@@ -87,6 +87,7 @@ class LinkPageAction extends BaseAction {
         if ($m->field('id')->where($condition)->find()) {
             $this->dmsg('1', '您输入的名称或者标识' . $ename . $egroup . '已经存在！', false, true);
         }
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add();
             if ($rs) {
@@ -123,6 +124,7 @@ class LinkPageAction extends BaseAction {
         if ($m->field('id')->where($condition)->find()) {
             $this->dmsg('1', '您输入的名称或者标识' . $ename . $egroup. '已经存在！', false, true);
         }
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -266,6 +268,7 @@ class LinkPageAction extends BaseAction {
             $data = $m->where('id=' . $parent_id)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -313,6 +316,7 @@ class LinkPageAction extends BaseAction {
             }
             $_POST['path'] = ','; //应该是这个
         }
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

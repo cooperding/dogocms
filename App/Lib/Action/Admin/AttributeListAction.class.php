@@ -138,6 +138,7 @@ class AttributeListAction extends BaseAction {
         $_POST['is_linked'] = $_POST['is_linked']['0'];
         $_POST['attr_input_type'] = $_POST['attr_input_type']['0'];
         $_POST['attr_type'] = $_POST['attr_type']['0'];
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add();
             if ($rs == true) {
@@ -172,6 +173,7 @@ class AttributeListAction extends BaseAction {
         $_POST['is_linked'] = $_POST['is_linked']['0'];
         $_POST['attr_input_type'] = $_POST['attr_input_type']['0'];
         $_POST['attr_type'] = $_POST['attr_type']['0'];
+        $_POST['updatetime'] = time();
         $rs = $m->where($data)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', ' 操作成功！', true);

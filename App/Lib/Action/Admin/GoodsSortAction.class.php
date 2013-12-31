@@ -78,6 +78,7 @@ class GoodsSortAction extends BaseAction {
             $data = $m->field('path')->where($condition)->find();
             $_POST['path'] = $data['path'] . $parent_id . ',';
         }
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add();
             if ($rs) {
@@ -127,6 +128,7 @@ class GoodsSortAction extends BaseAction {
             $_POST['path'] = ','; //应该是这个
         }
         $en_name = $this->_post('en_name');
+        $_POST['updatetime'] = time();
         if (empty($en_name)) {
             import("ORG.Util.Pinyin");
             $pinyin = new Pinyin();

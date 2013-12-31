@@ -80,6 +80,7 @@ class MembersAction extends BaseAction {
         if (empty($name)) {
             $this->dmsg('1', '角色名不能为空！', false, true);
         }
+        $_POST['updatetime'] = time();
         if ($m->create()) {
             $rs = $m->add($_POST);
             if ($rs == true) {
@@ -101,6 +102,7 @@ class MembersAction extends BaseAction {
     {
 
         $this->dmsg('1', '该功能未开发不能操作！', false, true);
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);

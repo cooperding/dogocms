@@ -15,7 +15,7 @@ class MessageModel extends Model {
     protected $tableName = 'message';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'sort_id', 'post_id', 'reply_id', 'ip', 'addtime', 'replytime', 'msgcontent','replycontent','post_name','status','_pk' => 'id', '_autoinc' => true
+        'id', 'sort_id', 'post_id', 'reply_id', 'ip', 'addtime', 'replytime', 'msgcontent','replycontent','post_name', 'updatetime','status','_pk' => 'id', '_autoinc' => true
     );
 
 }

@@ -18,10 +18,10 @@ class BaseAction extends Action {
     function _initialize()
     {
         $skin = $this->getSkin(); //获取前台主题皮肤名称
-        $this->assign('style', __PUBLIC__ . '/Skin/' . $skin);
+        $this->assign('style', __PUBLIC__ . '/Skin/B2c/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
-        $this->assign('header', './App/Tpl/Home/' . $skin . '/header.html');
-        $this->assign('footer', './App/Tpl/Home/' . $skin . '/footer.html');
+        $this->assign('header', './App/Tpl/B2c/' . $skin . '/header.html');
+        $this->assign('footer', './App/Tpl/B2c/' . $skin . '/footer.html');
     }
 
     /*

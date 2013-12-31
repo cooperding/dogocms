@@ -92,6 +92,7 @@ class OperatorsAction extends BaseAction {
             $this->dmsg('1', '用户名已经存在！', false, true);
         }
         $_POST['creat_time'] = time();
+        $_POST['updatetime'] = time();
         $_POST['password'] = $this->changePassword($user_name, $password);
         if ($m->create()) {
             $rs = $m->add($_POST);
@@ -132,6 +133,7 @@ class OperatorsAction extends BaseAction {
             $this->dmsg('1', '用户名已经存在！', false, true);
         }
         $_POST['creat_time'] = time();
+        $_POST['updatetime'] = time();
         if(!empty($password)){
             $_POST['password'] = $this->changePassword($user_name, $password);
         }else{

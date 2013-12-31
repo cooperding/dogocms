@@ -15,7 +15,7 @@ class LinkpageListModel extends Model {
     protected $tableName = 'linkpage_list';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'parent_id', 'sort_name', 'path', 'linkpage_id', 'myorder', '_pk' => 'id', '_autoinc' => true
+        'id', 'parent_id', 'sort_name', 'path', 'linkpage_id', 'myorder', 'updatetime', '_pk' => 'id', '_autoinc' => true
     );
 
 }

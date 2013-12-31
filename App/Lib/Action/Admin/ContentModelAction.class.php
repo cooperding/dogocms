@@ -86,6 +86,7 @@ class ContentModelAction extends BaseAction {
         }
         $d->addtable($emark); //创建数据表
         if ($m->create()) {
+            $_POST['updatetime'] = time();
             $rs = $m->add($_POST);
             if ($rs) {//存在值
                 $this->dmsg('2', '操作成功！', true);
@@ -127,6 +128,7 @@ class ContentModelAction extends BaseAction {
         if ($data['emark'] != $emark) {
             $d->edittable($data['emark'], $emark);
         }
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
@@ -250,6 +252,7 @@ class ContentModelAction extends BaseAction {
         $type = $_POST['etype'];
         $length = trim($_POST['maxlength']);
         $d->addfield($tablename, $field, $type, $length);
+        $_POST['updatetime'] = time();
         if ($m->create($_POST)) {
             $rs = $m->add($_POST);
             if ($rs) {
@@ -296,6 +299,7 @@ class ContentModelAction extends BaseAction {
         $type = $this->_post('etype');
         $length = $this->_post('maxlength');
         $d->editfield($tablename, $newfield, $oldfield, $type, $length);
+        $_POST['updatetime'] = time();
         $rs = $m->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
