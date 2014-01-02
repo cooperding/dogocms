@@ -20,8 +20,8 @@ class BaseAction extends Action {
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('style', __PUBLIC__ . '/Skin/Member/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
-        $this->assign('header', './App/Tpl/Member/header.html');
-        $this->assign('footer', './App/Tpl/Member/footer.html');
+        $this->assign('header', './App/Tpl/Member/' . $skin . '/header.html');
+        $this->assign('footer', './App/Tpl/Member/' . $skin . '/footer.html');
     }
 
     /*
@@ -32,7 +32,7 @@ class BaseAction extends Action {
 
     public function getSkin()
     {
-        $skin = trim($this->getCfg('cfg_skin_web'));
+        $skin = trim($this->getCfg('cfg_member_skin'));
         return $skin;
     }
 

@@ -33,7 +33,7 @@ class IndexAction extends BaseAction {
             $title = $data_title['sys_value'];
         }
         $skin = $this->getSkin();//获取前台主题皮肤名称
-        $this->assign('title',$title);
+        $this->assign('title','会员中心');
         $this->assign('keywords',$data_keywords['sys_value']);
         $this->assign('description',$data_description['sys_value']);
         $this->display($skin.':index');
