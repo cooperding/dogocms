@@ -1,108 +1,100 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>{$title}-<dogocms:cfg name="cfg_sitename"/></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="{$keywords}" />
         <meta name="description" content="{$description}" />
-        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.1/css/bootstrap-theme.min.css"/>
-
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.3/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" type="text/css" href="{$style}/style/common.css"/>
-        <link rel="stylesheet" type="text/css" href="{$style}/style/css.css"/>
-        <link rel="stylesheet" type="text/css" href="{$style}/style/slide.css"/>
-
+        <link rel="stylesheet" type="text/css" href="{$style}/style/style.css"/>
     </head>
     <body>
-        <div class="dogo-page">
-            <header class="dogo-header">
-                <div class="dogo-wp">
-                    <div class="dogo-top">
-                        <h1>matias gallipoli</h1>
-                        <h2><a href="#lemon">互联网<span>/</span>物联网<span>/</span>移动互联网</a></h2>
-                        <h4><span>©</span>2013 QiuYunTech</h4>
-                        <h3>Qiu Yun Code</h3>
-                    </div><!--dogo-top-->
+        <div class="dogo-page ">
+            <div class="container">
+                <header class="dogo-header">
+                    <nav class="navbar navbar-default navbar-static" role="navigation">
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
+                                <span class="sr-only"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><dogocms:cfg name="cfg_sitename"/></a>
+                        </div>
+                        <div class="collapse navbar-collapse bs-js-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a id="" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">新闻 <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="">
+                                        <li role="presentation"><a role="menuitem" href="">国内新闻</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">国际新闻</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">娱乐新闻</a></li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation"><a role="menuitem" href="">体育新闻</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">产品中心 <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation"><a role="menuitem" href="">产品1</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">产品2</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">产品3</a></li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation"><a role="menuitem" href="">产品4</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li id="fat-menu" class="dropdown">
+                                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">个人中心<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                        <li role="presentation"><a role="menuitem" href="">个人资料</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">我的订单</a></li>
+                                        <li role="presentation"><a role="menuitem" href="">修改密码</a></li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation"><a role="menuitem" href="">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.nav-collapse -->
+                    </nav>
+                </header>
+                <div class="row">
+                    <div class="col-md-3">
 
-                </div><!--dogo-wp-->
-            </header>
-
-
-            <section class="dogo-section dogo-black-bk">
-                <div class="dogo-wp">
-                    <div class="row">
-                        <span class="col-md-12">
-                            <h1 style="height: 55px;color: #fff;">QiuYunTech优秀站点</h1>
-                        </span>
-                    </div>
-                    <div class="row">
-                        <dogocms:block typeid="4" limit="8">
-                            <span class="col-md-3">
-
-                                <div class="dogo-website">
-                                    <div class="dogo-content dogo-radius">
-                                        <img src="{$block.title_img}"/>
-                                        <div class="dogo-mask dogo-mask-1">
-                                            <a href="{$block.field1}" class="">{$block.field2}</a>
-                                        </div>
-                                        <div class="dogo-mask dogo-mask-2">
-                                            <a href="{$block.url}" target="_blank" class="btn dogo-tooltip btn-default" data-toggle="tooltip" data-placement="top" title="{$block.description}" data-original-title="{$block.description}">{$block.field3} >></a>
-                                        </div>
-                                    </div><!--dogo-content-->
-                                </div><!--dogo-website-->
-                            </span>
-                        </dogocms:block>
-                        
-                    </div>
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-
-            <section class="dogo-section dogo-lemon">
-                <div class="dogo-wp">
-                    <div class="row">
-
-                    </div>
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-            <section class="dogo-section dogo-orange">
-                <div class="dogo-wp">
-                    <div class="row">
-
-                    </div>
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-
-            <section class="dogo-section dogo-gray">
-                <div class="dogo-wp">
-
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-            <section class="dogo-section dogo-purple">
-                <div class="dogo-wp">
-                    <div class="row">
-
-                    </div>
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-
-            <section class="dogo-section dogo-light-green">
-                <div class="dogo-wp">
-
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
-
-            <section class="dogo-section dogo-blue">
-                <div class="dogo-wp">
-
-                </div><!--dogo-wp-->
-            </section><!--dogo-section-->
-
+                        <div class="dogo-sidebar dogo-bg-gray">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="dogo-nav-header"><a href="javascript:void(0)">个人中心</a></li>
+                                <li class="dogo-divider"></li>
+                                <li><a href="#">我的主页</a></li>
+                                <li class="active"><a href="#">个人资料</a></li>
+                                <li><a href="#">修改密码</a></li>
+                                
+                                
+                                <li class="dogo-nav-header"><a href="javascript:void(0)">商务中心</a></li>
+                                <li class="dogo-divider"></li>
+                                <li><a href="#">我的订单</a></li>
+                                <li><a href="#">收货地址</a></li>
+                                
+                                
+                                <li class="dogo-nav-header"><a href="javascript:void(0)">消息管理</a></li>
+                                <li class="dogo-divider"></li>
+                                <li><a href="#">我的留言</a></li>
+                                <li><a href="#">我的消息</a></li>
+                                
+                                <li class="dogo-divider"></li>
+                                <li><a href="#">退出登录</a></li>
+                            </ul>
+                        </div><!--dogo-sidebar-->
+                    </div><!--col-md-->
+                    <div class="col-md-9">
+                        <div class="dogo-test dogo-rgba-blue">222</div>
+                    </div><!--col-md-->
+                </div><!--row-->
 
 
 

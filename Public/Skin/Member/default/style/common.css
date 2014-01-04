@@ -1,55 +1,93 @@
 /**gongong**/
 body,ul,ol,li,p,h1,h2,h3,h4,table,td,th,form,fieldset,img,dl,dt,dd,input,select,bottom{margin:0;padding:0;}
-h1,h2,h3,h4,a{font-weight:normal}
-body{font: 12px/1.5 Tahoma,'Microsoft Yahei','Simsun';color:#000;}
-li{list-style:none;overflow:hidden;}
-a{text-decoration:none; color:#3E3E3E;}
-a:hover{color:#00f;text-decoration:underline;}
-a img,img,a:hover img{border:0;}
-strong, b {font-weight: bolder;}
-.rd {color: red;font-weight: bold;}
-.wd {color: white;font-weight: bold;}
-img,input,li{ vertical-align:middle;}
-.clear{clear:both; height:0;margin:0;padding:0;font-size:0;overflow:hidden;border:0;}
-.wpall{ width:100%;}
-.wpallbd{ border-top:2px solid #f7a6c7; padding-top:8px;}
-.wp{ width:1000px; margin:0 auto;}
+body{font-family: arial,"宋体B8B\4F53";font-size: 13px;}
+li{list-style: none;}
+a{text-decoration:none;color: #3E3E3E;}
+a:hover{text-decoration:none;color: #FF6347;}
+
+/*img,input,li{ vertical-align:middle;}*/
+
+.dogo-wp{ }
+.dogo-border{border: 1px solid #ccc;}/*临时设置最小高度*/
+.dogo-pdtop1{padding-top: 5px;}
+.dogo-pdtop2{padding-top: 10px;}
+.dogo-pd10{padding: 10px;}
+.dogo-pd15{padding: 15px;}
+.dogo-mr15{margin-right: 15px;}
 .blank{ margin-bottom:10px;}
-.mleft{ margin-left:10px;}
-.mright{ margin-right:10px;}
-body{}
-.error{ color:#FF0000;}
 
-.commonbd{ border:1px solid #dedede;}
-.placebd{ border:1px solid #dedede;}
-.listbd{ border:1px solid #dedede;}
-.viewsbd{ border:1px solid #dedede;}
+.dogo-flt{float: left;display: inline;}
+.dogo-frt{float: right;display: inline;}
+
+/*dogo-bg-gray*/
+.dogo-bg-gray{background-color: #eae8ee;border-radius: 5px;}
+
+.dogo-radius{border: solid 6px rgba(255,255,255,1);
+             -webkit-border-radius: 200px;
+             -moz-border-radius: 200px;
+             -o-border-radius: 200px;
+             border-radius: 200px;
+}
 
 
 
-.commontopbd{ border-bottom:1px solid #D34848;}
-.commentbd {border: 1px solid hsl(210, 67%, 80%);}
-/*float*/
+.dogo-title-bt{border: 1px solid #ccc;border-bottom: 1px solid #FF6347;
+               -webkit-border-radius: 4px 4px 0 0;
+               -moz-border-radius: 4px 4px 0 0;
+               border-radius: 4px 4px 0 0;}
+.dogo-box-content{height: auto;}
 
-.f_left{float:left; display:inline;}
-.f_right{float:right; display:inline;}
+/*border*/
+.dogo-border-notop{border: 1px solid #ccc;border-top: none;-webkit-border-radius: 0 0px 4px 4px;-moz-border-radius: 0px 0px 4px 4px;border-radius: 0px 0px 4px 4px;}
+.dogo-border-nobottom{border: 1px solid #ccc;border-bottom: none;-webkit-border-radius: 4px 4px 0 0;-moz-border-radius: 4px 4px 0 0;border-radius: 4px 4px 0 0;}
+.dogo-border-all{border: 1px solid #ccc;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
 
-/*block*/
-.block{ height:auto; overflow:hidden;}
-.blockL{width:280px;height:auto; overflow:hidden;}
-.blockM{width:440px;height:auto; overflow:hidden;}
-.blockR{width:260px;height:auto;overflow:hidden;}
-.blockLA{width:710px;height:auto;overflow:hidden;}
-.blockMA{width:740px;height:auto;overflow:hidden;}
-.blockRA{width:740px;height:auto;overflow:hidden;}
 
-/*common*/
-.common{}
-.common .common_top{ height:30px; line-height:30px;}
-.common .ctop_l{ width:120px; height:30px; padding-left:10px;}
-.common .ctop_m{ height:30px; color:#666666;}
-.common .ctop_r{ width:40px; height:30px;}
-.common .common_cont{padding:0px 10px;}
-.common .ctop_m a{ margin:0 5px;}
+.dogo-box-header{padding-left: 8px;height: 35px;}
+.dogo-box-header li.dogo-title-h{float: left;line-height: 35px;min-width: 80px;}
+.dogo-box-header li.dogo-more{width: 50px;line-height: 35px;float: right;}
+
+
+/*thumbnails*/
+
+.dogo-box-content .thumbnails{padding-left: 25px;padding-top: 5px;padding-bottom: 5px;}
+.dogo-box-content .thumbnails li{width: 134px;height: auto;float: left;margin: 5px;}
+.dogo-box-content .thumbnails img{width: 124px;height: 115px;}
+.dogo-box-content .thumbnails h3{height: 30px;line-height: 35px;overflow: hidden;font-size: 13px;overflow: hidden;text-align: center;font-weight: 500;}
+
+
+.dogo-box-text{padding: 5px 10px;}
+.dogo-box-text li{height: 25px;line-height: 25px; overflow: hidden;background: url(../images/icon_org.jpg) left center no-repeat;padding-left: 10px;}
+
+.dogo-box-text2{height: auto;overflow: hidden;padding: 5px 10px;}
+.dogo-box-text2 li{width: 165px;float: left;height: 25px;line-height: 25px; overflow: hidden;background: url(../images/icon_org.jpg) left center no-repeat;padding-left: 10px;}
+.dogo-box-text2 li:nth-of-type(odd){margin-right: 5px;}
+
+.dogo-box-rank{height: auto;overflow: hidden;padding: 5px 10px;}
+.dogo-box-rank li{height: 25px;line-height: 25px; overflow: hidden;}
+.dogo-box-rank li .rank-no{width: 18px;height: 17px;display: block;float: left;margin-top: 4px;line-height: 17px;margin-right: 5px;text-align: center;font-style: initial;}
+.dogo-box-rank li a{}
+.dogo-box-rank li i:nth-of-type(1){border: 1px solid #ccc;-webkit-border-radius: 3px 3px 3px 3px;-moz-border-radius: 3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;}
+.dogo-box-rank li:nth-of-type(1) .rank-no,.dogo-box-rank li:nth-of-type(2) .rank-no,.dogo-box-rank li:nth-of-type(3) .rank-no{border: 1px solid #FF6347;background: #FF6347;color: #fff;-webkit-border-radius: 4px 4px 4px 4px;-moz-border-radius: 4px 4px 4px 4px;border-radius: 4px 4px 4px 4px;}
+
+
+
+
+.dogo-box-textno{padding: 5px 10px;}
+.dogo-box-textno h3{text-align: center;height: 40px;}
+.dogo-box-textno p{height: 60px;line-height: 22px;overflow: hidden;padding-bottom: 5px;text-indent: 25px;overflow: hidden;}
+
+.block2{width: 120px;float: left;height: 150px;}
+.clearfix{*zoom:1}
+.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}
+
+.dogo-test{height: 300px;}
+
+/*会员中心菜单style*/
+.dogo-sidebar{}
+.dogo-sidebar li a{text-indent: 15px;}
+.dogo-divider{height: 1px;margin: 9px 0;overflow: hidden;background-color: #e3e3e3;}
+.dogo-nav-header{font-weight: bold;}
+li.dogo-nav-header a{text-indent: 5px;}
 
 
