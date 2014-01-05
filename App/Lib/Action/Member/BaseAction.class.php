@@ -17,6 +17,11 @@ class BaseAction extends Action {
     //初始化
     function _initialize()
     {
+        //此处判断是否已经登录，如果登录跳转到后台首页否则跳转到登录页面
+        $status = session('LOGIN_M_STATUS');
+        if ($status != 'TRUE') {
+            $this->redirect('..'.__GROUP__.'/Passport/login');
+        }
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('style', __PUBLIC__ . '/Skin/Member/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
@@ -48,9 +53,9 @@ class BaseAction extends Action {
         if ($name) {
             $condition['sys_name'] = array('eq', $name);
             $rs = $m->where($condition)->find();
-            if($rs){
+            if ($rs) {
                 return $rs['sys_value'];
-            }  else {
+            } else {
                 return 'default';
             }
         } else {

@@ -14,7 +14,7 @@ a:hover{text-decoration:none;color: #FF6347;}
 .dogo-pd10{padding: 10px;}
 .dogo-pd15{padding: 15px;}
 .dogo-mr15{margin-right: 15px;}
-.blank{ margin-bottom:10px;}
+.dogo-blank{ height:10px;margin: 0;padding: 0;}
 
 .dogo-flt{float: left;display: inline;}
 .dogo-frt{float: right;display: inline;}
@@ -36,7 +36,9 @@ a:hover{text-decoration:none;color: #FF6347;}
                -moz-border-radius: 4px 4px 0 0;
                border-radius: 4px 4px 0 0;}
 .dogo-box-content{height: auto;}
-
+/*color*/
+.dogo-color-white{color: white;text-shadow: none;}
+.dogo-align-center{text-align: center;}
 /*border*/
 .dogo-border-notop{border: 1px solid #ccc;border-top: none;-webkit-border-radius: 0 0px 4px 4px;-moz-border-radius: 0px 0px 4px 4px;border-radius: 0px 0px 4px 4px;}
 .dogo-border-nobottom{border: 1px solid #ccc;border-bottom: none;-webkit-border-radius: 4px 4px 0 0;-moz-border-radius: 4px 4px 0 0;border-radius: 4px 4px 0 0;}
@@ -85,9 +87,17 @@ a:hover{text-decoration:none;color: #FF6347;}
 
 /*会员中心菜单style*/
 .dogo-sidebar{}
-.dogo-sidebar li a{text-indent: 15px;}
+.dogo-sidebar a{text-indent: 15px;}
+.dogo-sidebar a span.badge{text-indent: 0;}
 .dogo-divider{height: 1px;margin: 9px 0;overflow: hidden;background-color: #e3e3e3;}
 .dogo-nav-header{font-weight: bold;}
-li.dogo-nav-header a{text-indent: 5px;}
+a.dogo-nav-header{text-indent: 5px;}
+/*会员登录*/
+.dogo-iput {margin: 5px 0;}
+.dogo-login{background-color: #eae8ee;border-radius: 5px;padding: 20px;overflow: hidden;}
+.dogo-login .btn-default{background: #ff5400;background-image: linear-gradient(to bottom,#ff5400 0,#ff5400 100%);
+background-repeat: repeat-x;border-color: #ff5400;}
+.dogo-login .btn-default:hover,.dogo-login .btn-default:focus {background-color: #fc8043;border-color: #fc8043;background-position: 0 -45px;color: #fff;}
+
 
 

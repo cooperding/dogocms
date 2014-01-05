@@ -24,7 +24,7 @@ $miniConfig = array(
     //路由功能设置
     'URL_ROUTER_ON' => true,
     'URL_PATHINFO_DEPR' => '/',
-    'URL_HTML_SUFFIX' => 'shtml',
+    'URL_HTML_SUFFIX' => 'html',
     'URL_MODEL' => 2,
     'URL_CASE_INSENSITIVE' => true,//true不再区分大小写
     'URL_ROUTE_RULES' => array(

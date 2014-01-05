@@ -10,8 +10,17 @@
  * @version dogocms 1.0 2012-11-5 11:20
  * @package  Controller
  */
-class PassportAction extends Action
-{
+class PassportAction extends Action {
+
+    //初始化
+    function _initialize()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('style', __PUBLIC__ . '/Skin/Member/' . $skin);
+        $this->assign('style_cmomon', __PUBLIC__ . '/Common');
+        $this->assign('header', './App/Tpl/Member/' . $skin . '/header.html');
+        $this->assign('footer', './App/Tpl/Member/' . $skin . '/footer.html');
+    }
 
     /**
      * index
@@ -23,53 +32,218 @@ class PassportAction extends Action
      */
     public function index()
     {
-        
+
         //此处判断是否已经登录，如果登录跳转到后台首页否则跳转到登录页面
-        if (session('LOGIN_STATUS') == 'TRUE') {
-            $this->redirect('..'.__GROUP__);
+        $status = session('LOGIN_M_STATUS');
+        if ($status == 'TRUE') {
+            $this->redirect('..' . __GROUP__);
         } else {
-            $this->display();
+            $this->login();
         }
     }
 
+    /*
+     * login 
+     * 会员登录
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+
+    public function login()
+    {
+        cookie('gobackurl', $_SERVER['HTTP_REFERER']);
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '会员登录');
+        $this->display($skin . ':login');
+    }
+
+    /*
+     * signup 
+     * 注册会员
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+
+    public function signup()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '会员注册');
+        $this->display($skin . ':signup');
+    }
+
+    /*
+     * resetPassword 
+     * 注册会员
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     */
+
+    public function resetPassword()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '重置密码');
+        $this->display($skin . ':resetpwd');
+    }
+
     /**
-     * dologin
+     * checkLogin
      * 登录验证
      * @access public
      * @return boolean
      * @version dogocms 1.0
      */
-    public function dologin()
+    public function checkLogin()
     {
-        $ver_code = $this->_post('vd_code'); 
-        $verify = session('verify');
-        if (empty($ver_code) || md5($ver_code) != $verify) {
+        $m = new MembersModel();
+        $v_code = $this->_post('v_code');
+        $verify = session('verify_member');
+        if (empty($v_code) || md5($v_code) != $verify) {
             $this->error('验证码为空或者输入错误！');
             exit;
         }
-        $user_name = $this->_post('user_name');
-        $condition['username'] = array('eq',$user_name);
-        $password =$this->_post('user_password'); 
-        if (!empty($user_name) && !empty($password)) {//依据用户名查询
-            $login = new OperatorsModel();
-            $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
-            if ($rs) {//对查询出的结果进行判断
-                $password = md5(md5($user_name) . sha1($password));
-                if ($password == $rs['password']) {//判断密码是否匹配
-                    session('LOGIN_STATUS', 'TRUE');
-                    session('authId', $rs['id']);
-                    session('LOGIN_NAME', $rs['username']);
-                    session('LOGIN_UID', $rs['id']);
-                    session('LOGIN_CTIME', $rs['creat_time']);
-                    $this->success('登陆成功！', __GROUP__);
+        $email = $this->_post('email'); //邮箱
+        if (empty($email)) {
+            $this->error('注册邮箱不能为空！');
+            exit;
+        }
+        $pwd = $this->_post('pwd'); //密码
+        if (empty($pwd)) {
+            $this->error('密码不能为空！');
+            exit;
+        }
+        $condition['email'] = array('eq', $email);
+        $rs = $m->where($condition)->field('id,username,addtime')->find();
+        if ($rs) {
+            $uname = $rs['username'];
+            $password = md5(md5($uname) . sha1($pwd));
+            if ($password == $rs['password']) {//密码匹配
+                if ($rs['status'] == '10') {//禁用账户，不可登录
+                    $this->error('您的账户被禁止登录！' . __ROOT__);
+                    exit();
                 } else {
-                    $this->error('您的输入密码错误！');
+                    session('LOGIN_M_STATUS', 'TRUE');
+                    session('LOGIN_M_NAME', $rs['username']);
+                    session('LOGIN_M_ID', $rs['id']);
+                    session('LOGIN_M_ADDTIME', $rs['addtime']);
+                    $this->success('登陆成功！', __GROUP__);
                 }
             } else {
                 $this->error('您的输入用户名或者密码错误！');
             }
+        } else {//未查询到数据
+            $this->error('您的输入用户名或者密码错误！');
+        }
+    }
+
+    /*     * register
+     * checkLogin
+     * 登录验证
+     * @access public
+     * @return boolean
+     * @version dogocms 1.0
+     * @todo 完善密码找回操作，增加邮件发送功能
+     */
+
+    public function getPassword()
+    {
+        $m = new MembersModel();
+        $v_code = $this->_post('v_code');
+        $verify = session('verify_member');
+        if (empty($v_code) || md5($v_code) != $verify) {
+            $this->error('验证码为空或者输入错误！');
+            exit;
+        }
+        $email = $this->_post('email'); //邮箱
+        if (empty($email)) {
+            $this->error('注册邮箱不能为空！');
+            exit;
+        }
+        //先验证邮箱是否存在
+        $condition['email'] = array('eq',$email);
+        $rs = $m->where($condition)->field('id,username')->find();
+        if(!$rs){
+            $this->error('注册邮箱不正确！');
+            exit;
+        }
+        //随机生成密码，并发送到注册邮箱中
+        $pwd = rand(100000, 999999);
+        $uname = $rs['username'];
+        $password = md5(md5($uname) . sha1($pwd));
+        $data['password'] = $password;
+        $data['updatetime'] = time();
+        $condition_id['id'] = $rs['id'];
+        $rs_pwd = $m->where($condition_id)->save($data);
+        if ($rs_pwd == true) {
+            $this->success('重置密码成功，请登录邮箱查看！', __GROUP__);
         } else {
-            $this->error('用户名或密码输入为空！');
+            $this->error('重置密码失败！');
+        }
+        
+    }
+
+    /**
+     * register
+     * 注册会员
+     * @access public
+     * @return boolean
+     * @version dogocms 1.0
+     */
+    public function register()
+    {
+        $m = new MembersModel();
+        $v_code = $this->_post('v_code');
+        $verify = session('verify_member');
+        if (empty($v_code) || md5($v_code) != $verify) {
+            $this->error('验证码为空或者输入错误！');
+            exit;
+        }
+        $uname = $this->_post('uname'); //用户名
+        $email = $this->_post('email'); //邮箱
+        $pwd = $this->_post('pwd'); //密码
+        $pwd2 = $this->_post('pwd2'); //密码2
+        if (empty($uname)) {
+            $this->error('用户名不能为空！');
+            exit;
+        }
+        if (empty($email)) {
+            $this->error('邮箱不能为空！');
+            exit;
+        }
+        if (empty($pwd) || empty($pwd2)) {
+            $this->error('密码不能为空！');
+            exit;
+        }
+        if ($pwd != $pwd2) {
+            $this->error('两次密码输入不一致！');
+            exit;
+        }
+        $condition_uname['username'] = array('eq', $uname);
+        $rs_uname = $m->where($condition_uname)->find();
+        if ($rs_uname) {
+            $this->error('用户名已经存在！');
+            exit;
+        }
+        $condition_email['email'] = array('eq', $email);
+        $rs_email = $m->where($condition_email)->find();
+        if ($rs_uname) {
+            $this->error('邮箱已经存在！');
+            exit;
+        }
+        $password = md5(md5($uname) . sha1($pwd));
+        $data['username'] = $uname;
+        $data['password'] = $password;
+        $data['addtime'] = time();
+        $data['updatetime'] = time();
+        $data['email'] = $email;
+        $data['ip'] = get_client_ip();
+        $rs = $m->data($data)->add();
+        if ($rs == true) {
+            $this->success('注册成功,请登录后操作！', __GROUP__ . '/Passport/login');
+        } else {
+            $this->error('注册失败，请联系管理员！');
         }
     }
 
@@ -83,7 +257,7 @@ class PassportAction extends Action
     public function logout()
     {
         session('[destroy]');
-        $this->success('您已经成功退出管理系统！', __GROUP__ . '/Passport');
+        $this->success('您已经成功退出会员系统！', __ROOT__);
     }
 
     /**
@@ -96,13 +270,47 @@ class PassportAction extends Action
     public function vercode()
     {
         import("ORG.Util.Image");
-        $length = 2; //验证码的长度
+        $length = 4; //验证码的长度
         $mode = 1; //0 字母 1 数字 2 大写字母 3 小写字母 4中文 5混合
         $type = 'png'; //验证码的图片类型，默认为png
-        $width = 70; //验证码的宽度
-        $height = 25; //验证码的高度
-        $verifyName = 'verify'; //验证码的SESSION记录名称
+        $width = 50; //验证码的宽度
+        $height = 24; //验证码的高度
+        $verifyName = 'verify_member'; //验证码的SESSION记录名称
         Image::buildImageVerify($length, $mode, $type, $width, $height, $verifyName);
+    }
+
+    /*
+     * getSkin
+     * 获取站点设置的主题名称
+     * @todo 使用程序读取主题皮肤名称
+     */
+
+    public function getSkin()
+    {
+        $skin = trim($this->getCfg('cfg_member_skin'));
+        return $skin;
+    }
+
+    /*
+     * getCfg
+     * 获取站点配置
+     * @todo
+     */
+
+    public function getCfg($name)
+    {
+        $m = M('Setting');
+        if ($name) {
+            $condition['sys_name'] = array('eq', $name);
+            $rs = $m->where($condition)->find();
+            if ($rs) {
+                return $rs['sys_value'];
+            } else {
+                return 'default';
+            }
+        } else {
+            return false;
+        }
     }
 
 }
