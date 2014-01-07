@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BaseAction.class.php
+ * BasememberAction.class.php
  * 前台页面公共方法
  * 前台核心文件，其他页面需要继承本类方可有效
  * @author 正侠客 <lookcms@gmail.com>
@@ -12,7 +12,7 @@
  * @todo 完善更多方法
  */
 //if(!C("ACCESS"))exit('Access Denied!');//猜一猜有什么用
-class BaseAction extends Action {
+class BasememberAction extends Action {
 
     //初始化
     function _initialize()
@@ -37,30 +37,11 @@ class BaseAction extends Action {
 
     public function getSkin()
     {
-        $skin = trim($this->getCfg('cfg_member_skin'));
-        return $skin;
-    }
-
-    /*
-     * getCfg
-     * 获取站点配置
-     * @todo
-     */
-
-    public function getCfg($name)
-    {
-        $m = M('Setting');
-        if ($name) {
-            $condition['sys_name'] = array('eq', $name);
-            $rs = $m->where($condition)->find();
-            if ($rs) {
-                return $rs['sys_value'];
-            } else {
-                return 'default';
-            }
-        } else {
-            return false;
+        $skin = R('Api/News/getCfg', array('cfg_member_skin'));
+        if(!$skin){
+            $skin = 'default';
         }
+        return $skin;
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BaseAction.class.php
+ * BasehomeAction.class.php
  * 前台页面公共方法
  * 前台核心文件，其他页面需要继承本类方可有效
  * @author 正侠客 <lookcms@gmail.com>
@@ -12,16 +12,16 @@
  * @todo 完善更多方法
  */
 //if(!C("ACCESS"))exit('Access Denied!');//猜一猜有什么用
-class BaseAction extends Action {
+class BasehomeAction extends Action {
 
     //初始化
     function _initialize()
     {
         $skin = $this->getSkin(); //获取前台主题皮肤名称
-        $this->assign('style', __PUBLIC__ . '/Skin/B2c/' . $skin);
+        $this->assign('style', __PUBLIC__ . '/Skin/Home/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
-        $this->assign('header', './App/Tpl/B2c/' . $skin . '/header.html');
-        $this->assign('footer', './App/Tpl/B2c/' . $skin . '/footer.html');
+        $this->assign('header', './App/Tpl/Home/' . $skin . '/header.html');
+        $this->assign('footer', './App/Tpl/Home/' . $skin . '/footer.html');
     }
 
     /*
@@ -32,30 +32,11 @@ class BaseAction extends Action {
 
     public function getSkin()
     {
-        $skin = trim($this->getCfg('cfg_skin_web'));
-        return $skin;
-    }
-
-    /*
-     * getCfg
-     * 获取站点配置
-     * @todo
-     */
-
-    public function getCfg($name)
-    {
-        $m = M('Setting');
-        if ($name) {
-            $condition['sys_name'] = array('eq', $name);
-            $rs = $m->where($condition)->find();
-            if($rs){
-                return $rs['sys_value'];
-            }  else {
-                return 'default';
-            }
-        } else {
-            return false;
+        $skin = R('Api/News/getCfg', array('cfg_skin_web'));
+        if(!$skin){
+            $skin = 'default';
         }
+        return $skin;
     }
 
 }

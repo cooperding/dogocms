@@ -11,7 +11,7 @@
  * @package  Controller
  * @todo 完善更多方法
  */
-class ListAction extends BaseAction {
+class ListAction extends Baseb2cAction {
 
     public function index($id)
     {

@@ -11,7 +11,7 @@
  * @package  Controller
  * @todo 完善更多方法
  */
-class IndexAction extends BaseAction {
+class IndexAction extends Baseb2cAction {
 
     public function index()
     {

@@ -24,7 +24,7 @@ class BaseAction extends Action {
             //redirect(__APP__ . '/Login');
             //$this->error('请登录后操作', __APP__ . '/Login');
             exit;
-        }
+    }
         if (C('USER_AUTH_ON') && !in_array(MODULE_NAME, explode(',', C('NOT_AUTH_MODULE')))) {//是否验证权限及不需要验证的模块
             import('ORG.Util.RBAC');
             if (!RBAC::AccessDecision()) {

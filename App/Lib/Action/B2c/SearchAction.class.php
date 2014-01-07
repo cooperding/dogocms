@@ -10,7 +10,7 @@
  * @package  Controller
  * @todo 完善更多方法
  */
-class SearchAction extends BaseAction {
+class SearchAction extends Baseb2cAction {
 
     public function index()
     {

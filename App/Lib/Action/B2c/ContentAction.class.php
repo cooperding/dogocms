@@ -11,7 +11,7 @@
  * @package  Controller
  * @todo 过滤无用字段,筛选符合条件的信息（需要全站共同使用）
  */
-class ContentAction extends BaseAction {
+class ContentAction extends Baseb2cAction {
 
     public function index($id)
     {

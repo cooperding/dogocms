@@ -118,7 +118,7 @@ class PassportAction extends Action {
         $rs = $m->where($condition)->field('id,username,addtime')->find();
         if ($rs) {
             $uname = $rs['username'];
-            $password = md5(md5($uname) . sha1($pwd));
+            $password = R('Api/News/getPwd', array($uname, $pwd));
             if ($password == $rs['password']) {//密码匹配
                 if ($rs['status'] == '10') {//禁用账户，不可登录
                     $this->error('您的账户被禁止登录！' . __ROOT__);
@@ -138,16 +138,16 @@ class PassportAction extends Action {
         }
     }
 
-    /*     * register
-     * checkLogin
-     * 登录验证
+    /**
+     * getNewPwd
+     * 找回新的密码
      * @access public
      * @return boolean
      * @version dogocms 1.0
      * @todo 完善密码找回操作，增加邮件发送功能
      */
 
-    public function getPassword()
+    public function getNewPwd()
     {
         $m = new MembersModel();
         $v_code = $this->_post('v_code');
@@ -162,26 +162,31 @@ class PassportAction extends Action {
             exit;
         }
         //先验证邮箱是否存在
-        $condition['email'] = array('eq',$email);
+        $condition['email'] = array('eq', $email);
         $rs = $m->where($condition)->field('id,username')->find();
-        if(!$rs){
+        if (!$rs) {
             $this->error('注册邮箱不正确！');
             exit;
         }
         //随机生成密码，并发送到注册邮箱中
         $pwd = rand(100000, 999999);
         $uname = $rs['username'];
-        $password = md5(md5($uname) . sha1($pwd));
+        $password = R('Api/News/getPwd', array($uname, $pwd));
         $data['password'] = $password;
         $data['updatetime'] = time();
         $condition_id['id'] = $rs['id'];
         $rs_pwd = $m->where($condition_id)->save($data);
         if ($rs_pwd == true) {
-            $this->success('重置密码成功，请登录邮箱查看！', __GROUP__);
+            $rs_email = R('Api/News/sendEmail', array($email,'找回密码' ,$pwd));
+            if($rs_email){
+                $this->success('重置密码成功，请登录邮箱查看！', __GROUP__);
+            }else{
+                $this->error('重置密码失败，请重新发送！');
+            }
+            
         } else {
             $this->error('重置密码失败！');
         }
-        
     }
 
     /**
@@ -232,7 +237,7 @@ class PassportAction extends Action {
             $this->error('邮箱已经存在！');
             exit;
         }
-        $password = md5(md5($uname) . sha1($pwd));
+        $password = R('Api/News/getPwd', array($uname, $pwd));
         $data['username'] = $uname;
         $data['password'] = $password;
         $data['addtime'] = time();
@@ -287,30 +292,13 @@ class PassportAction extends Action {
 
     public function getSkin()
     {
-        $skin = trim($this->getCfg('cfg_member_skin'));
+        $skin = R('Api/News/getCfg', array('cfg_member_skin'));
+        if(!$skin){
+            $skin = 'default';
+        }
         return $skin;
     }
 
-    /*
-     * getCfg
-     * 获取站点配置
-     * @todo
-     */
-
-    public function getCfg($name)
-    {
-        $m = M('Setting');
-        if ($name) {
-            $condition['sys_name'] = array('eq', $name);
-            $rs = $m->where($condition)->find();
-            if ($rs) {
-                return $rs['sys_value'];
-            } else {
-                return 'default';
-            }
-        } else {
-            return false;
-        }
-    }
+    
 
 }
