@@ -115,7 +115,7 @@ class PassportAction extends Action {
             exit;
         }
         $condition['email'] = array('eq', $email);
-        $rs = $m->where($condition)->field('id,username,addtime')->find();
+        $rs = $m->where($condition)->field('id,username,addtime,password')->find();
         if ($rs) {
             $uname = $rs['username'];
             $password = R('Api/News/getPwd', array($uname, $pwd));

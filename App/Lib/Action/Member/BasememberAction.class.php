@@ -27,6 +27,7 @@ class BasememberAction extends Action {
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
         $this->assign('header', './App/Tpl/Member/' . $skin . '/header.html');
         $this->assign('footer', './App/Tpl/Member/' . $skin . '/footer.html');
+        $this->assign('sidebar', './App/Tpl/Member/' . $skin . '/sidebar.html');
     }
 
     /*
