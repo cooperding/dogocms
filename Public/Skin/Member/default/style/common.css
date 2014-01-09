@@ -80,6 +80,9 @@ a:hover{text-decoration:none;color: #FF6347;}
 .dogo-box-textno p{height: 60px;line-height: 22px;overflow: hidden;padding-bottom: 5px;text-indent: 25px;overflow: hidden;}
 
 .block2{width: 120px;float: left;height: 150px;}
+
+
+
 .clearfix{*zoom:1}
 .clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}
 

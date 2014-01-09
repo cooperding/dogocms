@@ -54,12 +54,29 @@ class IndexAction extends BasememberAction {
      */
     public function personal()
     {
-        
+
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '个人资料');
         $this->assign('sidebar_active', 'personal');
         $this->display($skin . ':personal');
     }
+
+    /**
+     * personal
+     * 个人资料
+     * @return display
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function email()
+    {
+
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '个人资料');
+        $this->assign('sidebar_active', 'email');
+        $this->display($skin . ':email');
+    }
+
     /**
      * changePwd
      * 修改密码
@@ -69,13 +86,62 @@ class IndexAction extends BasememberAction {
      */
     public function changePwd()
     {
-        
+
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '修改密码');
         $this->assign('sidebar_active', 'changepwd');
         $this->display($skin . ':changepwd');
     }
-     /**
+
+    /**
+     * doPersonal
+     * 更新个人资料
+     * @return display
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function doPersonal()
+    {
+        $oldpwd = $this->_post('oldpwd'); //原密码
+        $newpwd = $this->_post('newpwd'); //新密码1
+        $newpwd2 = $this->_post('newpwd2'); //新密码2
+        if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
+            $this->error('密码项不能为空！');
+            exit;
+        }
+    }
+
+    /**
+     * doEmail
+     * 更新邮箱
+     * @return display
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function doEmail()
+    {
+        $oldpwd = $this->_post('oldpwd'); //原密码
+        $newpwd = $this->_post('newpwd'); //新密码1
+        $newpwd2 = $this->_post('newpwd2'); //新密码2
+        if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
+            $this->error('密码项不能为空！');
+            exit;
+        }
+    }
+    /**
+     * authEmail
+     * 发送验证邮箱信息
+     * @return display
+     * @version dogocms 1.0
+     * @todo 调用邮件接口
+     */
+    public function authEmail()
+    {
+        $array = array('status'=>1,'msg'=>'ceshi');
+        echo json_encode($array);
+    }
+
+    /**
      * doChangePwd
      * 更新密码
      * @return display
@@ -84,14 +150,13 @@ class IndexAction extends BasememberAction {
      */
     public function doChangePwd()
     {
-        $oldpwd = $this->_post('oldpwd');//原密码
-        $newpwd = $this->_post('newpwd');//新密码1
-        $newpwd2 = $this->_post('newpwd2');//新密码2
-        if(empty($oldpwd)||empty($newpwd)||empty($newpwd2)){
+        $oldpwd = $this->_post('oldpwd'); //原密码
+        $newpwd = $this->_post('newpwd'); //新密码1
+        $newpwd2 = $this->_post('newpwd2'); //新密码2
+        if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
             $this->error('密码项不能为空！');
             exit;
         }
     }
-    
 
 }
