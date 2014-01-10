@@ -54,10 +54,14 @@ class IndexAction extends BasememberAction {
      */
     public function personal()
     {
-
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['id'] = array('eq',$uid);
+        $data = $m->field('username,sex,signature,birthday')->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '个人资料');
         $this->assign('sidebar_active', 'personal');
+        $this->assign('data', $data);
         $this->display($skin . ':personal');
     }
 
@@ -70,10 +74,14 @@ class IndexAction extends BasememberAction {
      */
     public function email()
     {
-
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['id'] = array('eq',$uid);
+        $data = $m->field('email,email_status')->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '个人资料');
         $this->assign('sidebar_active', 'email');
+        $this->assign('data', $data);
         $this->display($skin . ':email');
     }
 
@@ -102,12 +110,18 @@ class IndexAction extends BasememberAction {
      */
     public function doPersonal()
     {
-        $oldpwd = $this->_post('oldpwd'); //原密码
-        $newpwd = $this->_post('newpwd'); //新密码1
-        $newpwd2 = $this->_post('newpwd2'); //新密码2
-        if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
-            $this->error('密码项不能为空！');
-            exit;
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['id'] = array('eq',$uid);
+        $data['updatetime'] = time();
+        $data['sex'] = $this->_post('sex');
+        $data['birthday'] = strtotime($this->_post('birthday'));
+        $data['signature'] = $this->_post('signature');
+        $rs = $m->where($condition)->save($data);
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/personal');
+        } else {
+            $this->error('操作失败，请重新操作！');
         }
     }
 
@@ -120,13 +134,32 @@ class IndexAction extends BasememberAction {
      */
     public function doEmail()
     {
-        $oldpwd = $this->_post('oldpwd'); //原密码
-        $newpwd = $this->_post('newpwd'); //新密码1
-        $newpwd2 = $this->_post('newpwd2'); //新密码2
-        if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
-            $this->error('密码项不能为空！');
-            exit;
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['id'] = array('eq',$uid);
+        $data['updatetime'] = time();
+        $data['email'] = $this->_post('email');
+        $condition_email['email'] = array('eq',$data['email']);
+        $condition_email['id'] = array('neq',$uid);
+        //判断该邮箱是否存在
+        $data_email = $m->where($condition_email)->find();
+        if($data_email){
+            $this->error('您要更改的邮箱已存在，请重新操作！');
+            exit();
         }
+        $data_one = $m->field('email')->where($condition)->find();
+        if($data_one['email']!=$data['email']){
+            unset($data['email']);
+            $data['email_status'] = 10;
+        }
+        $rs = $m->where($condition)->save($data);
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/email');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+        
+        
     }
     /**
      * authEmail
@@ -150,12 +183,35 @@ class IndexAction extends BasememberAction {
      */
     public function doChangePwd()
     {
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $uname = session('LOGIN_M_NAME');
         $oldpwd = $this->_post('oldpwd'); //原密码
         $newpwd = $this->_post('newpwd'); //新密码1
         $newpwd2 = $this->_post('newpwd2'); //新密码2
         if (empty($oldpwd) || empty($newpwd) || empty($newpwd2)) {
             $this->error('密码项不能为空！');
             exit;
+        }
+        if($newpwd!=$newpwd2){
+            $this->error('两次新密码输入不正确！');
+            exit;
+        }
+        $condition['id'] = array('eq',$uid);
+        $data_find = $m->field('password')->where($condition)->find();
+        $oldpwd = R('Api/News/getPwd', array($uname, $oldpwd));
+        if($oldpwd!=$data_find['password']){
+            $this->error('原密码输入不正确，请重新输入！');
+            exit;
+        }
+        $password = R('Api/News/getPwd', array($uname, $newpwd));
+        $data['password'] = $password;
+        $data['updatetime'] = time();
+        $rs = $m->where($condition)->save($data);
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/changePwd');
+        } else {
+            $this->error('操作失败，请重新操作！');
         }
     }
 

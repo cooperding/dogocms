@@ -114,10 +114,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5400',endCo
 }
 /*会员登录*/
 .dogo-iput {margin: 5px 0;}
-.dogo-login{background-color: #eae8ee;border-radius: 5px;padding: 20px;overflow: hidden;}
-.dogo-login .btn-default{background: #ff5400;background-image: linear-gradient(to bottom,#ff5400 0,#ff5400 100%);
+.dogo-member{background-color: #eae8ee;border-radius: 5px;padding: 20px;overflow: hidden;}
+.dogo-member .btn-default{background: #ff5400;background-image: linear-gradient(to bottom,#ff5400 0,#ff5400 100%);
 background-repeat: repeat-x;border-color: #ff5400;}
-.dogo-login .btn-default:hover,.dogo-login .btn-default:focus {background-color: #fc8043;border-color: #fc8043;background-position: 0 -45px;color: #fff;}
+.dogo-member .btn-default:hover,.dogo-member .btn-default:focus {background-color: #fc8043;border-color: #fc8043;background-position: 0 -45px;color: #fff;}
 
 
 

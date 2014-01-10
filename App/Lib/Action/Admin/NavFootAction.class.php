@@ -33,11 +33,11 @@ class NavFootAction extends BaseAction {
      */
     public function add()
     {
-        $radios = array(
-            'y' => '启用',
-            'n' => '禁用'
+        $status = array(
+            '20' => '启用',
+            '10' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
         $this->display();
     }
 
@@ -56,8 +56,8 @@ class NavFootAction extends BaseAction {
         $data = $m->where($condition)->find();
         
         $status = array(
-            'y' => '启用',
-            'n' => '禁用'
+            '20' => '启用',
+            '10' => '禁用'
         );
         $this->assign('status', $status);
         $this->assign('v_status', $data['status']);
@@ -192,9 +192,9 @@ class NavFootAction extends BaseAction {
         foreach ($list as $k => $v) {
             $a[$k] = $v;
             $a[$k]['_parentId'] = intval($v['parent_id']); //_parentId为easyui中标识父id
-            if($v['status']=='y'){
+            if($v['status']=='20'){
                 $a[$k]['status'] = '启用';
-            }elseif ($v['status']=='n') {
+            }elseif ($v['status']=='10') {
                 $a[$k]['status'] = '禁用';
             }
         }

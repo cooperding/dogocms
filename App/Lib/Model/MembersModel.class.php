@@ -15,7 +15,7 @@ class MembersModel extends Model {
     protected $tableName = 'members';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'username', 'password', 'addtime', 'is_recycle', 'status', 'updatetime', 'email', 'sex', 'telphone', 'ip', 'email_status','_pk' => 'id', '_autoinc' => true
+        'id', 'username', 'password', 'addtime', 'is_recycle', 'status', 'updatetime', 'email', 'sex', 'telphone', 'ip', 'email_status', 'email_key', 'email_sendtime', 'email_authtime', 'signature', 'birthday','_pk' => 'id', '_autoinc' => true
     );
 
 }

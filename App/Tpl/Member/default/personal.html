@@ -1,4 +1,5 @@
 <include file="$header" />
+<link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.3/css/bootstrap-datetimepicker.min.css"/>
 <div class="row">
     <div class="col-md-3">
 
@@ -7,46 +8,46 @@
         </div><!--dogo-sidebar-->
     </div><!--col-md-->
     <div class="col-md-9">
-        <div class="dogo-login">
+        <div class="dogo-member">
             <h4>个人资料</h4>
             <div class="dogo-blank"></div>
 
-            <form class="form-horizontal " role="form" action="{:U('Member/Index/doChangePwd')}" method="post">
+            <form class="form-horizontal " role="form" action="{:U('Member/Index/doPersonal')}" method="post" target="_blank">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label input-lg">用户名：</label>
+                    <label for="inputName" class="col-sm-2 control-label input-lg">用户名：</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-lg" id="inputEmail3" placeholder="" disabled value="djc6914">
+                        <input type="text" class="form-control input-lg" id="inputName" placeholder="" disabled value="{$data.username}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label input-lg">性别：</label>
+                    <label for="inputSex" class="col-sm-2 control-label input-lg">性别：</label>
                     <div class="col-sm-10">
                         <label class="radio-inline">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            <input type="radio" name="sex" id="inputSex1" value="10" checked>
                             男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            <input type="radio" name="sex" id="inputSex2" value="11">
                             女
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option2">
+                            <input type="radio" name="sex" id="inputSex3" value="13">
                             保密
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label input-lg">生日：</label>
+                    <label for="inputBirthday" class="col-sm-2 control-label input-lg">生日：</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-lg" id="inputPassword3" placeholder="生日">
+                        <input type="text" name="birthday" class="form-control input-lg datetimepicker" id="inputBirthday" placeholder="生日" data-date-format="yyyy-mm-dd" value="2012-05-15">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label input-lg">个性签名：</label>
+                    <label for="inputSignature" class="col-sm-2 control-label input-lg">个性签名：</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control input-lg" rows="3" placeholder="个性签名"></textarea>
+                        <textarea class="form-control input-lg" name="signature" id="inputSignature" rows="3" placeholder="个性签名">{$data.signature}</textarea>
                     </div>
                 </div>
 
@@ -57,7 +58,7 @@
                     </div>
                 </div>
             </form>
-        </div><!--dogo-login-->
+        </div><!--dogo-member-->
 
 
 
@@ -65,8 +66,19 @@
     </div><!--col-md-->
 </div><!--row-->
 <include file="$footer" />
+<script type="text/javascript" src="{$style_cmomon}/v3.0.3/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="{$style_cmomon}/v3.0.3/js/bootstrap-datetimepicker.zh-CN.js"></script>
 </div><!--container-->
 </div><!--dogo-page-->
-
+<script>
+    $(function() {
+        $('.datetimepicker').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-left"
+        });
+    });
+</script>
 </body>
 </html>
