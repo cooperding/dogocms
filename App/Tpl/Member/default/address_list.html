@@ -18,6 +18,7 @@
                     <tr>
                         <th>#</th>
                         <th>收货人名称</th>
+                        <th>手机号</th>
                         <th>地址</th>
                         <th></th>
                         <th>操作</th>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>{$i+1}</td>
                         <td>{$vo.name}</td>
+                        <td>{$vo.telphone}</td>
                         <td>{$vo.address}</td>
                         <td>
                     <if condition="($vo.is_default eq 20)">
