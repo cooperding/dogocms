@@ -24,7 +24,7 @@ class IndexAction extends BasememberAction {
     {
         $m = new MembersModel();
         $uid = session('LOGIN_M_ID');
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data['uname'] = session('LOGIN_M_NAME');
         $data['ip'] = get_client_ip();
         $data['logintime'] = session('LOGIN_M_LOGINTIME');
@@ -49,7 +49,7 @@ class IndexAction extends BasememberAction {
     {
         $m = new MembersModel();
         $uid = session('LOGIN_M_ID');
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data = $m->field('username,sex,signature,birthday')->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '个人资料');
@@ -69,7 +69,7 @@ class IndexAction extends BasememberAction {
     {
         $m = new MembersModel();
         $uid = session('LOGIN_M_ID');
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data = $m->field('email,email_status')->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '个人资料');
@@ -94,6 +94,62 @@ class IndexAction extends BasememberAction {
     }
 
     /**
+     * addressList
+     * 收货地址列表
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressList()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $data = $m->where($condition)->select();
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '收货地址列表');
+        $this->assign('sidebar_active', 'address');
+        $this->assign('list', $data);
+        $this->display($skin . ':address_list');
+    }
+
+    /**
+     * addressAdd
+     * 收货地址-添加
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressAdd()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '添加收货地址');
+        $this->assign('sidebar_active', 'address');
+        $this->display($skin . ':address_add');
+    }
+
+    /**
+     * addressEdit
+     * 收货地址-编辑
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressEdit()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $condition['id'] = array('eq',$this->_get('id'));
+        $data = $m->where($condition)->find();
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '修改收货地址');
+        $this->assign('sidebar_active', 'changepwd');
+        $this->assign('data',$data);
+        $this->display($skin . ':address_edit');
+    }
+
+    /**
      * doPersonal
      * 更新个人资料
      * @return display
@@ -104,7 +160,7 @@ class IndexAction extends BasememberAction {
     {
         $m = new MembersModel();
         $uid = session('LOGIN_M_ID');
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data['updatetime'] = time();
         $data['sex'] = $this->_post('sex');
         $data['birthday'] = strtotime($this->_post('birthday'));
@@ -128,21 +184,21 @@ class IndexAction extends BasememberAction {
     {
         $m = new MembersModel();
         $uid = session('LOGIN_M_ID');
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data['updatetime'] = time();
         $data['email'] = $this->_post('email');
-        $condition_email['email'] = array('eq',$data['email']);
-        $condition_email['id'] = array('neq',$uid);
+        $condition_email['email'] = array('eq', $data['email']);
+        $condition_email['id'] = array('neq', $uid);
         //判断该邮箱是否存在
         $data_email = $m->where($condition_email)->find();
-        if($data_email){
+        if ($data_email) {
             $this->error('您要更改的邮箱已存在，请重新操作！');
             exit();
         }
         $data_one = $m->field('email')->where($condition)->find();
-        if($data_one['email']!=$data['email']){
+        if ($data_one['email'] != $data['email']) {
             $data['email_status'] = 10;
-        }else{
+        } else {
             unset($data['email']);
         }
         $rs = $m->where($condition)->save($data);
@@ -151,9 +207,8 @@ class IndexAction extends BasememberAction {
         } else {
             $this->error('操作失败，请重新操作！');
         }
-        
-        
     }
+
     /**
      * authEmail
      * 发送验证邮箱信息
@@ -163,7 +218,7 @@ class IndexAction extends BasememberAction {
      */
     public function authEmail()
     {
-        $array = array('status'=>1,'msg'=>'ceshi');
+        $array = array('status' => 1, 'msg' => 'ceshi');
         echo json_encode($array);
     }
 
@@ -186,14 +241,14 @@ class IndexAction extends BasememberAction {
             $this->error('密码项不能为空！');
             exit;
         }
-        if($newpwd!=$newpwd2){
+        if ($newpwd != $newpwd2) {
             $this->error('两次新密码输入不正确！');
             exit;
         }
-        $condition['id'] = array('eq',$uid);
+        $condition['id'] = array('eq', $uid);
         $data_find = $m->field('password')->where($condition)->find();
         $oldpwd = R('Api/News/getPwd', array($uname, $oldpwd));
-        if($oldpwd!=$data_find['password']){
+        if ($oldpwd != $data_find['password']) {
             $this->error('原密码输入不正确，请重新输入！');
             exit;
         }
@@ -203,6 +258,84 @@ class IndexAction extends BasememberAction {
         $rs = $m->where($condition)->save($data);
         if ($rs == true) {
             $this->success('操作成功', __GROUP__ . '/Index/changePwd');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+
+    /**
+     * addressInsert
+     * 添加收货地址
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressInsert()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $count = $m->where($condition)->count();
+        if($count>=5){
+            $this->error('最多可以设置5条收货地址！');
+            exit;
+        }
+        if ($_POST['is_default']) {
+            $m->where($condition)->setField('is_default', 10);
+            $_POST['is_default'] = 20;
+        }
+        $_POST['addtime'] = time();
+        $_POST['members_id'] = $uid;
+        $_POST['updatetime'] = time();
+        $rs = $m->data($_POST)->add();
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/addressList');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+
+    /**
+     * addressUpdate
+     *  更新收货地址
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressUpdate()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        if ($_POST['is_default']) {
+            $m->where($condition)->setField('is_default', 10);
+            $_POST['is_default'] = 20;
+        }
+        $condition['id'] = array('eq',$this->_post('id'));
+        $_POST['updatetime'] = time();
+        $rs = $m->where($condition)->save($_POST);
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/addressList');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+    /**
+     * addressDelete
+     *  删除收货地址
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function addressDelete()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $condition['id'] = array('eq',$this->_get('id'));
+        $rs = $m->where($condition)->delete();
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/addressList');
         } else {
             $this->error('操作失败，请重新操作！');
         }

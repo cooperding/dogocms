@@ -129,8 +129,8 @@ class PassportAction extends Action {
                     session('LOGIN_M_ID', $rs['id']);
                     session('LOGIN_M_ADDTIME', $rs['addtime']);
                     session('LOGIN_M_LOGINTIME', time());
-                    $this->success('登陆成功！', __GROUP__);
-                }
+                        $this->success('登陆成功！', __GROUP__);
+                    }
             } else {
                 $this->error('您的输入用户名或者密码错误！');
             }

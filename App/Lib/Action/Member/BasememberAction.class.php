@@ -22,6 +22,7 @@ class BasememberAction extends Action {
         if ($status != 'TRUE') {
             $this->redirect('..'.__GROUP__.'/Passport/login');
         }
+        $this->assign('count_address', $this->getAddressCount());
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('style', __PUBLIC__ . '/Skin/Member/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
@@ -43,6 +44,20 @@ class BasememberAction extends Action {
             $skin = 'default';
         }
         return $skin;
+    }
+    /*
+     * getAddressCount
+     * 获取收货地址数量
+     * 
+     */
+
+    public function getAddressCount()
+    {
+        $m = new MembersAddressModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $count = $m->where($condition)->count();
+        return $count;
     }
 
 }
