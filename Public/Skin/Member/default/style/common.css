@@ -118,6 +118,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5400',endCo
 .dogo-member .btn-default{background: #ff5400;background-image: linear-gradient(to bottom,#ff5400 0,#ff5400 100%);
 background-repeat: repeat-x;border-color: #ff5400;}
 .dogo-member .btn-default:hover,.dogo-member .btn-default:focus {background-color: #fc8043;border-color: #fc8043;background-position: 0 -45px;color: #fff;}
-
+.dogo-member p{line-height: 25px;overflow: hidden;}
 
 

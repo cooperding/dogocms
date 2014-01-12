@@ -22,26 +22,19 @@ class IndexAction extends BasememberAction {
      */
     public function index()
     {
-        $m = M('Setting');
-
-        $title['sys_name'] = array('eq', 'cfg_title');
-        $keywords['sys_name'] = array('eq', 'cfg_keywords');
-        $description['sys_name'] = array('eq', 'cfg_description');
-        $data_title = $m->where($title)->find();
-        $data_keywords = $m->where($keywords)->find();
-        $data_description = $m->where($description)->find();
-
-        $Cache = Cache::getInstance(C('DATA_CACHE_TYPE'), array('expire' => C('DATA_CACHE_TIME')));
-        $title = $Cache->get('title');
-        if (empty($title)) {
-            $title['sys_name'] = array('eq', 'cfg_title');
-            $data_title = $m->where($title)->find();
-            $Cache->set('title', $data_title['sys_value']);
-            $title = $data_title['sys_value'];
-        }
+        $m = new MembersModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['id'] = array('eq',$uid);
+        $data['uname'] = session('LOGIN_M_NAME');
+        $data['ip'] = get_client_ip();
+        $data['logintime'] = session('LOGIN_M_LOGINTIME');
+        $data['addtime'] = session('LOGIN_M_ADDTIME');
+        $data_signature = $m->field('signature')->where($condition)->find();
+        $data['signature'] = $data_signature['signature'];
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '会员中心');
         $this->assign('sidebar_active', 'index');
+        $this->assign('data', $data);
         $this->display($skin . ':index');
     }
 
@@ -94,7 +87,6 @@ class IndexAction extends BasememberAction {
      */
     public function changePwd()
     {
-
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '修改密码');
         $this->assign('sidebar_active', 'changepwd');
@@ -149,8 +141,9 @@ class IndexAction extends BasememberAction {
         }
         $data_one = $m->field('email')->where($condition)->find();
         if($data_one['email']!=$data['email']){
-            unset($data['email']);
             $data['email_status'] = 10;
+        }else{
+            unset($data['email']);
         }
         $rs = $m->where($condition)->save($data);
         if ($rs == true) {
