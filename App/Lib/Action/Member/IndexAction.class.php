@@ -72,7 +72,7 @@ class IndexAction extends BasememberAction {
         $condition['id'] = array('eq', $uid);
         $data = $m->field('email,email_status')->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
-        $this->assign('title', '个人资料');
+        $this->assign('title', '邮箱信息');
         $this->assign('sidebar_active', 'email');
         $this->assign('data', $data);
         $this->display($skin . ':email');
