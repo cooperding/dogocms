@@ -54,9 +54,9 @@ class NewsAction extends BaseAction {
             'j' => ' 跳转[j] '
         );
         $radios = array(
-            'y' => ' 审核 ',
-            'n' => ' 未审核 ',
-            'e' => ' 未通过审核 '
+            '12' => ' 审核 ',
+            '10' => ' 未审核 ',
+            '11' => ' 未通过审核 '
         );
         $this->assign('id', $id);
         $this->assign('flag', $flag);
@@ -103,9 +103,9 @@ class NewsAction extends BaseAction {
             'j' => ' 跳转[j] '
         );
         $radios = array(
-            'y' => ' 审核 ',
-            'n' => ' 未审核 ',
-            'e' => ' 未通过审核 '
+            '12' => ' 审核 ',
+            '10' => ' 未审核 ',
+            '11' => ' 未通过审核 '
         );
         $this->assign('data', $data);
         $this->assign('filed', $data_filed);
@@ -242,7 +242,7 @@ class NewsAction extends BaseAction {
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'y');
+        $rs = $t->where($data)->setField('is_recycle', '11');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -302,7 +302,7 @@ class NewsAction extends BaseAction {
         if (empty($data['id'])) {
             $this->dmsg('1', '未有id值，操作失败！', false, true);
         }
-        $rs = $t->where($data)->setField('is_recycle', 'n');
+        $rs = $t->where($data)->setField('is_recycle', '10');
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -373,7 +373,7 @@ class NewsAction extends BaseAction {
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
 
-        $condition['t.is_recycle'] = isset($_GET['is_recycle']) ? 'y' : 'n';
+        $condition['t.is_recycle'] = isset($_GET['is_recycle']) ? '11' : '10';
         $count = $m->table(C('DB_PREFIX').'title t')->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
@@ -383,11 +383,11 @@ class NewsAction extends BaseAction {
                 ->where($condition)->limit($firstRow . ',' . $pageRows)->order('t.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='y'){
+            if($v['status']=='12'){
                 $data[$k]['status'] = '已审核';
-            }elseif($v['status']=='n'){
+            }elseif($v['status']=='10'){
                 $data[$k]['status'] = '未审核';
-            }elseif($v['status']=='e'){
+            }elseif($v['status']=='11'){
                 $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
             }
              

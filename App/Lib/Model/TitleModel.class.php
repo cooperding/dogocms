@@ -15,7 +15,7 @@ class TitleModel extends Model {
     protected $tableName = 'title';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'sort_id', 'op_id', 'user_id', 'title', 'subtitle', 'titlepic', 'updatetime', 'flag','editor','_pk' => 'id', '_autoinc' => true
+        'id', 'sort_id', 'op_id', 'user_id', 'title', 'subtitle', 'titlepic', 'flag', 'editor', 'author', 'source', 'sourceurl', 'keywords', 'description', 'views', 'addtime', 'updatetime', 'status', 'is_recycle', '_pk' => 'id', '_autoinc' => true
     );
 
 }

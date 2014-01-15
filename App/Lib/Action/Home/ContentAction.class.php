@@ -11,7 +11,7 @@
  * @package  Controller
  * @todo 过滤无用字段,筛选符合条件的信息（需要全站共同使用）
  */
-class ContentAction extends BaseAction {
+class ContentAction extends BasehomeAction {
 
     public function index($id)
     {
@@ -20,11 +20,7 @@ class ContentAction extends BaseAction {
         //过滤无用字段
         //筛选符合条件的信息
         $id = intval($id);
-        if (!$id) {
-            echo '错误'; //跳转到错误页面
-            exit;
-        }
-        $t = M('Title');
+        $t = new TitleModel();
         $condition['t.id'] = array('eq',$id);
         $condition['t.status'] = array('eq','y');
         $condition['t.is_recycle'] = array('eq','n');
@@ -44,15 +40,14 @@ class ContentAction extends BaseAction {
                     ->find();
             //浏览量赋值+1
             $t->where('id=' . $id)->setInc('views',1);
-        }else{
-            echo '错误提示！';//跳转到错误页面
         }
         //评论信息计数
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('dogocms', $data);
         $this->assign('title',$data['title']);
         $this->assign('keywords',$data['keywords']);
         $this->assign('description',$data['description']);
-        $this->display(':content');
+        $this->display($skin . ':content');
     }
 
 }

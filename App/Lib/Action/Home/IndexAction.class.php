@@ -15,27 +15,41 @@ class IndexAction extends BasehomeAction {
 
     public function index()
     {
-        import('ORG.Util.Page'); // 导入分页类
-        //$count = $t->where($title)->count();
-        $Page = new Page($count, 5); // 实例化分页类 传入总记录数和每页显示的记录数
-        $show = $Page->show(); // 分页显示输出
+        $t = new TitleModel();
+        import('ORG.Util.DingPage'); // 导入分页类
+        $condition['t.status'] = array('eq', '12');
+        $count = $t->Table(C('DB_PREFIX') . 'title t')
+                        ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
+                        ->where($condition)->count();
+        $page = new DingPage($count, 5); // 实例化分页类 传入总记录数和每页显示的记录数
+        $page->setConfig('header', '条记录');
+        $page->setConfig('theme', "%upPage% %downPage% %first% %prePage% %linkPage% %nextPage% %end% <li><span>%totalRow% %header% %nowPage%/%totalPage% 页</span></li>");
+        $show = $page->show(); // 分页显示输出
+        
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-        //$list = $t->where($title)->order('id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        
-        
+        $list = $t->Table(C('DB_PREFIX') . 'title t')
+                ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
+                ->where($condition)
+                ->field('t.*,c.*')
+                ->order('t.id desc')
+                ->limit($page->firstRow . ',' . $page->listRows)
+                ->select();
+
         $m = new SettingModel();
-        $title['sys_name'] = array('eq','cfg_title');
-        $keywords['sys_name'] = array('eq','cfg_keywords');
-        $description['sys_name'] = array('eq','cfg_description');
+        $title['sys_name'] = array('eq', 'cfg_title');
+        $keywords['sys_name'] = array('eq', 'cfg_keywords');
+        $description['sys_name'] = array('eq', 'cfg_description');
         $data_title = $m->where($title)->find();
         $data_keywords = $m->where($keywords)->find();
         $data_description = $m->where($description)->find();
-        
-        $skin = $this->getSkin();//获取前台主题皮肤名称
-        $this->assign('title',$data_title['sys_value']);
-        $this->assign('keywords',$data_keywords['sys_value']);
-        $this->assign('description',$data_description['sys_value']);
-        $this->display($skin.':index');
+
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', $data_title['sys_value']);
+        $this->assign('keywords', $data_keywords['sys_value']);
+        $this->assign('description', $data_description['sys_value']);
+        $this->assign('list', $list);
+        $this->assign('page', $show); // 赋值分页输出
+        $this->display($skin . ':index');
     }
 
 }
