@@ -113,15 +113,7 @@ $array = array(
                 )),
             array('label' => '邮件模板', 'type' => 'setting', 'items' => array(
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
-                )),
-            array('label' => L('menu_channel_name'), 'type' => 'channel_name', 'items' => array(
-                    array('label' => L('menu_model_cat'), 'type' => 'model_cat', 'link' => __GROUP__ . '/ContentModel/sort'),
-                    array('label' => L('menu_model_list'), 'type' => 'model_list', 'link' => __GROUP__ . '/ContentModel/sortlist')
-                )),
-            array('label' => L('menu_linkpage_name'), 'type' => 'linkpage_name', 'items' => array(
-                    array('label' => L('menu_linkpage_cat'), 'type' => 'linkpage_cat', 'link' => __GROUP__ . '/LinkPage/sort'),
-                    array('label' => L('menu_linkpage_list'), 'type' => 'linkpage_list', 'link' => __GROUP__ . '/LinkPage/sortlist')
-                )),
+                ))
         )),
     array('label' => '插件管理', 'type' => 'plugins', 'items' => array(
             array('label' => '日志管理', 'type' => 'flash', 'items' => array(

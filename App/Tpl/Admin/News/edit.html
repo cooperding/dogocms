@@ -9,13 +9,6 @@
                     <td><input type="text" name="title" value="{$data.title}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
                 </tr>
                 <tr>
-                    <th>标题颜色：</th>
-                    <td>
-                        <input type="text" id="color" name="sys_name" value="{$data.sys_name}"/>
-                        <input type="button" id="colorpicker" value="打开取色器" />
-                    </td>
-                </tr>
-                <tr>
                     <th>文档副标题：</th>
                     <td><input type="text" name="subtitle" value="{$data.subtitle}" /></td>
                 </tr>
@@ -36,7 +29,7 @@
             </tr>
             <tr>
                 <th>文档分类：</th>
-                <td><input name="sort_id" id="sort_combotree" value="{$data.sort_id}"  style="width:200px;" /><span class="red">*请先选择文档分类</span></td>
+                <td><input name="sort_id" class="easyui-combotree combotree" data-options="url:'__GROUP__/NewsSort/jsonTree',required:true," value="{$data.sort_id}"  style="width:200px;" /><span class="red">*请先选择文档分类</span></td>
             </tr>
             <tr>
                 <th>文档标题图：</th>
@@ -44,22 +37,6 @@
                     <input type="text" id="url1" name="titlepic" value="{$data.titlepic}" />
                     <input type="button" id="image1" value="选择图片" />
                 </td>
-            </tr>
-            <tr>
-                <th>编辑：</th>
-                <td><input type="text" name="editor" value="{$data.editor}" /></td>
-            </tr>
-            <tr>
-                <th>作者：</th>
-                <td><input type="text" name="author" value="{$data.author}" /></td>
-            </tr>
-            <tr>
-                <th>来源：</th>
-                <td><input type="text" name="source" value="{$data.source}" /></td>
-            </tr>
-            <tr>
-                <th>来源网址：</th>
-                <td><input type="text" name="sourceurl" value="{$data.sourceurl}" /></td>
             </tr>
             <tr>
                 <th>关键词：</th>
@@ -90,88 +67,36 @@
             </tbody>
         </table>
     </div>
-    <div id="conModel" style="margin: 10px 0;"><include file="News:tempmodel" /></div>
+
 
 </form>
 <script>
     $(function() {
-        $('#sort_combotree').combotree({
-            url:'__GROUP__/NewsSort/jsonTree',
-            required:true,
-            onChange:function(){
-                var nid = $(this).combotree('getValue');
-                var href = '__GROUP__/News/tempmodel';
-                $.ajax({
-                    url:href,
-                    type:'post',
-                    data:{
-                        id:nid
-                    },
-                    dataType:'html',
-                    success:function(data){
-                        //alert(data);
-                        $('#conModel').html(data);
-                    }
-                });//ajax
-            }
-        });
         KindEditor.create('#content', {
-            themeType : 'simple',
-            allowFileManager : true,
-            uploadJson:'__GROUP__/Upload/uploadImg',
-            fileManagerJson :'__GROUP__/Upload/fileManagerJson',
-            afterBlur : function() {
+            themeType: 'simple',
+            allowFileManager: true,
+            uploadJson: '__GROUP__/Upload/uploadImg',
+            fileManagerJson: '__GROUP__/Upload/fileManagerJson',
+            afterBlur: function() {
                 this.sync();
             }
         });
         var editor = KindEditor.editor({
-            allowFileManager : true,
-            uploadJson:'__GROUP__/Upload/uploadImg',
-            fileManagerJson :'__GROUP__/Upload/fileManagerJson'
+            allowFileManager: true,
+            uploadJson: '__GROUP__/Upload/uploadImg',
+            fileManagerJson: '__GROUP__/Upload/fileManagerJson'
         });
         KindEditor('#image1').click(function() {
             editor.loadPlugin('image', function() {
                 editor.plugin.imageDialog({
-                    imageUrl : KindEditor('#url1').val(),
-                    clickFn : function(url, title, width, height, border, align) {
+                    imageUrl: KindEditor('#url1').val(),
+                    clickFn: function(url, title, width, height, border, align) {
                         KindEditor('#url1').val(url);
                         editor.hideDialog();
                     }
                 });
             });
         });
-
-        /*
-        var colorpicker;
-        KindEditor('#colorpicker').bind('click', function(e) {
-            e.stopPropagation();
-            if (colorpicker) {
-                colorpicker.remove();
-                colorpicker = null;
-                return;
-            }
-            var colorpickerPos = KindEditor('#colorpicker').pos();
-            colorpicker = KindEditor.colorpicker({
-                x : colorpickerPos.x,
-                y : colorpickerPos.y + KindEditor('#colorpicker').height(),
-                z : 19811214,
-                selectedColor : 'default',
-                noColor : '无颜色',
-                click : function(color) {
-                    KindEditor('#color').val(color);
-                    colorpicker.remove();
-                    colorpicker = null;
-                }
-            });
-        });
-        KindEditor.click(function() {
-            if (colorpicker) {
-                colorpicker.remove();
-                colorpicker = null;
-            }
-        });
-
-         */
 
     });
 </script>
