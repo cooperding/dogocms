@@ -6,20 +6,20 @@
             <h4>会员登录</h4>
             <div class="dogo-blank"></div>
             <form role="form" action="{:U('Member/Passport/checkLogin')}" method="post">
-                <div class="dogo-iput input-group input-group-lg">
+                <div class="dogo-input input-group input-group-lg">
                     <span class="input-group-addon">邮箱：</span>
-                    <input type="text" name="email" class="form-control" placeholder="邮箱">
+                    <input type="text" name="email" class="form-control" placeholder="邮箱" required="required">
                 </div>
                 <div class="dogo-blank"></div>
 
-                <div class="dogo-iput input-group input-group-lg">
+                <div class="dogo-input input-group input-group-lg">
                     <span class="input-group-addon">密码：</span>
-                    <input type="password" name="pwd" class="form-control" placeholder="密码">
+                    <input type="password" name="pwd" class="form-control" placeholder="密码" required="required">
                 </div>
                 <div class="dogo-blank"></div>
-                <div class="dogo-iput input-group input-group-lg">
+                <div class="dogo-input input-group input-group-lg">
                     <span class="input-group-addon">验证码：</span>
-                    <input type="text" name="v_code" class="form-control" placeholder="输入右侧验证码">
+                    <input type="text" name="v_code" class="form-control" placeholder="输入右侧验证码" required="required">
                     <span class="input-group-addon">
                         <img src="{:U('Member/Passport/vercode')}" onclick="this.src = '{:U(\'Member/Passport/vercode\')}?tm=' + Math.random()" style="cursor: pointer;" title="看不清？点击更换另一个验证码。"/>
                     </span>

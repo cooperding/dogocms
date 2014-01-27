@@ -113,7 +113,7 @@ border-color: #ff5400;
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5400',endColorstr='#ff5400',GradientType=0);
 }
 /*会员登录*/
-.dogo-iput {margin: 5px 0;}
+.dogo-input {margin: 5px 0;}
 .dogo-member{background-color: #eae8ee;border-radius: 5px;padding: 20px;overflow: hidden;}
 .dogo-member .btn-default{background: #ff5400;background-image: linear-gradient(to bottom,#ff5400 0,#ff5400 100%);
 background-repeat: repeat-x;border-color: #ff5400;}

@@ -46,66 +46,6 @@
 <include file="$footer" />
 </div><!--container-->
 </div><!--dogo-page-->
-<script>
-    $(function() {
-        $('.dogo-click-up').each(function() {
-            var row_id = $(this).attr('data-row-id');
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                $('.disabled_' + row_id).addClass('disabled');
-            }
-        });
-        $('.dogo-click-up').click(function() {
-            var row_id = $(this).attr('data-row-id');
-            var url = "{:U('Ajax/vote')}";
-            var type = '10';
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                alert('您已赞过该信息！');
-                return false;
-            }
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                data: {key_id: row_id, type: type},
-                success: function(data) {
-                    if (data.status == 0) {
-                        $('.num_up_' + row_id).text(data.num);
-                        $('.disabled_' + row_id).addClass('disabled');
-                        $.cookie(row_id, row_id, {expires: 1});
-                    } else if (data.status == 1) {
-                        alert(data.mg);
-                    }
-                }//success
-            });
-        });
-        $('.dogo-click-down').click(function() {
-            var row_id = $(this).attr('data-row-id');
-            var url = "{:U('Ajax/vote')}";
-            var type = '11';
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                alert('您已踩过该信息！');
-                return false;
-            }
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                data: {key_id: row_id, type: type},
-                success: function(data) {
-                    if (data.status == 0) {
-                        $('.num_down_' + row_id).text(data.num);
-                        $('.disabled_' + row_id).addClass('disabled');
-                        $.cookie(row_id, row_id, {expires: 1});
-                    } else if (data.status == 1) {
-                        alert(data.mg);
-                    }
-                }//success
-            });
-        });
-    });
-</script>
+
 </body>
 </html>

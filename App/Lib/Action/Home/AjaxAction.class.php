@@ -13,6 +13,25 @@
 class AjaxAction extends BasehomeAction {
 
     /**
+     * checkLoginStatus
+     * 验证登录状态
+     * @param string $key_id 信息编号
+     * @return boolean
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function checkLoginStatus()
+    {
+        $status = session('LOGIN_M_STATUS');
+        if(!$status){
+            $array = array('status' => 3, 'msg' => '请登录后操作！');
+            echo json_encode($array);
+            exit;
+        }  else {
+            return TRUE;
+        }
+    }
+    /**
      * vote
      * 投票操作
      * @param string $key_id 信息编号
@@ -28,6 +47,7 @@ class AjaxAction extends BasehomeAction {
         $ir = new InformationRecordModel();
         $key_id = $this->_post('key_id');
         $type = $this->_post('type');
+        $this->checkLoginStatus();//验证登录状态
         $ip = get_client_ip();
         $uid = session('LOGIN_M_ID'); //会员ID
         $data['key_id'] = $key_id;
@@ -71,6 +91,7 @@ class AjaxAction extends BasehomeAction {
         $c = new CommentModel();
         $key_id = $this->_post('key_id');
         $content = $this->_post('content');
+        $this->checkLoginStatus();//验证登录状态
         $ip = get_client_ip();
         $uid = session('LOGIN_M_ID'); //会员ID
         $data['title_id'] = $key_id;

@@ -8,12 +8,12 @@
             <form role="form" action="{:U('Member/Passport/getNewPwd')}" method="post">
                 <div class="dogo-iput input-group input-group-lg">
                     <span class="input-group-addon">邮箱：</span>
-                    <input type="text" name="uname" class="form-control" placeholder="使用注册的邮箱">
+                    <input type="text" name="uname" class="form-control" placeholder="使用注册的邮箱" required="required">
                 </div>
                 <div class="dogo-blank"></div>
                 <div class="dogo-iput input-group input-group-lg">
                     <span class="input-group-addon">验证码：</span>
-                    <input type="text" name="v_code" class="form-control" placeholder="输入右侧验证码">
+                    <input type="text" name="v_code" class="form-control" placeholder="输入右侧验证码" required="required">
                     <span class="input-group-addon">
                         <img src="{:U('Member/Passport/vercode')}" onclick="this.src='{:U(\'Member/Passport/vercode\')}?tm='+Math.random()" style="cursor: pointer;" title="看不清？点击更换另一个验证码。"/>
                     </span>

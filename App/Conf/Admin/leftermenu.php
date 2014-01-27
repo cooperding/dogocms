@@ -15,7 +15,8 @@ $array = array(
                     array('label' => L('menu_data_tool'), 'type' => 'data_tool', 'link' => __GROUP__ . '/Data/tool')
                 )),
             array('label' => L('menu_setting_name'), 'type' => 'setting_name', 'items' => array(
-                    array('label' => L('menu_setting_base'), 'type' => 'setting_base', 'link' => __GROUP__ . '/Setting/index')
+                    array('label' => L('menu_setting_base'), 'type' => 'setting_base', 'link' => __GROUP__ . '/Setting/index'),
+                array('label' => L('API接口管理'), 'type' => 'api_base', 'link' => __GROUP__ . '/ApiList/index')
                 )),
         )),
     array('label' => L('menu_info_name'), 'type' => 'info_name', 'items' => array(

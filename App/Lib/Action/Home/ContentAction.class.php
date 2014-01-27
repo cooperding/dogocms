@@ -16,12 +16,11 @@ class ContentAction extends BasehomeAction {
     public function index($id)
     {
         //接收到的是文档title id，通过该id查询取得相应的内容
-        //先通过这个方法调出来，之后再考虑其他标签式
         //$id = intval($id);
         $t = new TitleModel();
         $condition['t.id'] = array('eq', $id);
-        $condition['t.status'] = array('eq', '12');//12已审核
-        $condition['t.is_recycle'] = array('eq', '10');//10未加入回收站
+        $condition['t.status'] = array('eq', '12'); //12已审核
+        $condition['t.is_recycle'] = array('eq', '10'); //10未加入回收站
 
         $data = $t->field(array('t.*', 'c.*'))
                 ->Table(C('DB_PREFIX') . 'title t')
@@ -29,10 +28,19 @@ class ContentAction extends BasehomeAction {
                 ->where($condition)
                 ->find();
         //浏览量赋值+1
-        $condition_id['id'] = array('eq',$id);
+        $condition_id['id'] = array('eq', $id);
         $t->where($condition_id)->setInc('views', 1);
 
-        //评论信息计数
+        //获取评论信息
+        $c = new CommentModel();
+        $condition_comment['c.title_id'] = array('eq', $id);
+        $condition_comment['c.status'] = array('eq', 10);
+        $comment = $c->field(array('m.id as uid,m.username', 'c.*'))
+                ->Table(C('DB_PREFIX') . 'comment c')
+                        ->join(C('DB_PREFIX') . 'members m ON m.id = c.members_id ')
+                        ->where($condition_comment)->select();
+        
+
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('data', $data);
         $this->assign('title', $data['title']);
