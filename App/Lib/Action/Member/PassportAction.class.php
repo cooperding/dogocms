@@ -100,19 +100,38 @@ class PassportAction extends Action {
         $m = new MembersModel();
         $v_code = $this->_post('v_code');
         $verify = session('verify_member');
+        $type = $this->_post('type');
         if (empty($v_code) || md5($v_code) != $verify) {
-            $this->error('验证码为空或者输入错误！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '验证码为空或者输入错误！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('验证码为空或者输入错误！');
+                exit;
+            }
         }
         $email = $this->_post('email'); //邮箱
         if (empty($email)) {
-            $this->error('注册邮箱不能为空！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '注册邮箱不能为空！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('注册邮箱不能为空！');
+                exit;
+            }
         }
         $pwd = $this->_post('pwd'); //密码
         if (empty($pwd)) {
-            $this->error('密码不能为空！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '密码不能为空！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('密码不能为空！');
+                exit;
+            }
         }
         $condition['email'] = array('eq', $email);
         $rs = $m->where($condition)->field('id,username,addtime,password')->find();
@@ -121,21 +140,45 @@ class PassportAction extends Action {
             $password = R('Api/News/getPwd', array($uname, $pwd));
             if ($password == $rs['password']) {//密码匹配
                 if ($rs['status'] == '10') {//禁用账户，不可登录
-                    $this->error('您的账户被禁止登录！' . __ROOT__);
-                    exit();
+                    if ($type == '10') {
+                        $array = array('status' => 1, 'msg' => '您的账户被禁止登录！');
+                        echo json_encode($array);
+                        exit;
+                    } else {
+                        $this->error('您的账户被禁止登录！' . __ROOT__);
+                        exit();
+                    }
                 } else {
                     session('LOGIN_M_STATUS', 'TRUE');
                     session('LOGIN_M_NAME', $rs['username']);
                     session('LOGIN_M_ID', $rs['id']);
                     session('LOGIN_M_ADDTIME', $rs['addtime']);
                     session('LOGIN_M_LOGINTIME', time());
+                    if ($type == '10') {
+                        $array = array('status' => 0, 'msg' => '登陆成功！');
+                        echo json_encode($array);
+                        exit;
+                    } else {
                         $this->success('登陆成功！', __GROUP__);
                     }
+                }
+            } else {
+                if ($type == '10') {
+                    $array = array('status' => 1, 'msg' => '您的输入用户名或者密码错误！');
+                    echo json_encode($array);
+                    exit;
+                } else {
+                    $this->error('您的输入用户名或者密码错误！');
+                }
+            }
+        } else {//未查询到数据
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '您的输入用户名或者密码错误！');
+                echo json_encode($array);
+                exit;
             } else {
                 $this->error('您的输入用户名或者密码错误！');
             }
-        } else {//未查询到数据
-            $this->error('您的输入用户名或者密码错误！');
         }
     }
 
@@ -147,7 +190,6 @@ class PassportAction extends Action {
      * @version dogocms 1.0
      * @todo 完善密码找回操作，增加邮件发送功能
      */
-
     public function getNewPwd()
     {
         $m = new MembersModel();
@@ -178,13 +220,12 @@ class PassportAction extends Action {
         $condition_id['id'] = $rs['id'];
         $rs_pwd = $m->where($condition_id)->save($data);
         if ($rs_pwd == true) {
-            $rs_email = R('Api/News/sendEmail', array($email,'找回密码' ,$pwd));
-            if($rs_email){
+            $rs_email = R('Api/News/sendEmail', array($email, '找回密码', $pwd));
+            if ($rs_email) {
                 $this->success('重置密码成功，请登录邮箱查看！', __GROUP__);
-            }else{
+            } else {
                 $this->error('重置密码失败，请重新发送！');
             }
-            
         } else {
             $this->error('重置密码失败！');
         }
@@ -202,41 +243,77 @@ class PassportAction extends Action {
         $m = new MembersModel();
         $v_code = $this->_post('v_code');
         $verify = session('verify_member');
+        $type = $this->_post('type');
         if (empty($v_code) || md5($v_code) != $verify) {
-            $this->error('验证码为空或者输入错误！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '验证码为空或者输入错误！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('验证码为空或者输入错误！');
+            }
         }
         $uname = $this->_post('uname'); //用户名
         $email = $this->_post('email'); //邮箱
         $pwd = $this->_post('pwd'); //密码
         $pwd2 = $this->_post('pwd2'); //密码2
         if (empty($uname)) {
-            $this->error('用户名不能为空！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '用户名不能为空！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('用户名不能为空！');
+            }
         }
         if (empty($email)) {
-            $this->error('邮箱不能为空！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '邮箱不能为空！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('邮箱不能为空！');
+            }
         }
         if (empty($pwd) || empty($pwd2)) {
-            $this->error('密码不能为空！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '密码不能为空！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('密码不能为空！');
+            }
         }
         if ($pwd != $pwd2) {
-            $this->error('两次密码输入不一致！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '两次密码输入不一致！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('两次密码输入不一致！');
+            }
         }
         $condition_uname['username'] = array('eq', $uname);
         $rs_uname = $m->where($condition_uname)->find();
         if ($rs_uname) {
-            $this->error('用户名已经存在！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '用户名已经存在！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('用户名已经存在！');
+            }
         }
         $condition_email['email'] = array('eq', $email);
         $rs_email = $m->where($condition_email)->find();
         if ($rs_uname) {
-            $this->error('邮箱已经存在！');
-            exit;
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '邮箱已经存在！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('邮箱已经存在！');
+            }
         }
         $password = R('Api/News/getPwd', array($uname, $pwd));
         $data['username'] = $uname;
@@ -247,9 +324,21 @@ class PassportAction extends Action {
         $data['ip'] = get_client_ip();
         $rs = $m->data($data)->add();
         if ($rs == true) {
-            $this->success('注册成功,请登录后操作！', __GROUP__ . '/Passport/login');
+            if ($type == '10') {
+                $array = array('status' => 0, 'msg' => '注册成功,请登录后操作！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->success('注册成功,请登录后操作！', __GROUP__ . '/Passport/login');
+            }
         } else {
-            $this->error('注册失败，请联系管理员！');
+            if ($type == '10') {
+                $array = array('status' => 1, 'msg' => '注册失败，请联系管理员！');
+                echo json_encode($array);
+                exit;
+            } else {
+                $this->error('注册失败，请联系管理员！');
+            }
         }
     }
 
@@ -262,8 +351,15 @@ class PassportAction extends Action {
      */
     public function logout()
     {
+        $type = $this->_post('type');
         session('[destroy]');
-        $this->success('您已经成功退出会员系统！', __ROOT__);
+        if ($type == '10') {
+            $array = array('status' => 0, 'msg' => '您已经成功退出会员系统！');
+            echo json_encode($array);
+            exit;
+        } else {
+            $this->success('您已经成功退出会员系统！', __ROOT__);
+        }
     }
 
     /**
@@ -294,12 +390,10 @@ class PassportAction extends Action {
     public function getSkin()
     {
         $skin = R('Api/News/getCfg', array('cfg_member_skin'));
-        if(!$skin){
+        if (!$skin) {
             $skin = 'default';
         }
         return $skin;
     }
-
-    
 
 }
