@@ -33,11 +33,11 @@ class NavHeadAction extends BaseAction {
      */
     public function add()
     {
-        $radios = array(
-            'y' => '启用',
-            'n' => '禁用'
+        $status = array(
+            '20' => '启用',
+            '10' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
         $this->display();
     }
 
@@ -55,8 +55,8 @@ class NavHeadAction extends BaseAction {
         $condition['id'] = array('eq',$id);
         $data = $m->where($condition)->find();
         $status = array(
-            'y' => '启用',
-            'n' => '禁用'
+            '20' => '启用',
+            '10' => '禁用'
         );
         $this->assign('status', $status);
         $this->assign('v_status', $data['status']);
@@ -109,7 +109,7 @@ class NavHeadAction extends BaseAction {
     public function update()
     {
         $m = new NavHeadModel();
-        $d = D('NewsSort');
+        $d = D('CommonSort');
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
         $tbname = 'NavHead';
@@ -117,13 +117,14 @@ class NavHeadAction extends BaseAction {
             if($id==$parent_id){
                 $this->dmsg('1', '不能选择自身分类为父级分类！', false, true);
             }
-            $condition_pid['id'] = array('eq',$parent_id);
-            $data = $m->field('path')->where($condition_pid)->find();
+            $condition_sort['id'] = array('eq',$parent_id);
+            $condition_sort['path'] = array('like','%,'.$id.',%');
+            $cun = $m->field('id')->where($condition_sort)->find(); //判断id选择是否为其的子类
             if ($cun) {
                 $this->dmsg('1', '不能选择当前分类的子类为父级分类！', false, true);
             }
-            $condition_id['id'] = array('eq',$id);
-            $data = $m->field('parent_id')->where($condition_id)->find();
+            $condition_pid['id'] = array('eq',$parent_id);
+            $data = $m->field('path')->where($condition_pid)->find();
             $sort_path = $data['path'] . $parent_id . ','; //取得不为0时的path
             $_POST['path'] = $data['path'] . $parent_id . ',';
             $d->updatePath($id, $sort_path, $tbname);
@@ -190,9 +191,9 @@ class NavHeadAction extends BaseAction {
         foreach ($list as $k => $v) {
             $a[$k] = $v;
             $a[$k]['_parentId'] = intval($v['parent_id']); //_parentId为easyui中标识父id
-            if($v['status']=='y'){
+            if($v['status']=='20'){
                 $a[$k]['status'] = '启用';
-            }elseif ($v['status']=='n') {
+            }elseif ($v['status']=='10') {
                 $a[$k]['status'] = '禁用';
             }
         }

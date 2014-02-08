@@ -140,13 +140,70 @@ class IndexAction extends BasememberAction {
         $m = new MembersAddressModel();
         $uid = session('LOGIN_M_ID');
         $condition['members_id'] = array('eq', $uid);
-        $condition['id'] = array('eq',$this->_get('id'));
+        $condition['id'] = array('eq', $this->_get('id'));
         $data = $m->where($condition)->find();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', '修改收货地址');
         $this->assign('sidebar_active', 'changepwd');
-        $this->assign('data',$data);
+        $this->assign('data', $data);
         $this->display($skin . ':address_edit');
+    }
+
+    /**
+     * apiList
+     * api 接口列表信息
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiList()
+    {
+        $m = new ApiListModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $data = $m->where($condition)->select();
+        dump($data);
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', 'API列表');
+        $this->assign('sidebar_active', 'apilist');
+        $this->assign('list', $data);
+        $this->display($skin . ':api_list');
+    }
+
+    /**
+     * apiListAdd
+     * api接口-添加
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiListAdd()
+    {
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '添加API信息');
+        $this->assign('sidebar_active', 'apilist');
+        $this->display($skin . ':api_add');
+    }
+
+    /**
+     * apiListEdit
+     * api接口-编辑
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiListEdit()
+    {
+        $m = new ApiListModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $condition['id'] = array('eq', $this->_get('id'));
+        $data = $m->where($condition)->find();
+        $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $this->assign('title', '修改API信息');
+        $this->assign('sidebar_active', 'apilist');
+        $this->assign('data', $data);
+        $this->display($skin . ':api_edit');
     }
 
     /**
@@ -276,7 +333,7 @@ class IndexAction extends BasememberAction {
         $uid = session('LOGIN_M_ID');
         $condition['members_id'] = array('eq', $uid);
         $count = $m->where($condition)->count();
-        if($count>=5){
+        if ($count >= 5) {
             $this->error('最多可以设置5条收货地址！');
             exit;
         }
@@ -311,7 +368,7 @@ class IndexAction extends BasememberAction {
             $m->where($condition)->setField('is_default', 10);
             $_POST['is_default'] = 20;
         }
-        $condition['id'] = array('eq',$this->_post('id'));
+        $condition['id'] = array('eq', $this->_post('id'));
         $_POST['updatetime'] = time();
         $rs = $m->where($condition)->save($_POST);
         if ($rs == true) {
@@ -320,6 +377,7 @@ class IndexAction extends BasememberAction {
             $this->error('操作失败，请重新操作！');
         }
     }
+
     /**
      * addressDelete
      *  删除收货地址
@@ -332,7 +390,82 @@ class IndexAction extends BasememberAction {
         $m = new MembersAddressModel();
         $uid = session('LOGIN_M_ID');
         $condition['members_id'] = array('eq', $uid);
-        $condition['id'] = array('eq',$this->_get('id'));
+        $condition['id'] = array('eq', $this->_get('id'));
+        $rs = $m->where($condition)->delete();
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/addressList');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+
+    /**
+     * apiInsert
+     * 添加api
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiInsert()
+    {
+        $m = new ApiListModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $count = $m->where($condition)->count();
+        if ($count >= 5) {
+            $this->error('最多可以设置5条收货地址！');
+            exit;
+        }
+        if ($_POST['is_default']) {
+            $m->where($condition)->setField('is_default', 10);
+            $_POST['is_default'] = 20;
+        }
+        $_POST['addtime'] = time();
+        $_POST['members_id'] = $uid;
+        $_POST['updatetime'] = time();
+        $rs = $m->data($_POST)->add();
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/addressList');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+
+    /**
+     * apiUpdate
+     *  更新api
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiUpdate()
+    {
+        $m = new ApiListModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $condition['id'] = array('eq', $this->_post('id'));
+        $_POST['updatetime'] = time();
+        $rs = $m->where($condition)->save($_POST);
+        if ($rs == true) {
+            $this->success('操作成功', __GROUP__ . '/Index/apiList');
+        } else {
+            $this->error('操作失败，请重新操作！');
+        }
+    }
+
+    /**
+     * apiDelete
+     *  删除api
+     * @return display
+     * @version dogocms 1.0
+     * @todo 
+     */
+    public function apiDelete()
+    {
+        $m = new ApiListModel();
+        $uid = session('LOGIN_M_ID');
+        $condition['members_id'] = array('eq', $uid);
+        $condition['id'] = array('eq', $this->_get('id'));
         $rs = $m->where($condition)->delete();
         if ($rs == true) {
             $this->success('操作成功', __GROUP__ . '/Index/addressList');

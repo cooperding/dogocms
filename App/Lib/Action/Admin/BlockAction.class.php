@@ -19,7 +19,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index() {
+    public function index()
+    {
         $this->display();
     }
 
@@ -30,7 +31,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add() {
+    public function add()
+    {
         $status = array(
             '20' => '可用',
             '10' => '禁用'
@@ -46,7 +48,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit() {
+    public function edit()
+    {
         $m = new BlockListModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
@@ -69,7 +72,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function insert() {
+    public function insert()
+    {
         $m = new BlockListModel();
         $title = $this->_post('title');
         if (empty($title)) {
@@ -97,7 +101,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function update() {
+    public function update()
+    {
         $m = new BlockListModel();
         $id = $this->_post('id');
         $title = $this->_post('title');
@@ -126,7 +131,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function delete() {
+    public function delete()
+    {
         $m = new BlockListModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq', $id);
@@ -145,7 +151,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sort() {
+    public function sort()
+    {
         $this->display();
     }
 
@@ -156,7 +163,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortAdd() {
+    public function sortAdd()
+    {
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -172,7 +180,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortEdit() {
+    public function sortEdit()
+    {
         $m = new BlockSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
@@ -194,7 +203,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortInsert() {
+    public function sortInsert()
+    {
         $m = new BlockSortModel();
         $ename = $this->_post('ename');
         $condition['ename'] = array('eq', $ename);
@@ -222,7 +232,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortUpdate() {
+    public function sortUpdate()
+    {
         $m = new BlockSortModel();
         $id = $this->_post('id');
         $ename = $this->_post('ename');
@@ -251,7 +262,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortDelete() {
+    public function sortDelete()
+    {
         $m = new BlockSortModel();
         $l = M('Block');
         $id = $this->_post('id');
@@ -275,7 +287,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonSortList() {
+    public function jsonSortList()
+    {
         $m = new BlockSortModel();
         $list = $m->select();
         $count = $m->count("id");
@@ -301,7 +314,8 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonTree() {
+    public function jsonTree()
+    {
         Load('extend');
         $m = new BlockSortModel();
         $condition['status'] = array('eq', 'y');
@@ -318,24 +332,34 @@ class BlockAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonList() {
+    public function jsonList()
+    {
         $m = new BlockListModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-        $count = $m->count();
+        $title = $_REQUEST['title'];
+        if ($title) {
+            $condition['title'] = array('like', '%' . $title . '%');
+        }
+        $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='20'){
-                $data[$k]['status'] = '启用';
-            }  else {
-                $data[$k]['status'] = '禁用';
+        $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == '20') {
+                    $data[$k]['status'] = '启用';
+                } else {
+                    $data[$k]['status'] = '禁用';
+                }
             }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;

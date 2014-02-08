@@ -19,7 +19,8 @@ class BrandListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index() {
+    public function index()
+    {
         $this->display();
     }
 
@@ -30,7 +31,8 @@ class BrandListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add() {
+    public function add()
+    {
         $status = array(
             '20' => ' 是 ',
             '10' => ' 否 '
@@ -46,10 +48,11 @@ class BrandListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit() {
+    public function edit()
+    {
         $m = new BrandListModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $status = array(
             '20' => ' 是 ',
@@ -68,7 +71,8 @@ class BrandListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function insert() {
+    public function insert()
+    {
         $m = new BrandListModel();
         $name = $this->_post('name');
         if (empty($name)) {
@@ -88,6 +92,7 @@ class BrandListAction extends BaseAction {
             $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
         }
     }
+
     /**
      * update
      * 更新信息
@@ -113,6 +118,7 @@ class BrandListAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }
     }
+
     /**
      * Flash
      * Flash删除
@@ -132,6 +138,7 @@ class BrandListAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }//if
     }
+
     /**
      * jsonList
      * 取得列表信息
@@ -147,23 +154,33 @@ class BrandListAction extends BaseAction {
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-        $count = $m->count();
+        $title = $_REQUEST['keywords'];
+        if ($title) {
+            $condition['name|url'] = array('like', '%' . $title . '%');
+        }
+        $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='20'){
-                $data[$k]['status'] = '启用';
-            }elseif($v['status']=='10'){
-                $data[$k]['status'] = '禁用';
+        $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == '20') {
+                    $data[$k]['status'] = '启用';
+                } elseif ($v['status'] == '10') {
+                    $data[$k]['status'] = '禁用';
+                }
             }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;
         $array['rows'] = $data;
         echo json_encode($array);
     }
+
     /**
      * jsonTree
      * 分类json树结构数据

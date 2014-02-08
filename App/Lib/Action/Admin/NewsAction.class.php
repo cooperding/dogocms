@@ -312,6 +312,10 @@ class NewsAction extends BaseAction {
             $sort_id = rtrim($sort_id, ',');
             $condition['t.sort_id'] = array('in', $sort_id);
         }
+        $title = $_REQUEST['title'];
+        if ($title) {
+            $condition['t.title'] = array('like', '%' . $title . '%');
+        }
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
@@ -325,15 +329,20 @@ class NewsAction extends BaseAction {
                         ->join(C('DB_PREFIX') . 'news_sort nt on nt.id=t.sort_id')
                         ->field('t.title,t.addtime,t.status,t.id,t.views,nt.text')
                         ->where($condition)->limit($firstRow . ',' . $pageRows)->order('t.id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if ($v['status'] == '12') {
-                $data[$k]['status'] = '已审核';
-            } elseif ($v['status'] == '10') {
-                $data[$k]['status'] = '未审核';
-            } elseif ($v['status'] == '11') {
-                $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == '12') {
+                    $data[$k]['status'] = '已审核';
+                } elseif ($v['status'] == '10') {
+                    $data[$k]['status'] = '未审核';
+                } elseif ($v['status'] == '11') {
+                    $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
+                }
             }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;

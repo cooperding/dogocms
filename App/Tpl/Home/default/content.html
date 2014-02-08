@@ -3,7 +3,7 @@
     <div class="col-md-8">
 
 
-        <section class="dogo-box dogo-border-all dogo-pd515">
+        <article class="dogo-box dogo-border-all dogo-pd515">
             <div class="dogo-box-header">
                 <h5><span class="glyphicon glyphicon-hand-right"></span> {$data.title}</h5>
                 <p>
@@ -32,7 +32,7 @@
                     </div>
                 </div><!--row-->
             </div><!--dogo-box-footer-->
-        </section><!--dogo-box-->
+        </article><!--dogo-box-->
         <div class="dogo-blank"></div>
 
 
@@ -58,11 +58,14 @@
             <div class="dogo-box-header">
                 <h5><span class="glyphicon glyphicon-hand-right"></span> 评论</h5>
             </div>
-            <div class="dogo-box-content">
+            <div class="dogo-box-content dogo-list-comment">
                 <ul>
-                    <li>djc6914  习近平主持召开深改小组首次会议</li>
-                    <li>bahah  据央视新闻联播报道，中共中央总书记、国家主席、中央军委主席、中央全面深化改革领导小组组长习近平今日（1月22日）
-                        下午主持召开中央全面深化改革领导小组第一次会议并发表重要讲话。</li>
+                    <foreach name="list_comment" item="vo">
+                        <li><span class="glyphicon glyphicon-user"></span> <a href="{:U('')}">{$vo.username} </a>
+                            {$vo.content}
+                            <span class="dogo-frt">#{$vo.floor}</span>
+                        </li>
+                    </foreach>
                 </ul>
             </div><!--dogo-box-content-->
             <div class="dogo-box-footer">
@@ -91,20 +94,7 @@
     <div class="col-md-4">
         <div class="dogo-blank"></div>
 
-        <section class="dogo-box dogo-border-all dogo-pd515">
-            <div class="dogo-box-header">
-
-</div>
-            <div class="dogo-box-content">
-
-            </div><!--dogo-box-content-->
-            <div class="dogo-box-footer">
-
-            </div><!--dogo-box-footer-->
-        </section><!--dogo-box-->
-        <div class="dogo-blank"></div>
-
-        <section class="dogo-box dogo-border-all dogo-pd515">
+        <aside class="dogo-box dogo-border-all dogo-pd515">
             <div class="dogo-box-header">
 
             </div>
@@ -114,7 +104,20 @@
             <div class="dogo-box-footer">
 
             </div><!--dogo-box-footer-->
-        </section><!--dogo-box-->
+        </aside><!--dogo-box-->
+        <div class="dogo-blank"></div>
+
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+            </div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
     </div><!--col-md-->
 </div><!--row-->
 <include file="$footer" />
@@ -127,7 +130,7 @@
             content = $.trim(content);
             if (!content) {
                 Alertify.dialog.alert('评论内容不能为空，请填写评论信息！');
-                Alertify.log.error('评论内容不能为空，请填写评论信息！',3000);
+                Alertify.log.error('评论内容不能为空，请填写评论信息！', 3000);
                 $('textarea[name="content-comment"]').val('');
                 return false;
             }
@@ -140,19 +143,19 @@
                 data: {key_id: row_id, content: content},
                 success: function(data) {
                     if (data.status == 0) {
-                        Alertify.log.success(data.msg,3000);
+                        Alertify.log.success(data.msg, 3000);
                         $('textarea[name="content-comment"]').val('');
                         $('.num_comment_' + row_id).text(data.num);
                     } else if (data.status == 1) {
-                        Alertify.log.error(data.msg,3000);
+                        Alertify.log.error(data.msg, 3000);
                     } else if (data.status == 3) {
                         $('.dogo-dialog-login').modal('show');
-                        Alertify.log.error(data.msg,3000);
+                        Alertify.log.error(data.msg, 3000);
                     }
                 }//success
             });
         });
-        
+
     });
 </script>
 </body>

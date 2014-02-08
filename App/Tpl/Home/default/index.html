@@ -27,7 +27,7 @@
                             <span type="button" class="btn btn-default dogo-click-down disabled_{$vo.id}" data-row-id="{$vo.id}" title="踩"> <span class="glyphicon glyphicon-thumbs-down"></span> <span class="num_down_{$vo.id}">{$vo.num_beat}</span></span>
                         </div>
                         <div class="col-md-6 dogo-align">
-                            <span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> {$vo.num_comment}</span>
+                            <a href="{:U('Content/index',array('id'=>$vo['id']))}"><span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> {$vo.num_comment}</span></a>
                             <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> 分享</span>
                         </div>
                     </div><!--row-->
@@ -37,10 +37,32 @@
         </foreach>
     </div><!--col-md-->
     <div class="col-md-4">
-        <div class="dogo-box-content dogo-border-all">
+        <div class="dogo-blank"></div>
 
-        </div><!--dogo-box-content-->
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
 
+</div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
+        <div class="dogo-blank"></div>
+
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+            </div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
     </div><!--col-md-->
 </div><!--row-->
 <include file="$footer" />

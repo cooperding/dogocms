@@ -16,8 +16,20 @@ class ListAction extends BasehomeAction {
     
     public function index()
     {
+        $id = $this->_get('id');
         $t = new TitleModel();
+        $ns = new NewsSortModel();
         import('ORG.Util.DingPage'); // 导入分页类
+        $condition_sort['path'] = array('like', '%,' . $id . ',%');
+        $condition_sort['id'] = array('eq', $id);
+        $condition_sort['_logic'] = 'OR';
+        $sort_data = $ns->where($condition_sort)->select();
+        $one_data = $ns->where('id=' . $id)->find();//本分类SEO信息
+        foreach ($sort_data as $k => $v) {
+            $sort_id .= $v['id'] . ',';
+        }
+        $sort_id = rtrim($sort_id, ', ');
+        $condition['t.sort_id'] = array('in', $sort_id);
         $condition['t.status'] = array('eq', '12');
         $count = $t->Table(C('DB_PREFIX') . 'title t')
                         ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
@@ -36,18 +48,12 @@ class ListAction extends BasehomeAction {
                 ->limit($page->firstRow . ',' . $page->listRows)
                 ->select();
 
-        $m = new SettingModel();
-        $title['sys_name'] = array('eq', 'cfg_title');
-        $keywords['sys_name'] = array('eq', 'cfg_keywords');
-        $description['sys_name'] = array('eq', 'cfg_description');
-        $data_title = $m->where($title)->find();
-        $data_keywords = $m->where($keywords)->find();
-        $data_description = $m->where($description)->find();
+        
 
         $skin = $this->getSkin(); //获取前台主题皮肤名称
-        $this->assign('title', $data_title['sys_value']);
-        $this->assign('keywords', $data_keywords['sys_value']);
-        $this->assign('description', $data_description['sys_value']);
+        $this->assign('title', $one_data['text']);
+        $this->assign('keywords', $one_data['keywords']);
+        $this->assign('description', $one_data['description']);
         $this->assign('list', $list);
         $this->assign('page', $show); // 赋值分页输出
         $this->display($skin . ':list');

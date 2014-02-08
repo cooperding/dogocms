@@ -92,6 +92,19 @@
                         var title = '删除信息';
                         dogoDelete(ids,title,href,classId);
                     }
+                }, '-', {
+                    id: 'btnsearch' + classId,
+                    text: '<input class="ajax_newslist" placeholder="文档标题"></input> '
+                }, {
+                    id: 'btnsubmit' + classId,
+                    //text: '搜索',
+                    iconCls: 'icon-search',
+                    handler: function() {
+                        var title = $('.ajax_newslist').val();
+                        $('#datagrid_' + classId).datagrid('load', {
+                            title: title
+                        });
+                    }
                 }//
             ]//toolbar
         });
@@ -102,6 +115,6 @@
             beforePageText: '第',//页数文本框前显示的汉字
             afterPageText: '页    共 {pages} 页',
             displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'
-        })
-    })
+        });
+    });
 </script>

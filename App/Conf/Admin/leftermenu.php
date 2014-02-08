@@ -16,8 +16,28 @@ $array = array(
                 )),
             array('label' => L('menu_setting_name'), 'type' => 'setting_name', 'items' => array(
                     array('label' => L('menu_setting_base'), 'type' => 'setting_base', 'link' => __GROUP__ . '/Setting/index'),
-                array('label' => L('API接口管理'), 'type' => 'api_base', 'link' => __GROUP__ . '/ApiList/index')
+                    array('label' => L('API接口管理'), 'type' => 'api_base', 'link' => __GROUP__ . '/ApiList/index')
                 )),
+            array('label' => '日志管理', 'type' => 'flash', 'items' => array(
+                    array('label' => '日志记录', 'type' => 'list', 'link' => __GROUP__ . '/Logs/index'),
+                    array('label' => '日志设置', 'type' => 'navhead', 'link' => __GROUP__ . '/Logsinfo/index')
+                )),
+            array('label' => '广告管理', 'type' => 'flash', 'items' => array(
+                    array('label' => '广告列表', 'type' => 'advertising', 'link' => __GROUP__ . '/Ads/index'),
+                    array('label' => '广告分类', 'type' => 'advertising', 'link' => __GROUP__ . '/Ads/sort')
+                )),
+            array('label' => '友情链接', 'type' => 'setting', 'items' => array(
+                    array('label' => '友情链接', 'type' => 'list', 'link' => __GROUP__ . '/Links/index'),
+                    array('label' => '友情链接分类', 'type' => 'list', 'link' => __GROUP__ . '/Links/sort'),
+                    array('label' => '添加友情链接', 'type' => 'links', 'rel' => 'dialog', 'link' => __GROUP__ . '/Links/add')
+                )),
+            array('label' => '模板管理', 'type' => 'templet_', 'items' => array(
+                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
+                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
+                )),
+            array('label' => '邮件模板', 'type' => 'setting', 'items' => array(
+                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
+                ))
         )),
     array('label' => L('menu_info_name'), 'type' => 'info_name', 'items' => array(
             array('label' => L('menu_news_name'), 'type' => 'news_name', 'items' => array(
@@ -39,12 +59,6 @@ $array = array(
             array('label' => L('menu_singlepage_name'), 'type' => 'singlepage_name', 'items' => array(
                     array('label' => L('menu_singlepage_list'), 'type' => 'singlepage_list', 'link' => __GROUP__ . '/Pages/index'),
                     array('label' => L('menu_singlepage_sort'), 'type' => 'singlepage_sort', 'link' => __GROUP__ . '/Pages/sort'),
-                )),
-            array('label' => L('menu_exam_name'), 'type' => 'exam_name', 'items' => array(
-                    array('label' => '题库管理', 'type' => 'singlepage_list', 'link' => __GROUP__ . '/Pages/index'),
-                    array('label' => '试卷管理', 'type' => 'singlepage_sort', 'link' => __GROUP__ . '/Pages/sort'),
-                    array('label' => '评阅试卷', 'type' => 'singlepage_sort', 'link' => __GROUP__ . '/Pages/sort'),
-                    array('label' => '成绩信息', 'type' => 'singlepage_sort', 'link' => __GROUP__ . '/Pages/sort'),
                 )),
             array('label' => L('menu_block_name'), 'type' => 'block_name', 'items' => array(
                     array('label' => L('menu_block_list'), 'type' => 'block_list', 'link' => __GROUP__ . '/Block/index'),
@@ -105,30 +119,6 @@ $array = array(
             array('label' => L('menu_linkpage_name'), 'type' => 'linkpage_name', 'items' => array(
                     array('label' => L('menu_linkpage_cat'), 'type' => 'linkpage_cat', 'link' => __GROUP__ . '/LinkPage/sort'),
                     array('label' => L('menu_linkpage_list'), 'type' => 'linkpage_list', 'link' => __GROUP__ . '/LinkPage/sortlist')
-                )),
-        )),
-    array('label' => '模板模块', 'type' => 'templet_name', 'items' => array(
-            array('label' => '模板管理', 'type' => 'templet_', 'items' => array(
-                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
-                )),
-            array('label' => '邮件模板', 'type' => 'setting', 'items' => array(
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
-                ))
-        )),
-    array('label' => '插件管理', 'type' => 'plugins', 'items' => array(
-            array('label' => '日志管理', 'type' => 'flash', 'items' => array(
-                    array('label' => '日志记录', 'type' => 'list', 'link' => __GROUP__ . '/Logs/index'),
-                    array('label' => '日志设置', 'type' => 'navhead', 'link' => __GROUP__ . '/Logsinfo/index')
-                )),
-            array('label' => '广告管理', 'type' => 'flash', 'items' => array(
-                    array('label' => '广告列表', 'type' => 'advertising', 'link' => __GROUP__ . '/Ads/index'),
-                    array('label' => '广告分类', 'type' => 'advertising', 'link' => __GROUP__ . '/Ads/sort')
-                )),
-            array('label' => '友情链接', 'type' => 'setting', 'items' => array(
-                    array('label' => '友情链接', 'type' => 'list', 'link' => __GROUP__ . '/Links/index'),
-                    array('label' => '友情链接分类', 'type' => 'list', 'link' => __GROUP__ . '/Links/sort'),
-                    array('label' => '添加友情链接', 'type' => 'links', 'rel' => 'dialog', 'link' => __GROUP__ . '/Links/add')
                 )),
         ))
 );

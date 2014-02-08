@@ -23,6 +23,6 @@ background-image: linear-gradient(to bottom,#343742 0,#343742 100%);box-shadow: 
 @media(max-width:768px){
     .dogo-box-footer .dogo-align{text-align: left;margin: 5px 0;}
 }
-
+.dogo-list-comment ul li{border: dotted 1px #EEE8E8;margin: 5px 0;padding: 5px;overflow: hidden;}
 
 

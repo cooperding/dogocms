@@ -110,7 +110,7 @@ class NavFootAction extends BaseAction {
     public function update()
     {
         $m = new NavFootModel();
-        $d = D('NewsSort');
+        $d = D('CommonSort');
         $id = $this->_post('id');
         $parent_id = $this->_post('parent_id');
         $tbname = 'NavFoot';

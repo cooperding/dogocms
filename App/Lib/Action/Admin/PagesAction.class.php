@@ -20,7 +20,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index() {
+    public function index()
+    {
         $this->display();
     }
 
@@ -31,7 +32,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add() {
+    public function add()
+    {
         $radios = array(
             'y' => '可用',
             'n' => '禁用'
@@ -47,7 +49,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit() {
+    public function edit()
+    {
         $m = new PagesModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
@@ -69,7 +72,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function insert() {
+    public function insert()
+    {
         $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
@@ -101,7 +105,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function update() {
+    public function update()
+    {
         $m = new PagesModel();
         $ename = $this->_post('ename');
         $sort_id = $this->_post('sort_id');
@@ -130,7 +135,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function delete() {
+    public function delete()
+    {
         $m = new PagesModel();
         $id = $this->_post('id');
         $condition_id['id'] = array('eq', $id);
@@ -149,7 +155,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sort() {
+    public function sort()
+    {
         $this->display();
     }
 
@@ -160,7 +167,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortadd() {
+    public function sortadd()
+    {
         $radios = array(
             'y' => '启用',
             'n' => '禁用'
@@ -176,7 +184,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortedit() {
+    public function sortedit()
+    {
         $m = new PagesSortModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
@@ -198,7 +207,8 @@ class PagesAction extends BaseAction {
      * @return boolean
      * @version dogocms 1.0
      */
-    public function sortinsert() {
+    public function sortinsert()
+    {
         $m = new PagesSortModel();
         $parent_id = $this->_post('parent_id');
         $ename = $this->_post('ename');
@@ -235,7 +245,8 @@ class PagesAction extends BaseAction {
      * @return boolean
      * @version dogocms 1.0
      */
-    public function sortupdate() {
+    public function sortupdate()
+    {
         $m = new PagesSortModel();
         $d = new CommonSortModel();
         $id = $this->_post('id');
@@ -288,7 +299,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function sortdelete() {
+    public function sortdelete()
+    {
         $m = new PagesSortModel();
         $id = $this->_post('id');
         $condition_id['id'] = array('eq', $id);
@@ -307,7 +319,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonSortList() {
+    public function jsonSortList()
+    {
         $m = new PagesSortModel();
         $list = $m->field(array('id', 'parent_id', 'ename' => 'text'))->select();
         $navcatCount = $m->count("id");
@@ -329,7 +342,8 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonTree() {
+    public function jsonTree()
+    {
         Load('extend');
         $m = new PagesSortModel();
         $tree = $m->field(array('id', 'parent_id', 'ename' => 'text'))->select();
@@ -345,19 +359,29 @@ class PagesAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonList() {
+    public function jsonList()
+    {
         $m = new PagesModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-        $count = $m->count();
+        $title = $_REQUEST['title'];
+        if ($title) {
+            $condition['ename'] = array('like', '%' . $title . '%');
+        }
+        $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+        $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+            }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;

@@ -1,55 +1,6 @@
 <footer class="dogo-footer">
     <div class="dogo-blank"></div>
-    <nav class="navbar navbar-default navbar-static" role="navigation">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="__ROOT__"><dogocms:cfg name="cfg_sitename"/></a>
-        </div>
-        <div class="collapse navbar-collapse bs-js-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a id="" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">新闻 <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="">
-                        <li role="presentation"><a role="menuitem" href="">国内新闻</a></li>
-                        <li role="presentation"><a role="menuitem" href="">国际新闻</a></li>
-                        <li role="presentation"><a role="menuitem" href="">娱乐新闻</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" href="">体育新闻</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">产品中心 <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li role="presentation"><a role="menuitem" href="">产品1</a></li>
-                        <li role="presentation"><a role="menuitem" href="">产品2</a></li>
-                        <li role="presentation"><a role="menuitem" href="">产品3</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" href="">产品4</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li id="fat-menu" class="dropdown">
-                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">会员中心<b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                        <li role="presentation"><a role="menuitem" href="{:U('Member/Index/index')}">我的主页</a></li>
-                        <li role="presentation"><a role="menuitem" href="">我的订单</a></li>
-                        <li role="presentation"><a role="menuitem" href="">修改密码</a></li>
-                        <li role="presentation"><a role="menuitem" href="{:U('Member/Passport/login')}">登录</a></li>
-                        <li role="presentation"><a role="menuitem" href="{:U('Member/Passport/signup')}">注册</a></li>
-                        <li role="presentation"><a role="menuitem" href="{:U('Member/Passport/resetPassword')}">忘记密码</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" href="{:U('Member/Passport/logout')}">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.nav-collapse -->
-    </nav>
+    
 
 
 
@@ -253,7 +204,7 @@
         });
         $('.dogo-click-up').each(function() {
             var row_id = $(this).attr('data-row-id');
-            var cookieid = $.cookie(row_id);
+            var cookieid = $.cookie('row_id_'+row_id);
             if (cookieid == row_id) {
                 $('.disabled_' + row_id).addClass('disabled');
             }
@@ -262,7 +213,7 @@
             var row_id = $(this).attr('data-row-id');
             var url = "{:U('Ajax/vote')}";
             var type = '10';
-            var cookieid = $.cookie(row_id);
+            var cookieid = $.cookie('row_id_'+row_id);
             if (cookieid == row_id) {
                 alert('您已赞过该信息！');
                 return false;
@@ -276,7 +227,7 @@
                     if (data.status == 0) {
                         $('.num_up_' + row_id).text(data.num);
                         $('.disabled_' + row_id).addClass('disabled');
-                        $.cookie(row_id, row_id, {expires: 1});
+                        $.cookie('row_id_'+row_id, row_id, {expires: 1});
                         Alertify.log.success("成功赞了一下", 3000);
                     } else if (data.status == 1) {
                         Alertify.log.error(data.msg, 3000);
@@ -291,7 +242,7 @@
             var row_id = $(this).attr('data-row-id');
             var url = "{:U('Ajax/vote')}";
             var type = '11';
-            var cookieid = $.cookie(row_id);
+            var cookieid = $.cookie('row_id_'+row_id);
             if (cookieid == row_id) {
                 alert('您已踩过该信息！');
                 return false;

@@ -5,7 +5,7 @@
         <foreach name="list" item="vo" key="i">
             <section class="dogo-box dogo-border-all dogo-pd515">
                 <div class="dogo-box-header">
-                    <h5><span class="glyphicon glyphicon-hand-right"></span> <a href="{:U('Content/index',array('id'=>$vo['id']))}">{$vo.title}</a></h5>
+                    <h4><span class="glyphicon glyphicon-hand-right"></span> <a href="{:U('Content/index',array('id'=>$vo['id']))}">{$vo.title}</a></h4>
                     <p>
                         <span class="glyphicon glyphicon-user"></span> <a href="{:U('')}">djc6914 </a>
                         <span class="glyphicon glyphicon-time"></span>  
@@ -23,11 +23,11 @@
                 <div class="dogo-box-footer">
                     <div class="row">
                         <div class="col-md-6">
-                            <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-thumbs-up"></span> 999</span>
-                            <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-thumbs-down"></span> 544</span>
+                            <span type="button" class="btn btn-default dogo-click-up disabled_{$vo.id}" data-row-id="{$vo.id}" title="顶"> <span class="glyphicon glyphicon-thumbs-up"></span> <span class="num_up_{$vo.id}">{$vo.num_top}</span></span>
+                            <span type="button" class="btn btn-default dogo-click-down disabled_{$vo.id}" data-row-id="{$vo.id}" title="踩"> <span class="glyphicon glyphicon-thumbs-down"></span> <span class="num_down_{$vo.id}">{$vo.num_beat}</span></span>
                         </div>
                         <div class="col-md-6 dogo-align">
-                            <span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> 544</span>
+                            <a href="{:U('Content/index',array('id'=>$vo['id']))}"><span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> {$vo.num_comment}</span></a>
                             <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> 分享</span>
                         </div>
                     </div><!--row-->
@@ -35,80 +35,42 @@
             </section><!--dogo-box-->
             <div class="dogo-blank"></div>
         </foreach>
+        <eq name="list" value="">暂无信息</eq>
         <ul class="pagination">
             {$page}
         </ul>
     </div><!--col-md-->
     <div class="col-md-4">
-        <div class="dogo-box-content dogo-border-all">
-            <include file=":sidebar" />
-        </div><!--dogo-box-content-->
+        <div class="dogo-blank"></div>
 
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+</div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
+        <div class="dogo-blank"></div>
+
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+            </div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
     </div><!--col-md-->
 </div><!--row-->
 <include file="$footer" />
 </div><!--container-->
 </div><!--dogo-page-->
-<script>
-    $(function() {
-        $('.dogo-click-up').each(function(){
-            var row_id = $(this).attr('data-row-id');
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                $('.disabled_' + row_id).addClass('disabled');
-            }
-        });
-        $('.dogo-click-up').click(function() {
-            var row_id = $(this).attr('data-row-id');
-            var url = "{:U('Ajax/vote')}";
-            var type = '10';
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                alert('您已赞过该信息！');
-                return false;
-            }
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                data: {key_id: row_id, type: type},
-                success: function(data) {
-                    if (data.status == 0) {
-                        $('.num_up_' + row_id).text(data.num);
-                        $('.disabled_' + row_id).addClass('disabled');
-                        $.cookie(row_id, row_id, {expires: 1});
-                    } else if (data.status == 1) {
-                        alert(data.mg);
-                    }
-                }//success
-            });
-        });
-        $('.dogo-click-down').click(function() {
-            var row_id = $(this).attr('data-row-id');
-            var url = "{:U('Ajax/vote')}";
-            var type = '11';
-            var cookieid = $.cookie(row_id);
-            if (cookieid == row_id) {
-                alert('您已踩过该信息！');
-                return false;
-            }
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                data: {key_id: row_id, type: type},
-                success: function(data) {
-                    if (data.status == 0) {
-                        $('.num_down_' + row_id).text(data.num);
-                        $('.disabled_' + row_id).addClass('disabled');
-                        $.cookie(row_id, row_id, {expires: 1});
-                    } else if (data.status == 1) {
-                        alert(data.mg);
-                    }
-                }//success
-            });
-        });
-    });
-</script>
 </body>
 </html>

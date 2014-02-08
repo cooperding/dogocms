@@ -52,7 +52,7 @@ class LinksAction extends BaseAction {
     {
         $m = new LinksModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $radios = array(
             'y' => '可用',
@@ -110,7 +110,7 @@ class LinksAction extends BaseAction {
         $id = $this->_post('id');
         $webname = $this->_post('webname');
         $sort_id = $this->_post('sort_id');
-        $data['id'] = array('eq',$id);
+        $data['id'] = array('eq', $id);
         if (empty($webname)) {
             $this->dmsg('1', '网站名不能为空！', false, true);
         }
@@ -126,7 +126,8 @@ class LinksAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }
     }
-/**
+
+    /**
      * delete
      * 删除友情链接
      * @access public
@@ -145,6 +146,7 @@ class LinksAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }//if
     }
+
     /**
      * sort
      * 友情链接分类
@@ -185,7 +187,7 @@ class LinksAction extends BaseAction {
     {
         $m = new LinksSortModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $radios = array(
             'y' => '启用',
@@ -207,7 +209,7 @@ class LinksAction extends BaseAction {
     public function sortinsert()
     {
         $m = new LinksSortModel();
-        $ename= $this->_post('ename');
+        $ename = $this->_post('ename');
         if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
         }
@@ -236,8 +238,8 @@ class LinksAction extends BaseAction {
     {
         $m = new LinksSortModel();
         $id = $this->_post('id');
-        $ename= $this->_post('ename');
-        $condition['ename'] = array('eq',$ename);
+        $ename = $this->_post('ename');
+        $condition['ename'] = array('eq', $ename);
         $condition['id'] = array('neq', $id);
         if (empty($ename)) {
             $this->dmsg('1', '请将信息输入完整！', false, true);
@@ -295,9 +297,9 @@ class LinksAction extends BaseAction {
         $a = array();
         foreach ($list as $k => $v) {
             $a[$k] = $v;
-            if($v['status']=='y'){
+            if ($v['status'] == 'y') {
                 $a[$k]['status'] = '启用';
-            }else{
+            } else {
                 $a[$k]['status'] = '禁用';
             }
         }
@@ -318,11 +320,12 @@ class LinksAction extends BaseAction {
     {
         Load('extend');
         $m = new LinksSortModel();
-        $tree = $m->field(array('id','ename'=> 'text'))->select();
+        $tree = $m->field(array('id', 'ename' => 'text'))->select();
         $tree = list_to_tree($tree, 'id', 'parent_id', 'children');
         $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
         echo json_encode($tree);
     }
+
     /**
      * jsonList
      * 取得列表信息
@@ -330,30 +333,41 @@ class LinksAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonList() {
+    public function jsonList()
+    {
         $m = new LinksModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-        $count = $m->count();
+        $k = $_REQUEST['keywords'];
+        if ($k) {
+            $condition['webname|weburl'] = array('like', '%' . $k . '%');
+        }
+        $count = $m->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='y'){
-                $data[$k]['status'] = '启用';
-            }else{
-                $data[$k]['status'] = '禁用';
+        $data = $m->limit($firstRow . ',' . $pageRows)->where($condition)->order('id desc')->select();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == 'y') {
+                    $data[$k]['status'] = '启用';
+                } else {
+                    $data[$k]['status'] = '禁用';
+                }
             }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;
         $array['rows'] = $data;
         echo json_encode($array);
     }
+
 }
 
 ?>

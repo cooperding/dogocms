@@ -7,38 +7,38 @@
         <div id="tabs_settinglist" class="easyui-tabs"  fit="true" border="false">
         </div>
         <script>
-            $(function(){
+            $(function() {
                 var height = $('.indexcenter').height();
                 var classId = 'settinglist';
-                $('.layout_'+classId).css('height',height-50);
-                $('.tree_'+classId).tree({
-                    onClick:function(){
-                        var node = $('.tree_'+classId).tree('getSelected');
+                $('.layout_' + classId).css('height', height - 50);
+                $('.tree_' + classId).tree({
+                    onClick: function() {
+                        var node = $('.tree_' + classId).tree('getSelected');
                         var nid = node.id;
-                        var url = '__GROUP__/Setting/settinglist?id='+nid;
+                        var url = '__GROUP__/Setting/settinglist?id=' + nid;
                         var subtitle = node.text;
-                        if(!$('#tabs_'+classId).tabs('exists',subtitle)){
-                            $('#tabs_'+classId).tabs('add',{
-                                title:subtitle,
-                                content:subtitle,
-                                closable:true,
-                                href:url,
-                                tools:[{
-                                        iconCls:'icon-mini-refresh',
-                                        handler:function(){
-                                            updateTab(classId,url,subtitle);
+                        if (!$('#tabs_' + classId).tabs('exists', subtitle)) {
+                            $('#tabs_' + classId).tabs('add', {
+                                title: subtitle,
+                                content: subtitle,
+                                closable: true,
+                                href: url,
+                                tools: [{
+                                        iconCls: 'icon-mini-refresh',
+                                        handler: function() {
+                                            updateTab(classId, url, subtitle);
                                         }
                                     }]
                             });
                             return false;
-                        }else{
-                            $('#tabs_'+classId).tabs('select',subtitle);
+                        } else {
+                            $('#tabs_' + classId).tabs('select', subtitle);
                             return false;
                         }
                     }//onclick
                 });
 
-            })
+            });
         </script>
     </div>
 </div>

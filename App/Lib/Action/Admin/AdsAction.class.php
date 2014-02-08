@@ -23,6 +23,7 @@ class AdsAction extends BaseAction {
     {
         $this->display();
     }
+
     /**
      * newslist
      * 信息列表
@@ -30,11 +31,13 @@ class AdsAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function newslist() {
+    public function newslist()
+    {
         $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('newslist');
     }
+
     /**
      * add
      * 添加信息
@@ -63,7 +66,7 @@ class AdsAction extends BaseAction {
     {
         $m = new AdsModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
+        $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
         $status = array(
             'y' => '可用',
@@ -74,6 +77,7 @@ class AdsAction extends BaseAction {
         $this->assign('v_status', $data['status']);
         $this->display();
     }
+
     /**
      * insert
      * 插入信息
@@ -135,6 +139,7 @@ class AdsAction extends BaseAction {
             $this->dmsg('1', '操作失败！', false, true);
         }
     }
+
     /**
      * delete
      * 留言删除
@@ -317,6 +322,7 @@ class AdsAction extends BaseAction {
         $array['rows'] = $a;
         echo json_encode($array);
     }
+
     /**
      * jsonSortTree
      * 分类json树结构数据
@@ -324,13 +330,15 @@ class AdsAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function jsonSortTree() {
+    public function jsonSortTree()
+    {
         Load('extend');
         $m = new AdsSortModel();
         $tree = $m->field(array('id', 'ename' => 'text'))->select();
         $tree = array_merge(array(array('id' => 0, 'text' => L('全部分类'))), $tree);
         echo json_encode($tree);
     }
+
     /**
      * listJsonId
      * 取得field信息
@@ -338,7 +346,8 @@ class AdsAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function listJsonId() {
+    public function listJsonId()
+    {
         $m = new AdsModel();
         import('ORG.Util.Page'); // 导入分页类
         $id = $this->_get('id');
@@ -349,28 +358,36 @@ class AdsAction extends BaseAction {
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-
-        $count = $m->Table(C('DB_PREFIX').'ads a')->where($condition)->count();
+        $title = $_REQUEST['title'];
+        if ($title) {
+            $condition['a.name'] = array('like', '%' . $title . '%');
+        }
+        $count = $m->Table(C('DB_PREFIX') . 'ads a')->where($condition)->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->Table(C('DB_PREFIX').'ads a')
-                ->join(C('DB_PREFIX').'ads_sort s on a.sort_id=s.id')
-                ->field('s.ename,a.addtime,a.status,a.name,a.id')
-                ->where($condition)->limit($firstRow . ',' . $pageRows)->order('a.id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if($v['status']=='y'){
-                $data[$k]['status'] = '启用';
-            }elseif($v['status']=='n'){
-                $data[$k]['status'] = '禁用';
+        $data = $m->Table(C('DB_PREFIX') . 'ads a')
+                        ->join(C('DB_PREFIX') . 'ads_sort s on a.sort_id=s.id')
+                        ->field('s.ename,a.addtime,a.status,a.name,a.id')
+                        ->where($condition)->limit($firstRow . ',' . $pageRows)->order('a.id desc')->select();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == 'y') {
+                    $data[$k]['status'] = '启用';
+                } elseif ($v['status'] == 'n') {
+                    $data[$k]['status'] = '禁用';
+                }
             }
-             
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;
         $array['rows'] = $data;
         echo json_encode($array);
     }
+
 }
 
 ?>

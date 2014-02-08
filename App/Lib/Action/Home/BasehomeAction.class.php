@@ -18,6 +18,8 @@ class BasehomeAction extends Action {
     function _initialize()
     {
         $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $navhead = $this->getNav('header'); //导航菜单
+        $this->assign('navhead', $navhead);
         $this->assign('style', __PUBLIC__ . '/Skin/Home/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
         $this->assign('header', './App/Tpl/Home/' . $skin . '/header.html');
@@ -37,6 +39,26 @@ class BasehomeAction extends Action {
             $skin = 'default';
         }
         return $skin;
+    }
+    /*
+     * getNav
+     * 获取导航菜单
+     * @param string $type header 是头部导航菜单
+     * @param string $type footer 是底部导航菜单
+     */
+
+    public function getNav($type='header')
+    {
+        if($type=='header'){
+            $m = new NavHeadModel();
+        }elseif($type=='footer'){
+            $m = new NavFootModel();
+        }
+        $condition['status'] = array('eq',20);
+        $list = $m->where($condition)->select();
+        Load('extend');
+        $tree = list_to_tree($list, 'id', 'parent_id', 'children');
+        return $tree;
     }
 
 }

@@ -134,7 +134,7 @@ class PassportAction extends Action {
             }
         }
         $condition['email'] = array('eq', $email);
-        $rs = $m->where($condition)->field('id,username,addtime,password')->find();
+        $rs = $m->where($condition)->field('id,username,addtime,password,status')->find();
         if ($rs) {
             $uname = $rs['username'];
             $password = R('Api/News/getPwd', array($uname, $pwd));
@@ -145,7 +145,7 @@ class PassportAction extends Action {
                         echo json_encode($array);
                         exit;
                     } else {
-                        $this->error('您的账户被禁止登录！' . __ROOT__);
+                        $this->error('您的账户被禁止登录！' , __ROOT__);
                         exit();
                     }
                 } else {

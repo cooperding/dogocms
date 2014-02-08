@@ -24,22 +24,6 @@ class ApiListAction extends BaseAction {
     }
 
     /**
-     * add
-     * 添加信息
-     * @access public
-     * @return array
-     * @version dogocms 1.0
-     */
-    public function add() {
-        $status = array(
-            '20' => ' 是 ',
-            '10' => ' 否 '
-        );
-        $this->assign('status', $status);
-        $this->display();
-    }
-
-    /**
      * edit
      * 编辑信息
      * @access public
@@ -47,13 +31,16 @@ class ApiListAction extends BaseAction {
      * @version dogocms 1.0
      */
     public function edit() {
-        $m = new BrandListModel();
+        $m = new ApiListModel();
         $id = $this->_get('id');
-        $condition['id'] = array('eq',$id);
-        $data = $m->where($condition)->find();
+        $condition['al.id'] = array('eq',$id);
+        $data = $m->table(C('DB_PREFIX').'api_list al')
+                ->join(C('DB_PREFIX').'members m on al.members_id=m.id')
+                ->field('al.*,m.username,m.email')
+                ->where($condition)->find();
         $status = array(
-            '20' => ' 是 ',
-            '10' => ' 否 '
+            '20' => ' 启用 ',
+            '10' => ' 禁用 '
         );
         $this->assign('status', $status);
         $this->assign('data', $data);
@@ -61,33 +48,7 @@ class ApiListAction extends BaseAction {
         $this->display();
     }
 
-    /**
-     * sortinsert
-     * 写入列表信息
-     * @access public
-     * @return array
-     * @version dogocms 1.0
-     */
-    public function insert() {
-        $m = new BrandListModel();
-        $name = $this->_post('name');
-        if (empty($name)) {
-            $this->dmsg('1', '请输入商家名称！', false, true);
-        }
-        $_POST['status'] = $_POST['status']['0'];
-        $_POST['addtime'] = time();
-        $_POST['updatetime'] = time();
-        if ($m->create()) {
-            $rs = $m->add($_POST);
-            if ($rs) {//存在值
-                $this->dmsg('2', '操作成功！', true);
-            } else {
-                $this->dmsg('1', '操作失败！', false, true);
-            }
-        } else {
-            $this->dmsg('1', '根据表单提交的POST数据创建数据对象失败！', false, true);
-        }
-    }
+    
     /**
      * update
      * 更新信息
@@ -97,13 +58,10 @@ class ApiListAction extends BaseAction {
      */
     public function update()
     {
-        $m = new BrandListModel();
+        $m = new ApiListModel();
         $id = $this->_post('id');
         $name = $this->_post('name');
         $condition['id'] = array('eq', $id);
-        if (empty($name)) {
-            $this->dmsg('1', '商家名称不能为空！', false, true);
-        }
         $_POST['status'] = $_POST['status']['0'];
         $_POST['updatetime'] = time();
         $rs = $m->where($condition)->save($_POST);
@@ -122,7 +80,7 @@ class ApiListAction extends BaseAction {
      */
     public function delete()
     {
-        $m = new BrandListModel();
+        $m = new ApiListModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq', $id);
         $del = $m->where($condition)->delete();
@@ -141,7 +99,7 @@ class ApiListAction extends BaseAction {
      */
     public function jsonList()
     {
-        $m = new BrandListModel();
+        $m = new ApiListModel();
         import('ORG.Util.Page'); // 导入分页类
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
@@ -150,7 +108,10 @@ class ApiListAction extends BaseAction {
         $count = $m->count();
         $page = new Page($count, $pageRows);
         $firstRow = ($pageNumber - 1) * $pageRows;
-        $data = $m->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
+        $data = $m->table(C('DB_PREFIX').'api_list al')
+                ->join(C('DB_PREFIX').'members m on al.members_id=m.id')
+                ->field('al.*,m.username,m.email')
+                ->limit($firstRow . ',' . $pageRows)->order('al.id desc')->select();
         foreach ($data as $k => $v) {
             $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
             if($v['status']=='20'){
@@ -163,21 +124,6 @@ class ApiListAction extends BaseAction {
         $array['total'] = $count;
         $array['rows'] = $data;
         echo json_encode($array);
-    }
-    /**
-     * jsonTree
-     * 分类json树结构数据
-     * @access public
-     * @return array
-     * @version dogocms 1.0
-     */
-    public function jsonTree()
-    {
-        Load('extend');
-        $m = new BrandListModel();
-        $tree = $m->field('id,name as text')->select();
-        $tree = array_merge(array(array('id' => 0, 'text' => L('sort_root_name'))), $tree);
-        echo json_encode($tree);
     }
 
 }

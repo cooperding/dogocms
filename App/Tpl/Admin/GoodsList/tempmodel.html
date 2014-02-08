@@ -16,15 +16,15 @@
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
                         <php>
-                        $attr_values = explode(",",$vo['attr_values']);
-                        $value = $vo['values'];
-                        foreach($attr_values as $k=>$v){
+                            $attr_values = explode(",",$vo['attr_values']);
+                            $value = $vo['values'];
+                            foreach($attr_values as $k=>$v){
                             if($v==$value){
-                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
                             }else{
-                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            echo '<option value="'.$v.'">'.$v.'</option>';
                             }
-                        }
+                            }
                         </php>
                     </select>
 
@@ -40,15 +40,15 @@
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
                         <php>
-                        $attr_values = explode(",",$vo['attr_values']);
-                        $value = $vo['values'];
-                        foreach($attr_values as $k=>$v){
+                            $attr_values = explode(",",$vo['attr_values']);
+                            $value = $vo['values'];
+                            foreach($attr_values as $k=>$v){
                             if($v==$value){
-                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
                             }else{
-                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            echo '<option value="'.$v.'">'.$v.'</option>';
                             }
-                        }
+                            }
                         </php>
                     </select>
                     <elseif condition="$vo.attr_input_type eq '2'"/>
@@ -65,15 +65,15 @@
                     <elseif condition="$vo.attr_input_type eq '1'"/>
                     <select name="attr_value_list[]">
                         <php>
-                        $attr_values = explode(",",$vo['attr_values']);
-                        $value = $vo['values'];
-                        foreach($attr_values as $k=>$v){
+                            $attr_values = explode(",",$vo['attr_values']);
+                            $value = $vo['values'];
+                            foreach($attr_values as $k=>$v){
                             if($v==$value){
-                                echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
+                            echo '<option value="'.$v.'"selected="selected">'.$v.'</option>';
                             }else{
-                                echo '<option value="'.$v.'">'.$v.'</option>';
+                            echo '<option value="'.$v.'">'.$v.'</option>';
                             }
-                        }
+                            }
                         </php>
                     </select>
                     <elseif condition="$vo.attr_input_type eq '2'"/>
@@ -97,7 +97,7 @@
                     alert(itemid);
                 });
                 $.parser.parse($('.tempmodel'));
-            })
+            });
         </script>
         </tbody>
     </table>

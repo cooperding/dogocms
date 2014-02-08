@@ -34,15 +34,14 @@ class ContentAction extends BasehomeAction {
         //获取评论信息
         $c = new CommentModel();
         $condition_comment['c.title_id'] = array('eq', $id);
-        $condition_comment['c.status'] = array('eq', 10);
+        $condition_comment['c.status'] = array('eq', 20);
         $comment = $c->field(array('m.id as uid,m.username', 'c.*'))
                 ->Table(C('DB_PREFIX') . 'comment c')
                         ->join(C('DB_PREFIX') . 'members m ON m.id = c.members_id ')
-                        ->where($condition_comment)->select();
-        
-
+                        ->where($condition_comment)->order('floor asc')->select();
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('data', $data);
+        $this->assign('list_comment', $comment);
         $this->assign('title', $data['title']);
         $this->assign('keywords', $data['keywords']);
         $this->assign('description', $data['description']);

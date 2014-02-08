@@ -3,7 +3,7 @@
 </table>
 
 <script>
-    $(function(){
+    $(function() {
         var classId = 'goodssort';
         var urljson = '__GROUP__/GoodsSort/json';
         var hrefadd = '__GROUP__/GoodsSort/add';
@@ -11,73 +11,73 @@
         var hrefcancel = '__GROUP__/GoodsSort/delete';
         //openTreeGrid(classId,urljson,hrefadd,hrefedit,hrefcancel);
         var height = $('.indexcenter').height();
-        $('#treegrid_'+classId).treegrid({
-            url:urljson,
-            idField:'id',
-            treeField:'text',
+        $('#treegrid_' + classId).treegrid({
+            url: urljson,
+            idField: 'id',
+            treeField: 'text',
             //pagination:true,
-            rownumbers:true,
-            fitColumns:true,
-            autoRowHeight:false,
-            showFooter:true,
-            height:height-50,
-            animate:true,
-            columns:[[
-                    {field:'id',title:'ID',width:50,align:'center'},
-                    {field:'text',title:'分类名称',width:200},
+            rownumbers: true,
+            fitColumns: true,
+            autoRowHeight: false,
+            showFooter: true,
+            height: height - 50,
+            animate: true,
+            columns: [[
+                    {field: 'id', title: 'ID', width: 50, align: 'center'},
+                    {field: 'text', title: '分类名称', width: 200},
                     //{field:'parent_id',title:'parent_id',width:200},
                     {
-                        field:'action',
-                        title:'操作',
-                        width:50,
-                        formatter : function(value, row, index) {
-                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\''+hrefedit+'?id='+row.id+'\',\''+classId+'\')"  title="编辑"/>&nbsp;\n\
-<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\''+row.id+'\',\''+hrefcancel+'\',\''+classId+'\')" title=" 删除"/>&nbsp;';
+                        field: 'action',
+                        title: '操作',
+                        width: 50,
+                        formatter: function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\'' + hrefedit + '?id=' + row.id + '\',\'' + classId + '\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\'' + row.id + '\',\'' + hrefcancel + '\',\'' + classId + '\')" title=" 删除"/>&nbsp;';
                         }
                     }
                 ]],
-            toolbar:[{
-                    id:'btnadd'+classId,
-                    text:'添加',
-                    iconCls:'icon-add',
-                    handler:function(){
+            toolbar: [{
+                    id: 'btnadd' + classId,
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function() {
                         var title = '添加分类';
-                        openDialog(classId,hrefadd,title);
+                        openDialog(classId, hrefadd, title);
                     }
-                },'-',{
-                    id:'btnexpand'+classId,
-                    text:'展开',
-                    iconCls:'icon-redo',
+                }, '-', {
+                    id: 'btnexpand' + classId,
+                    text: '展开',
+                    iconCls: 'icon-redo',
                     handler: function() {
-                        var node = $('#treegrid_'+classId).treegrid('getSelected');
+                        var node = $('#treegrid_' + classId).treegrid('getSelected');
                         if (node) {
-                            $('#treegrid_'+classId).treegrid('expandAll', node.id);
+                            $('#treegrid_' + classId).treegrid('expandAll', node.id);
                         } else {
-                            $('#treegrid_'+classId).treegrid('expandAll');
+                            $('#treegrid_' + classId).treegrid('expandAll');
                         }
                     }
-                },'-',{
-                    id:'btncollapse'+classId,
-                    text:'折叠',
-                    iconCls:'icon-undo',
+                }, '-', {
+                    id: 'btncollapse' + classId,
+                    text: '折叠',
+                    iconCls: 'icon-undo',
                     handler: function() {
-                        var node = $('#treegrid_'+classId).treegrid('getSelected');
+                        var node = $('#treegrid_' + classId).treegrid('getSelected');
                         if (node) {
-                            $('#treegrid_'+classId).treegrid('collapseAll', node.id);
+                            $('#treegrid_' + classId).treegrid('collapseAll', node.id);
                         } else {
-                            $('#treegrid_'+classId).treegrid('collapseAll');
+                            $('#treegrid_' + classId).treegrid('collapseAll');
                         }
                     }
-                },'-',{
-                    id:'btnedit'+classId,
-                    text:'刷新',
-                    iconCls:'icon-reload',
+                }, '-', {
+                    id: 'btnedit' + classId,
+                    text: '刷新',
+                    iconCls: 'icon-reload',
                     handler: function() {
-                        $('#treegrid_'+classId).treegrid('reload');
+                        $('#treegrid_' + classId).treegrid('reload');
                     }
                 }
             ]
         });
 
-    })
+    });
 </script>
