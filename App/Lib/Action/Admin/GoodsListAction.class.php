@@ -19,7 +19,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function index() {
+    public function index()
+    {
         $this->display();
     }
 
@@ -30,7 +31,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function newslist() {
+    public function newslist()
+    {
         $id = $this->_get('id');
         $this->assign('id', $id);
         $this->display('newslist');
@@ -43,7 +45,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function add() {
+    public function add()
+    {
         $id = $this->_get('id');
         $status = array(
             '20' => ' 审核 ',
@@ -72,7 +75,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function edit() {
+    public function edit()
+    {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $as = new AttributeSortModel();
@@ -129,7 +133,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function insert() {
+    public function insert()
+    {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
@@ -189,7 +194,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function update() {
+    public function update()
+    {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
@@ -250,7 +256,8 @@ class GoodsListAction extends BaseAction {
      * @return boolean
      * @version dogocms 1.0
      */
-    public function delete() {
+    public function delete()
+    {
         $m = new GoodsListModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
@@ -272,10 +279,11 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function gallery() {
+    public function gallery()
+    {
         $m = new GoodsGalleryModel();
         $id = $this->_get('id');
-        $condition['goods_id'] = array('eq',$id);
+        $condition['goods_id'] = array('eq', $id);
         $data = $m->where($condition)->select();
         $this->assign('data', $data);
         $this->assign('id', $id);
@@ -289,7 +297,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function galleryUpdate() {
+    public function galleryUpdate()
+    {
         $m = new GoodsGalleryModel();
         $goods_id = $this->_post('id');
         $gallery_id = $this->_post('gallery_id');
@@ -302,10 +311,10 @@ class GoodsListAction extends BaseAction {
                 $data['title'] = $gallery_title[$k];
                 $id = $gallery_id[$k];
                 $data['img_url'] = $v;
-                if($id){//存在时更新
-                    $condition['id'] = array('eq',$id);
+                if ($id) {//存在时更新
+                    $condition['id'] = array('eq', $id);
                     $rs = $m->where($condition)->save($data);
-                }else{//不存在时写入
+                } else {//不存在时写入
                     $rs = $m->data($data)->add();
                 }
             }//if
@@ -316,6 +325,7 @@ class GoodsListAction extends BaseAction {
             $this->dmsg('1', '操作失败,或者未有更改！', false, true);
         }
     }
+
     /**
      * galleryRemove
      * 扩展图片集删除信息
@@ -324,17 +334,19 @@ class GoodsListAction extends BaseAction {
      * @version dogocms 1.0
      * @todo 删除图片时同时将真是图片删除
      */
-    public function galleryRemove() {
+    public function galleryRemove()
+    {
         $m = new GoodsGalleryModel();
         $id = $this->_post('id');
         $condition['id'] = array('eq', $id);
         $rs = $m->where($condition)->delete();
         if ($rs == true) {
-            echo json_encode(array('status'=>'2','msg'=>'ok'));
+            echo json_encode(array('status' => '2', 'msg' => 'ok'));
         } else {
-            echo json_encode(array('status'=>'1','msg'=>'操作失败'));
+            echo json_encode(array('status' => '1', 'msg' => '操作失败'));
         }//if
     }
+
     /**
      * tempmodel
      * 扩展属性信息
@@ -342,7 +354,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function tempmodel() {
+    public function tempmodel()
+    {
         $m = new AttributeListModel();
         $id = $this->_post('id');
         $condition_sort['gs.id'] = array('eq', $id);
@@ -366,7 +379,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function recycle() {
+    public function recycle()
+    {
         $this->display();
     }
 
@@ -377,7 +391,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function recycleRevert() {
+    public function recycleRevert()
+    {
         $m = new GoodsListModel();
         $id = $this->_post('id');
         $data['id'] = array('in', $id);
@@ -399,7 +414,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function deleteRec() {
+    public function deleteRec()
+    {
         $m = new GoodsListModel();
         $c = new GoodsContentModel();
         $a = new GoodsAttributeModel();
@@ -424,9 +440,11 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function outStock() {
+    public function outStock()
+    {
         $this->display('outstock');
     }
+
     /**
      * listJsonId
      * 取得field信息
@@ -434,7 +452,8 @@ class GoodsListAction extends BaseAction {
      * @return array
      * @version dogocms 1.0
      */
-    public function listJsonId() {
+    public function listJsonId()
+    {
         $m = new GoodsListModel();
         $s = new GoodsSortModel();
         import('ORG.Util.Page'); // 导入分页类
@@ -451,12 +470,16 @@ class GoodsListAction extends BaseAction {
             $sort_id = rtrim($sort_id, ',');
             $condition['gl.sort_id'] = array('in', $sort_id);
         }
+        $title = $_REQUEST['keywords'];
+        if ($title) {
+            $condition['gl.title'] = array('like', '%' . $title . '%');
+        }
         $pageNumber = intval($_REQUEST['page']);
         $pageRows = intval($_REQUEST['rows']);
         $pageNumber = (($pageNumber == null || $pageNumber == 0) ? 1 : $pageNumber);
         $pageRows = (($pageRows == FALSE) ? 10 : $pageRows);
-        if($_GET['is_outstock']=='0'){
-            $condition['gl.stock'] = array('eq','0');
+        if ($_GET['is_outstock'] == '0') {
+            $condition['gl.stock'] = array('eq', '0');
         }
         $condition['gl.is_recycle'] = isset($_GET['is_recycle']) ? '20' : '10';
         $count = $m->table(C('DB_PREFIX') . 'goods_list gl')->where($condition)->count();
@@ -466,15 +489,20 @@ class GoodsListAction extends BaseAction {
                         ->join(C('DB_PREFIX') . 'goods_list gl on gs.id=gl.sort_id')
                         ->field('gl.id,gl.title,gl.addtime,gl.views,gl.addtime,gl.status,gl.stock,gs.text')
                         ->where($condition)->limit($firstRow . ',' . $pageRows)->order('gl.id desc')->select();
-        foreach ($data as $k => $v) {
-            $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
-            if ($v['status'] == '20') {
-                $data[$k]['status'] = '已审核';
-            } elseif ($v['status'] == '10') {
-                $data[$k]['status'] = '未审核';
-            } elseif ($v['status'] == '11') {
-                $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
+                if ($v['status'] == '20') {
+                    $data[$k]['status'] = '已审核';
+                } elseif ($v['status'] == '10') {
+                    $data[$k]['status'] = '未审核';
+                } elseif ($v['status'] == '11') {
+                    $data[$k]['status'] = '<a href="javascript:void(0)" title="驳回" style="color:#F74343;">驳回审核</a>';
+                }
             }
+        } else {
+            $count = 0;
+            $data = array();
         }
         $array = array();
         $array['total'] = $count;

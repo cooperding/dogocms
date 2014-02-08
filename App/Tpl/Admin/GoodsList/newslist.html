@@ -101,6 +101,19 @@
 
 
                     }
+                }, '-', {
+                    id: 'btnsearch' + classId,
+                    text: '<input class="ajax_goodslist" placeholder="商品名称"></input> '
+                }, {
+                    id: 'btnsubmit' + classId,
+                    //text: '搜索',
+                    iconCls: 'icon-search',
+                    handler: function() {
+                        var title = $('.ajax_goodslist').val();
+                        $('#datagrid_' + classId).datagrid('load', {
+                            keywords: title
+                        });
+                    }
                 }//
             ]//toolbar
         });
