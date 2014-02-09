@@ -1,5 +1,35 @@
 <include file="$header" />
 <div class="row">
+
+    <div class="col-md-4">
+        <div class="dogo-blank"></div>
+
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+            </div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
+        <div class="dogo-blank"></div>
+
+        <aside class="dogo-box dogo-border-all dogo-pd515">
+            <div class="dogo-box-header">
+
+            </div>
+            <div class="dogo-box-content">
+
+            </div><!--dogo-box-content-->
+            <div class="dogo-box-footer">
+
+            </div><!--dogo-box-footer-->
+        </aside><!--dogo-box-->
+    </div><!--col-md-->
+
     <div class="col-md-8">
 
         <foreach name="list" item="vo" key="i">
@@ -35,35 +65,12 @@
             </section><!--dogo-box-->
             <div class="dogo-blank"></div>
         </foreach>
+        <eq name="list" value="">暂无信息</eq>
+        <ul class="pagination">
+            {$page}
+        </ul>
     </div><!--col-md-->
-    <div class="col-md-4">
-        <div class="dogo-blank"></div>
 
-        <aside class="dogo-box dogo-border-all dogo-pd515">
-            <div class="dogo-box-header">
-
-            </div>
-            <div class="dogo-box-content">
-
-            </div><!--dogo-box-content-->
-            <div class="dogo-box-footer">
-
-            </div><!--dogo-box-footer-->
-        </aside><!--dogo-box-->
-        <div class="dogo-blank"></div>
-
-        <aside class="dogo-box dogo-border-all dogo-pd515">
-            <div class="dogo-box-header">
-
-            </div>
-            <div class="dogo-box-content">
-
-            </div><!--dogo-box-content-->
-            <div class="dogo-box-footer">
-
-            </div><!--dogo-box-footer-->
-        </aside><!--dogo-box-->
-    </div><!--col-md-->
 </div><!--row-->
 <include file="$footer" />
 </div><!--container-->

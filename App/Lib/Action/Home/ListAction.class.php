@@ -42,14 +42,12 @@ class ListAction extends BasehomeAction {
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
         $list = $t->Table(C('DB_PREFIX') . 'title t')
                 ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
+                ->join(C('DB_PREFIX') . 'members m ON t.members_id = m.id ')
                 ->where($condition)
-                ->field('t.*,c.*')
+                ->field('t.*,c.*,m.username')
                 ->order('t.id desc')
                 ->limit($page->firstRow . ',' . $page->listRows)
                 ->select();
-
-        
-
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', $one_data['text']);
         $this->assign('keywords', $one_data['keywords']);

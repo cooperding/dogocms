@@ -34,6 +34,12 @@ class AccountAction extends BaseAction
      */
     public function perinfo()
     {
+        $m = new OperatorsModel();
+        $uid = session('LOGIN_UID');
+        $condition['id'] = array('eq',$uid);
+        $data = $m->where($condition)->find();
+        
+        $this->assign('data', $data);
         $this->display();
     }
      /**
@@ -72,7 +78,7 @@ class AccountAction extends BaseAction
         $username = session('LOGIN_NAME');
         $condition['id'] = array('eq',$uid);
         $rs = $m->field('creat_time,password')->where($condition)->find();
-        $password = md5(md5($username) . sha1($oldpwd . $rs['creat_time']));
+        $password = md5(md5($username) . sha1($oldpwd));
         if($password!=$rs['password']){
             $this->dmsg('1', '原密码输入不正确，请确认输入！', false, true);
         }
@@ -84,6 +90,18 @@ class AccountAction extends BaseAction
             $this->dmsg('1', '未有操作或操作失败！', false, true);
         }
         
+    }
+    /**
+     * updateInfo
+     * 更新个人资料
+     * @access public
+     * @return array
+     * @version dogocms 1.0
+     * @todo 权限验证
+     */
+    public function updateInfo()
+    {
+        $this->dmsg('1', '暂无该功能！', false, true);
     }
 
 }

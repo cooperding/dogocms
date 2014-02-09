@@ -10,8 +10,7 @@
  * @version dogocms 1.0 2012-11-5 11:20
  * @package  Controller
  */
-class PassportAction extends Action
-{
+class PassportAction extends Action {
 
     /**
      * index
@@ -23,10 +22,10 @@ class PassportAction extends Action
      */
     public function index()
     {
-        
+
         //此处判断是否已经登录，如果登录跳转到后台首页否则跳转到登录页面
         if (session('LOGIN_STATUS') == 'TRUE') {
-            $this->redirect('..'.__GROUP__);
+            $this->redirect('..' . __GROUP__);
         } else {
             $this->display();
         }
@@ -41,21 +40,25 @@ class PassportAction extends Action
      */
     public function dologin()
     {
-        $ver_code = $this->_post('vd_code'); 
+        $ver_code = $this->_post('vd_code');
         $verify = session('verify');
         if (empty($ver_code) || md5($ver_code) != $verify) {
             $this->error('验证码为空或者输入错误！');
             exit;
         }
         $user_name = $this->_post('user_name');
-        $condition['username'] = array('eq',$user_name);
-        $password =$this->_post('user_password'); 
+        $condition['username'] = array('eq', $user_name);
+        $password = $this->_post('user_password');
         if (!empty($user_name) && !empty($password)) {//依据用户名查询
             $login = new OperatorsModel();
             $rs = $login->field('username,creat_time,id,password')->where($condition)->find();
             if ($rs) {//对查询出的结果进行判断
                 $password = md5(md5($user_name) . sha1($password));
                 if ($password == $rs['password']) {//判断密码是否匹配
+                    if ($rs['status'] == '10') {
+                        $this->error('您的帐号禁止登录！');
+                        exit;
+                    }
                     session('LOGIN_STATUS', 'TRUE');
                     session('authId', $rs['id']);
                     session('LOGIN_NAME', $rs['username']);

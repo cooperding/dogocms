@@ -33,11 +33,22 @@ class MembersAction extends BaseAction {
      */
     public function add()
     {
-        $radios = array(
-            'y' => '启用',
-            'n' => '禁用'
+        $status = array(
+            '20' => '启用',
+            '10' => '禁用'
         );
-        $this->assign('radios', $radios);
+        $sex = array(
+            '10' => '男',
+            '11' => '女',
+            '12' => '保密'
+        );
+        $is_recycle = array(
+            '20' => '是',
+            '10' => '否'
+        );
+        $this->assign('status', $status);
+        $this->assign('is_recycle', $is_recycle);
+        $this->assign('sex', $sex);
         $this->display();
     }
 
@@ -50,17 +61,30 @@ class MembersAction extends BaseAction {
      */
     public function edit()
     {
-        $m = M('Members');
+        $m = new MembersModel();
         $id = $this->_get('id');
         $condition['id'] = array('eq', $id);
         $data = $m->where($condition)->find();
-        $radios = array(
-            'y' => '启用',
-            'n' => '禁用'
+        $status = array(
+            '20' => '启用',
+            '10' => '禁用'
+        );
+        $sex = array(
+            '10' => '男',
+            '11' => '女',
+            '12' => '保密'
+        );
+        $is_recycle = array(
+            '20' => '是',
+            '10' => '否'
         );
         $this->assign('data', $data);
-        $this->assign('radios', $radios);
+        $this->assign('status', $status);
+        $this->assign('is_recycle', $is_recycle);
+        $this->assign('sex', $sex);
         $this->assign('v_status', $data['status']);
+        $this->assign('v_is_recycle', $data['is_recycle']);
+        $this->assign('v_sex', $data['sex']);
         $this->display();
     }
 
@@ -73,22 +97,41 @@ class MembersAction extends BaseAction {
      */
     public function insert()
     {
-        $m = M('Members');
-        $name = trim($_POST['name']);
-        $_POST['status'] = $_POST['status'][0];
-        //$this->dmsg('1', $_POST['status'], false, true);
-        if (empty($name)) {
-            $this->dmsg('1', '角色名不能为空！', false, true);
-        }
+        $m = new MembersModel();
+        $user_name = $this->_post('username');
+        $email = $this->_post('email');
+        $password = $this->_post('password');
+        $_POST['status'] = $_POST['status']['0'];
+        $_POST['sex'] = $_POST['sex']['0'];
         $_POST['updatetime'] = time();
-        if ($m->create()) {
-            $rs = $m->add($_POST);
-            if ($rs == true) {
-                $this->dmsg('2', '操作成功！', true);
-            } else {
-                $this->dmsg('1', '操作失败！', false, true);
-            }
-        }//if
+        $_POST['addtime'] = time();
+        $_POST['ip'] = get_client_ip();
+        if (empty($user_name)) {
+            $this->dmsg('1', '用户名不能为空！', false, true);
+        }
+        if (empty($email)) {
+            $this->dmsg('1', '邮箱不能为空！', false, true);
+        }
+        if (empty($password)) {
+            $this->dmsg('1', '密码不能为空！', false, true);
+        }
+        $condition_name['username'] = array('eq', $user_name);
+        $rs_name = $m->where($condition_name)->find();
+        if ($rs_name) {
+            $this->dmsg('1', '用户名已经存在！', false, true);
+        }
+        $condition_email['email'] = array('eq', $email);
+        $rs_email = $m->where($condition_email)->find();
+        if ($rs_email) {
+            $this->dmsg('1', '邮箱已经存在！', false, true);
+        }
+        $_POST['password'] = $this->changePassword($user_name, $password);
+        $rs = $m->add($_POST);
+        if ($rs == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }
     }
 
     /**
@@ -100,10 +143,39 @@ class MembersAction extends BaseAction {
      */
     public function update()
     {
-
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
+        $m = new MembersModel();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $user_name = $this->_post('username');
+        $email = $this->_post('email');
+        $_POST['status'] = $_POST['status']['0'];
+        //$_POST['is_recycle'] = $_POST['is_recycle']['0'];
+        $_POST['sex'] = $_POST['sex']['0'];
         $_POST['updatetime'] = time();
-        $rs = $m->save($_POST);
+        if (empty($user_name)) {
+            $this->dmsg('1', '用户名不能为空！', false, true);
+        }
+        if (empty($email)) {
+            $this->dmsg('1', '邮箱不能为空！', false, true);
+        }
+        $condition_name['id'] = array('neq', $id);
+        $condition_name['username'] = array('eq', $user_name);
+        $rs_name = $m->where($condition_name)->find();
+        if ($rs_name) {
+            $this->dmsg('1', '用户名已经存在！', false, true);
+        }
+        $condition_email['id'] = array('neq', $id);
+        $condition_email['email'] = array('eq', $email);
+        $rs_email = $m->where($condition_email)->find();
+        if ($rs_email) {
+            $this->dmsg('1', '邮箱已经存在！', false, true);
+        }
+        if (!empty($password)) {
+            $_POST['password'] = $this->changePassword($user_name, $password);
+        } else {
+            unset($_POST['password']);
+        }
+        $rs = $m->where($condition)->save($_POST);
         if ($rs == true) {
             $this->dmsg('2', '操作成功！', true);
         } else {
@@ -120,7 +192,15 @@ class MembersAction extends BaseAction {
      */
     public function delete()
     {
-        $this->dmsg('1', '该功能未开发不能操作！', false, true);
+        $m = new MembersModel();
+        $id = $this->_post('id');
+        $condition['id'] = array('eq', $id);
+        $del = $m->where($condition)->delete();
+        if ($del == true) {
+            $this->dmsg('2', '操作成功！', true);
+        } else {
+            $this->dmsg('1', '操作失败！', false, true);
+        }//if
     }
 
     /**
@@ -148,7 +228,7 @@ class MembersAction extends BaseAction {
         $data = $m->where($condition)->limit($firstRow . ',' . $pageRows)->order('id desc')->select();
         if ($data) {
             foreach ($data as $k => $v) {
-                $data[$k]['creat_time'] = date('Y-m-d H:i:s', $v['creat_time']);
+                $data[$k]['addtime'] = date('Y-m-d H:i:s', $v['addtime']);
                 if ($v['status'] == '20') {
                     $data[$k]['status'] = '启用';
                 } elseif ($v['status'] == '10') {

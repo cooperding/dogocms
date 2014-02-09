@@ -25,6 +25,8 @@ class ContentAction extends BasehomeAction {
         $data = $t->field(array('t.*', 'c.*'))
                 ->Table(C('DB_PREFIX') . 'title t')
                 ->join(C('DB_PREFIX') . 'content c ON c.title_id = t.id ')
+                ->join(C('DB_PREFIX') . 'members m ON t.members_id = m.id ')
+                ->field('t.*,c.*,m.username')
                 ->where($condition)
                 ->find();
         //浏览量赋值+1

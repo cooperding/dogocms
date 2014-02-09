@@ -31,10 +31,6 @@ $array = array(
                     array('label' => '友情链接分类', 'type' => 'list', 'link' => __GROUP__ . '/Links/sort'),
                     array('label' => '添加友情链接', 'type' => 'links', 'rel' => 'dialog', 'link' => __GROUP__ . '/Links/add')
                 )),
-            array('label' => '模板管理', 'type' => 'templet_', 'items' => array(
-                    array('label' => '模板列表', 'type' => 'ffg', 'link' => 'www.baidu.com'),
-                    array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
-                )),
             array('label' => '邮件模板', 'type' => 'setting', 'items' => array(
                     array('label' => '基础设置', 'type' => 'setting', 'link' => 'www.baidu.com')
                 ))
