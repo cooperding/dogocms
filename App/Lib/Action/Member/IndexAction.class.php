@@ -162,7 +162,13 @@ class IndexAction extends BasememberAction {
         $uid = session('LOGIN_M_ID');
         $condition['members_id'] = array('eq', $uid);
         $data = $m->where($condition)->select();
-        dump($data);
+        foreach($data as $k=>$v){
+            if($v['status']=='20'){
+                $data[$k]['status'] = '可用';
+            }else{
+                $data[$k]['status'] = '禁用';
+            }
+        }
         $skin = $this->getSkin(); //获取前台主题皮肤名称
         $this->assign('title', 'API列表');
         $this->assign('sidebar_active', 'apilist');
@@ -410,22 +416,24 @@ class IndexAction extends BasememberAction {
     {
         $m = new ApiListModel();
         $uid = session('LOGIN_M_ID');
-        $condition['members_id'] = array('eq', $uid);
-        $count = $m->where($condition)->count();
-        if ($count >= 5) {
-            $this->error('最多可以设置5条收货地址！');
+        $apitoken = $this->_post('apitoken');
+        if(empty($apitoken)){
+            $this->error('token信息不能为空！');
             exit;
-        }
-        if ($_POST['is_default']) {
-            $m->where($condition)->setField('is_default', 10);
-            $_POST['is_default'] = 20;
         }
         $_POST['addtime'] = time();
         $_POST['members_id'] = $uid;
         $_POST['updatetime'] = time();
+        $_POST['status'] = 10;
+        $_POST['apitoken'] = $apitoken;//API用户名
+        $secretkey = R('Api/News/guid');
+        $signature = R('Api/News/guid');
+        $_POST['secretkey'] = md5($secretkey);//API密钥（自动生成）
+        $_POST['signature'] = md5(sha1($signature));//签名（自动生成）
+        $_POST['domain'] = $this->_post('domain');
         $rs = $m->data($_POST)->add();
         if ($rs == true) {
-            $this->success('操作成功', __GROUP__ . '/Index/addressList');
+            $this->success('操作成功', __GROUP__ . '/Index/apiList');
         } else {
             $this->error('操作失败，请重新操作！');
         }
@@ -445,6 +453,7 @@ class IndexAction extends BasememberAction {
         $condition['members_id'] = array('eq', $uid);
         $condition['id'] = array('eq', $this->_post('id'));
         $_POST['updatetime'] = time();
+        $_POST['status'] = '10';
         $rs = $m->where($condition)->save($_POST);
         if ($rs == true) {
             $this->success('操作成功', __GROUP__ . '/Index/apiList');

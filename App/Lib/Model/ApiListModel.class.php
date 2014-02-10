@@ -15,7 +15,7 @@ class ApiListModel extends Model {
     protected $tableName = 'api_list';
     //_pk 表示主键字段名称 _autoinc 表示主键是否自动增长类型
     protected $fields = array(
-        'id', 'apiname', 'secretkey', 'signature', 'status', 'addtime', 'members_id','domain','updatetime','remark','_pk' => 'id', '_autoinc' => true
+        'id', 'apitoken', 'secretkey', 'signature', 'status', 'addtime', 'members_id','domain','updatetime','remark','_pk' => 'id', '_autoinc' => true
     );
 
 }

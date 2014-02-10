@@ -6,5 +6,5 @@
 
 
 /*footer*/
-.dogo-footer{height: 170px;}
+.dogo-footer{height: auto;margin-bottom: 20px;}
 .dogo-footer:after{background-image: url(images/bg_wen.png);}
