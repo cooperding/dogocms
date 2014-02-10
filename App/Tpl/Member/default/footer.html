@@ -1,6 +1,6 @@
 <footer class="dogo-footer">
     <div class="dogo-blank"></div>
-    
+
 
 
     <div class="row">
@@ -11,9 +11,16 @@
 </footer>
 
 
-<script type="text/javascript" src="{$style_cmomon}/js/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="{$style_cmomon}/v3.0.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{$style_cmomon}/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="{$style_cmomon}/v3.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{$style_cmomon}/js/alertify.min.js"></script>
 <script type="text/javascript" src="{$style_cmomon}/js/jquery.cookie.js"></script>
 
 
+<script>
+    $(function() {
+        $('.dogo-box-content img').each(function() {
+            $(this).addClass('img-responsive');
+        });
+    });
+</script>

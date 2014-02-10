@@ -118,8 +118,8 @@
 
 
 
-<script type="text/javascript" src="{$style_cmomon}/js/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="{$style_cmomon}/v3.0.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{$style_cmomon}/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="{$style_cmomon}/v3.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{$style_cmomon}/js/alertify.min.js"></script>
 <script type="text/javascript" src="{$style_cmomon}/js/jquery.cookie.js"></script>
 
@@ -208,6 +208,9 @@
             if (cookieid == row_id) {
                 $('.disabled_' + row_id).addClass('disabled');
             }
+        });
+        $('.dogo-box-content img').each(function(){
+            $(this).addClass('img-responsive');
         });
         $('.dogo-click-up').click(function() {
             var row_id = $(this).attr('data-row-id');

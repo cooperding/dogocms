@@ -75,4 +75,24 @@ class NewsAction extends BaseApiAction {
             return false;
         }
     }
+    /*
+     * getNav
+     * 获取导航菜单
+     * @param string $type header 是头部导航菜单
+     * @param string $type footer 是底部导航菜单
+     */
+
+    public function getNav($type='header')
+    {
+        if($type=='header'){
+            $m = new NavHeadModel();
+        }elseif($type=='footer'){
+            $m = new NavFootModel();
+        }
+        $condition['status'] = array('eq',20);
+        $list = $m->where($condition)->select();
+        Load('extend');
+        $tree = list_to_tree($list, 'id', 'parent_id', 'children');
+        return $tree;
+    }
 }

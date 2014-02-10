@@ -25,6 +25,8 @@ class BasememberAction extends Action {
         $this->assign('count_address', $this->getAddressCount());
         $this->assign('count_apilist', $this->getApiListCount());
         $skin = $this->getSkin(); //获取前台主题皮肤名称
+        $navhead = R('Api/News/getNav', array('header')); //导航菜单
+        $this->assign('navhead', $navhead);
         $this->assign('style', __PUBLIC__ . '/Skin/Member/' . $skin);
         $this->assign('style_cmomon', __PUBLIC__ . '/Common');
         $this->assign('header', './App/Tpl/Member/' . $skin . '/header.html');
@@ -74,7 +76,7 @@ class BasememberAction extends Action {
         $count = $m->where($condition)->count();
         return $count;
     }
-
+    
 }
 
 ?>

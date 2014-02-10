@@ -8,7 +8,7 @@
                 <h5><span class="glyphicon glyphicon-hand-right"></span> {$data.title}</h5>
                 <p>
                     <span class="glyphicon glyphicon-user"></span> <a href="{:U('Members/index',array('uid'=>$data['members_id']))}">{$data.username} </a>
-                    <span class="glyphicon glyphicon-time"></span>  
+                      
                 </p>
             </div>
             <div class="dogo-box-content">
@@ -16,7 +16,7 @@
                     {$data.content}
                 <if condition="$data.titlepic neq ''">
                     <br/>
-                    <img class="img-responsive" src="{$data.titlepic}"/>
+                    <img src="{$data.titlepic}"/>
                 </if>
                 </p>
             </div><!--dogo-box-content-->
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-6 dogo-align">
                         <span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> <span class="num_comment_{$data.id}">{$data.num_comment}</span></span>
-                        <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> 分享</span>
+                        <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-share"></span> 分享</span>
                     </div>
                 </div><!--row-->
             </div><!--dogo-box-footer-->
