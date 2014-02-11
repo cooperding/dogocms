@@ -16,39 +16,23 @@ class BaseAction extends Action {
     //初始化
     function _initialize()
     {
-        
         //检测是否登录
         if (session('LOGIN_STATUS') != 'TRUE') {
             //跳转到认证网关
-            redirect( __GROUP__ . '/Passport');
-            //redirect(__APP__ . '/Login');
-            //$this->error('请登录后操作', __APP__ . '/Login');
+            redirect(__GROUP__ . '/Passport');
             exit;
-    }
-        if (C('USER_AUTH_ON') && !in_array(MODULE_NAME, explode(',', C('NOT_AUTH_MODULE')))) {//是否验证权限及不需要验证的模块
-            import('ORG.Util.RBAC');
-            if (!RBAC::AccessDecision()) {
-                //检查认证识别号
-                // 没有权限 抛出错误
-                echo '没有权限！';
-                exit;
-            }
         }
-        /*
-
-          if (C('RBAC_ERROR_PAGE')) {
-          // 定义权限错误页面
-          redirect(C('RBAC_ERROR_PAGE'));
-          } else {
-          if (C('GUEST_AUTH_ON')) {
-          $this->assign('jumpUrl', PHP_FILE . C('USER_AUTH_GATEWAY'));
-          }
-          // 提示错误信息
-          $this->error(L('_VALID_ACCESS_'));
-          }
-
-         */
-        //echo $_SERVER['REQUEST_URI'];
+        $uid = session('LOGIN_UID');
+        if (in_array($uid, C('ADMINISTRATOR'))) {
+            return true;
+        }
+        import('ORG.Util.Auth'); //加载Auth类库
+        $auth = new Auth();
+        $authcheck = $auth->check(MODULE_NAME . '/' . ACTION_NAME, session('LOGIN_UID'));
+//        if (!$authcheck) {
+//            echo '您没有此项操作权限！';
+//            exit;
+//        }
     }
 
 //endf
@@ -63,7 +47,6 @@ class BaseAction extends Action {
      * @return boolean
      * @version dogocms 1.0
      */
-
     public function dmsg($status, $info, $isclose = false, $type = false)
     {
         $array = array();
@@ -77,6 +60,7 @@ class BaseAction extends Action {
             exit;
         }
     }
+
     /**
      * changePassword
      * 密码生成格式
@@ -84,8 +68,7 @@ class BaseAction extends Action {
      * @return boolean
      * @version dogocms 1.0
      */
-
-    public function changePassword($user_name,$password)
+    public function changePassword($user_name, $password)
     {
         $password = md5(md5($user_name) . sha1($password));
         return $password;

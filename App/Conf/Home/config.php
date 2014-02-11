@@ -13,14 +13,6 @@ $miniConfig = array(
     'DATA_CACHE_COMPRESS' => true, //数据缓存是否压缩缓存true false
     'DATA_CACHE_CHECK' => false, //数据缓存是否校验缓存true false
     //数据缓存设置
-    //静态缓存设置
-    /*
-      'HTML_CACHE_ON'=>true,
-      'HTML_FILE_SUFFIX'=>'',
-      'HTML_CACHE_TIME'=>'',
-      'HTML_CACHE_RULES'=>array(),
-     * 
-     */
     //路由功能设置
     'URL_ROUTER_ON' => true,
     'URL_PATHINFO_DEPR' => '/',
@@ -35,7 +27,5 @@ $miniConfig = array(
     )
 );
 $array = array_merge((array)$array, (array)$miniConfig);
-//print_r($miniConfig);
-
 return $array;
 ?>

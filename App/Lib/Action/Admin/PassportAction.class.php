@@ -60,7 +60,6 @@ class PassportAction extends Action {
                         exit;
                     }
                     session('LOGIN_STATUS', 'TRUE');
-                    session('authId', $rs['id']);
                     session('LOGIN_NAME', $rs['username']);
                     session('LOGIN_UID', $rs['id']);
                     session('LOGIN_CTIME', $rs['creat_time']);
