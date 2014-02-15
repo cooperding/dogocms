@@ -21,6 +21,9 @@ class NavHeadAction extends BaseAction {
      */
     public function index()
     {
+        $class_methods = get_class_methods('NavHeadAction');
+        dump($class_methods);
+        exit;
         $this->display();
     }
 

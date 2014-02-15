@@ -12,12 +12,12 @@
                 </p>
             </div>
             <div class="dogo-box-content">
-                <p>
-                    {$data.content}
-                <if condition="$data.titlepic neq ''">
+                <p><if condition="$data.titlepic neq ''">
                     <br/>
                     <img class="img-responsive" src="{$data.titlepic}"/>
                 </if>
+                    {$data.content}
+                
                 </p>
             </div><!--dogo-box-content-->
             <div class="dogo-box-footer">

@@ -1,73 +1,209 @@
-<include file="$header" />
-<div class="row">
-    <div class="col-md-8">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$title}-<dogocms:cfg name="cfg_sitename"/></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="{$keywords}" />
+        <meta name="description" content="{$description}" />
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/v3.0.3/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/css/alertify.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style_cmomon}/css/alertify.default.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style}/style/common.css"/>
+        <link rel="stylesheet" type="text/css" href="{$style}/style/index.css"/>
+    </head>
+    <body>
+        <div class="dogo-page ">
+            <section class="dogo-section dogo-rgba-light-green">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
 
-        <foreach name="list" item="vo" key="i">
-            <section class="dogo-box dogo-border-all dogo-pd515">
-                <div class="dogo-box-header">
-                    <h4><span class="glyphicon glyphicon-hand-right"></span> <a href="{:U('Content/index',array('id'=>$vo['id']))}">{$vo.title}</a></h4>
-                    <p>
-                        <span class="glyphicon glyphicon-user"></span> <a href="{:U('Members/index',array('uid'=>$vo['members_id']))}">{$vo.username} </a>
-                        <span class="glyphicon glyphicon-time"></span>  
-                    </p>
-                </div>
-                <div class="dogo-box-content">
-                    <p>
-                        {$vo.content}
-                    <if condition="$vo.titlepic neq ''">
-                        <br/>
-                        <a href="{:U('Content/index',array('id'=>$vo['id']))}"><img class="img-responsive" src="{$vo.titlepic}"/></a>
-                    </if>
-                    </p>
-                </div><!--dogo-box-content-->
-                <div class="dogo-box-footer">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <span type="button" class="btn btn-default dogo-click-up disabled_{$vo.id}" data-row-id="{$vo.id}" title="顶"> <span class="glyphicon glyphicon-thumbs-up"></span> <span class="num_up_{$vo.id}">{$vo.num_top}</span></span>
-                            <span type="button" class="btn btn-default dogo-click-down disabled_{$vo.id}" data-row-id="{$vo.id}" title="踩"> <span class="glyphicon glyphicon-thumbs-down"></span> <span class="num_down_{$vo.id}">{$vo.num_beat}</span></span>
-                        </div>
-                        <div class="col-md-6 dogo-align">
-                            <a href="{:U('Content/index',array('id'=>$vo['id']))}"><span type="button" class="btn btn-default" title="评论"> <span class="glyphicon glyphicon-comment"></span> {$vo.num_comment}</span></a>
-                            <span type="button" class="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> 分享</span>
-                        </div>
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+
+            <section class="dogo-section dogo-rgba-blue">
+                <div class="container">
+                    <div class="row dogo-index-row">
+                        <dogocms:block typeid="4" limit="12">
+                            <div class="col-md-2 dogo-pd0">
+                                <div class="dogo-index-thumb">
+                                    <div class="dogo-thumb-pic"><img src="{$block.title_img}" class="img-responsive"/></div>
+                                    <div class="dogo-thumb-title">
+                                        <h4 class="dogo-align-center"><a href="{$block.url}">{$block.title}</a></h4>
+                                        <p>{$block.description}</p>
+                                        <span class="dogo-align-center"><a href="{$block.url}">查看信息>></a></span>
+                                    </div>
+                                </div>
+                            </div><!--col-md-->
+                        
+                        </dogocms:block>
                     </div><!--row-->
-                </div><!--dogo-box-footer-->
-            </section><!--dogo-box-->
-            <div class="dogo-blank"></div>
-        </foreach>
-    </div><!--col-md-->
-    <div class="col-md-4">
-        <div class="dogo-blank"></div>
+                </div><!--container-->
+            </section>
 
-        <aside class="dogo-box dogo-border-all dogo-pd515">
-            <div class="dogo-box-header">
 
-            </div>
-            <div class="dogo-box-content">
+            <section class="dogo-section dogo-rgba-gray">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
 
-            </div><!--dogo-box-content-->
-            <div class="dogo-box-footer">
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
 
-            </div><!--dogo-box-footer-->
-        </aside><!--dogo-box-->
-        <div class="dogo-blank"></div>
 
-        <aside class="dogo-box dogo-border-all dogo-pd515">
-            <div class="dogo-box-header">
+            <section class="dogo-section dogo-rgba-gray">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
 
-            </div>
-            <div class="dogo-box-content">
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
 
-            </div><!--dogo-box-content-->
-            <div class="dogo-box-footer">
+            <section class="dogo-section dogo-rgba-blue">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
 
-            </div><!--dogo-box-footer-->
-        </aside><!--dogo-box-->
-    </div><!--col-md-->
-</div><!--row-->
-<include file="$footer" />
-</div><!--container-->
-</div><!--dogo-page-->
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
 
-</body>
+            <section class="dogo-section dogo-pink">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+
+
+            <section class="dogo-section dogo-rgba-lemon">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+
+            <section class="dogo-section dogo-rgba-blue">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+            <section class="dogo-section dogo-rgba-gray">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+            <section class="dogo-section dogo-rgba-purple">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+            <section class="dogo-section dogo-rgba-blue">
+                <div class="container">
+                    <div class="dogo-home-top">
+                        <h1>{ / }</h1>
+                        <h2><a href="#lemon">互联网</a><span>/</span>
+                            <a href="#lemon">物联网</a><span>/</span>
+                            <a href="#lemon">移动互联网</a></h2>
+
+                        <h4><span>©</span>2013-2014 秋允技术 QiuYunTech.com</h4>
+                        <h3>Qiu Yun Code</h3>
+                    </div>
+                </div><!--container-->
+            </section>
+
+            <section class="dogo-section dogo-rgba-gray">
+                <div class="container">
+                    <div class="row dogo-index-row">
+                        <dogocms:block typeid="4" limit="12">
+                            <div class="col-md-2 dogo-pd0">
+                                <div class="dogo-index-thumb">
+                                    <div class="dogo-thumb-pic"><img src="{$block.title_img}" class="img-responsive"/></div>
+                                    <div class="dogo-thumb-title">
+                                        <h4 class="dogo-align-center"><a href="{$block.url}">{$block.title}</a></h4>
+                                        <p>{$block.description}</p>
+                                        <span class="dogo-align-center"><a href="{$block.url}">查看信息>></a></span>
+                                    </div>
+                                </div>
+                            </div><!--col-md-->
+                        
+                        </dogocms:block>
+                    </div><!--row-->
+                </div><!--container-->
+            </section>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    </div><!--col-md-->
+                </div><!--row-->
+                <include file="$footer" />
+            </div><!--container-->
+        </div><!--dogo-page-->
+
+    </body>
 </html>
